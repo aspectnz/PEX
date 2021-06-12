@@ -1,7 +1,6 @@
 import random
 import os
-from os import system, name
-
+from os import *
 from time import sleep
 import numpy
 import pip
@@ -57,13 +56,12 @@ while user_input != 'quit':
         print('\n********** LUCKY UNICORN **********')
         os.system('python luckyunicorn/00_LU_Base_v_01.py')
     elif user_input == 'help':
-        print('*** Instructions ***')
-        print('')
         print('*** Here are the Commands ***')
         print('   lu = lucky unicorn (game)')
         print('   rps = rock paper scissors (game)')
         print('   hl = higher/lower (game)')
         print('   clear = clear the screen (action)')
+        print('   profile = Open my profile website (website)')
         print('   spaz = SPAZ YOUR SCREEN for 7 seconds (USE WITH CAUTION)')
         print('   restart = restart the application (action)')
         print('   quit = quit the entire program (action)')
@@ -91,6 +89,9 @@ while user_input != 'quit':
         keyboard.press('l')
         keyboard.release('l')
         keyboard.release('windows')
+    elif user_input == 'profile':
+        import webbrowser
+        webbrowser.open('https://github.com/shannon-nz')
     elif user_input == 'quit':
         print('quiting the application...')
         exit()
