@@ -16,3 +16,22 @@ Windows:
 C:\Users\User> cd folder
 C:\Users\User> python app.py
 ```
+
+## Commands
+### Commands
+```
+lu
+rps
+hl
+restart
+quit
+help
+```
+### Command Details 
+<br>
+- `lu` = lucky unicorn (game) <br>
+- `rps` = rock paper scissors (game) <br>
+- `hl` = higher/lower (game) <br>
+- `restart` = restart the application (action) <br>
+- `quit` = quit the entire program (action) <br>
+- `help` = display command details (help) <br>
