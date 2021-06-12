@@ -21,6 +21,8 @@
 
 **For Python Beginners** : This code would be great for python beginners, who are interested in game development, to start somewhere. I have commented all of the code so everyone will be able to understand what each part of the program does and how it all works. If you would like to make any improvements, feel free to contibute to this repo. If there is something you don't understand, my contact details can be found on my <a href="https://github.com/shannon-nz/">GitHub profile</a> or my <a href="http://shan.rf.gd">Profile Website</a>
 
+See more of my programs on my <a href="https://github.com/shannon-nz">github profile</a> or have a look at my <a href="https://www.shannon.rf.gd">profile website</a>
+
 <br><br>
 
 # Installation
