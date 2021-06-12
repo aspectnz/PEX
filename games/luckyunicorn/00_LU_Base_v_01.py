@@ -1,6 +1,15 @@
 import random
 import os
 from time import sleep
+import json
+import colorama
+
+colorama.init()
+colorama.init(convert=True)
+colorama.init(autoreset=True)
+from colorama import *
+
+
 # Functions go here...
 def yes_no(question):
     valid = False
@@ -59,7 +68,15 @@ print('\nProgram Continues')
 
 
 how_much = num_check('How much would you like to play with? (0 - 10): ', 0, 10)
+with open('config.json', 'r') as jsonConfig:
+    config = json.load(jsonConfig)
+
+config['balance'] -= how_much
+
+with open('config.json', 'w') as f:
+    json.dump(config, f)
 print('You will be spending ${}'.format(how_much))
+print('Deducting ${} off balance.'.format(how_much))
 
 
 
@@ -78,14 +95,14 @@ while play_again == '':
     rounds_played += 1
 
     # print round number
-    print('→ Round #{}'.format(rounds_played))
+    print(Fore.BLUE+'→ Round #{}'.format(rounds_played))
 
     chosen_num = random.randint(1, 100)
 
     # Adjust balance
     # If the random # is between 1 and 5, user gets a unicorn (add $4 to balance)
     if 1 <= chosen_num <= 5:
-        chosen = '♪ ♪ ♪ UNICORN ♪ ♪ ♪'
+        chosen = '♪ UNICORN ♪'
         unicorn_count += 1
         balance += 4
     # If the random # is between 6 and 36, user gets a donkey (subtract $1 from balance
@@ -106,13 +123,14 @@ while play_again == '':
             zebra_count += 1
         balance -= 0.5
 
-    print('You got a {}. Your balance is ${:.5f}'.format(chosen, balance))
+    print(Fore.GREEN+'You got a {}. Your in game balance is '.format(chosen)+Fore.RED+'${}'.format(balance))
 
     if balance < 1:
         play_again = 'xxx'
         print('Sorry you have run out of money')
     else:
-        play_again = input('Press <Enter> to play again or "quit": ')
+        print(Fore.BLACK+'Press <Enter> to play again or "quit": ', end='')
+        play_again = input()
 
     print()
 
@@ -124,20 +142,30 @@ print('       ● Donkey: {}'.format(donkey_count))
 print('       ● Horses: {}'.format(horse_count))
 print('       ● Zebras: {}'.format(zebra_count))
 
+made_or_lost = balance - how_much
+if made_or_lost > 0:
+    change_msg = 'won'
+    change_msg_color = Fore.GREEN
+else:
+    change_msg = 'lost'
+    change_msg_color = Fore.RED
+    made_or_lost = made_or_lost * -1
 
-print('\nFinal balance: ${} after {} rounds'.format(balance, rounds_played))
+print(change_msg_color+'\nYou have '+change_msg+': ${} after {} rounds'.format(made_or_lost, rounds_played))
+
+with open('config.json', 'r') as jsonConfig:
+    config = json.load(jsonConfig)
+
+new_balance = config['balance'] + balance
+
+config['balance'] = new_balance
+
+with open('config.json', 'w') as f:
+    json.dump(config, f)
 
 
 print('Opening the main menu in 5s..... \n')
 sleep(1) 
 os.system('python app.py')
-
-#last_input = ''
-#while last_input != 'quit':
-    #last_input = input('Type "quit" to quit the game or "run" to move into the next game: ');
-    #if last_input == 'quit':
-        #print('closing program')
-    #elif last_input == 'run':
-        #os.system('app.py 1')
 
 

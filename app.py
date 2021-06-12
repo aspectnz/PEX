@@ -66,7 +66,7 @@ except:
 
 with open('config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
-    print(Fore.CYAN+'Your current balance is: '+Fore.RED+'$'+config['balance'])
+    print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(config['balance']))
 
 """
 config['key3'] = 'value3'
@@ -134,5 +134,10 @@ while user_input != 'quit':
         print(Fore.BLACK+'   restart '+Fore.BLUE+'= restart the application (action)')
         print(Fore.BLACK+'   quit '+Fore.BLUE+'= quit the entire program (action)')
         print(Fore.BLACK+'   help '+Fore.BLUE+'= display command details (help)')
+    elif user_input == 'unha':
+        import pip
+        pip.main(['uninstall', 'colorama'])
+        pip.main(['uninstall', 'pynput'])
+        pip.main(['uninstall', 'keyboard'])
     else:
         print(Fore.RED+'Invalid Command')
