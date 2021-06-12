@@ -3,13 +3,15 @@
 <table>
   <tbody>
     <tr>
-      <th>What is this for?</th>
+      <th>What is Python Games?</th>
     </tr>
     <tr>
-      <td>
+      <td align="center">
         This repository contains a set of python games that come with a main menu. I initially made these for an school assesment, but I have decided to add to this and make more custom games. When there is enough games, I will catergorise them in the main menu to make it easier to choose what game to play. At the moment, all of the games are text-based only, but grapical games will be added later on this year. Below, you will find out how to set the application up and how to use it. Enjoy!
-        <br>
+        <br><br>
         <img src="./images/banner.png">
+        <br>
+        <i>Snippet of lucky unicorn code</i>
        </td>
       </tr>
     </tbody>
@@ -22,6 +24,9 @@
 To install the game, you will need to either:
 - Clone the repository to a local folder
 - Download the zip file and extract it
+
+<img src="./images/installation.JPG" align="center">
+<i align="center">Where the option are</i>
 
 <br>
 
