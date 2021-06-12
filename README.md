@@ -11,7 +11,7 @@
         <br><br>
         <img src="./images/banner.jpg">
         <br>
-        <i>Snippet of lucky unicorn code</i>
+        <i>Screenshot of the main menu</i>
        </td>
       </tr>
     </tbody>
