@@ -19,17 +19,20 @@ def yes_no(question):
             print('Please answer yes / no')
 
 def instructions():
-    print('**** How to Play ****')
-    print('\nYou may choose the amount of money you want to pay. This number should '
-        'be within the range of 1 to 100. $100 is recommended for a higher chance of winning unicorns. ')
-    print('There are 4 tokens of which you have a chance winning. These tokens are: '
-        '\n   ◊ Donkey\n   ◊ Zebra\n   ◊ Horse\n   ◊ Unicorn (Winning Token)!')
-    print('\n \nEach round you will have a chance of winning one of these, Unicorn is the only one that '
-        'will make you win. Each round requires you to press the <enter> key. To exit the game, type three x\'s like "xxx"')
+    print('''
+        **** How to Play ****
+        \nYou may choose the amount of money you want to pay. This number should '
+        'be within the range of 1 to 10. $10 is recommended for a higher chance of winning unicorns. 
+        There are 4 tokens of which you have a chance winning. These tokens are:
+        '\n   ◊ Donkey\n   ◊ Zebra\n   ◊ Horse\n   ◊ Unicorn (Winning Token)!
+        \n \nEach round you will have a chance of winning one of these, Unicorn is the only one that '
+        'will make you win. Each round requires you to press the <enter> key. To exit the game, type three x\'s like "xxx"
+        '''
+        )
     return ''
 
 def num_check(question, low, high):
-    error = 'Please enter a whole number between 1 and 100\n'
+    error = 'Please enter a whole number between 1 and 10\n'
 
     valid = False
     while not valid:
@@ -55,7 +58,7 @@ if played_before == 'no':
 print('\nProgram Continues')
 
 
-how_much = num_check('How much would you like to play with? (0 - 100): ', 0, 100)
+how_much = num_check('How much would you like to play with? (0 - 10): ', 0, 10)
 print('You will be spending ${}'.format(how_much))
 
 
@@ -84,12 +87,12 @@ while play_again == '':
     if 1 <= chosen_num <= 5:
         chosen = '♪ ♪ ♪ UNICORN ♪ ♪ ♪'
         unicorn_count += 1
-        balance += 42.38564
+        balance += 4
     # If the random # is between 6 and 36, user gets a donkey (subtract $1 from balance
     elif 6 <= chosen_num <= 36:
         chosen = 'donkey'
         donkey_count += 1
-        balance -= 12.31319
+        balance -= 1
     # The token is either a horse or zebra...
     # In both cases, subtract $0.50 from the balance
     else:
@@ -101,7 +104,7 @@ while play_again == '':
         else:
             chosen = 'zebra'
             zebra_count += 1
-        balance -= 5.53966
+        balance -= 0.5
 
     print('You got a {}. Your balance is ${:.5f}'.format(chosen, balance))
 
@@ -122,7 +125,7 @@ print('       ● Horses: {}'.format(horse_count))
 print('       ● Zebras: {}'.format(zebra_count))
 
 
-print('\nFinal balance: ${:.5f} after {} rounds'.format(balance, rounds_played))
+print('\nFinal balance: ${} after {} rounds'.format(balance, rounds_played))
 
 
 print('Opening the main menu in 5s..... \n')
