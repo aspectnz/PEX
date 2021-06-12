@@ -83,6 +83,10 @@ help
 - `lu` = lucky unicorn (game) <br>
 - `rps` = rock paper scissors (game) <br>
 - `hl` = higher/lower (game) <br>
+- `system` = get your system information (info) <br>
+- `clear` = clear the screen (action) <br>
+- `profile` = Open my profile website (website) <br>
+- `spaz` = SPAZ YOUR SCREEN for 7 seconds (USE WITH CAUTION) <br>
 - `restart` = restart the application (action) <br>
 - `quit` = quit the entire program (action) <br>
 - `help` = display command details (help) <br>
