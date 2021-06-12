@@ -9,7 +9,7 @@
       <td align="center">
         This repository contains a set of python games that come with a main menu. I initially made these for a school assesment, but I have decided to add to the repository and develop more custom and advanced games. Once there is enough games, I will catergorize them in the main menu to make it easier to choose what game to play. At the moment, all of the games are text-based only, but grapical games will be added later on this year. Below, you will find out how to set the application up and how to use it. Enjoy!
         <br><br>
-        <img src="./images/banner.JPG">
+        <img src="./images/banner.png">
         <br>
         <i>Snippet of lucky unicorn code</i>
        </td>
@@ -20,8 +20,6 @@
 <br>
 
 **For Python Beginners** : This code would be great for python beginners, who are interested in game development, to start somewhere. I have commented all of the code so everyone will be able to understand what each part of the program does and how it all works. If you would like to make any improvements, feel free to contibute to this repo. If there is something you don't understand, my contact details can be found on my <a href="https://github.com/shannon-nz/">GitHub profile</a> or my <a href="http://shan.rf.gd">Profile Website</a>
-
-See more of my programs on my <a href="https://github.com/shannon-nz">github profile</a> or have a look at my <a href="https://www.shannon.rf.gd">profile website</a>
 
 <br><br>
 
@@ -40,7 +38,7 @@ To install the game, you will need to either:
 <br>
 
 # Getting Started
-- **Option 1** - The Easy Option - Simply open the folder that contains the python files and double click app.py. Further instructions will be shown in the app.
+- **Option 1 (recommended)** - The Easy Option - Simply open the folder that contains the python files and double click app.py. Further instructions will be shown in the app.
 
 <div align="center">
   <img src="./images/getting-started-1.JPG">
@@ -91,46 +89,11 @@ help
 
 <br>
 
-# Command Details
-### Lucky Unicorn (game)
+# Game Details
+### Lucky Unicorn
 Lucky Unicorn is essentially a luck-based game. Here are the steps to playing the game: <br>
 1. Type `lu` in the main menu.
 2. If you have played the game before type `yes` or `y`, otherwise type `no` or `n`.
 3. Choose the pretend amount of money you want to spend, you can choose from 0 to 100.
 4. Simply press <enter> each round or type `quit` to quit the game.
 5. When the game finished, you will be directed back to the main menu.
-
-<br>
-
-### Rock Paper Scissors (game)
-Rock Paper Scissors
-    
-<br>
-
-### Higher/Lower (game)
-Higher/Lower
-    
-<br>
-
-### Restart (action)
-The restart command will rerun the app.py file. 
-
-<br>
-
-### Quit (action)
-The quit command will instally exit the program.
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
