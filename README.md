@@ -24,6 +24,7 @@
 <br><br>
 
 # Installation
+- Make sure that <a href="https://www.python.org/downloads/">python</a> is installed.
 To install the game, you will need to either:
 - Clone the repository to a local folder
 - Download the zip file and extract it
