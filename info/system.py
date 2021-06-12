@@ -5,6 +5,7 @@ import pip
 try:
     import psutil
 except:
+    import pip
     pip.main(['install', 'psutil'])
     import psutil
 
