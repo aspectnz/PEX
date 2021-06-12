@@ -8,6 +8,8 @@
     <tr>
       <td>
         This repository contains a set of python games that come with a main menu. I initially made these for an school assesment, but I have decided to add to this and make more custom games. When there is enough games, I will catergorise them in the main menu to make it easier to choose what game to play. At the moment, all of the games are text-based only, but grapical games will be added later on this year. Below, you will find out how to set the application up and how to use it. Enjoy!
+        <br>
+        <img src="./images/banner.png">
        </td>
       </tr>
     </tbody>
