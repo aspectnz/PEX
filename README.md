@@ -25,13 +25,22 @@ To install the game, you will need to either:
 - Clone the repository to a local folder
 - Download the zip file and extract it
 
-<img src="./images/installation.JPG" align="center">
-<i align="center">Where the option are</i>
+<div align="center">
+  <img src="./images/installation.JPG">
+  <br>
+  <i>Where the option are</i>
+</div>
 
 <br>
 
 # Getting Started
 - Option 1 - The Easy Option - Simply open the folder that contains the python files and double click app.py. Further instructions will be shown in the app.
+
+<div align="center">
+  <img src="./images/getting-started-1.JPG">
+  <br>
+  <i>Which file to click</i>
+</div>
 
 - Option 2 - Terminal - Use the terminal, to run the application.
 Windows:
