@@ -25,6 +25,9 @@ To install the game, you will need to either:
 - Clone the repository to a local folder
 - Download the zip file and extract it
 
+<img src="./images/installation.JPG" align="center">
+<i align="center">Where the option are</i>
+
 <br>
 
 # Getting Started
