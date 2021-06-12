@@ -9,7 +9,7 @@
       <td align="center">
         This repository contains a set of python games that come with a main menu. I initially made these for a school assesment, but I have decided to add to the repository and develop more custom and advanced games. Once there is enough games, I will catergorize them in the main menu to make it easier to choose what game to play. At the moment, all of the games are text-based only, but grapical games will be added later on this year. Below, you will find out how to set the application up and how to use it. Enjoy!
         <br><br>
-        <img src="./images/banner.png">
+        <img src="./images/banner.JPG">
         <br>
         <i>Snippet of lucky unicorn code</i>
        </td>
@@ -20,6 +20,8 @@
 <br>
 
 **For Python Beginners** : This code would be great for python beginners, who are interested in game development, to start somewhere. I have commented all of the code so everyone will be able to understand what each part of the program does and how it all works. If you would like to make any improvements, feel free to contibute to this repo. If there is something you don't understand, my contact details can be found on my <a href="https://github.com/shannon-nz/">GitHub profile</a> or my <a href="http://shan.rf.gd">Profile Website</a>
+
+See more of my programs on my <a href="https://github.com/shannon-nz">github profile</a> or have a look at my <a href="https://www.shannon.rf.gd">profile website</a>
 
 <br><br>
 
