@@ -50,6 +50,12 @@ C:\Users\User> python app.py
 ```
 
 - Option 3 - IDE - Open your IDE, Ctrl + o, open the app.py and press F5.
+- 
+<div align="center">
+  <img src="./images/getting-started-3.JPG">
+  <br>
+  <i>running the file in IDLE</i>
+</div>
 
 <br>
 
