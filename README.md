@@ -9,9 +9,9 @@
       <td align="center">
         This repository contains a set of python games that come with a main menu. I initially made these for a school assesment, but I have decided to add to the repository and develop more custom and advanced games. Once there is enough games, I will catergorize them in the main menu to make it easier to choose what game to play. At the moment, all of the games are text-based only, but grapical games will be added later on this year. Below, you will find out how to set the application up and how to use it. Enjoy!
         <br><br>
-        <img src="./images/banner.jpg">
+        <img src="./images/banner.jpg" width="500px">
         <br>
-        <i>Snippet of lucky unicorn code</i>
+        <i>an early-tech video game</i>
        </td>
       </tr>
     </tbody>
