@@ -6,6 +6,26 @@ import numpy
 from subprocess import *
 import sys
 import ctypes
+import json
+
+
+config = {"key1": "value1", "key2": "value2"}
+
+with open('config1.json', 'w') as f:
+    json.dump(config, f)
+
+
+
+with open('config.json', 'r') as f:
+    config = json.load(f)
+
+#edit the data
+config['key3'] = 'value3'
+
+#write it back to the file
+with open('config.json', 'w') as f:
+    json.dump(config, f)
+
 
 # import and run the idle_check.py file
 sys.path.insert(0, './py/')
@@ -36,7 +56,7 @@ font.dwFontSize.X = 11
 font.dwFontSize.Y = 18
 font.FontFamily = 54
 font.FontWeight = 500
-font.FaceName = "Liberation Mono"
+font.FaceName = ""
 
 handle = ctypes.windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
 ctypes.windll.kernel32.SetCurrentConsoleFontEx(
@@ -65,6 +85,8 @@ except:
     colorama.init(autoreset=True)
     from colorama import *
 
+# Import pynput module
+# If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
     from pynput.mouse import Button, Controller
     mouse = Controller()
@@ -77,7 +99,8 @@ except:
     #from pynput.keyboard import Key, Controller
     from pynput.mouse import Button, Controller
 
-
+# Import keyboard module
+# If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
     import keyboard
     #keyboard.press('f11')
@@ -87,10 +110,6 @@ except:
     pip.main(['install', 'keyboard'])
     import keyboard
     #keyboard.press('f11')
-
-
-
-
 
 
 
@@ -112,7 +131,7 @@ while user_input != 'quit':
     user_input = input()
   
 
-    if user_input == 'lu':
+    if user_input == 'lu' or 'lucky unicorn':
         print(Fore.BLUE+'Opening Lucky Lucky Unicorn Game...')
         sleep(1)
         print('\n********** LUCKY UNICORN **********')
