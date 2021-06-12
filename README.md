@@ -104,12 +104,12 @@ Lucky Unicorn is essentially a luck-based game. Here are the steps to playing th
 
 ### Rock Paper Scissors (game)
 Rock Paper Scissors
-	
+    
 <br>
 
 ### Higher/Lower (game)
 Higher/Lower
-	
+    
 <br>
 
 ### Restart (action)
@@ -119,18 +119,18 @@ The restart command will rerun the app.py file.
 
 ### Quit (action)
 The quit command will instally exit the program.
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

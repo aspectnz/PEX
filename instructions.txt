@@ -1,7 +1,7 @@
 Instruction to use the application:
 1. If you have not already, download the python-games zip folder and extract it on your desktop. 
    or clone the folder somewhere if you know how
-2. Double click on the app.py file in the root directory to play
+2. DOUBLE CLICK on the app.py file in the root directory to play
 3. Further instructions will be shown in side the app
 
 If you would like more details or a better explanation on how to use the application,
