@@ -88,7 +88,6 @@ while user_input != 'quit':
         exit()
         print('Failed to quit the application, please try again')
     elif user_input == 'help':
-        print('*** Here are the Commands ***')
         print('   lu = lucky unicorn (game)')
         print('   rps = rock paper scissors (game)')
         print('   hl = higher/lower (game)')
