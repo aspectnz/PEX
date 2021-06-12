@@ -1,3 +1,4 @@
+# Import all nessesary modules
 import random
 import os
 import os
@@ -98,9 +99,6 @@ while user_input != 'quit':
     elif user_input == 'system':
         print(Fore.BLUE+'Opening python file for "system information"...')
         os.system('python info/system.py')
-    elif user_input == 'clear':
-        call('clear' if os.name =='posix' else 'cls')
-        print('Cleared the screen')
     elif user_input == 'profile':
         print(Fore.BLUE+'Opening profile website')
         import webbrowser
@@ -128,7 +126,6 @@ while user_input != 'quit':
         print(Fore.BLACK+'   rps '+Fore.BLUE+'= rock paper scissors (game)')
         print(Fore.BLACK+'   hl '+Fore.BLUE+'= higher/lower (game)')
         print(Fore.BLACK+'   system '+Fore.BLUE+'= get your system information (info)')
-        print(Fore.BLACK+'   clear '+Fore.BLUE+'= clear the screen (action)')
         print(Fore.BLACK+'   profile '+Fore.BLUE+'= open my profile website (website)')
         print(Fore.BLACK+'   spaz '+Fore.BLUE+'= SPAZ YOUR SCREEN for 7 seconds (fun)')
         print(Fore.BLACK+'   restart '+Fore.BLUE+'= restart the application (action)')
