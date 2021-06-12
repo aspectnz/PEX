@@ -34,13 +34,15 @@ To install the game, you will need to either:
 <br>
 
 # Getting Started
-- Option 1 - The Easy Option - Simply open the folder that contains the python files and double click app.py. Further instructions will be shown in the app.
+- **Option 1** - The Easy Option - Simply open the folder that contains the python files and double click app.py. Further instructions will be shown in the app.
 
 <div align="center">
   <img src="./images/getting-started-1.JPG">
   <br>
   <i>Which file to click</i>
 </div>
+
+<br>
 
 - Option 2 - Terminal - Use the terminal, to run the application.
 Windows:
@@ -49,8 +51,10 @@ C:\Users\User> cd folder
 C:\Users\User> python app.py
 ```
 
-- Option 3 - IDE - Open your IDE, Ctrl + o, open the app.py and press F5.
-- 
+<br>
+
+- **Option 3** - IDE - Open your IDE, Ctrl + o, open the app.py and press F5.
+
 <div align="center">
   <img src="./images/getting-started-3.JPG">
   <br>
