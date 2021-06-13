@@ -156,7 +156,7 @@ def mod_config(option, value, newval):
             config = json.load(jsonConfig)
         config[value] = newval
         with open('config.json', 'w') as f:
-            json.dump(config, f)
+            json.dumps(json.dump(config, f), indent=4)
 
 
 # The screen clear function
@@ -219,14 +219,17 @@ while user_input != 'quit':
     elif user_input == 'system':
         print(Fore.BLUE+'Opening python file for "system information"...')
         os.system('python info/system.py')
+
     elif user_input == 'profile':
         print(Fore.BLUE+'Opening profile website')
         import webbrowser
         webbrowser.open('https://github.com/shannon-nz')
+
     elif user_input == 'doc':
         print(Fore.BLUE+'Opening python games documentation')
         import webbrowser
         webbrowser.open('https://github.com/shannon-nz/python-games#-python-games-in-development-')
+
     elif user_input == 'spaz':
         print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
         for item in range(1, 50):
@@ -259,28 +262,40 @@ while user_input != 'quit':
             print(Fore.CYAN+spaz_msg)
             sleep(0.1)
         print('\n\nAnd that is why you should be careful what you click on!')
+
+    elif user_input == 'settings':
+        with open('config.json', 'r') as jsonConfig:
+            config = json.dumps(json.load(jsonConfig), sort_keys=True, indent=4, separators=(',', ': '))
+        print(Fore.YELLOW+config)
+        
     elif user_input == 'log':
         print(Fore.BLUE+'Printing log.log ...')
         f = open('main.log', 'r')
         file_contents = f.read()
         print (file_contents)
         f.close()
+
     elif user_input == 'log -clean':
         print('cleaning log...')
         myText = open(r'main.log','w')
         myText.write('<<< start of log >>>')
         myText.close()
         print('log cleaned!')
+
     elif user_input == 'log -disable':
         mod_config('mod','logOption','disabled')
+
     elif user_input == 'log -enable':
         mod_config('mod','logOption','enabled')
+
     elif user_input == 'restart':
         os.system('python app.py')
+
     elif user_input == 'quit':
         print(Fore.RED+'quiting the application...')
         exit()
         print(Fore.RED+'Failed to quit the application, please try again')
+
     elif user_input == 'help':
         print(Fore.BLACK+'   clear     '+Fore.BLUE+'clear the terminal (action)')
         print(Fore.BLACK+'   lu        '+Fore.BLUE+'lucky unicorn (game)')
@@ -291,6 +306,7 @@ while user_input != 'quit':
         print(Fore.BLACK+'   profile   '+Fore.BLUE+'open my profile website (website)')
         print(Fore.BLACK+'   doc       '+Fore.BLUE+'open python games documentation (website)')
         print(Fore.BLACK+'   spaz      '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (fun)')
+        print(Fore.BLACK+'   settings  '+Fore.BLUE+'print settings in JSON format (info)')
         print(Fore.BLACK+'   log       '+Fore.BLUE+'view all past logs (info)')
         print(Fore.BLACK+'      log -clean       '+Fore.BLUE+'view all past logs (info)')
         print(Fore.BLACK+'      log -disable       '+Fore.BLUE+'disable logs (action)')
