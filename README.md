@@ -127,6 +127,8 @@ Lucky Unicorn is essentially a luck-based game. Here are the steps to playing th
 - Count the amount of times each program has been run as well as the total
 - Rock Paper Scissors game
 - Higher/Lower game
+- Create modules for large sets of functions
+- Finish the Documentaion (last)
 
 <br>
 
