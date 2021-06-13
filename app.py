@@ -1,13 +1,16 @@
 import socket
 h_name = socket.gethostname()
 IP_addres = socket.gethostbyname(h_name)
-
+import json
 from datetime import datetime
 def add_log(text):
-    now = datetime.now()
-    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    with open('main.log', 'a') as file_object:
-        file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
+    with open('config.json', 'r') as jsonConfig:
+        config = json.load(jsonConfig)
+        if config['logOption'] == 'enabled':
+            now = datetime.now()
+            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+            with open('main.log', 'a') as file_object:
+                file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
 add_log('running main app')
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
@@ -23,7 +26,6 @@ try:
     from subprocess import *
     import sys
     import ctypes
-    import json
 except:
     add_log('error importing default modules')
 
@@ -258,11 +260,21 @@ while user_input != 'quit':
             sleep(0.1)
         print('\n\nAnd that is why you should be careful what you click on!')
     elif user_input == 'log':
-        print(Fore.RED+'Printing log.log ...')
+        print(Fore.BLUE+'Printing log.log ...')
         f = open('main.log', 'r')
         file_contents = f.read()
         print (file_contents)
         f.close()
+    elif user_input == 'log -clean':
+        print('cleaning log...')
+        myText = open(r'main.log','w')
+        myText.write('<<< start of log >>>')
+        myText.close()
+        print('log cleaned!')
+    elif user_input == 'log -disable':
+        mod_config('mod','logOption','disabled')
+    elif user_input == 'log -enable':
+        mod_config('mod','logOption','enabled')
     elif user_input == 'restart':
         os.system('python app.py')
     elif user_input == 'quit':
@@ -280,14 +292,21 @@ while user_input != 'quit':
         print(Fore.BLACK+'   doc       '+Fore.BLUE+'open python games documentation (website)')
         print(Fore.BLACK+'   spaz      '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (fun)')
         print(Fore.BLACK+'   log       '+Fore.BLUE+'view all past logs (info)')
+        print(Fore.BLACK+'      log -clean       '+Fore.BLUE+'view all past logs (info)')
+        print(Fore.BLACK+'      log -disable       '+Fore.BLUE+'disable logs (action)')
+        print(Fore.BLACK+'      log -enable       '+Fore.BLUE+'enable logs (info)')
         print(Fore.BLACK+'   restart   '+Fore.BLUE+'restart the application (action)')
         print(Fore.BLACK+'   quit      '+Fore.BLUE+'quit the entire program (action)')
         print(Fore.BLACK+'   help      '+Fore.BLUE+'display command details (help)')
-        print(Fore.BLACK+'   help-des  '+Fore.BLUE+'display command details and an longer description (help)')
-    elif user_input == 'unha':
+        print(Fore.BLACK+'      help -des  '+Fore.BLUE+'display command details and an longer description (help)')
+    elif user_input == 'help -des':
+        print('help -des coming soon')
+    elif user_input == 'uneverything':
+        # This option is hidden because it deletes all modules, which would require the user to install them again
         import pip
         pip.main(['uninstall', 'colorama'])
         pip.main(['uninstall', 'pynput'])
         pip.main(['uninstall', 'keyboard'])
     else:
-        print(Fore.RED+'Invalid Command')
+        print(Fore.RED+'{} is an invalid command'.format(user_input))
+        add_log('{} is an invalid command'.format(user_input))
