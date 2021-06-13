@@ -34,6 +34,8 @@ keyboard.release('win+up')
 
 There are mutliple commands that you can use, some of which are just for the sake of seeing what you can do with python.
 
+<br>
+
 # Installation
 - Make sure that you have the latest version of <a href="https://www.python.org/downloads/">python</a> installed and that you're using Windows 10.
 To install the game, you will need to either:
