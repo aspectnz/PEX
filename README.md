@@ -23,8 +23,13 @@
 
 <br><br>
 
+# How The App Works
+In the `config.json` file, you are given a default balance of $100, this is all the money that you are allowed to spend in the game. When you are below $0, you are in debt and will not be able to play anymore. To reset the balance, use the `reset` command. You can also just add unlimited money by changing the `config.json` file and setting the balance to whatever you want (as long as it is a number)
+
+There are mutliple commands that you can use, some of which are just for the sake of seeing what you can do with python.
+
 # Installation
-- Make sure that <a href="https://www.python.org/downloads/">python</a> is installed.
+- Make sure that you have the latest version of <a href="https://www.python.org/downloads/">python</a> installed and that you're using Windows 10.
 To install the game, you will need to either:
 - Clone the repository to a local folder
 - Download the zip file and extract it
@@ -57,7 +62,7 @@ C:\Users\User> python app.py
 
 <br>
 
-- **Option 3** - IDE - Open your IDE, Ctrl + o, open the app.py and press F5.
+- **Option 3 - will not work - (DISCONTINUED) ** - IDE - Open your IDE, Ctrl + o, open the app.py and press F5.
 
 <div align="center">
   <img src="./images/getting-started-3.JPG">
@@ -76,6 +81,7 @@ hl
 restart
 quit
 help
+help des
 ```
 
 ### Command Details 
@@ -89,6 +95,7 @@ help
 - `restart` = restart the application (action) <br>
 - `quit` = quit the entire program (action) <br>
 - `help` = display command details (help) <br>
+- `help des` = display command details and an longer description (help) <br>
 
 <br>
 
