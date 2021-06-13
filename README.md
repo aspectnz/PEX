@@ -26,6 +26,12 @@
 # How The App Works
 In the `config.json` file, you are given a default balance of $100, this is all the money that you are allowed to spend in the game. When you are below $0, you are in debt and will not be able to play anymore. To reset the balance, use the `reset` command. You can also just add unlimited money by changing the `config.json` file and setting the balance to whatever you want (as long as it is a number)
 
+The app will automatically install any module required that are not already installed. These modules are required for the app to function fully. The app will also automatically become full screen, this is done with the keyboard module and using the code:
+```
+keyboard.press('win+up')
+keyboard.release('win+up')
+ ```
+
 There are mutliple commands that you can use, some of which are just for the sake of seeing what you can do with python.
 
 # Installation
