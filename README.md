@@ -120,3 +120,15 @@ Lucky Unicorn is essentially a luck-based game. Here are the steps to playing th
 3. Choose the pretend amount of money you want to spend, you can choose from 0 to 100.
 4. Simply press <enter> each round or type `quit` to quit the game.
 5. When the game finished, you will be directed back to the main menu.
+ 
+<br>
+
+# To Do / What's Coming
+- Count the amount of times each program has been run as well as the total
+- Rock Paper Scissors game
+- Higher/Lower game
+
+<br>
+
+# Contributing
+If you would like to contribute to this project, simply clone the repository, make some changes, and create a pull request. I will review the request and accept it if appropriate. If you would like to contribute to this project or my other projects more than once, feel free to contact me: [slekupvimplyrataqq@protonmail.com](slekupvimplyrataqq@protonmail.com).
