@@ -1,3 +1,10 @@
+from datetime import datetime
+def add_log(text):
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    with open('log.txt', 'a') as file_object:
+        file_object.write('\n'+dt_string+': '+text)
+add_log('running luckyunicorn')
 import random
 import os
 from time import sleep
@@ -59,9 +66,6 @@ def num_check(question, low, high):
             print(error)
 
 # SCRIPT
-
-with open('log.txt', 'a') as file_object:
-    file_object.write('\nrunning luckyunicorn')
 
 played_before = yes_no('Have you played the game before? (yes/no): ')
 

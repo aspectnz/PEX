@@ -1,29 +1,45 @@
-# <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
-import random
-import os
-import os
-from time import sleep
-import numpy
-import subprocess
-from subprocess import *
-import sys
-import ctypes
-import json
-import socket
+from datetime import datetime
+def add_log(text):
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    with open('log.txt', 'a') as file_object:
+        file_object.write('\n'+dt_string+': '+text)
+add_log('running main app')
 
-sys.path.insert(0, './py/')
+# <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+add_log('importing default modules')
+try:
+    add_log('successfully imported modules')
+    import random
+    import os
+    import os
+    from time import sleep
+    import numpy
+    import subprocess
+    from subprocess import *
+    import sys
+    import ctypes
+    import json
+    import socket
+except:
+    add_log('ERROR IMPORTING DEFAULT MODULES')
+
+sys.path.insert(0, './main/')
 import idle_check as idle_check
 idle_check.run()
 
 # Import colorama module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
+add_log('importing custom modules')
 try:
     import colorama
     colorama.init()
     colorama.init(convert=True)
     colorama.init(autoreset=True)
     from colorama import Fore, Back, Style
+    add_log('successfully imported colorama')
 except:
+    add_log('ERROR IMPORTING COLORAMA')
     print('You do not have the "colorama" module, we are installing it for you now...')
     import pip
     pip.main(['install', 'colorama'])
@@ -32,6 +48,7 @@ except:
     colorama.init(convert=True)
     colorama.init(autoreset=True)
     from colorama import Fore, Back, Style
+    add_log('INSTALLED AND IMPORTED COLORAMA SUCCESSFULLY')
 
 # Import pandas and tabulate module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
@@ -39,13 +56,16 @@ try:
     # importing the modules
     from tabulate import tabulate
     import pandas as pd
+    add_log('successfully imported pandas and tabulate')
 except:
+    add_log('ERROR IMPORTING PANDAS OR TABULATE')
     import pip
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
     pip.main(['install', 'tabulate'])
     # importing the modules
     from tabulate import tabulate
     import pandas as pd
+    add_log('INSTALLED AND IMPORTED PANDAS AND TABULATE  SUCCESSFULLY')
 
 
 # Import pynput module
@@ -55,13 +75,16 @@ try:
     mouse = Controller()
     mouse.position = (0, 0)
     print(Fore.BLUE+'Your mouse has been moved to the top left.')
+    add_log('successfully imported pynput')
 except:
+    add_log('ERROR IMPORTING PYNPUT')
     import pip
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
     pip.main(['install', 'pynput'])
     #from pynput.keyboard import Key, Controller
     from pynput.mouse import Button, Controller
     from pynput import mouse
+    add_log('INSTALLED AND IMPORTED PYNPUT SUCCESSFULLY')
 
 """ This is annoying
 for item in range(1, 100):
@@ -75,23 +98,20 @@ try:
     import keyboard
     keyboard.press('win+up')
     keyboard.release('win+up')
+    add_log('successfully imported keyboard')
 
 except:
+    add_log('ERROR IMPORTING KEYBOARD')
     import pip
     print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
     pip.main(['install', 'keyboard'])
     import keyboard
     keyboard.press('win+up')
     keyboard.release('win+up')
+    add_log('INSTALLED AND IMPORTED KEYBOARD SUCCESSFULLY')
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
-def add_log(text):
-    with open('log.txt', 'a') as file_object:
-        file_object.write('\n'+text)
-
-add_log('running main app')
-
 def check_internet_connection():
     try:
         # connect to the host -- tells us if the host is actually reachable
