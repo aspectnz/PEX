@@ -75,6 +75,7 @@ C:\Users\User> python app.py
 # Commands
 ### Commands
 ```
+clear
 lu
 rps
 hl
@@ -86,6 +87,7 @@ help des
 
 ### Command Details 
 
+- `clear` = clear the terminal (action)
 - `lu` = lucky unicorn (game) <br>
 - `rps` = rock paper scissors (game) <br>
 - `hl` = higher/lower (game) <br>
