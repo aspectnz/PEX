@@ -108,7 +108,7 @@ help des
 - `restart` = restart the application (action) <br>
 - `quit` = quit the entire program (action) <br>
 - `help` = display command details (help) <br>
-- `help des` = display command details and an longer description (help) <br>
+- `help-des` = display command details and an longer description (help) <br>
 
 <br>
 
