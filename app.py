@@ -56,13 +56,13 @@ except:
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
     import keyboard
-    #keyboard.press('f11')
+    keyboard.press('f11')
 except:
     import pip
     print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
     pip.main(['install', 'keyboard'])
     import keyboard
-    #keyboard.press('f11')
+    keyboard.press('f11')
 
 
 with open('config.json', 'r') as jsonConfig:
@@ -104,16 +104,36 @@ while user_input != 'quit':
         import webbrowser
         webbrowser.open('https://github.com/shannon-nz')
     elif user_input == 'spaz':
-        print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !')
-        for item in range(1, 101):
+        print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
+        for item in range(1, 50):
+            print(Fore.RED+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+            print(Fore.BLUE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+            print(Fore.YELLOW+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+            print(Fore.WHITE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+            print(Fore.BLACK+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+            print(Fore.GREEN+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+            print(Fore.MAGENTA+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+            print(Fore.CYAN+'WARNING, IT IS ABOUT TO GET MAD !!!')
+        spaz_msg = 'SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ '
+        for item in range(1, 21):
             keyboard.press('f11')
             keyboard.release('f11')
             keyboard.press('windows')
             keyboard.release('windows')
-            rand1 = random.randrange(0, 1300)
-            rand2 = random.randrange(0, 1300)
+            keyboard.press('alt+tab')
+            keyboard.release('alt+tab')
+            rand1 = random.randrange(0, 1900)
+            rand2 = random.randrange(0, 1900)
             mouse.position = (rand1, rand2)
-            sleep(0.05)
+            print(Fore.RED+spaz_msg)
+            print(Fore.BLUE+spaz_msg)
+            print(Fore.YELLOW+spaz_msg)
+            print(Fore.WHITE+spaz_msg)
+            print(Fore.BLACK+spaz_msg)
+            print(Fore.GREEN+spaz_msg)
+            print(Fore.MAGENTA+spaz_msg)
+            print(Fore.CYAN+spaz_msg)
+            sleep(0.1)
         print('\n\nAnd that is why you should be careful what you click on!')
     elif user_input == 'restart':
         os.system('python app.py')
