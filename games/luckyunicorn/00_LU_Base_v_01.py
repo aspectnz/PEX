@@ -58,7 +58,11 @@ def num_check(question, low, high):
         except ValueError:
             print(error)
 
-# Main Routine goes here...
+# SCRIPT
+
+with open('log.txt', 'a') as file_object:
+    file_object.write('\nrunning luckyunicorn')
+
 played_before = yes_no('Have you played the game before? (yes/no): ')
 
 if played_before == 'no':

@@ -75,6 +75,7 @@ try:
     import keyboard
     keyboard.press('win+up')
     keyboard.release('win+up')
+
 except:
     import pip
     print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
@@ -85,6 +86,11 @@ except:
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+def add_log(text):
+    with open('log.txt', 'a') as file_object:
+        file_object.write('\n'+text)
+
+add_log('running main app')
 
 def check_internet_connection():
     try:
