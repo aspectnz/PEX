@@ -88,7 +88,7 @@ help des
 ### Command Details 
 
 - `clear` = clear the terminal (action)
-- `lu` = lucky unicorn (game) <br>
+- `lu` = [lucky unicorn (game)](#lucky-unicorn) <br>
 - `rps` = rock paper scissors (game) <br>
 - `hl` = higher/lower (game) <br>
 - `system` = get your system information (info) <br>
