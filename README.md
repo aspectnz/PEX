@@ -79,6 +79,10 @@ clear
 lu
 rps
 hl
+system
+profile
+doc
+spaz
 restart
 quit
 help
@@ -93,6 +97,7 @@ help des
 - `hl` = higher/lower (game) <br>
 - `system` = get your system information (info) <br>
 - `profile` = Open my profile website (website) <br>
+- `doc` = Open python games documentation (website) <br>
 - `spaz` = SPAZ YOUR SCREEN for 7 seconds (USE WITH CAUTION) <br>
 - `restart` = restart the application (action) <br>
 - `quit` = quit the entire program (action) <br>
