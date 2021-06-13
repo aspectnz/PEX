@@ -1,22 +1,90 @@
-# Import all nessesary modules
+# <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 import random
 import os
 import os
 from time import sleep
 import numpy
+import subprocess
 from subprocess import *
 import sys
 import ctypes
 import json
 import socket
 
-
 sys.path.insert(0, './py/')
 import idle_check as idle_check
 idle_check.run()
 
+# Import colorama module
+# If the module is not installed, then automatically install it. Otherwise, continue the program
+try:
+    import colorama
+    colorama.init()
+    colorama.init(convert=True)
+    colorama.init(autoreset=True)
+    from colorama import Fore, Back, Style
+except:
+    print('You do not have the "colorama" module, we are installing it for you now...')
+    import pip
+    pip.main(['install', 'colorama'])
+    import colorama
+    colorama.init()
+    colorama.init(convert=True)
+    colorama.init(autoreset=True)
+    from colorama import Fore, Back, Style
 
-# FUNCTIONS ------------------------------------------------------------------------------------------
+# Import pandas and tabulate module
+# If the module is not installed, then automatically install it. Otherwise, continue the program
+try:
+    # importing the modules
+    from tabulate import tabulate
+    import pandas as pd
+except:
+    import pip
+    print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
+    pip.main(['install', 'tabulate'])
+    # importing the modules
+    from tabulate import tabulate
+    import pandas as pd
+
+
+# Import pynput module
+# If the module is not installed, then automatically install it. Otherwise, continue the program
+try:
+    from pynput.mouse import Button, Controller
+    mouse = Controller()
+    mouse.position = (0, 0)
+    print(Fore.BLUE+'Your mouse has been moved to the top left.')
+except:
+    import pip
+    print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
+    pip.main(['install', 'pynput'])
+    #from pynput.keyboard import Key, Controller
+    from pynput.mouse import Button, Controller
+    from pynput import mouse
+
+""" This is annoying
+for item in range(1, 100):
+    sleep(0.5)
+    mouse.position = (0, 0)
+"""
+
+# Import keyboard module
+# If the module is not installed, then automatically install it. Otherwise, continue the program
+try:
+    import keyboard
+    keyboard.press('win+up')
+    keyboard.release('win+up')
+except:
+    import pip
+    print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
+    pip.main(['install', 'keyboard'])
+    import keyboard
+    keyboard.press('win+up')
+    keyboard.release('win+up')
+
+
+# <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 
 def check_internet_connection():
     try:
@@ -42,73 +110,6 @@ def check_internet_on_start():
 def change_terminal_background(value): 
     # Change the default background and fore color for the terminal
     os.system('color '+value)
-
-
-def import_colorama(): 
-    # Import colorama module
-    # If the module is not installed, then automatically install it. Otherwise, continue the program
-    try:
-        import colorama
-        colorama.init()
-        colorama.init(convert=True)
-        colorama.init(autoreset=True)
-    except:
-        print('You do not have the "colorama" module, we are installing it for you now...')
-        import pip
-        pip.main(['install', 'colorama'])
-        import colorama
-        colorama.init()
-        colorama.init(convert=True)
-        colorama.init(autoreset=True)
-import_colorama()
-
-def import_table_modules():
-    # Import pandas and tabulate module
-    # If the module is not installed, then automatically install it. Otherwise, continue the program
-    try:
-        # importing the modules
-        from tabulate import tabulate
-        import pandas as pd
-    except:
-        import pip
-        print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
-        pip.main(['install', 'tabulate'])
-        # importing the modules
-        from tabulate import tabulate
-        import pandas as pd
-import_table_modules()
-
-def import_pynput():
-    # Import pynput module
-    # If the module is not installed, then automatically install it. Otherwise, continue the program
-    try:
-        from pynput.mouse import Button, Controller
-        mouse = Controller()
-        mouse.position = (0, 0)
-        print(Fore.BLUE+'Your mouse has been moved to the top left.')
-    except:
-        import pip
-        print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
-        pip.main(['install', 'pynput'])
-        #from pynput.keyboard import Key, Controller
-        from pynput.mouse import Button, Controller
-import_pynput()
-
-def import_keyboard():
-    # Import keyboard module
-    # If the module is not installed, then automatically install it. Otherwise, continue the program
-    try:
-        import keyboard
-        keyboard.press('win+up')
-        keyboard.release('win+up')
-    except:
-        import pip
-        print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
-        pip.main(['install', 'keyboard'])
-        import keyboard
-        keyboard.press('win+up')
-        keyboard.release('win+up')
-import_keyboard()
 
 def mod_config(option, value, newval):
     if option == 'view':
@@ -138,22 +139,12 @@ def stats():
     return ''
 
 
-# creating a DataFrame
-dict = {'Command':['clear', 'lu'],
-        'Description':[
-            'clear the terminal (action)',
-            'lucky unicorn (game)'
-        ]}
-df = pd.DataFrame(dict)
-# displaying the DataFrame
-print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
+# <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+
+check_internet_on_start()
 
 
 print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(mod_config('view','balance','')))
-
-
-
-
 
 
 
@@ -167,21 +158,30 @@ while user_input != 'quit':
     if user_input == 'clear':
         print('clearing screen...')
         screen_clear()
+
     elif user_input == 'lu':
         print(Fore.BLUE+'Opening Lucky Lucky Unicorn Game...')
         sleep(1)
         print('\n********** LUCKY UNICORN **********')
         os.system('python games/luckyunicorn/00_LU_Base_v_01.py')
+
     elif user_input == 'rps':
-        print('rps')
+        print('coming soon .... \ngoing back to main menu...')
+
     elif user_input == 'hl':
-        print('hl')
+        print('coming soon .... \ngoing back to main menu...')
+
     elif user_input == 'stats':
+        # creating a DataFrame
+        dict = {'Stats':['Connected to Internet', 'Balance'],
+                'Result':[
+                    check_internet_connection(),
+                    '${}'.format(mod_config('view','balance',''))
+                ]}
+        df = pd.DataFrame(dict)
+        # displaying the DataFrame
+        print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
 
-
-        check_internet_connection()
-
-        print('stats')
     elif user_input == 'system':
         print(Fore.BLUE+'Opening python file for "system information"...')
         os.system('python info/system.py')
