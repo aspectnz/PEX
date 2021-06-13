@@ -2,7 +2,7 @@ from datetime import datetime
 def add_log(text):
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    with open('log.txt', 'a') as file_object:
+    with open('main.log', 'a') as file_object:
         file_object.write('\n'+dt_string+': '+text)
 add_log('running luckyunicorn')
 import random

@@ -1,9 +1,13 @@
+import socket
+h_name = socket.gethostname()
+IP_addres = socket.gethostbyname(h_name)
+
 from datetime import datetime
 def add_log(text):
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    with open('log.txt', 'a') as file_object:
-        file_object.write('\n'+dt_string+': '+text)
+    with open('main.log', 'a') as file_object:
+        file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
 add_log('running main app')
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
@@ -20,9 +24,8 @@ try:
     import sys
     import ctypes
     import json
-    import socket
 except:
-    add_log('ERROR IMPORTING DEFAULT MODULES')
+    add_log('error importing default modules')
 
 sys.path.insert(0, './main/')
 import idle_check as idle_check
@@ -39,7 +42,7 @@ try:
     from colorama import Fore, Back, Style
     add_log('successfully imported colorama')
 except:
-    add_log('ERROR IMPORTING COLORAMA')
+    add_log('error importing colorama')
     print('You do not have the "colorama" module, we are installing it for you now...')
     import pip
     pip.main(['install', 'colorama'])
@@ -48,7 +51,7 @@ except:
     colorama.init(convert=True)
     colorama.init(autoreset=True)
     from colorama import Fore, Back, Style
-    add_log('INSTALLED AND IMPORTED COLORAMA SUCCESSFULLY')
+    add_log('installed and imported colorama successfully')
 
 # Import pandas and tabulate module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
@@ -58,14 +61,14 @@ try:
     import pandas as pd
     add_log('successfully imported pandas and tabulate')
 except:
-    add_log('ERROR IMPORTING PANDAS OR TABULATE')
+    add_log('error importing pandas or tabulate')
     import pip
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
     pip.main(['install', 'tabulate'])
     # importing the modules
     from tabulate import tabulate
     import pandas as pd
-    add_log('INSTALLED AND IMPORTED PANDAS AND TABULATE  SUCCESSFULLY')
+    add_log('installed and imported pandas and tabulate successfully')
 
 
 # Import pynput module
@@ -77,14 +80,14 @@ try:
     print(Fore.BLUE+'Your mouse has been moved to the top left.')
     add_log('successfully imported pynput')
 except:
-    add_log('ERROR IMPORTING PYNPUT')
+    add_log('error importing pynput')
     import pip
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
     pip.main(['install', 'pynput'])
     #from pynput.keyboard import Key, Controller
     from pynput.mouse import Button, Controller
     from pynput import mouse
-    add_log('INSTALLED AND IMPORTED PYNPUT SUCCESSFULLY')
+    add_log('installed and imported pynput successfully')
 
 """ This is annoying
 for item in range(1, 100):
@@ -101,14 +104,14 @@ try:
     add_log('successfully imported keyboard')
 
 except:
-    add_log('ERROR IMPORTING KEYBOARD')
+    add_log('error importing keyboard')
     import pip
     print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
     pip.main(['install', 'keyboard'])
     import keyboard
     keyboard.press('win+up')
     keyboard.release('win+up')
-    add_log('INSTALLED AND IMPORTED KEYBOARD SUCCESSFULLY')
+    add_log('installed and imported keyboard successfully')
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
@@ -122,8 +125,10 @@ def check_internet_connection():
 
 def check_internet_on_start():
     if(check_internet_connection() == True):
-        print('Connected to the internet')
+        print('connected to the internet')
+        add_log('connected to the internet')
     else:
+        add_log('not connected to the internet')
         print('''
             Not connected to the internet
             Please make sure that you are connected to the internet or that ports 53 and 443 are enabled
@@ -133,9 +138,10 @@ def check_internet_on_start():
         exit()
 
 
-def change_terminal_background(value): 
+def change_terminal_background(value):
     # Change the default background and fore color for the terminal
     os.system('color '+value)
+    add_log('changed theme to "{}"'.format(value))
 
 def mod_config(option, value, newval):
     if option == 'view':
@@ -251,6 +257,12 @@ while user_input != 'quit':
             print(Fore.CYAN+spaz_msg)
             sleep(0.1)
         print('\n\nAnd that is why you should be careful what you click on!')
+    elif user_input == 'log':
+        print(Fore.RED+'Printing log.log ...')
+        f = open('main.log', 'r')
+        file_contents = f.read()
+        print (file_contents)
+        f.close()
     elif user_input == 'restart':
         os.system('python app.py')
     elif user_input == 'quit':
