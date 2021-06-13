@@ -11,21 +11,25 @@ import json
 import socket
 
 
-# import and run the idle_check.py file
 sys.path.insert(0, './py/')
 import idle_check as idle_check
 idle_check.run()
 
 
+# FUNCTIONS ------------------------------------------------------------------------------------------
+
 def check_internet_connection():
     try:
-        # connect to the host -- tells us if the host is actually
-        # reachable
-        socket.create_connection(("1.1.1.1", 53))
+        # connect to the host -- tells us if the host is actually reachable
         socket.create_connection(("1.1.1.1", 443))
-        #socket.create_connection(("1.1.1.1", 8080))
-        print('Connected to the internet')
+        return True
     except OSError:
+        return False
+
+def check_internet_on_start():
+    if(check_internet_connection() == True):
+        print('Connected to the internet')
+    else:
         print('''
             Not connected to the internet
             Please make sure that you are connected to the internet or that ports 53 and 443 are enabled
@@ -35,8 +39,89 @@ def check_internet_connection():
         exit()
 
 
-check_internet_connection()
+def change_terminal_background(value): 
+    # Change the default background and fore color for the terminal
+    os.system('color '+value)
 
+
+def import_colorama(): 
+    # Import colorama module
+    # If the module is not installed, then automatically install it. Otherwise, continue the program
+    try:
+        import colorama
+        colorama.init()
+        colorama.init(convert=True)
+        colorama.init(autoreset=True)
+    except:
+        print('You do not have the "colorama" module, we are installing it for you now...')
+        import pip
+        pip.main(['install', 'colorama'])
+        import colorama
+        colorama.init()
+        colorama.init(convert=True)
+        colorama.init(autoreset=True)
+import_colorama()
+
+def import_table_modules():
+    # Import pandas and tabulate module
+    # If the module is not installed, then automatically install it. Otherwise, continue the program
+    try:
+        # importing the modules
+        from tabulate import tabulate
+        import pandas as pd
+    except:
+        import pip
+        print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
+        pip.main(['install', 'tabulate'])
+        # importing the modules
+        from tabulate import tabulate
+        import pandas as pd
+import_table_modules()
+
+def import_pynput():
+    # Import pynput module
+    # If the module is not installed, then automatically install it. Otherwise, continue the program
+    try:
+        from pynput.mouse import Button, Controller
+        mouse = Controller()
+        mouse.position = (0, 0)
+        print(Fore.BLUE+'Your mouse has been moved to the top left.')
+    except:
+        import pip
+        print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
+        pip.main(['install', 'pynput'])
+        #from pynput.keyboard import Key, Controller
+        from pynput.mouse import Button, Controller
+import_pynput()
+
+def import_keyboard():
+    # Import keyboard module
+    # If the module is not installed, then automatically install it. Otherwise, continue the program
+    try:
+        import keyboard
+        keyboard.press('win+up')
+        keyboard.release('win+up')
+    except:
+        import pip
+        print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
+        pip.main(['install', 'keyboard'])
+        import keyboard
+        keyboard.press('win+up')
+        keyboard.release('win+up')
+import_keyboard()
+
+def mod_config(option, value, newval):
+    if option == 'view':
+        with open('config.json', 'r') as jsonConfig:
+            config = json.load(jsonConfig)
+        return config[value]
+            
+    elif option == 'mod':  
+        with open('config.json', 'r') as jsonConfig:
+            config = json.load(jsonConfig)
+        config[value] = newval
+        with open('config.json', 'w') as f:
+            json.dump(config, f)
 
 
 # The screen clear function
@@ -49,70 +134,28 @@ def screen_clear():
       _ = os.system('cls')
 
 
+def stats():
+    return ''
 
 
-# Change the default background and fore color for the terminal
-# os.system('color f0')
+# creating a DataFrame
+dict = {'Command':['clear', 'lu'],
+        'Description':[
+            'clear the terminal (action)',
+            'lucky unicorn (game)'
+        ]}
+df = pd.DataFrame(dict)
+# displaying the DataFrame
+print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
 
 
-# Import colorama module
-# If the module is not installed, then automatically install it. Otherwise, continue the program
-try:
-    import colorama
-    colorama.init()
-    colorama.init(convert=True)
-    colorama.init(autoreset=True)
-    from colorama import *
-except:
-    print('You do not have the "colorama" module, we are installing it for you now...')
-    import pip
-    pip.main(['install', 'colorama'])
-    import colorama
-    colorama.init()
-    colorama.init(convert=True)
-    colorama.init(autoreset=True)
-    from colorama import *
-
-# Import pynput module
-# If the module is not installed, then automatically install it. Otherwise, continue the program
-try:
-    from pynput.mouse import Button, Controller
-    mouse = Controller()
-    mouse.position = (0, 0)
-    print(Fore.BLUE+'Your mouse has been moved to the top left.')
-except:
-    import pip
-    print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
-    pip.main(['install', 'pynput'])
-    #from pynput.keyboard import Key, Controller
-    from pynput.mouse import Button, Controller
-
-# Import keyboard module
-# If the module is not installed, then automatically install it. Otherwise, continue the program
-try:
-    import keyboard
-    keyboard.press('win+up')
-    keyboard.release('win+up')
-except:
-    import pip
-    print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
-    pip.main(['install', 'keyboard'])
-    import keyboard
-    keyboard.press('win+up')
-    keyboard.release('win+up')
+print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(mod_config('view','balance','')))
 
 
-with open('config.json', 'r') as jsonConfig:
-    config = json.load(jsonConfig)
-    print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(config['balance']))
 
-"""
-config['key3'] = 'value3'
 
-with open('config.json', 'w') as f:
-    json.dump(config, f)
 
-"""
+
 
 print(Fore.GREEN+'Welcome to the main menu, listing commands...')
 
@@ -129,12 +172,16 @@ while user_input != 'quit':
         sleep(1)
         print('\n********** LUCKY UNICORN **********')
         os.system('python games/luckyunicorn/00_LU_Base_v_01.py')
-    elif user_input == 'clear':
-        print('')
     elif user_input == 'rps':
-        print('')
+        print('rps')
     elif user_input == 'hl':
-        print('')
+        print('hl')
+    elif user_input == 'stats':
+
+
+        check_internet_connection()
+
+        print('stats')
     elif user_input == 'system':
         print(Fore.BLUE+'Opening python file for "system information"...')
         os.system('python info/system.py')
@@ -185,17 +232,19 @@ while user_input != 'quit':
         exit()
         print(Fore.RED+'Failed to quit the application, please try again')
     elif user_input == 'help':
-        print(Fore.BLACK+'   clear '+Fore.BLUE+'= clear the terminal (action)')
-        print(Fore.BLACK+'   lu '+Fore.BLUE+'= lucky unicorn (game)')
-        print(Fore.BLACK+'   rps '+Fore.BLUE+'= rock paper scissors (game)')
-        print(Fore.BLACK+'   hl '+Fore.BLUE+'= higher/lower (game)')
-        print(Fore.BLACK+'   system '+Fore.BLUE+'= get your system information (info)')
-        print(Fore.BLACK+'   profile '+Fore.BLUE+'= open my profile website (website)')
-        print(Fore.BLACK+'   doc '+Fore.BLUE+'= open python games documentation (website)')
-        print(Fore.BLACK+'   spaz '+Fore.BLUE+'= SPAZ YOUR SCREEN for 7 seconds (fun)')
-        print(Fore.BLACK+'   restart '+Fore.BLUE+'= restart the application (action)')
-        print(Fore.BLACK+'   quit '+Fore.BLUE+'= quit the entire program (action)')
-        print(Fore.BLACK+'   help '+Fore.BLUE+'= display command details (help)')
+        print(Fore.BLACK+'   clear     '+Fore.BLUE+'clear the terminal (action)')
+        print(Fore.BLACK+'   lu        '+Fore.BLUE+'lucky unicorn (game)')
+        print(Fore.BLACK+'   rps       '+Fore.BLUE+'rock paper scissors (game)')
+        print(Fore.BLACK+'   hl        '+Fore.BLUE+'higher/lower (game)')
+        print(Fore.BLACK+'   stats     '+Fore.BLUE+'View your stats')
+        print(Fore.BLACK+'   system    '+Fore.BLUE+'get your system information (info)')
+        print(Fore.BLACK+'   profile   '+Fore.BLUE+'open my profile website (website)')
+        print(Fore.BLACK+'   doc       '+Fore.BLUE+'open python games documentation (website)')
+        print(Fore.BLACK+'   spaz      '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (fun)')
+        print(Fore.BLACK+'   restart   '+Fore.BLUE+'restart the application (action)')
+        print(Fore.BLACK+'   quit      '+Fore.BLUE+'quit the entire program (action)')
+        print(Fore.BLACK+'   help      '+Fore.BLUE+'display command details (help)')
+        print(Fore.BLACK+'   help-des  '+Fore.BLUE+'display command details and an longer description (help)')
     elif user_input == 'unha':
         import pip
         pip.main(['uninstall', 'colorama'])

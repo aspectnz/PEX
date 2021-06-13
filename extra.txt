@@ -8,3 +8,34 @@ Style: DIM, NORMAL, BRIGHT, RESET_ALL
 
 keyboard.add_abbreviation("@email", "test@example.com")
 #keyboard.on_release(lambda e: print(e.name))
+
+
+
+
+
+
+
+
+
+
+
+    “plain”
+    “simple”
+    “github”
+    “grid”
+    “fancy_grid”
+    “pipe”
+    “orgtbl”
+    “jira”
+    “presto”
+    “pretty”
+    “psql”
+    “rst”
+    “mediawiki”
+    “moinmoin”
+    “youtrack”
+    “html”
+    “latex”
+    “latex_raw”
+    “latex_booktabs”
+    “textile”
