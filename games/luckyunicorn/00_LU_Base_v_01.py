@@ -75,7 +75,7 @@ if played_before == 'no':
 print('\nProgram Continues')
 
 
-how_much = num_check('How much would you like to play with? (0 - 10): ', 0, 10)
+how_much = num_check('How much would you like to play with? (1 - 10): ', 0, 10)
 with open('config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
 

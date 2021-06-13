@@ -17,3 +17,13 @@ start of log
 13/06/2021 17:28:40 - shannons-pc(172.29.240.1): successfully imported pynput
 13/06/2021 17:28:40 - shannons-pc(172.29.240.1): successfully imported keyboard
 13/06/2021 17:28:40 - shannons-pc(172.29.240.1): connected to the internet
+13/06/2021 17:30:21 - shannons-pc(172.29.240.1): running main app
+13/06/2021 17:30:21 - shannons-pc(172.29.240.1): importing default modules
+13/06/2021 17:30:21 - shannons-pc(172.29.240.1): successfully imported modules
+13/06/2021 17:30:21 - shannons-pc(172.29.240.1): importing custom modules
+13/06/2021 17:30:21 - shannons-pc(172.29.240.1): successfully imported colorama
+13/06/2021 17:30:22 - shannons-pc(172.29.240.1): successfully imported pandas and tabulate
+13/06/2021 17:30:22 - shannons-pc(172.29.240.1): successfully imported pynput
+13/06/2021 17:30:22 - shannons-pc(172.29.240.1): successfully imported keyboard
+13/06/2021 17:30:22 - shannons-pc(172.29.240.1): connected to the internet
+13/06/2021 17:30:46: running luckyunicorn

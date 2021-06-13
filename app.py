@@ -279,6 +279,7 @@ while user_input != 'quit':
         print(Fore.BLACK+'   profile   '+Fore.BLUE+'open my profile website (website)')
         print(Fore.BLACK+'   doc       '+Fore.BLUE+'open python games documentation (website)')
         print(Fore.BLACK+'   spaz      '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (fun)')
+        print(Fore.BLACK+'   log       '+Fore.BLUE+'view all past logs (info)')
         print(Fore.BLACK+'   restart   '+Fore.BLUE+'restart the application (action)')
         print(Fore.BLACK+'   quit      '+Fore.BLUE+'quit the entire program (action)')
         print(Fore.BLACK+'   help      '+Fore.BLUE+'display command details (help)')
