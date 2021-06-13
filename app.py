@@ -8,12 +8,47 @@ from subprocess import *
 import sys
 import ctypes
 import json
+import socket
 
 
 # import and run the idle_check.py file
 sys.path.insert(0, './py/')
 import idle_check as idle_check
 idle_check.run()
+
+
+def check_internet_connection():
+    try:
+        # connect to the host -- tells us if the host is actually
+        # reachable
+        socket.create_connection(("1.1.1.1", 53))
+        socket.create_connection(("1.1.1.1", 443))
+        #socket.create_connection(("1.1.1.1", 8080))
+        print('Connected to the internet')
+    except OSError:
+        print('''
+            Not connected to the internet
+            Please make sure that you are connected to the internet or that ports 53 and 443 are enabled
+            Exiting program in 10s...
+            ''')
+        sleep(10)
+        exit()
+
+
+check_internet_connection()
+
+
+
+# The screen clear function
+def screen_clear():
+   # for mac and linux(here, os.name is 'posix')
+   if os.name == 'posix':
+      _ = os.system('clear')
+   else:
+      # for windows platfrom
+      _ = os.system('cls')
+
+
 
 
 # Change the default background and fore color for the terminal
@@ -56,13 +91,15 @@ except:
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
     import keyboard
-    keyboard.press('f11')
+    keyboard.press('win+up')
+    keyboard.release('win+up')
 except:
     import pip
     print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
     pip.main(['install', 'keyboard'])
     import keyboard
-    keyboard.press('f11')
+    keyboard.press('win+up')
+    keyboard.release('win+up')
 
 
 with open('config.json', 'r') as jsonConfig:
@@ -84,8 +121,10 @@ while user_input != 'quit':
     print('\nType a command or "help": ', end='')
     user_input = input()
   
-
-    if user_input == 'lu':
+    if user_input == 'clear':
+        print('clearing screen...')
+        screen_clear()
+    elif user_input == 'lu':
         print(Fore.BLUE+'Opening Lucky Lucky Unicorn Game...')
         sleep(1)
         print('\n********** LUCKY UNICORN **********')
@@ -142,6 +181,7 @@ while user_input != 'quit':
         exit()
         print(Fore.RED+'Failed to quit the application, please try again')
     elif user_input == 'help':
+        print(Fore.BLACK+'   clear '+Fore.BLUE+'= clear the terminal (action)')
         print(Fore.BLACK+'   lu '+Fore.BLUE+'= lucky unicorn (game)')
         print(Fore.BLACK+'   rps '+Fore.BLUE+'= rock paper scissors (game)')
         print(Fore.BLACK+'   hl '+Fore.BLUE+'= higher/lower (game)')

@@ -165,7 +165,8 @@ with open('config.json', 'w') as f:
 
 
 print('Opening the main menu in 5s..... \n')
-sleep(1) 
+sleep(1)
+
 os.system('python app.py')
 
 
