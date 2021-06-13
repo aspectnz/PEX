@@ -9,9 +9,9 @@
       <td align="center">
         This repository contains a set of python games that come with a main menu. I initially made these for a school assesment, but I have decided to add to the repository and develop more custom and advanced games. Once there is enough games, I will catergorize them in the main menu to make it easier to choose what game to play. At the moment, all of the games are text-based only, but grapical games will be added later on this year. Below, you will find out how to set the application up and how to use it. Enjoy!
         <br><br>
-        <img src="./images/banner.png">
+        <img src="./images/banner.jpg">
         <br>
-        <i>Snippet of lucky unicorn code</i>
+        <i>Screenshot of the main menu</i>
        </td>
       </tr>
     </tbody>
@@ -23,8 +23,13 @@
 
 <br><br>
 
+# How The App Works
+In the `config.json` file, you are given a default balance of $100, this is all the money that you are allowed to spend in the game. When you are below $0, you are in debt and will not be able to play anymore. To reset the balance, use the `reset` command. You can also just add unlimited money by changing the `config.json` file and setting the balance to whatever you want (as long as it is a number)
+
+There are mutliple commands that you can use, some of which are just for the sake of seeing what you can do with python.
+
 # Installation
-- Make sure that <a href="https://www.python.org/downloads/">python</a> is installed.
+- Make sure that you have the latest version of <a href="https://www.python.org/downloads/">python</a> installed and that you're using Windows 10.
 To install the game, you will need to either:
 - Clone the repository to a local folder
 - Download the zip file and extract it
@@ -57,7 +62,7 @@ C:\Users\User> python app.py
 
 <br>
 
-- **Option 3** - IDE - Open your IDE, Ctrl + o, open the app.py and press F5.
+- **Option 3 - will not work - (DISCONTINUED) ** - IDE - Open your IDE, Ctrl + o, open the app.py and press F5.
 
 <div align="center">
   <img src="./images/getting-started-3.JPG">
@@ -70,26 +75,29 @@ C:\Users\User> python app.py
 # Commands
 ### Commands
 ```
+clear
 lu
 rps
 hl
 restart
 quit
 help
+help des
 ```
 
 ### Command Details 
 
-- `lu` = lucky unicorn (game) <br>
+- `clear` = clear the terminal (action)
+- `lu` = [lucky unicorn (game)](#lucky-unicorn) <br>
 - `rps` = rock paper scissors (game) <br>
 - `hl` = higher/lower (game) <br>
 - `system` = get your system information (info) <br>
-- `clear` = clear the screen (action) <br>
 - `profile` = Open my profile website (website) <br>
 - `spaz` = SPAZ YOUR SCREEN for 7 seconds (USE WITH CAUTION) <br>
 - `restart` = restart the application (action) <br>
 - `quit` = quit the entire program (action) <br>
 - `help` = display command details (help) <br>
+- `help des` = display command details and an longer description (help) <br>
 
 <br>
 
