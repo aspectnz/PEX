@@ -87,30 +87,42 @@ clear
 lu
 rps
 hl
+stats
 system
 profile
 doc
 spaz
+settings
+log
+log -clean
+log -disable
+log -enable
 restart
 quit
 help
-help des
+help -des
 ```
 
 ### Command Details 
 
-- `clear` = clear the terminal (action)
-- `lu` = [lucky unicorn (game)](#lucky-unicorn) <br>
-- `rps` = rock paper scissors (game) <br>
-- `hl` = higher/lower (game) <br>
-- `system` = get your system information (info) <br>
-- `profile` = Open my profile website (website) <br>
-- `doc` = Open python games documentation (website) <br>
-- `spaz` = SPAZ YOUR SCREEN for 7 seconds (USE WITH CAUTION) <br>
-- `restart` = restart the application (action) <br>
-- `quit` = quit the entire program (action) <br>
-- `help` = display command details (help) <br>
-- `help-des` = display command details and an longer description (help) <br>
+- `clear`           = clear the terminal (action) <br>
+- `lu`              = [lucky unicorn (game)](#lucky-unicorn) <br>
+- `rps`             = rock paper scissors (game) <br>
+- `hl`              = higher/lower (game) <br>
+- `stats`           = View your stats <br>
+- `system`          = get your system information (info) <br>
+- `profile`         = open my profile website (website) <br>
+- `doc`             = open python games documentation (website) <br>
+- `spaz`            = SPAZ YOUR SCREEN for 7 seconds (fun) <br>
+- `settings`        = print settings in JSON format (info) <br>
+- `log`             = view all past logs (info) <br>
+- `log -clean`      = view all past logs (info) <br>
+- `log -disable`    = disable logs (action) <br>
+- `log -enable`     = enable logs (info) <br>
+- `restart`         = restart the application (action) <br>
+- `quit`            = quit the entire program (action) <br>
+- `help`            = display command details (help) <br>
+- `help -des`       = display command details and an longer description (help) <br>
 
 <br>
 
