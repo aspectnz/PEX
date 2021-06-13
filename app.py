@@ -142,6 +142,10 @@ while user_input != 'quit':
         print(Fore.BLUE+'Opening profile website')
         import webbrowser
         webbrowser.open('https://github.com/shannon-nz')
+    elif user_input == 'doc':
+        print(Fore.BLUE+'Opening python games documentation')
+        import webbrowser
+        webbrowser.open('https://github.com/shannon-nz/python-games#-python-games-in-development-')
     elif user_input == 'spaz':
         print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
         for item in range(1, 50):
@@ -187,6 +191,7 @@ while user_input != 'quit':
         print(Fore.BLACK+'   hl '+Fore.BLUE+'= higher/lower (game)')
         print(Fore.BLACK+'   system '+Fore.BLUE+'= get your system information (info)')
         print(Fore.BLACK+'   profile '+Fore.BLUE+'= open my profile website (website)')
+        print(Fore.BLACK+'   doc '+Fore.BLUE+'= open python games documentation (website)')
         print(Fore.BLACK+'   spaz '+Fore.BLUE+'= SPAZ YOUR SCREEN for 7 seconds (fun)')
         print(Fore.BLACK+'   restart '+Fore.BLUE+'= restart the application (action)')
         print(Fore.BLACK+'   quit '+Fore.BLUE+'= quit the entire program (action)')
