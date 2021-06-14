@@ -161,7 +161,7 @@ while play_again != 'quit':
             chosen = '♪ UNICORN ♪'
             unicorn_count += 1
             balance += 4
-            chosen_type = 'U'
+            chosen_type = '!'
         # If the random # is between 6 and 36, user gets a donkey (subtract $1 from balance
         elif 6 <= chosen_num <= 36:
             chosen = 'donkey'
@@ -228,6 +228,7 @@ with open('config.json', 'w') as f:
 
 print('Opening the main menu... \n')
 #sleep(1)
-os.system('python app.py')
+#os.system('python app.py')
+exit()
 
 

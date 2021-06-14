@@ -1,7 +1,7 @@
+import json
 import socket
 h_name = socket.gethostname()
 IP_addres = socket.gethostbyname(h_name)
-import json
 from datetime import datetime
 def add_log(text):
     with open('config.json', 'r') as jsonConfig:
@@ -12,6 +12,36 @@ def add_log(text):
             with open('main.log', 'a') as file_object:
                 file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
 add_log('running main app')
+
+
+config_username = 'root'
+with open('config.json', 'r') as jsonConfig:
+    config = json.load(jsonConfig)
+    if config['username'] == 'root':
+        print('Welcome, first make a username. Something short easy to remember! ')
+        while config['username'] == 'root':
+            username_prompt = input('Enter username: ')
+            
+            if username_prompt == 'root':
+                print('root is a reserved username, please try something else')
+            else:
+                config['username'] = username_prompt
+                with open('config.json', 'w') as f:
+                    json.dumps(json.dump(config, f), indent=4)
+        
+
+
+'''
+ elif option == 'mod':  
+    with open('config.json', 'r') as jsonConfig:
+        config = json.load(jsonConfig)
+    config[value] = newval
+    with open('config.json', 'w') as f:
+        json.dumps(json.dump(config, f), indent=4)
+
+'''
+
+
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 add_log('importing default modules')
@@ -182,11 +212,14 @@ print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(mod_config('vi
 
 
 
-print(Fore.GREEN+'Welcome to the main menu, listing commands...')
+print(Fore.GREEN+'Welcome to the main menu. Use a command or type "help" if you don\'t know any commands')
 
 user_input = ''
 while user_input != 'quit':
-    print('\nType a command or "help": ', end='')
+    with open('config.json', 'r') as jsonConfig:
+        config = json.load(jsonConfig)
+        config_username = config['username']
+        print(Fore.RED+'\nroot@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
     user_input = input()
   
     if user_input == 'clear':
@@ -291,6 +324,7 @@ while user_input != 'quit':
 
     elif user_input == 'restart':
         os.system('python app.py')
+        exit()
 
     elif user_input == 'quit':
         print(Fore.RED+'quiting the application...')
