@@ -126,8 +126,8 @@ config['balance'] -= how_much
 
 with open('config.json', 'w') as f:
     json.dump(config, f)
-print('You will be spending ${}'.format(how_much))
-print('Deducting ${} off balance.'.format(how_much))
+print(Fore.GREEN+'You will be spending ${}'.format(how_much))
+print(Fore.RED+'Deducting ${} off balance.'.format(how_much))
 
 
 
@@ -140,56 +140,60 @@ donkey_count = 0
 horse_count = 0
 zebra_count = 0
 
-play_again = input('Press <Enter> to play').lower()
-while play_again == '':
-    chosen_type = '*'
-    # increase # of rounds played
-    rounds_played += 1
-
-    # print round number
-    print(Fore.BLUE+'→ Round #{}'.format(rounds_played))
-
-    chosen_num = random.randint(1, 100)
-
-    # Adjust balance
-    # If the random # is between 1 and 5, user gets a unicorn (add $4 to balance)
-    if 1 <= chosen_num <= 5:
-        chosen = '♪ UNICORN ♪'
-        unicorn_count += 1
-        balance += 4
-        chosen_type = 'U'
-    # If the random # is between 6 and 36, user gets a donkey (subtract $1 from balance
-    elif 6 <= chosen_num <= 36:
-        chosen = 'donkey'
-        donkey_count += 1
-        balance -= 1
-        chosen_type = 'D'
-    # The token is either a horse or zebra...
-    # In both cases, subtract $0.50 from the balance
+play_again = input('\nPress <Enter> to play').lower()
+while play_again != 'quit':
+    if play_again != '':
+        print(play_again + Fore.RED + ' IS INVALID')
+        play_again = input('Press <Enter> to play or "quit": ')
     else:
-        # If the number is even, set the chosen item to a horse
-        if chosen_num % 2 == 0:
-            chosen = 'horse'
-            horse_count += 1
-            chosen_type = 'H'
-        # Otherwise set it to a zebra
+        chosen_type = '*'
+        # increase # of rounds played
+        rounds_played += 1
+
+        # print round number
+        print(Fore.BLUE+'\n\n→ Round #{}'.format(rounds_played))
+
+        chosen_num = random.randint(1, 100)
+
+        # Adjust balance
+        # If the random # is between 1 and 5, user gets a unicorn (add $4 to balance)
+        if 1 <= chosen_num <= 5:
+            chosen = '♪ UNICORN ♪'
+            unicorn_count += 1
+            balance += 4
+            chosen_type = 'U'
+        # If the random # is between 6 and 36, user gets a donkey (subtract $1 from balance
+        elif 6 <= chosen_num <= 36:
+            chosen = 'donkey'
+            donkey_count += 1
+            balance -= 1
+            chosen_type = 'D'
+        # The token is either a horse or zebra...
+        # In both cases, subtract $0.50 from the balance
         else:
-            chosen = 'zebra'
-            zebra_count += 1
-            chosen_type = 'Z'
-        balance -= 0.5
+            # If the number is even, set the chosen item to a horse
+            if chosen_num % 2 == 0:
+                chosen = 'horse'
+                horse_count += 1
+                chosen_type = 'H'
+            # Otherwise set it to a zebra
+            else:
+                chosen = 'zebra'
+                zebra_count += 1
+                chosen_type = 'Z'
+            balance -= 0.5
 
-    round_result = Fore.GREEN+'You got a {}. Your in game balance is '.format(chosen)+Fore.RED+'${}'.format(balance)
-    statement_generator(round_result, chosen_type, 'roundresult')
+        round_result = Fore.GREEN+'You got a {}. Your in game balance is '.format(chosen)+Fore.RED+'${}'.format(balance)
+        statement_generator(round_result, chosen_type, 'roundresult')
 
-    if balance < 1:
-        play_again = 'xxx'
-        print('Sorry you have run out of money')
-    else:
-        print(Fore.YELLOW+'Press <Enter> to play again or "quit": ', end='')
-        play_again = input()
+        if balance < 1:
+            play_again = 'quit'
+            print('Sorry you have run out of money')
+        else:
+            print('Press <Enter> to play again or "quit": ', end='')
+            play_again = input()
 
-    print()
+        print()
 
 print(Fore.BLUE+'\n\n\nHere are your stats')
 print('''
