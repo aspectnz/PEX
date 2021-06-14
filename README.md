@@ -17,11 +17,11 @@
     </tbody>
 </table>
 
-<br>
+</br>
 
 **For Python Beginners** : This code would be great for python beginners, who are interested in game development, to start somewhere. I have commented all of the code so everyone will be able to understand what each part of the program does and how it all works. If you would like to make any improvements, feel free to contibute to this repo. If there is something you don't understand, my contact details can be found on my <a href="https://github.com/shannon-nz/">GitHub profile</a> or my <a href="http://shan.rf.gd">Profile Website</a>
 
-<br><br>
+</br></br>
 
 # How The App Works
 In the `config.json` file, you are given a default balance of $100, this is all the money that you are allowed to spend in the game. When you are below $0, you are in debt and will not be able to play anymore. To reset the balance, use the `reset` command. You can also just add unlimited money by changing the `config.json` file and setting the balance to whatever you want (as long as it is a number)
@@ -34,7 +34,7 @@ keyboard.release('win+up')
 
 There are mutliple commands that you can use, some of which are just for the sake of seeing what you can do with python.
 
-<br>
+</br>
 
 # Installation
 - Make sure that you have the latest version of <a href="https://www.python.org/downloads/">python</a> installed and that you're using Windows 10.
@@ -44,7 +44,7 @@ To install the game, you will need to either:
 
 <div align="center">
   <img src="./images/installation.JPG">
-  <br>
+  </br>
   <i>Where the option are</i>
 </div>
 
@@ -59,7 +59,7 @@ To install the game, you will need to either:
   <i>Which file to click</i>
 </div>
 
-<br>
+</br>
 
 - Option 2 - Terminal - Use the terminal, to run the application.
 Windows:
@@ -68,7 +68,7 @@ C:\Users\User> cd folder
 C:\Users\User> python app.py
 ```
 
-<br>
+</br>
 
 - **Option 3 - will not work - (DISCONTINUED) ** - IDE - Open your IDE, Ctrl + o, open the app.py and press F5.
 
@@ -78,7 +78,7 @@ C:\Users\User> python app.py
   <i>running the file in IDLE</i>
 </div>
 
-<br>
+</br>
 
 # Commands
 ### Commands
@@ -105,26 +105,26 @@ help -des
 
 ### Command Details 
 
-- `clear`           = clear the terminal (action) <br>
-- `lu`              = [lucky unicorn (game)](#lucky-unicorn) <br>
-- `rps`             = rock paper scissors (game) <br>
-- `hl`              = higher/lower (game) <br>
-- `stats`           = View your stats <br>
-- `system`          = get your system information (info) <br>
-- `profile`         = open my profile website (website) <br>
-- `doc`             = open python games documentation (website) <br>
-- `spaz`            = SPAZ YOUR SCREEN for 7 seconds (fun) <br>
-- `settings`        = print settings in JSON format (info) <br>
-- `log`             = view all past logs (info) <br>
-- `log -clean`      = view all past logs (info) <br>
-- `log -disable`    = disable logs (action) <br>
-- `log -enable`     = enable logs (info) <br>
-- `restart`         = restart the application (action) <br>
-- `quit`            = quit the entire program (action) <br>
-- `help`            = display command details (help) <br>
-- `help -des`       = display command details and an longer description (help) <br>
+- `clear`           = clear the terminal (action) </br>
+- `lu`              = [lucky unicorn (game)](#lucky-unicorn) </br>
+- `rps`             = rock paper scissors (game) </br>
+- `hl`              = higher/lower (game) </br>
+- `stats`           = View your stats </br>
+- `system`          = get your system information (info) </br>
+- `profile`         = open my profile website (website) </br>
+- `doc`             = open python games documentation (website) </br>
+- `spaz`            = SPAZ YOUR SCREEN for 7 seconds (fun) </br>
+- `settings`        = print settings in JSON format (info) </br>
+- `log`             = view all past logs (info) </br>
+- `log -clean`      = view all past logs (info) </br>
+- `log -disable`    = disable logs (action) </br>
+- `log -enable`     = enable logs (info) </br>
+- `restart`         = restart the application (action) </br>
+- `quit`            = quit the entire program (action) </br>
+- `help`            = display command details (help) </br>
+- `help -des`       = display command details and an longer description (help) </br>
 
-<br>
+</br>
 
 # Game Details
 ### Lucky Unicorn
@@ -135,7 +135,7 @@ Lucky Unicorn is essentially a luck-based game. Here are the steps to playing th
 4. Simply press <enter> each round or type `quit` to quit the game.
 5. When the game finished, you will be directed back to the main menu.
  
-<br>
+</br>
 
 # To Do / What's Coming
 - Count the amount of times each program has been run as well as the total
@@ -144,7 +144,12 @@ Lucky Unicorn is essentially a luck-based game. Here are the steps to playing th
 - Create modules for large sets of functions
 - Finish the Documentaion (last)
 
-<br>
+</br>
 
 # Contributing
 If you would like to contribute to this project, simply clone the repository, make some changes, and create a pull request. I will review the request and accept it if appropriate. If you would like to contribute to this project or my other projects more than once, feel free to contact me: [slekupvimplyrataqq@protonmail.com](slekupvimplyrataqq@protonmail.com).
+Some skills that would be specifically useful to this project are:
+- Fundamental knowledge of python
+- Tkinter
+- Pygame
+- Django
