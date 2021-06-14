@@ -1,3 +1,4 @@
+print('running program...')
 import json
 import socket
 h_name = socket.gethostname()
@@ -28,34 +29,20 @@ with open('config.json', 'r') as jsonConfig:
                 config['username'] = username_prompt
                 with open('config.json', 'w') as f:
                     json.dumps(json.dump(config, f), indent=4)
-        
-
-
-'''
- elif option == 'mod':  
-    with open('config.json', 'r') as jsonConfig:
-        config = json.load(jsonConfig)
-    config[value] = newval
-    with open('config.json', 'w') as f:
-        json.dumps(json.dump(config, f), indent=4)
-
-'''
-
-
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 add_log('importing default modules')
+
 try:
     add_log('successfully imported modules')
     import random
-    import os
     import os
     from time import sleep
     import numpy
     import subprocess
     from subprocess import *
-    import sys
     import ctypes
+    import sys
 except:
     add_log('error importing default modules')
 
@@ -68,9 +55,6 @@ idle_check.run()
 add_log('importing custom modules')
 try:
     import colorama
-    colorama.init()
-    colorama.init(convert=True)
-    colorama.init(autoreset=True)
     from colorama import Fore, Back, Style
     add_log('successfully imported colorama')
 except:
@@ -79,11 +63,11 @@ except:
     import pip
     pip.main(['install', 'colorama'])
     import colorama
-    colorama.init()
-    colorama.init(convert=True)
-    colorama.init(autoreset=True)
     from colorama import Fore, Back, Style
     add_log('installed and imported colorama successfully')
+colorama.init()
+colorama.init(convert=True)
+colorama.init(autoreset=True)
 
 # Import pandas and tabulate module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
@@ -162,13 +146,44 @@ def check_internet_on_start():
     else:
         add_log('not connected to the internet')
         print('''
-            Not connected to the internet
-            Please make sure that you are connected to the internet or that ports 53 and 443 are enabled
-            Exiting program in 10s...
+Not connected to the internet
+Please make sure that you are connected to the internet or that ports 53 and 443 are enabled
+Exiting program in 10 seconds ...
             ''')
         sleep(10)
         exit()
 
+def get_platform():
+    platforms = {
+        'linux1' : 'Linux',
+        'linux2' : 'Linux',
+        'darwin' : 'OS X',
+        'win32' : 'Windows'
+    }
+    if sys.platform not in platforms:
+        return sys.platform
+    
+    return platforms[sys.platform]
+
+def check_platform_on_start():
+    if get_platform() != 'Windows':
+        print('''
+You are not using windows
+Please make sure that you are using windows 10
+Exiting program in 10 seconds...
+            ''')
+        sleep(10)
+        exit()
+
+# The screen clear function
+def screen_clear():
+    print('clearing screen...')
+    # for mac and linux(here, os.name is 'posix')
+    if os.name == 'posix':
+        _ = os.system('clear')
+    else:
+        # for windows platfrom
+        _ = os.system('cls')
 
 def change_terminal_background(value):
     # Change the default background and fore color for the terminal
@@ -189,15 +204,6 @@ def mod_config(option, value, newval):
             json.dumps(json.dump(config, f), indent=4)
 
 
-# The screen clear function
-def screen_clear():
-   # for mac and linux(here, os.name is 'posix')
-   if os.name == 'posix':
-      _ = os.system('clear')
-   else:
-      # for windows platfrom
-      _ = os.system('cls')
-
 
 def stats():
     return ''
@@ -205,7 +211,9 @@ def stats():
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 
+
 check_internet_on_start()
+check_platform_on_start()
 
 
 print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(mod_config('view','balance','')))
@@ -214,150 +222,160 @@ print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(mod_config('vi
 
 print(Fore.GREEN+'Welcome to the main menu. Use a command or type "help" if you don\'t know any commands')
 
-user_input = ''
-while user_input != 'quit':
-    with open('config.json', 'r') as jsonConfig:
-        config = json.load(jsonConfig)
-        config_username = config['username']
-        print(Fore.RED+'\nroot@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
-    user_input = input()
-  
-    if user_input == 'clear':
-        print('clearing screen...')
-        screen_clear()
 
-    elif user_input == 'lu':
-        print(Fore.BLUE+'Opening Lucky Unicorn Game...')
-        sleep(1)
-        os.system('python games/luckyunicorn/00_LU_Base_v_01.py')
-
-    elif user_input == 'rps':
-        print(Fore.BLUE+'Opening Rock Paper Scissors Game...')
-        sleep(1)
-        os.system('python games/rock-paper-scissors/app.py')
-
-    elif user_input == 'hl':
-        print('coming soon .... \ngoing back to main menu...')
-
-    elif user_input == 'stats':
-        # creating a DataFrame
-        dict = {'Stats':['Connected to Internet', 'Balance'],
-                'Result':[
-                    check_internet_connection(),
-                    '${}'.format(mod_config('view','balance',''))
-                ]}
-        df = pd.DataFrame(dict)
-        # displaying the DataFrame
-        print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
-
-    elif user_input == 'system':
-        print(Fore.BLUE+'Opening python file for "system information"...')
-        os.system('python info/system.py')
-
-    elif user_input == 'profile':
-        print(Fore.BLUE+'Opening profile website')
-        import webbrowser
-        webbrowser.open('https://github.com/shannon-nz')
-
-    elif user_input == 'doc':
-        print(Fore.BLUE+'Opening python games documentation')
-        import webbrowser
-        webbrowser.open('https://github.com/shannon-nz/python-games#-python-games-in-development-')
-
-    elif user_input == 'spaz':
-        print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
-        for item in range(1, 50):
-            print(Fore.RED+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-            print(Fore.BLUE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-            print(Fore.YELLOW+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-            print(Fore.WHITE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-            print(Fore.BLACK+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-            print(Fore.GREEN+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-            print(Fore.MAGENTA+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-            print(Fore.CYAN+'WARNING, IT IS ABOUT TO GET MAD !!!')
-        spaz_msg = 'SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ '
-        for item in range(1, 21):
-            keyboard.press('f11')
-            keyboard.release('f11')
-            keyboard.press('windows')
-            keyboard.release('windows')
-            keyboard.press('alt+tab')
-            keyboard.release('alt+tab')
-            rand1 = random.randrange(0, 1900)
-            rand2 = random.randrange(0, 1900)
-            mouse.position = (rand1, rand2)
-            print(Fore.RED+spaz_msg)
-            print(Fore.BLUE+spaz_msg)
-            print(Fore.YELLOW+spaz_msg)
-            print(Fore.WHITE+spaz_msg)
-            print(Fore.BLACK+spaz_msg)
-            print(Fore.GREEN+spaz_msg)
-            print(Fore.MAGENTA+spaz_msg)
-            print(Fore.CYAN+spaz_msg)
-            sleep(0.1)
-        print('\n\nAnd that is why you should be careful what you click on!')
-
-    elif user_input == 'settings':
+def command_line():
+    user_input = ''
+    while user_input != 'quit':
         with open('config.json', 'r') as jsonConfig:
-            config = json.dumps(json.load(jsonConfig), sort_keys=True, indent=4, separators=(',', ': '))
-        print(Fore.YELLOW+config)
-        
-    elif user_input == 'log':
-        print(Fore.BLUE+'Printing log.log ...')
-        f = open('main.log', 'r')
-        file_contents = f.read()
-        print (file_contents)
-        f.close()
+            config = json.load(jsonConfig)
+            config_username = config['username']
+            print(Fore.RED+'\nroot@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
+        user_input = input().lower()
+      
+        if user_input == 'clear':
+            screen_clear()
 
-    elif user_input == 'log -clean':
-        print('cleaning log...')
-        myText = open(r'main.log','w')
-        myText.write('<<< start of log >>>')
-        myText.close()
-        print('log cleaned!')
+        elif user_input == 'lu':
+            print(Fore.BLUE+'Opening Lucky Unicorn Game...')
+            sleep(1)
+            os.system('python games/luckyunicorn/00_LU_Base_v_01.py')
 
-    elif user_input == 'log -disable':
-        mod_config('mod','logOption','disabled')
+        elif user_input == 'rps':
+            print(Fore.BLUE+'Opening Rock Paper Scissors Game...')
+            sleep(1)
+            os.system('python games/rock-paper-scissors/app.py')
 
-    elif user_input == 'log -enable':
-        mod_config('mod','logOption','enabled')
+        elif user_input == 'hl':
+            print('coming soon .... \ngoing back to main menu...')
 
-    elif user_input == 'restart':
-        os.system('python app.py')
-        exit()
+        elif user_input == 'stats':
+            # creating a DataFrame
+            dict = {'Stats':['Connected to Internet', 'Balance'],
+                    'Result':[
+                        check_internet_connection(),
+                        '${}'.format(mod_config('view','balance',''))
+                    ]}
+            df = pd.DataFrame(dict)
+            # displaying the DataFrame
+            print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
 
-    elif user_input == 'quit':
-        print(Fore.RED+'quiting the application...')
-        exit()
-        print(Fore.RED+'Failed to quit the application, please try again')
+        elif user_input == 'system':
+            print(Fore.BLUE+'Opening python file for "system information"...')
+            os.system('python info/system.py')
 
-    elif user_input == 'help':
-        print(Fore.BLACK+'   clear           '+Fore.BLUE+'clear the terminal (action)')
-        print(Fore.BLACK+'   lu              '+Fore.BLUE+'lucky unicorn (game)')
-        print(Fore.BLACK+'   rps             '+Fore.BLUE+'rock paper scissors (game)')
-        print(Fore.BLACK+'   hl              '+Fore.BLUE+'higher/lower (game)')
-        print(Fore.BLACK+'   stats           '+Fore.BLUE+'View your stats')
-        print(Fore.BLACK+'   system          '+Fore.BLUE+'get your system information (info)')
-        print(Fore.BLACK+'   profile         '+Fore.BLUE+'open my profile website (website)')
-        print(Fore.BLACK+'   doc             '+Fore.BLUE+'open python games documentation (website)')
-        print(Fore.BLACK+'   spaz            '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (fun)')
-        print(Fore.BLACK+'   settings        '+Fore.BLUE+'print settings in JSON format (info)')
-        print(Fore.BLACK+'   log             '+Fore.BLUE+'view all past logs (info)')
-        print(Fore.BLACK+'   log -clean      '+Fore.BLUE+'view all past logs (info)')
-        print(Fore.BLACK+'   log -disable    '+Fore.BLUE+'disable logs (action)')
-        print(Fore.BLACK+'   log -enable     '+Fore.BLUE+'enable logs (info)')
-        print(Fore.BLACK+'   restart         '+Fore.BLUE+'restart the application (action)')
-        print(Fore.BLACK+'   quit            '+Fore.BLUE+'quit the entire program (action)')
-        print(Fore.BLACK+'   help            '+Fore.BLUE+'display command details (help)')
-        print(Fore.BLACK+'   help -des       '+Fore.BLUE+'display command details and an longer description (help)')
-    elif user_input == 'help -des':
-        print('help -des coming soon')
-    elif user_input == 'uneverything':
-        # This option is hidden because it deletes all modules, which would require the user to install them again
-        import pip
-        pip.main(['uninstall', 'colorama'])
-        pip.main(['uninstall', 'pynput'])
-        pip.main(['uninstall', 'keyboard'])
-    else:
-        print(Fore.RED+'{} is an invalid command'.format(user_input))
-        add_log('{} is an invalid command'.format(user_input))
+        elif user_input == 'profile':
+            print(Fore.BLUE+'Opening profile website')
+            import webbrowser
+            webbrowser.open('https://github.com/shannon-nz')
+
+        elif user_input == 'doc':
+            print(Fore.BLUE+'Opening python games documentation')
+            import webbrowser
+            webbrowser.open('https://github.com/shannon-nz/python-games#-python-games-in-development-')
+
+        elif user_input == 'ls':
+            print(Fore.BLUE+'Opening python games documentation')
+            import webbrowser
+            webbrowser.open('https://github.com/shannon-nz/python-games#-python-games-in-development-')
+
+        elif user_input == 'spaz':
+            print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
+            for item in range(1, 50):
+                print(Fore.RED+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+                print(Fore.BLUE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+                print(Fore.YELLOW+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+                print(Fore.WHITE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+                print(Fore.BLACK+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+                print(Fore.GREEN+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+                print(Fore.MAGENTA+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+                print(Fore.CYAN+'WARNING, IT IS ABOUT TO GET MAD !!!')
+            spaz_msg = 'SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ '
+            for item in range(1, 21):
+                keyboard.press('f11')
+                keyboard.release('f11')
+                keyboard.press('windows')
+                keyboard.release('windows')
+                keyboard.press('alt+tab')
+                keyboard.release('alt+tab')
+                rand1 = random.randrange(0, 1900)
+                rand2 = random.randrange(0, 1900)
+                mouse.position = (rand1, rand2)
+                print(Fore.RED+spaz_msg)
+                print(Fore.BLUE+spaz_msg)
+                print(Fore.YELLOW+spaz_msg)
+                print(Fore.WHITE+spaz_msg)
+                print(Fore.BLACK+spaz_msg)
+                print(Fore.GREEN+spaz_msg)
+                print(Fore.MAGENTA+spaz_msg)
+                print(Fore.CYAN+spaz_msg)
+                sleep(0.1)
+            print('\n\nAnd that is why you should be careful what you click on!')
+
+        elif user_input == 'settings':
+            with open('config.json', 'r') as jsonConfig:
+                config = json.dumps(json.load(jsonConfig), sort_keys=True, indent=4, separators=(',', ': '))
+            print(Fore.YELLOW+config)
+            
+        elif user_input == 'log':
+            print(Fore.BLUE+'Printing log.log ...')
+            f = open('main.log', 'r')
+            file_contents = f.read()
+            print (file_contents)
+            f.close()
+
+        elif user_input == 'log -clean':
+            print('cleaning log...')
+            myText = open(r'main.log','w')
+            myText.write('<<< start of log >>>')
+            myText.close()
+            print('log cleaned!')
+
+        elif user_input == 'log -disable':
+            mod_config('mod','logOption','disabled')
+
+        elif user_input == 'log -enable':
+            mod_config('mod','logOption','enabled')
+
+        elif user_input == 'restart':
+            os.system('python app.py')
+            exit()
+
+        elif user_input == 'quit':
+            print(Fore.RED+'quiting the application...')
+            exit()
+            print(Fore.RED+'Failed to quit the application, please try again')
+
+        elif user_input == 'help':
+            print(Fore.BLACK+'   clear           '+Fore.BLUE+'clear the terminal (action)')
+            print(Fore.BLACK+'   lu              '+Fore.BLUE+'lucky unicorn (game)')
+            print(Fore.BLACK+'   rps             '+Fore.BLUE+'rock paper scissors (game)')
+            print(Fore.BLACK+'   hl              '+Fore.BLUE+'higher/lower (game)')
+            print(Fore.BLACK+'   stats           '+Fore.BLUE+'View your stats')
+            print(Fore.BLACK+'   system          '+Fore.BLUE+'get your system information (info)')
+            print(Fore.BLACK+'   profile         '+Fore.BLUE+'open my profile website (website)')
+            print(Fore.BLACK+'   doc             '+Fore.BLUE+'open python games documentation (website)')
+            print(Fore.BLACK+'   spaz            '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (fun)')
+            print(Fore.BLACK+'   settings        '+Fore.BLUE+'print settings in JSON format (info)')
+            print(Fore.BLACK+'   log             '+Fore.BLUE+'view all past logs (info)')
+            print(Fore.BLACK+'   log -clean      '+Fore.BLUE+'view all past logs (info)')
+            print(Fore.BLACK+'   log -disable    '+Fore.BLUE+'disable logs (action)')
+            print(Fore.BLACK+'   log -enable     '+Fore.BLUE+'enable logs (info)')
+            print(Fore.BLACK+'   restart         '+Fore.BLUE+'restart the application (action)')
+            print(Fore.BLACK+'   quit            '+Fore.BLUE+'quit the entire program (action)')
+            print(Fore.BLACK+'   help            '+Fore.BLUE+'display command details (help)')
+            print(Fore.BLACK+'   help -des       '+Fore.BLUE+'display command details and an longer description (help)')
+
+        elif user_input == 'help -des':
+            print('help -des coming soon')
+
+        elif user_input == 'uneverything':
+            # This option is hidden because it deletes all modules, which would require the user to install them again
+            import pip
+            pip.main(['uninstall', 'colorama'])
+            pip.main(['uninstall', 'pynput'])
+            pip.main(['uninstall', 'keyboard'])
+
+        else:
+            print(Fore.RED+'{} is an invalid command'.format(user_input))
+            add_log('{} is an invalid command'.format(user_input))
+command_line()
