@@ -55,7 +55,7 @@ To install the game, you will need to either:
 - **Option 1 (recommended)** - The Easy Option - Simply open the folder that contains the python files and double click app.py. Further instructions will be shown in the app.
 
 <div align="center">
-  <img src="./images/getting-started-1.JPG">
+  <img src="./images/getting-started.JPG">
   <br>
   <i>Which file to click</i>
 </div>
