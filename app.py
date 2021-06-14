@@ -26,6 +26,8 @@ with open('config.json', 'r') as jsonConfig:
             
             if username_prompt == 'root':
                 print('root is a reserved username, please try something else')
+            elif username_prompt == '' or username_prompt == ' ':
+                print('please enter a valid username, not blank space')
             else:
                 config['username'] = username_prompt
                 with open('config.json', 'w') as f:
@@ -233,7 +235,7 @@ def command_line():
         with open('config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
             config_username = config['username']
-            print(Fore.RED+'\npython-games@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
+            print(Fore.RED+'\npy-games@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
         user_input = input().lower()
       
         if user_input == 'clear':
@@ -321,15 +323,21 @@ def command_line():
             exit()
 
         elif user_input == 'settings -reset':
-            current_directory = os.path.dirname(__file__)
-            file_path = os.path.join(current_directory, 'main', 'default_config.json')
-            with open(file_path, 'r') as jsonConfig:
-                default_config = json.load(jsonConfig)
-
             with open('config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
-            with open('config.json', 'w') as f:
-                json.dumps(json.dump(default_config, f), indent=4)
+                pass_prompt = input('Enter password: ')
+                if pass_prompt != config['pass']:
+                    print(Fore.RED+'Incorrect password')
+                else:
+                    current_directory = os.path.dirname(__file__)
+                    file_path = os.path.join(current_directory, 'main', 'default_config.json')
+                    with open(file_path, 'r') as jsonConfig:
+                        default_config = json.load(jsonConfig)
+
+                    with open('config.json', 'r') as jsonConfig:
+                        config = json.load(jsonConfig)
+                    with open('config.json', 'w') as f:
+                        json.dumps(json.dump(default_config, f), indent=4)
 
         elif user_input == 'spaz':
             print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
