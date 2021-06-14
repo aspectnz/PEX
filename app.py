@@ -173,9 +173,70 @@ def stats():
     return ''
 
 
+
+from tkinter import *
+
+def OnPressed(event):
+    print('Hello')
+def OnHover(event):
+    But.config(bg='red', fg='white')
+def OnLeave(event):
+    But.config(bg='white', fg='black')
+
+root = Tk()
+
+But = Label(root, text='Hi', bg='white', relief='groove')
+But.place(x=10, y=10, width=100)
+But.bind('<Button-1>', OnPressed)
+But.bind('<Enter>', OnHover)
+But.bind('<Leave>', OnLeave)
+
+root.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 
 check_internet_on_start()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(mod_config('view','balance','')))
@@ -194,13 +255,16 @@ while user_input != 'quit':
         screen_clear()
 
     elif user_input == 'lu':
-        print(Fore.BLUE+'Opening Lucky Lucky Unicorn Game...')
+        print(Fore.BLUE+'Opening Lucky Unicorn Game...')
         sleep(1)
         print('\n********** LUCKY UNICORN **********')
         os.system('python games/luckyunicorn/00_LU_Base_v_01.py')
 
     elif user_input == 'rps':
-        print('coming soon .... \ngoing back to main menu...')
+        print(Fore.BLUE+'Opening Rock Paper Scissors Game...')
+        sleep(1)
+        print('\n********** LUCKY UNICORN **********')
+        os.system('python games/rock-paper-scissors/app.py')
 
     elif user_input == 'hl':
         print('coming soon .... \ngoing back to main menu...')
