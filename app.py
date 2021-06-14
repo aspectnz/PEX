@@ -196,13 +196,11 @@ while user_input != 'quit':
     elif user_input == 'lu':
         print(Fore.BLUE+'Opening Lucky Unicorn Game...')
         sleep(1)
-        print('\n********** LUCKY UNICORN **********')
         os.system('python games/luckyunicorn/00_LU_Base_v_01.py')
 
     elif user_input == 'rps':
         print(Fore.BLUE+'Opening Rock Paper Scissors Game...')
         sleep(1)
-        print('\n********** LUCKY UNICORN **********')
         os.system('python games/rock-paper-scissors/app.py')
 
     elif user_input == 'hl':
