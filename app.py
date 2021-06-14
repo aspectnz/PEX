@@ -19,7 +19,7 @@ config_username = 'root'
 with open('config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
     if config['username'] == 'root':
-        print('Welcome, first make a username. Something short easy to remember! ')
+        print('Welcome, first make a username. Something short and easy to remember! ')
         while config['username'] == 'root':
             username_prompt = input('Enter username: ')
             
@@ -374,6 +374,9 @@ def command_line():
             pip.main(['uninstall', 'colorama'])
             pip.main(['uninstall', 'pynput'])
             pip.main(['uninstall', 'keyboard'])
+
+        elif user_input == 'reset':
+            print('reset here')
 
         else:
             print(Fore.RED+'{} is an invalid command'.format(user_input))
