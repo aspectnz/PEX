@@ -173,70 +173,9 @@ def stats():
     return ''
 
 
-
-from tkinter import *
-
-def OnPressed(event):
-    print('Hello')
-def OnHover(event):
-    But.config(bg='red', fg='white')
-def OnLeave(event):
-    But.config(bg='white', fg='black')
-
-root = Tk()
-
-But = Label(root, text='Hi', bg='white', relief='groove')
-But.place(x=10, y=10, width=100)
-But.bind('<Button-1>', OnPressed)
-But.bind('<Enter>', OnHover)
-But.bind('<Leave>', OnLeave)
-
-root.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 
 check_internet_on_start()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(mod_config('view','balance','')))
