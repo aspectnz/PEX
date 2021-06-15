@@ -1,5 +1,20 @@
-<h1 align="center">🥇🎮 Python Games (BROKEN COME BACK IN A COUPLE HOURS!!!!!!!!) 🎲🔫</h1>
-<br><br>
+<h1 align="center">🥇🎮 Python Games 🎲🔫</h1>
+
+</br></br>
+
+<table width="350px" align="center">
+  <tbody>
+    <tr>
+      <th>Table of contents</th>
+    </tr>
+    <tr>
+      <td>Coming in a few minutes</td>
+    </tr>
+  </tbody>
+</table
+
+</br></br>
+
 <table>
   <tbody>
     <tr>
@@ -9,7 +24,7 @@
       <td align="center">
         This repository contains a set of python games that come with a main menu. I initially made these for a school assesment, but I have decided to add to the repository and develop more custom and advanced games. Once there is enough games, I will catergorize them in the main menu to make it easier to choose what game to play. At the moment, all of the games are text-based only, but grapical games will be added later on this year. Below, you will find out how to set the application up and how to use it. Enjoy!
         <br><br>
-        <img src="./images/banner.jpg">
+        <img src="./main/images/banner.jpg">
         <br>
         <i>python games "help" command</i>
        </td>
@@ -21,7 +36,11 @@
 
 **For Python Beginners** : This code would be great for python beginners, who are interested in game development, to start somewhere. I have commented all of the code so everyone will be able to understand what each part of the program does and how it all works. If you would like to make any improvements, feel free to contibute to this repo. If there is something you don't understand, my contact details can be found on my <a href="https://github.com/shannon-nz/">GitHub profile</a> or my <a href="http://shan.rf.gd">Profile Website</a>
 
-</br></br>
+</br>
+
+Some of the code may not make sense if you have not used some of the modules that I am using. If this is the case, you could start in the `/python-games/main/games` folder to find the folders for each game. In the archive folder for each, you will find each of functions as an individual program. This may make it easier to understand.
+
+</br>
 
 # How The App Works
 In the `config.json` file, you are given a default balance of $100, this is all the money that you are allowed to spend in the game. When you are below $0, you are in debt and will not be able to play anymore. To reset the balance, use the `reset` command. You can also just add unlimited money by changing the `config.json` file and setting the balance to whatever you want (as long as it is a number)
@@ -71,7 +90,7 @@ To install the game, you will need to either:
 - Download the zip file and extract it
 
 <div align="center">
-  <img src="./images/installation.JPG">
+  <img src="./main/images/installation.JPG">
   </br>
   <i>Where the option are</i>
 </div>
@@ -83,7 +102,7 @@ To install the game, you will need to either:
 - **Option 1 (recommended)** - The Easy Option - Simply open the folder that contains the python files and double click app.py. Further instructions will be shown in the app.
 
 <div align="center">
-  <img src="./images/getting-started.JPG">
+  <img src="./main/images/getting-started.JPG">
   <br>
   <i>Which file to click</i>
 </div>
@@ -102,10 +121,12 @@ C:\Users\User> python app.py
 - **Option 3 - will not work - (DISCONTINUED) ** - IDE - Open your IDE, Ctrl + o, open the app.py and press F5.
 
 <div align="center">
-  <img src="./images/getting-started-3.JPG">
+  <img src="./main/images/getting-started-3.JPG">
   <br>
   <i>running the file in IDLE</i>
 </div>
+
+Running the program in IDLE is now disabled. This is because IDLE lacks the flexability of a terminal, henceforth I have decided to strictly limit the application to the terminal. 
 
 </br>
 
@@ -153,6 +174,10 @@ help -des
 - `help`            = display command details (help) </br>
 - `help -des`       = display command details and an longer description (help) </br>
 
+<i>When all of the commands have been added, this message will be removed</i>
+</br>
+You can also clone/pull the repository to recieve the latest commands with the `help` command. I update the commands almost daily, when I stop I will remove this message.
+
 </br>
 
 # Game Details
@@ -173,6 +198,13 @@ Lucky Unicorn is essentially a luck-based game. Here are the steps to playing th
 - Create modules for large sets of functions
 - Finish the Documentaion (last)
 
+To find other tasks that are being or need to be completed, have a look at the <a href="https://github.com/shannon-nz/python-games/issues">issues page for this reposiotory</a>. 
+
+</br>
+
+# Advanced
+If you would like to change the application settings, feel free to edit the config.json file on your own copy. I will be adding more settings there, so don't forget to pull from the repo frequently! 
+
 </br>
 
 # Contributing
@@ -182,3 +214,5 @@ Some skills that would be specifically useful to this project are:
 - Tkinter
 - Pygame
 - Django
+
+If these do not apply to you, then simply starring the repository would be great.
