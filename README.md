@@ -29,36 +29,36 @@
       </br>
         <ul>
           <li>
-            <a href="https://github.com/shannon-nz/python-games#-python-games-">🥇🎮 Python Games 🎲🔫</a>
+            <a href="#-python-games-">🥇🎮 Python Games 🎲🔫</a>
             <ul>
-              <li><a href="https://github.com/shannon-nz/python-games/blob/main/README.md#what-is-python-games">What is Python Games?</a></li>
+              <li><a href="#what-is-python-games">What is Python Games?</a></li>
             </ul>
           </li>
-          <li><a href="https://github.com/shannon-nz/python-games#how-the-app-works">How the app works</a></li>
-          <li><a href="https://github.com/shannon-nz/python-games#requirements">Requirements</a></li>
-          <li><a href="https://github.com/shannon-nz/python-games#installation">Installation</a></li>
+          <li><a href="#how-the-app-works">How the app works</a></li>
+          <li><a href="#requirements">Requirements</a></li>
+          <li><a href="#installation">Installation</a></li>
           <li>
-            <a href="https://github.com/shannon-nz/python-games#getting-started">Getting Started</a>
+            <a href="#getting-started">Getting Started</a>
             <ul>
-              <li><a href="https://github.com/shannon-nz/python-games#password-pyga">Password</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="https://github.com/shannon-nz/python-games#commands">Commands</a>
-            <ul>
-              <li><a href="https://github.com/shannon-nz/python-games#commands-1">Commands</a></li>
-              <li><a href="https://github.com/shannon-nz/python-games#command-details">Command Details</a></li>
+              <li><a href="#password-pyga">Password</a></li>
             </ul>
           </li>
           <li>
-            <a href="https://github.com/shannon-nz/python-games#game-details">Game Details</a>
+            <a href="#commands">Commands</a>
             <ul>
-              <li><a href="https://github.com/shannon-nz/python-games#lucky-unicorn">Lucky Unicorn</a></li>
+              <li><a href="#commands-1">Commands</a></li>
+              <li><a href="#command-details">Command Details</a></li>
             </ul>
           </li>
-          <li><a href="https://github.com/shannon-nz/python-games#to-do--whats-coming">To Do / What's Coming</a></li>
-          <li><a href="https://github.com/shannon-nz/python-games#advanced">Advanced</a></li>
-          <li><a href="https://github.com/shannon-nz/python-games#contributing">Contributing</a></li>
+          <li>
+            <a href="#game-details">Game Details</a>
+            <ul>
+              <li><a href="#lucky-unicorn">Lucky Unicorn</a></li>
+            </ul>
+          </li>
+          <li><a href="#to-do--whats-coming">To Do / What's Coming</a></li>
+          <li><a href="#advanced">Advanced</a></li>
+          <li><a href="#contributing">Contributing</a></li>
         </ul>
       </td>
     </tr>
