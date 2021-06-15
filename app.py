@@ -305,7 +305,7 @@ def base_command_help(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
-# Help command function
+# highler lower game command function
 def base_command_hl(user_input, command_string):
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
@@ -324,6 +324,36 @@ def base_command_hl(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
+# log command function
+def base_command_log(user_input, command_string):
+    # calculate where the dash should be (if there is)
+    expected_dash = user_input[len(command_string)+1:len(command_string)+2]
+    # base command
+    if user_input == command_string:
+        print(Fore.BLUE+'Printing data.log ...')
+        f = open('main/data.log', 'r')
+        file_contents = f.read()
+        print (file_contents)
+        f.close()
+    # sub commands for command
+    elif expected_dash == '-':
+        # identify sub command
+        sub_command = user_input[len(command_string)+2:len(user_input)]
+        if sub_command == 'clean':
+            print('cleaning log...')
+            myText = open(r'main/data.log','w')
+            myText.write('<<< start of log >>>')
+            myText.close()
+            print('log cleaned!')
+        if sub_command == 'disable':
+            mod_config('mod','logOption','disabled')
+        if sub_command == 'enable':
+            mod_config('mod','logOption','enabled')
+        else:
+            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+    # otherwise inform user that the command was identified, but had had a type
+    else:
+        invalid_command_ext(command_string, user_input)
 
 def stats():
     return ''
@@ -409,26 +439,10 @@ def command_line():
         # check if this is the valid command
         elif user_input[0:len('hl')] == 'hl':
             base_command_hl(user_input, 'hl')
-            
-        elif user_input == 'log':
-            print(Fore.BLUE+'Printing data.log ...')
-            f = open('main/data.log', 'r')
-            file_contents = f.read()
-            print (file_contents)
-            f.close()
 
-        elif user_input == 'log -clean':
-            print('cleaning log...')
-            myText = open(r'main/data.log','w')
-            myText.write('<<< start of log >>>')
-            myText.close()
-            print('log cleaned!')
-
-        elif user_input == 'log -disable':
-            mod_config('mod','logOption','disabled')
-
-        elif user_input == 'log -enable':
-            mod_config('mod','logOption','enabled')
+        # check if this is the valid command
+        elif user_input[0:len('log')] == 'log':
+            base_command_log(user_input, 'log')
 
         elif user_input == 'ls':
             os.system('dir')
@@ -519,6 +533,11 @@ def command_line():
 
         elif user_input == 'admin':
             print('Admin mode now enabled')
+
+        elif user_input == 'custom_command':
+            with open('main/config.json', 'r') as jsonConfig:
+            config = json.load(jsonConfig)
+            config_username = config['username']
 
         else:
             print('Sorry, "{}" '.format(user_input)+Fore.RED+'is an invalid command')
