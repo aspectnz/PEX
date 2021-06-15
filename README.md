@@ -2,43 +2,67 @@
 
 </br></br>
 
-<table width="350px" align="center">
+
+<img src="./main/images/banner.webp" min-width="400px" max-width="400px" width="400px" align="right">
+
+<p align="left">
+  <h2>What is Python Games?</h2>
+  This repository contains a set of python games that come with a main menu. I initially made these for a school assesment, but I have decided to add to the
+  repository and develop more custom and advanced games. 
+  
+  Once there is enough games, I will catergorize them in the main menu to make it easier to choose what game to
+  play. 
+  
+  At the moment, all of the games are text-based only, but grapical games will be added later on this year. Below, you will find out how to set the application
+  up and how to use it. Enjoy!
+</p>
+
+</br>
+
+<table>
   <tbody>
     <tr>
       <th>Table of contents</th>
     </tr>
     <tr>
-      <td>Coming in a few minutes</td>
+      <td width="350px">
+      </br>
+        <ul>
+          <li><a href="https://github.com/shannon-nz/python-games#-python-games-">🥇🎮 Python Games 🎲🔫</a></li>
+          <li><a href="https://github.com/shannon-nz/python-games#how-the-app-works">How the app works</a></li>
+          <li><a href="https://github.com/shannon-nz/python-games#requirements">Requirements</a></li>
+          <li><a href="https://github.com/shannon-nz/python-games#installation">Installation</a></li>
+          <li>
+            <a href="https://github.com/shannon-nz/python-games#getting-started">Getting Started</a>
+            <ul>
+              <li><a href="https://github.com/shannon-nz/python-games#password-pyga">Password</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="https://github.com/shannon-nz/python-games#commands">Commands</a>
+            <ul>
+              <li><a href="https://github.com/shannon-nz/python-games#commands-1">Commands</a></li>
+              <li><a href="https://github.com/shannon-nz/python-games#command-details">Command Details</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="https://github.com/shannon-nz/python-games#game-details">Game Details</a>
+            <ul>
+              <li><a href="https://github.com/shannon-nz/python-games#lucky-unicorn">Lucky Unicorn</a></li>
+            </ul>
+          </li>
+          <li><a href="https://github.com/shannon-nz/python-games#to-do--whats-coming">To Do / What's Coming</a></li>
+          <li><a href="https://github.com/shannon-nz/python-games#advanced">Advanced</a></li>
+          <li><a href="https://github.com/shannon-nz/python-games#contributing">Contributing</a></li>
+        </ul>
+      </td>
     </tr>
   </tbody>
-</table
-
-</br></br>
-
-<table>
-  <tbody>
-    <tr>
-      <th>What is Python Games?</th>
-    </tr>
-    <tr>
-      <td align="center">
-        This repository contains a set of python games that come with a main menu. I initially made these for a school assesment, but I have decided to add to the repository and develop more custom and advanced games. Once there is enough games, I will catergorize them in the main menu to make it easier to choose what game to play. At the moment, all of the games are text-based only, but grapical games will be added later on this year. Below, you will find out how to set the application up and how to use it. Enjoy!
-        <br><br>
-        <img src="./main/images/banner.webp">
-        <br>
-        <i>python games "help" command</i>
-       </td>
-      </tr>
-    </tbody>
 </table>
 
 </br>
 
 **For Python Beginners** : This code would be great for python beginners, who are interested in game development, to start somewhere. I have commented all of the code so everyone will be able to understand what each part of the program does and how it all works. If you would like to make any improvements, feel free to contibute to this repo. If there is something you don't understand, my contact details can be found on my <a href="https://github.com/shannon-nz/">GitHub profile</a> or my <a href="http://shan.rf.gd">Profile Website</a>
-
-</br>
-
-Some of the code may not make sense if you have not used some of the modules that I am using. If this is the case, you could start in the `/python-games/main/games` folder to find the folders for each game. In the archive folder for each, you will find each of functions as an individual program. This may make it easier to understand.
 
 </br>
 
@@ -51,7 +75,7 @@ keyboard.press('win+up')
 keyboard.release('win+up')
  ```
 
-There are mutliple commands that you can use, some of which are just for the sake of seeing what you can do with python.
+There are mutliple commands that you can use, some of which are just for the sake of seeing what you can do with python. Some of the code may not make sense if you have not used some of the modules that I am using. If this is the case, you could start in the `/python-games/main/games` folder to find the folders for each game. In the archive folder for each, you will find each of functions as an individual program. This may make it easier to understand.
 
 </br>
 
