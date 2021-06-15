@@ -1,4 +1,4 @@
-<h1 align="center">🥇🎮 Python Games (In Development) 🎲🔫</h1>
+<h1 align="center">🥇🎮 Python Games (BROKEN COME BACK IN A COUPLE HOURS!!!!!!!!) 🎲🔫</h1>
 <br><br>
 <table>
   <tbody>
@@ -36,8 +36,36 @@ There are mutliple commands that you can use, some of which are just for the sak
 
 </br>
 
+# Requirements
+
+<br>
+
+<table align="center">
+  <tbody>
+    <tr>
+     <th>Requirements</th>
+      <th>How to meet requirements</th>
+    </tr>
+    <tr>
+      <td>Windows 10</td>
+      <td><a href="https://www.wikihow.com/Update-Windows">Click here</a> to learn how to update windows.</td>
+    </tr>
+    <tr>
+      <td>Latest version of python</td>
+      <td>Click the installer in the root folder called </td>
+    </tr>
+    <tr>
+      <td>Latest version of pip</td>
+      <td>Click on update pip in the root directory</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
 # Installation
-- Make sure that you have the latest version of <a href="https://www.python.org/downloads/">python</a> installed and that you're using Windows 10.
+Make sure that you have the latest version of <a href="https://www.python.org/downloads/">python</a> installed and that you're using Windows 10. If you do not currently have the latest version of python installed, you can find the installer in the root directory named `python-3.9.5-amd64.exe`. Double click the installer file to install python. When installing, make sure you check `add to path` and `disable path limit`.
+<br>
 To install the game, you will need to either:
 - Clone the repository to a local folder
 - Download the zip file and extract it
