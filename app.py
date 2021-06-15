@@ -142,17 +142,18 @@ def check_internet_connection():
         return False
 
 def check_internet_on_start():
-    if(check_internet_connection() == True):
-        add_log('connected to the internet')
-    else:
-        add_log('not connected to the internet')
-        print('''
-Not connected to the internet
-Please make sure that you are connected to the internet or that ports 53 and 443 are enabled
-Exiting program in 10 seconds ...
-            ''')
-        sleep(10)
-        exit()
+    if mod_config('view', 'internetRequired', '') == True:
+        if(check_internet_connection() == True):
+            add_log('connected to the internet')
+        else:
+            add_log('not connected to the internet')
+            print('''
+    Not connected to the internet
+    Please make sure that you are connected to the internet or that ports 53 and 443 are enabled
+    Exiting program in 10 seconds ...
+                ''')
+            sleep(10)
+            exit()
 
 def get_platform():
     platforms = {
@@ -259,110 +260,20 @@ def invalid_command_ext(command_string, user_input):
     invalid_text = user_input[len(command_string):len(user_input)]
     print(Fore.RED+'The "{}" command was identified, but contained invalid text "{}"'.format(command_string, invalid_text))
 
+
 # Help command function
 def base_command_help(user_input, command_string):
+    sys.path.insert(0, './main')
+    import master_command_list as mcl
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
     # base command
     if user_input == command_string:
         command_color = Fore.CYAN
         des_color = Fore.BLUE
-        master_command_list = {
-            'advanced': {
-                'brief_description': 'display advanced commands',
-                'description': ''
-            },
-            'clear':{
-                'brief_description': 'clear the terminal',
-                'description': ''
-            },
-            'doc':{
-                'brief_description': 'open python games documentation on GitHub',
-                'description': ''
-            },
-            'help':{
-                'brief_description': 'display commands and functions',
-                'description': ''
-            },
-            'help -cat':{
-                'brief_description': 'display commands and functions, formatted into categories',
-                'description': ''
-            },
-            'help -des':{
-                'brief_description': 'display command details and an longer description',
-                'description': ''
-            },
-            'help -des -cat':{
-                'brief_description': 'display command details and an longer description, formatted into categories',
-                'description': ''
-            },
-            'hl':{
-                'brief_description': 'play higher/lower game',
-                'description': ''
-            },
-            'log':{
-                'brief_description': 'view all past logs',
-                'description': ''
-            },
-            'log -clean':{
-                'brief_description': 'view all past logs',
-                'description': ''
-            },
-            'log -disable':{
-                'brief_description': 'disable logs',
-                'description': ''
-            },
-            'log -enable':{
-                'brief_description': 'enable logs',
-                'description': ''
-            },
-            'ls':{
-                'brief_description': 'list directory',
-                'description': ''
-            },
-            'lu':{
-                'brief_description': 'play lucky unicorn game',
-                'description': ''
-            },
-            'profile':{
-                'brief_description': 'open my profile website',
-                'description': ''
-            },
-            'quit':{
-                'brief_description': 'quit the entire program',
-                'description': ''
-            },
-            'rps':{
-                'brief_description': 'play rock paper scissors game',
-                'description': ''
-            },
-            'restart':{
-                'brief_description': 'restart the application',
-                'description': ''
-            },
-            'settings':{
-                'brief_description': 'print settings in JSON format',
-                'description': ''
-            },
-            'settings -reset':{
-                'brief_description': 'reset back to factory settings',
-                'description': ''
-            },
-            'spaz':{
-                'brief_description': 'SPAZ YOUR SCREEN for 7 seconds (caution)',
-                'description': ''
-            },
-            'stats':{
-                'brief_description': 'view your stats',
-                'description': ''
-            },
-            'system':{
-                'brief_description': 'get your system information',
-                'description': ''
-            }
-        }
+        
         print()
-        for key, value in master_command_list.items():
+        for key, value in mcl.master_command_list.items():
             num = 30-len(key)
             tabs = ' '*num
             print(command_color+'   '+key+tabs+des_color+value['brief_description'])
@@ -377,6 +288,7 @@ def base_command_help(user_input, command_string):
     # otherwise inform user that the command was identified, but had had a type
     else:
         invalid_command_ext(command_string, user_input)
+
 
 # highler lower game command function
 def base_command_hl(user_input, command_string):
@@ -435,7 +347,7 @@ def stats():
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
-#check_internet_on_start()
+check_internet_on_start()
 screen_clear()
 mouse.position = (0, 0)
 
@@ -591,8 +503,6 @@ def command_line():
         elif user_input == 'system':
             print(Fore.BLUE+'Opening python file for "system information"...')
             os.system('python main/info/system.py')
-            import webbrowser
-            webbrowser.open('https://github.com/shannon-nz')
 
         # This option is hidden because it deletes all modules, which would require the user to install them again
         elif user_input == 'remove -modules':
