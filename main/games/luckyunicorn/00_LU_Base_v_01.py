@@ -7,7 +7,7 @@ from datetime import datetime
 def add_log(text):
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    with open('main.log', 'a') as file_object:
+    with open('main/data.log', 'a') as file_object:
         file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
 add_log('running luckyunicorn')
 import random
@@ -40,8 +40,8 @@ def yes_no(question):
             print('Please answer yes / no')
 
 def instructions():
-    print('\n\n')
-    statement_generator('How to Play', '=', '', '')
+    print('\n')
+    statement_generator('How to Play', '=', '')
     print('''
 Choose a starting amount (minimum $1, maximum $10).
 Then press <enter> to play. You will get either a horse, a zebra, a donkey, or a unicorn.
@@ -56,7 +56,6 @@ $10 is recommended for a higher chance of winning unicorns.
 Can you avoid the donkey, get the unicorns and walk home with the money?
 
 Hint: To quit while your ahead, type "quit" instead of pressing <enter>
-\n
         '''
         )
     return ''
@@ -79,15 +78,18 @@ def num_check(question, low, high):
         except ValueError:
             print(error)
 
-def statement_generator(statement, decoration, fore_color, value3):
+def statement_generator(statement, decoration, value3):
     if decoration == 'cube':
         decoration = '■'
+        fore_color = Fore.BLUE
+        back_color = Back.BLUE
+
         sides = decoration * 4
-        statement = "{} {} {}".format(Fore.fore_color+Style.DIM+sides, Fore.WHITE+Style.BRIGHT+statement, Fore.fore_color+Style.DIM+sides)
+        statement = "{} {} {}".format(fore_color+Style.DIM+sides, Fore.WHITE+Style.BRIGHT+statement, fore_color+Style.DIM+sides)
         top_bottom = decoration * (len(statement) - 27)
-        print(Back.fore_color+Style.DIM+Fore.fore_color+top_bottom)
-        print(Back.fore_color+statement)
-        print(Back.fore_color+Style.DIM+Fore.fore_color+top_bottom)
+        print(back_color+Style.DIM+fore_color+top_bottom)
+        print(back_color+statement)
+        print(back_color+Style.DIM+fore_color+top_bottom)
 
         return ""
 
@@ -111,22 +113,24 @@ def statement_generator(statement, decoration, fore_color, value3):
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 
 print('\n')
-statement_generator('Welcome to the Lucky Unicorn Game', 'cube', 'BLUE', '')
+statement_generator('Welcome to the Lucky Unicorn Game', 'cube', '')
 
 played_before = yes_no('Have you played the game before? (yes/no): ')
 print('\n')
-statement_generator('Let\'s get Started', '-', '', '')
 
 if played_before == 'no':
     instructions()
 
+statement_generator('Let\'s get Started', '-', '')
+print()
+
 how_much = num_check('How much would you like to play with? (1 - 10): ', 0, 10)
-with open('config.json', 'r') as jsonConfig:
+with open('main/config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
 
 config['balance'] -= how_much
 
-with open('config.json', 'w') as f:
+with open('main/config.json', 'w') as f:
     json.dump(config, f)
 print(Fore.GREEN+'You will be spending ${}'.format(how_much))
 print(Fore.RED+'Deducting ${} off balance.'.format(how_much))
@@ -186,7 +190,7 @@ while play_again != 'quit':
             balance -= 0.5
 
         round_result = Fore.GREEN+'You got a {}. Your in game balance is '.format(chosen)+Fore.RED+'${}'.format(balance)
-        statement_generator(round_result, chosen_type, '', 'roundresult')
+        statement_generator(round_result, chosen_type, 'roundresult')
 
         if balance < 1:
             play_again = 'quit'
@@ -217,14 +221,14 @@ else:
 
 print(change_msg_color+'\nYou have '+change_msg+': ${} after {} rounds'.format(made_or_lost, rounds_played))
 
-with open('config.json', 'r') as jsonConfig:
+with open('main/config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
 
 new_balance = config['balance'] + balance
 
 config['balance'] = new_balance
 
-with open('config.json', 'w') as f:
+with open('main/config.json', 'w') as f:
     json.dump(config, f)
 
 

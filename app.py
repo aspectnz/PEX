@@ -5,18 +5,18 @@ IP_addres = socket.gethostbyname(h_name)
 from datetime import datetime
 def add_log(text):
     print(text)
-    with open('config.json', 'r') as jsonConfig:
+    with open('main/config.json', 'r') as jsonConfig:
         config = json.load(jsonConfig)
         if config['logOption'] == 'enabled':
             now = datetime.now()
             dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-            with open('main.log', 'a') as file_object:
+            with open('main/data.log', 'a') as file_object:
                 file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
 add_log('running main app')
 
 first_time = False
 config_username = 'root'
-with open('config.json', 'r') as jsonConfig:
+with open('main/config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
     if config['username'] == 'root':
         first_time = True
@@ -30,7 +30,7 @@ with open('config.json', 'r') as jsonConfig:
                 print('please enter a valid username, not blank space')
             else:
                 config['username'] = username_prompt
-                with open('config.json', 'w') as f:
+                with open('main/config.json', 'w') as f:
                     json.dumps(json.dump(config, f), indent=4)
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
@@ -50,7 +50,7 @@ try:
 except:
     add_log('error importing default modules')
 
-sys.path.insert(0, './main/')
+sys.path.insert(0, './main/custom_modules')
 import idle_check as idle_check
 idle_check.run()
 
@@ -185,23 +185,69 @@ def change_terminal_background(value):
 
 def mod_config(option, value, newval):
     if option == 'view':
-        with open('config.json', 'r') as jsonConfig:
+        with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
         return config[value]
             
     elif option == 'mod':  
-        with open('config.json', 'r') as jsonConfig:
+        with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
         config[value] = newval
-        with open('config.json', 'w') as f:
+        with open('main/config.json', 'w') as f:
             json.dumps(json.dump(config, f), indent=4)
+
+def spaz_screen():
+    print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
+    for item in range(1, 50):
+        print(Fore.RED+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+        print(Fore.BLUE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+        print(Fore.YELLOW+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+        print(Fore.WHITE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+        print(Fore.GREEN+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+        print(Fore.MAGENTA+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
+        print(Fore.CYAN+'WARNING, IT IS ABOUT TO GET MAD !!!')
+    spaz_msg = 'SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ '
+    for item in range(1, 21):
+        keyboard.press('f11')
+        keyboard.release('f11')
+        keyboard.press('windows')
+        keyboard.release('windows')
+        keyboard.press('alt+tab')
+        keyboard.release('alt+tab')
+        rand1 = random.randrange(0, 2000)
+        rand2 = random.randrange(0, 2000)
+        mouse.position = (rand1, rand2)
+        print(Fore.RED+spaz_msg)
+        print(Fore.BLUE+spaz_msg)
+        print(Fore.WHITE+spaz_msg)
+        print(Fore.GREEN+spaz_msg)
+    print('\n\nAnd that is why you should be careful what you click on!')
+
+def download(url, filename):
+    print(Fore.BLUE+'[*] Downloading '+filename+' from '+url)
+    import requests
+    with open(filename, 'wb') as f:
+        response = requests.get(url, stream=True)
+        total = response.headers.get('content-length')
+        if total is None:
+            f.write(response.content)
+        else:
+            downloaded = 0
+            total = int(total)
+            for data in response.iter_content(chunk_size=max(int(total/1000), 1024*1024)):
+                downloaded += len(data)
+                f.write(data)
+                done = int(50*downloaded/total)
+                sys.stdout.write('\r[{}{}]'.format('█' * done, '.' * (50-done)))
+                sys.stdout.flush()
+    sys.stdout.write('\n')
 
 def stats():
     return ''
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
-#check_internet_on_start()
+check_internet_on_start()
 screen_clear()
 mouse.position = (0, 0)
 
@@ -231,7 +277,7 @@ if first_time == True:
 def command_line():
     user_input = ''
     while user_input != 'quit':
-        with open('config.json', 'r') as jsonConfig:
+        with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
             config_username = config['username']
             print(Fore.RED+'\npy-games@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
@@ -244,6 +290,9 @@ def command_line():
             print(Fore.BLUE+'Opening python games documentation')
             import webbrowser
             webbrowser.open('https://github.com/shannon-nz/python-games#-python-games-in-development-')
+
+        elif user_input == 'download':
+            download('https://speed.hetzner.de/100MB.bin', '100MB.bin')
 
         elif user_input == 'help':
             print()
@@ -278,15 +327,15 @@ def command_line():
             print('coming soon .... \ngoing back to main menu...')
             
         elif user_input == 'log':
-            print(Fore.BLUE+'Printing main.log ...')
-            f = open('main.log', 'r')
+            print(Fore.BLUE+'Printing data.log ...')
+            f = open('main/data.log', 'r')
             file_contents = f.read()
             print (file_contents)
             f.close()
 
         elif user_input == 'log -clean':
             print('cleaning log...')
-            myText = open(r'main.log','w')
+            myText = open(r'main/data.log','w')
             myText.write('<<< start of log >>>')
             myText.close()
             print('log cleaned!')
@@ -303,7 +352,7 @@ def command_line():
         elif user_input == 'lu':
             print(Fore.BLUE+'Opening Lucky Unicorn Game...')
             sleep(1)
-            os.system('python games/luckyunicorn/00_LU_Base_v_01.py')
+            os.system('python main/games/luckyunicorn/00_LU_Base_v_01.py')
 
         elif user_input == 'profile':
             print(Fore.BLUE+'Opening profile website')
@@ -320,56 +369,32 @@ def command_line():
         elif user_input == 'rps':
             print(Fore.BLUE+'Opening Rock Paper Scissors Game...')
             sleep(1)
-            os.system('python games/rock-paper-scissors/app.py')
+            os.system('python main/games/rock-paper-scissors/app.py')
 
         elif user_input == 'settings':
-            with open('config.json', 'r') as jsonConfig:
+            with open('main/config.json', 'r') as jsonConfig:
                 config = json.dumps(json.load(jsonConfig), sort_keys=True, indent=4, separators=(',', ': '))
             print(Fore.YELLOW+config)
 
         elif user_input == 'settings -reset':
-            with open('config.json', 'r') as jsonConfig:
+            with open('main/config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
                 pass_prompt = input('Enter password: ')
                 if pass_prompt != config['pass']:
                     print(Fore.RED+'Incorrect password')
                 else:
                     current_directory = os.path.dirname(__file__)
-                    file_path = os.path.join(current_directory, 'main', 'default_config.json')
+                    file_path = os.path.join(current_directory, 'main\\info', 'default_config.json')
                     with open(file_path, 'r') as jsonConfig:
                         default_config = json.load(jsonConfig)
 
-                    with open('config.json', 'r') as jsonConfig:
+                    with open('main/config.json', 'r') as jsonConfig:
                         config = json.load(jsonConfig)
-                    with open('config.json', 'w') as f:
+                    with open('main/config.json', 'w') as f:
                         json.dumps(json.dump(default_config, f), indent=4)
 
         elif user_input == 'spaz':
-            print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
-            for item in range(1, 50):
-                print(Fore.RED+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-                print(Fore.BLUE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-                print(Fore.YELLOW+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-                print(Fore.WHITE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-                print(Fore.GREEN+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-                print(Fore.MAGENTA+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-                print(Fore.CYAN+'WARNING, IT IS ABOUT TO GET MAD !!!')
-            spaz_msg = 'SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ '
-            for item in range(1, 21):
-                keyboard.press('f11')
-                keyboard.release('f11')
-                keyboard.press('windows')
-                keyboard.release('windows')
-                keyboard.press('alt+tab')
-                keyboard.release('alt+tab')
-                rand1 = random.randrange(0, 2000)
-                rand2 = random.randrange(0, 2000)
-                mouse.position = (rand1, rand2)
-                print(Fore.RED+spaz_msg)
-                print(Fore.BLUE+spaz_msg)
-                print(Fore.WHITE+spaz_msg)
-                print(Fore.GREEN+spaz_msg)
-            print('\n\nAnd that is why you should be careful what you click on!')
+            spaz_screen()
 
         elif user_input == 'stats':
             # creating a DataFrame
@@ -385,16 +410,18 @@ def command_line():
         # Display all system information
         elif user_input == 'system':
             print(Fore.BLUE+'Opening python file for "system information"...')
-            os.system('python info/system.py')
+            os.system('python main/info/system.py')
             import webbrowser
             webbrowser.open('https://github.com/shannon-nz')
 
         # This option is hidden because it deletes all modules, which would require the user to install them again
-        elif user_input == 'uneverything':
+        elif user_input == 'remove -modules':
             import pip
             pip.main(['uninstall', 'colorama'])
             pip.main(['uninstall', 'pynput'])
+            pip.main(['uninstall', 'tabulate'])
             pip.main(['uninstall', 'keyboard'])
+            pip.main(['uninstall', 'requests'])
 
         elif user_input == 'hello':
             print('Oh, hello! What would you like me to do for you today?')
