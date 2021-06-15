@@ -253,6 +253,78 @@ def download(url, filename):
     sys.stdout.write('\n')
     print(Fore.BLUE+'Download complete, please check the downloads folder')
 
+# |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# When the command is valid but contains additional invalid text
+def invalid_command_ext(command_string, user_input):
+    invalid_text = user_input[len(command_string):len(user_input)]
+    print(Fore.RED+'The "{}" command was identified, but contained invalid text "{}"'.format(command_string, invalid_text))
+
+# Help command function
+def base_command_help(user_input, command_string):
+    # calculate where the dash should be (if there is)
+    expected_dash = user_input[len(command_string)+1:len(command_string)+2]
+    # base command
+    if user_input == command_string:
+        command_array = ['shannon', 'is', 'cool']
+        for item in command_array:
+            print(item)
+        print()
+        print_color = Fore.CYAN
+        print(print_color+'   advanced             '+Fore.BLUE+'display advanced commands')
+        print(print_color+'   clear                '+Fore.BLUE+'clear the terminal')
+        print(print_color+'   doc                  '+Fore.BLUE+'open python games documentation on GitHub')
+        print(print_color+'   help                 '+Fore.BLUE+'display commands and functions')
+        print(print_color+'   help -cat            '+Fore.BLUE+'display commands and functions, formatted into categories')
+        print(print_color+'   help -des            '+Fore.BLUE+'display command details and an longer description')
+        print(print_color+'   help -des -cat       '+Fore.BLUE+'display command details and an longer description, formatted into categories')
+        print(print_color+'   hl                   '+Fore.BLUE+'play higher/lower game')
+        print(print_color+'   log                  '+Fore.BLUE+'view all past logs')
+        print(print_color+'   log -clean           '+Fore.BLUE+'view all past logs')
+        print(print_color+'   log -disable         '+Fore.BLUE+'disable logs')
+        print(print_color+'   log -enable          '+Fore.BLUE+'enable logs')
+        print(print_color+'   ls                   '+Fore.BLUE+'list directory')
+        print(print_color+'   lu                   '+Fore.BLUE+'play lucky unicorn game')
+        print(print_color+'   profile              '+Fore.BLUE+'open my profile website')
+        print(print_color+'   quit                 '+Fore.BLUE+'quit the entire program')
+        print(print_color+'   rps                  '+Fore.BLUE+'play rock paper scissors game')
+        print(print_color+'   restart              '+Fore.BLUE+'restart the application')
+        print(print_color+'   settings             '+Fore.BLUE+'print settings in JSON format')
+        print(print_color+'   settings -reset      '+Fore.BLUE+'reset back to factory settings')
+        print(print_color+'   spaz                 '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (caution)')
+        print(print_color+'   stats                '+Fore.BLUE+'view your stats')
+        print(print_color+'   system               '+Fore.BLUE+'get your system information')
+    # sub commands for command
+    elif expected_dash == '-':
+        # identify sub command
+        sub_command = user_input[len(command_string)+2:len(user_input)]
+        if sub_command == 'des':
+            print('sub command was correctly des')
+        else:
+            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+    # otherwise inform user that the command was identified, but had had a type
+    else:
+        invalid_command_ext(command_string, user_input)
+
+# Help command function
+def base_command_hl(user_input, command_string):
+    # calculate where the dash should be (if there is)
+    expected_dash = user_input[len(command_string)+1:len(command_string)+2]
+    # base command
+    if user_input == command_string:
+        print('coming soon .... \ngoing back to main menu...')
+    # sub commands for command
+    elif expected_dash == '-':
+        # identify sub command
+        sub_command = user_input[len(command_string)+2:len(user_input)]
+        if sub_command == 'help':
+            print('coming soon .... \ngoing back to main menu...')
+        else:
+            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+    # otherwise inform user that the command was identified, but had had a type
+    else:
+        invalid_command_ext(command_string, user_input)
+
+
 def stats():
     return ''
 
@@ -330,42 +402,13 @@ def command_line():
         elif user_input == 'download':
             download('https://github.com/shannon-nz/python-games/blob/main/main/games/luckyunicorn/Python%20Program%20Documentation.pptx?raw=true', 'luckyunicorn_documentation.pptx')
 
-        elif user_input == 'help':
-            command_array = ['shannon', 'is', 'cool']
-            for item in command_array:
-                print(item)
-            print()
-            print_color = Fore.CYAN
-            print(print_color+'   advanced             '+Fore.BLUE+'display advanced commands')
-            print(print_color+'   clear                '+Fore.BLUE+'clear the terminal')
-            print(print_color+'   doc                  '+Fore.BLUE+'open python games documentation on GitHub')
-            print(print_color+'   help                 '+Fore.BLUE+'display commands and functions')
-            print(print_color+'   help -cat            '+Fore.BLUE+'display commands and functions, formatted into categories')
-            print(print_color+'   help -des            '+Fore.BLUE+'display command details and an longer description')
-            print(print_color+'   help -des -cat       '+Fore.BLUE+'display command details and an longer description, formatted into categories')
-            print(print_color+'   hl                   '+Fore.BLUE+'play higher/lower game')
-            print(print_color+'   log                  '+Fore.BLUE+'view all past logs')
-            print(print_color+'   log -clean           '+Fore.BLUE+'view all past logs')
-            print(print_color+'   log -disable         '+Fore.BLUE+'disable logs')
-            print(print_color+'   log -enable          '+Fore.BLUE+'enable logs')
-            print(print_color+'   ls                   '+Fore.BLUE+'list directory')
-            print(print_color+'   lu                   '+Fore.BLUE+'play lucky unicorn game')
-            print(print_color+'   profile              '+Fore.BLUE+'open my profile website')
-            print(print_color+'   quit                 '+Fore.BLUE+'quit the entire program')
-            print(print_color+'   rps                  '+Fore.BLUE+'play rock paper scissors game')
-            print(print_color+'   restart              '+Fore.BLUE+'restart the application')
-            print(print_color+'   settings             '+Fore.BLUE+'print settings in JSON format')
-            print(print_color+'   settings -reset      '+Fore.BLUE+'reset back to factory settings')
-            print(print_color+'   spaz                 '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (caution)')
-            print(print_color+'   stats                '+Fore.BLUE+'view your stats')
-            print(print_color+'   system               '+Fore.BLUE+'get your system information')
+        # check if this is the valid command
+        elif user_input[0:len('help')] == 'help':
+            base_command_help(user_input, 'help')
 
-
-        elif user_input == 'help -des':
-            print('help -des coming soon')
-
-        elif user_input == 'hl':
-            print('coming soon .... \ngoing back to main menu...')
+        # check if this is the valid command
+        elif user_input[0:len('hl')] == 'hl':
+            base_command_hl(user_input, 'hl')
             
         elif user_input == 'log':
             print(Fore.BLUE+'Printing data.log ...')

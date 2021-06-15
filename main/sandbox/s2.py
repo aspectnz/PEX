@@ -13,7 +13,8 @@ def base_command_help(user_input):
         # identify sub command
         sub_command = user_input[len(command_string)+2:len(user_input)]
         if sub_command == 'des':
-            print('sub command was correctly des')
+            print('help -des coming soon')
+        if sub_command == 'des':
         else:
             print('The "-{}" sub command is invalid'.format(sub_command))
     # otherwise inform user that the help command was identified, but had had a type
@@ -23,9 +24,8 @@ def base_command_help(user_input):
 
 
 user_input = 'help -des'
-command_string = 'help'
 # check if this is the valid command
-if user_input[0:len(command_string)] == command_string:
+if user_input[0:len('help')] == 'help':
     base_command_help(user_input)
     
 
