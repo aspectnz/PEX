@@ -189,3 +189,59 @@
 15/06/2021 13:03:16 - DESKTOP-TD95HFS(192.168.56.1): error importing pynput
 15/06/2021 13:03:19 - DESKTOP-TD95HFS(192.168.56.1): installed and imported pynput successfully
 15/06/2021 13:03:20 - DESKTOP-TD95HFS(192.168.56.1): successfully imported keyboard
+15/06/2021 14:12:09 - shannons-pc(192.168.137.1): running main app
+15/06/2021 14:12:09 - shannons-pc(192.168.137.1): importing default modules
+15/06/2021 14:12:09 - shannons-pc(192.168.137.1): successfully imported modules
+15/06/2021 14:12:10 - shannons-pc(192.168.137.1): importing custom modules
+15/06/2021 14:12:10 - shannons-pc(192.168.137.1): successfully imported colorama
+15/06/2021 14:12:12 - shannons-pc(192.168.137.1): successfully imported pandas and tabulate
+15/06/2021 14:12:12 - shannons-pc(192.168.137.1): successfully imported pynput
+15/06/2021 14:12:13 - shannons-pc(192.168.137.1): successfully imported keyboard
+15/06/2021 14:12:37 - shannons-pc(192.168.137.1): running main app
+15/06/2021 14:12:37 - shannons-pc(192.168.137.1): importing default modules
+15/06/2021 14:12:37 - shannons-pc(192.168.137.1): successfully imported modules
+15/06/2021 14:12:40 - shannons-pc(192.168.137.1): running main app
+15/06/2021 14:12:40 - shannons-pc(192.168.137.1): importing default modules
+15/06/2021 14:12:40 - shannons-pc(192.168.137.1): successfully imported modules
+15/06/2021 14:12:40 - shannons-pc(192.168.137.1): importing custom modules
+15/06/2021 14:12:40 - shannons-pc(192.168.137.1): successfully imported colorama
+15/06/2021 14:12:41 - shannons-pc(192.168.137.1): successfully imported pandas and tabulate
+15/06/2021 14:12:41 - shannons-pc(192.168.137.1): successfully imported pynput
+15/06/2021 14:12:41 - shannons-pc(192.168.137.1): successfully imported keyboard
+15/06/2021 14:14:01 - shannons-pc(192.168.137.1): running luckyunicorn
+15/06/2021 14:16:05 - shannons-pc(192.168.137.1): running luckyunicorn
+15/06/2021 14:16:23 - shannons-pc(192.168.137.1): running luckyunicorn
+15/06/2021 14:20:33 - shannons-pc(192.168.56.1): running main app
+15/06/2021 14:20:33 - shannons-pc(192.168.56.1): importing default modules
+15/06/2021 14:20:33 - shannons-pc(192.168.56.1): successfully imported modules
+15/06/2021 14:20:33 - shannons-pc(192.168.56.1): importing custom modules
+15/06/2021 14:20:33 - shannons-pc(192.168.56.1): successfully imported colorama
+15/06/2021 14:20:34 - shannons-pc(192.168.56.1): successfully imported pandas and tabulate
+15/06/2021 14:20:34 - shannons-pc(192.168.56.1): successfully imported pynput
+15/06/2021 14:20:35 - shannons-pc(192.168.56.1): successfully imported keyboard
+15/06/2021 14:22:54 - shannons-pc(192.168.56.1): sttings is an invalid command
+15/06/2021 14:22:56 - shannons-pc(192.168.56.1): running main app
+15/06/2021 14:22:56 - shannons-pc(192.168.56.1): importing default modules
+15/06/2021 14:22:56 - shannons-pc(192.168.56.1): successfully imported modules
+15/06/2021 14:22:58 - shannons-pc(192.168.56.1): importing custom modules
+15/06/2021 14:22:58 - shannons-pc(192.168.56.1): successfully imported colorama
+15/06/2021 14:23:01 - shannons-pc(192.168.56.1): successfully imported pandas and tabulate
+15/06/2021 14:23:01 - shannons-pc(192.168.56.1): successfully imported pynput
+15/06/2021 14:23:02 - shannons-pc(192.168.56.1): successfully imported keyboard
+15/06/2021 14:24:15 - shannons-pc(192.168.56.1): setting is an invalid command
+15/06/2021 14:24:17 - shannons-pc(192.168.56.1): running main app
+15/06/2021 14:24:17 - shannons-pc(192.168.56.1): importing default modules
+15/06/2021 14:24:17 - shannons-pc(192.168.56.1): successfully imported modules
+15/06/2021 14:24:19 - shannons-pc(192.168.56.1): importing custom modules
+15/06/2021 14:24:19 - shannons-pc(192.168.56.1): successfully imported colorama
+15/06/2021 14:24:20 - shannons-pc(192.168.56.1): successfully imported pandas and tabulate
+15/06/2021 14:24:20 - shannons-pc(192.168.56.1): successfully imported pynput
+15/06/2021 14:24:20 - shannons-pc(192.168.56.1): successfully imported keyboard
+15/06/2021 14:26:51 - shannons-pc(192.168.56.1): running main app
+15/06/2021 14:26:51 - shannons-pc(192.168.56.1): importing default modules
+15/06/2021 14:26:51 - shannons-pc(192.168.56.1): successfully imported modules
+15/06/2021 14:26:52 - shannons-pc(192.168.56.1): importing custom modules
+15/06/2021 14:26:52 - shannons-pc(192.168.56.1): successfully imported colorama
+15/06/2021 14:26:53 - shannons-pc(192.168.56.1): successfully imported pandas and tabulate
+15/06/2021 14:26:53 - shannons-pc(192.168.56.1): successfully imported pynput
+15/06/2021 14:26:54 - shannons-pc(192.168.56.1): successfully imported keyboard

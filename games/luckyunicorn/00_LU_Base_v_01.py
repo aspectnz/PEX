@@ -41,7 +41,7 @@ def yes_no(question):
 
 def instructions():
     print('\n\n')
-    statement_generator('How to Play', '=', '')
+    statement_generator('How to Play', '=', '', '')
     print('''
 Choose a starting amount (minimum $1, maximum $10).
 Then press <enter> to play. You will get either a horse, a zebra, a donkey, or a unicorn.
@@ -79,15 +79,15 @@ def num_check(question, low, high):
         except ValueError:
             print(error)
 
-def statement_generator(statement, decoration, value3):
+def statement_generator(statement, decoration, fore_color, value3):
     if decoration == 'cube':
         decoration = '■'
         sides = decoration * 4
-        statement = "{} {} {}".format(Fore.BLUE+Style.DIM+sides, Fore.WHITE+Style.BRIGHT+statement, Fore.BLUE+Style.DIM+sides)
+        statement = "{} {} {}".format(Fore.fore_color+Style.DIM+sides, Fore.WHITE+Style.BRIGHT+statement, Fore.fore_color+Style.DIM+sides)
         top_bottom = decoration * (len(statement) - 27)
-        print(Back.BLUE+Style.DIM+Fore.BLUE+top_bottom)
-        print(Back.BLUE+statement)
-        print(Back.BLUE+Style.DIM+Fore.BLUE+top_bottom)
+        print(Back.fore_color+Style.DIM+Fore.fore_color+top_bottom)
+        print(Back.fore_color+statement)
+        print(Back.fore_color+Style.DIM+Fore.fore_color+top_bottom)
 
         return ""
 
@@ -97,24 +97,25 @@ def statement_generator(statement, decoration, value3):
         else:
             minus_num = 15
 
+        fore_color = Fore.CYAN
         sides = decoration * 3
-        statement = "{} {} {}".format(Fore.BLACK+sides, Fore.WHITE+statement, Fore.BLACK+sides)
+        statement = "{} {} {}".format(fore_color+sides, Fore.WHITE+statement, fore_color+sides)
         top_bottom = decoration * (len(statement) - minus_num)
 
-        print(Fore.BLACK+top_bottom)
+        print(fore_color+top_bottom)
         print(statement)
-        print(Fore.BLACK+top_bottom)
+        print(fore_color+top_bottom)
 
         return ""
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 
 print('\n')
-statement_generator('Welcome to the Lucky Unicorn Game', 'cube', '')
+statement_generator('Welcome to the Lucky Unicorn Game', 'cube', 'BLUE', '')
 
 played_before = yes_no('Have you played the game before? (yes/no): ')
 print('\n')
-statement_generator('Let\'s get Started', '-', '')
+statement_generator('Let\'s get Started', '-', '', '')
 
 if played_before == 'no':
     instructions()
@@ -185,7 +186,7 @@ while play_again != 'quit':
             balance -= 0.5
 
         round_result = Fore.GREEN+'You got a {}. Your in game balance is '.format(chosen)+Fore.RED+'${}'.format(balance)
-        statement_generator(round_result, chosen_type, 'roundresult')
+        statement_generator(round_result, chosen_type, '', 'roundresult')
 
         if balance < 1:
             play_again = 'quit'
