@@ -265,34 +265,107 @@ def base_command_help(user_input, command_string):
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
     # base command
     if user_input == command_string:
-        command_array = ['shannon', 'is', 'cool']
-        for item in command_array:
-            print(item)
+        command_color = Fore.CYAN
+        des_color = Fore.BLUE
+        master_command_list = {
+            'advanced': {
+                'brief_description': 'display advanced commands',
+                'description': ''
+            },
+            'clear':{
+                'brief_description': 'clear the terminal',
+                'description': ''
+            },
+            'doc':{
+                'brief_description': 'open python games documentation on GitHub',
+                'description': ''
+            },
+            'help':{
+                'brief_description': 'display commands and functions',
+                'description': ''
+            },
+            'help -cat':{
+                'brief_description': 'display commands and functions, formatted into categories',
+                'description': ''
+            },
+            'help -des':{
+                'brief_description': 'display command details and an longer description',
+                'description': ''
+            },
+            'help -des -cat':{
+                'brief_description': 'display command details and an longer description, formatted into categories',
+                'description': ''
+            },
+            'hl':{
+                'brief_description': 'play higher/lower game',
+                'description': ''
+            },
+            'log':{
+                'brief_description': 'view all past logs',
+                'description': ''
+            },
+            'log -clean':{
+                'brief_description': 'view all past logs',
+                'description': ''
+            },
+            'log -disable':{
+                'brief_description': 'disable logs',
+                'description': ''
+            },
+            'log -enable':{
+                'brief_description': 'enable logs',
+                'description': ''
+            },
+            'ls':{
+                'brief_description': 'list directory',
+                'description': ''
+            },
+            'lu':{
+                'brief_description': 'play lucky unicorn game',
+                'description': ''
+            },
+            'profile':{
+                'brief_description': 'open my profile website',
+                'description': ''
+            },
+            'quit':{
+                'brief_description': 'quit the entire program',
+                'description': ''
+            },
+            'rps':{
+                'brief_description': 'play rock paper scissors game',
+                'description': ''
+            },
+            'restart':{
+                'brief_description': 'restart the application',
+                'description': ''
+            },
+            'settings':{
+                'brief_description': 'print settings in JSON format',
+                'description': ''
+            },
+            'settings -reset':{
+                'brief_description': 'reset back to factory settings',
+                'description': ''
+            },
+            'spaz':{
+                'brief_description': 'SPAZ YOUR SCREEN for 7 seconds (caution)',
+                'description': ''
+            },
+            'stats':{
+                'brief_description': 'view your stats',
+                'description': ''
+            },
+            'system':{
+                'brief_description': 'get your system information',
+                'description': ''
+            }
+        }
         print()
-        print_color = Fore.CYAN
-        print(print_color+'   advanced             '+Fore.BLUE+'display advanced commands')
-        print(print_color+'   clear                '+Fore.BLUE+'clear the terminal')
-        print(print_color+'   doc                  '+Fore.BLUE+'open python games documentation on GitHub')
-        print(print_color+'   help                 '+Fore.BLUE+'display commands and functions')
-        print(print_color+'   help -cat            '+Fore.BLUE+'display commands and functions, formatted into categories')
-        print(print_color+'   help -des            '+Fore.BLUE+'display command details and an longer description')
-        print(print_color+'   help -des -cat       '+Fore.BLUE+'display command details and an longer description, formatted into categories')
-        print(print_color+'   hl                   '+Fore.BLUE+'play higher/lower game')
-        print(print_color+'   log                  '+Fore.BLUE+'view all past logs')
-        print(print_color+'   log -clean           '+Fore.BLUE+'view all past logs')
-        print(print_color+'   log -disable         '+Fore.BLUE+'disable logs')
-        print(print_color+'   log -enable          '+Fore.BLUE+'enable logs')
-        print(print_color+'   ls                   '+Fore.BLUE+'list directory')
-        print(print_color+'   lu                   '+Fore.BLUE+'play lucky unicorn game')
-        print(print_color+'   profile              '+Fore.BLUE+'open my profile website')
-        print(print_color+'   quit                 '+Fore.BLUE+'quit the entire program')
-        print(print_color+'   rps                  '+Fore.BLUE+'play rock paper scissors game')
-        print(print_color+'   restart              '+Fore.BLUE+'restart the application')
-        print(print_color+'   settings             '+Fore.BLUE+'print settings in JSON format')
-        print(print_color+'   settings -reset      '+Fore.BLUE+'reset back to factory settings')
-        print(print_color+'   spaz                 '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (caution)')
-        print(print_color+'   stats                '+Fore.BLUE+'view your stats')
-        print(print_color+'   system               '+Fore.BLUE+'get your system information')
+        for key, value in master_command_list.items():
+            num = 30-len(key)
+            tabs = ' '*num
+            print(command_color+'   '+key+tabs+des_color+value['brief_description'])
     # sub commands for command
     elif expected_dash == '-':
         # identify sub command
@@ -345,10 +418,12 @@ def base_command_log(user_input, command_string):
             myText.write('<<< start of log >>>')
             myText.close()
             print('log cleaned!')
-        if sub_command == 'disable':
+        elif sub_command == 'disable':
             mod_config('mod','logOption','disabled')
-        if sub_command == 'enable':
+        elif sub_command == 'enable':
             mod_config('mod','logOption','enabled')
+        elif sub_command == 'help':
+            print('log definition')
         else:
             print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
     # otherwise inform user that the command was identified, but had had a type
@@ -360,7 +435,7 @@ def stats():
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
-check_internet_on_start()
+#check_internet_on_start()
 screen_clear()
 mouse.position = (0, 0)
 
@@ -536,8 +611,8 @@ def command_line():
 
         elif user_input == 'custom_command':
             with open('main/config.json', 'r') as jsonConfig:
-            config = json.load(jsonConfig)
-            config_username = config['username']
+                config = json.load(jsonConfig)
+                config_username = config['username']
 
         else:
             print('Sorry, "{}" '.format(user_input)+Fore.RED+'is an invalid command')
