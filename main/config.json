@@ -1,1 +1,9 @@
-{"balance": 100, "played": "0", "logOption": "enabled", "username": "shannon", "passOption": "enabled", "pass": "pyga", "internetRequired": false}
+{
+    "balance": 100,
+    "logOption": "enabled",
+    "pass": "pyga",
+    "passOption": "enabled",
+    "played": "0",
+    "username": "shannon",
+    "internetRequired": false
+}

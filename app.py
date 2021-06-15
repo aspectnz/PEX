@@ -39,7 +39,7 @@ with open('main/config.json', 'r') as jsonConfig:
             else:
                 config['username'] = username_prompt
                 with open('main/config.json', 'w') as f:
-                    json.dumps(json.dump(config, f), indent=4)
+                    json.dump(config, f, indent=4, sort_keys=True)
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 add_log('importing default modules')
@@ -202,8 +202,9 @@ def mod_config(option, value, newval):
         with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
         config[value] = newval
+
         with open('main/config.json', 'w') as f:
-            json.dumps(json.dump(config, f), indent=4)
+            json.dump(config, f, indent = 4, sort_keys=True)
 
 def spaz_screen():
     print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
@@ -263,20 +264,22 @@ def invalid_command_ext(command_string, user_input):
 
 # Help command function
 def base_command_help(user_input, command_string):
-    sys.path.insert(0, './main')
-    import master_command_list as mcl
+    with open('main/master_command_list.json', 'r') as command_list:
+        mcl = json.dumps(json.load(command_list), indent=4)
+    print(Fore.YELLOW+mcl)
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
     # base command
     if user_input == command_string:
         command_color = Fore.CYAN
         des_color = Fore.BLUE
-        
-        print()
-        for key, value in mcl.master_command_list.items():
-            num = 30-len(key)
+        print(mcl)
+        command_name = mcl['command']
+        command_description_brief = mcl['command']['brief_description']
+        for command_name in mcl:
+            num = 30-len(command_name)
             tabs = ' '*num
-            print(command_color+'   '+key+tabs+des_color+value['brief_description'])
+            print(command_color+'   '+command_name+tabs+des_color+command_description_brief)
     # sub commands for command
     elif expected_dash == '-':
         # identify sub command
@@ -459,7 +462,7 @@ def command_line():
 
         elif user_input == 'settings':
             with open('main/config.json', 'r') as jsonConfig:
-                config = json.dumps(json.load(jsonConfig), sort_keys=True, indent=4, separators=(',', ': '))
+                config = json.dumps(json.load(jsonConfig), indent=4, sort_keys=True)
             print(Fore.YELLOW+config)
 
         elif user_input == 'settings -reset':
@@ -478,7 +481,7 @@ def command_line():
                     with open('main/config.json', 'r') as jsonConfig:
                         config = json.load(jsonConfig)
                     with open('main/config.json', 'w') as f:
-                        json.dumps(json.dump(default_config, f), indent=4)
+                        json.dump(default_config, f, indent=4, sort_keys=True)
                     add_log('settings have been reset')
                     add_log('restarting the application...')
                     screen_clear()

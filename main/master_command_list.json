@@ -1,0 +1,117 @@
+{
+    "command": {
+        "name": "advanced",
+        "brief_description": "display advanced commands",
+        "description": ""
+    },
+    "command":{
+        "name": "clear",
+        "brief_description": "clear the terminal",
+        "description": ""
+    },
+    "command":{
+        "name": "doc",
+        "brief_description": "open python games documentation on GitHub",
+        "description": ""
+    },
+    "command":{
+        "name": "help",
+        "brief_description": "display commands and functions",
+        "description": ""
+    },
+    "command":{
+        "name": "help -cat",
+        "brief_description": "display commands and functions, formatted into categories",
+        "description": ""
+    },
+    "command":{
+        "name": "help -des",
+        "brief_description": "display command details and an longer description",
+        "description": ""
+    },
+    "command":{
+        "name": "help -des -cat",
+        "brief_description": "display command details and an longer description, formatted into categories",
+        "description": ""
+    },
+    "command":{
+        "name": "hl",
+        "brief_description": "play higher/lower game",
+        "description": ""
+    },
+    "command":{
+        "name": "log",
+        "brief_description": "view all past logs",
+        "description": ""
+    },
+    "command":{
+        "name": "log -clean",
+        "brief_description": "view all past logs",
+        "description": ""
+    },
+    "command":{
+        "name": "log -disable",
+        "brief_description": "disable logs",
+        "description": ""
+    },
+    "command":{
+        "name": "log -enable",
+        "brief_description": "enable logs",
+        "description": ""
+    },
+    "command":{
+        "name": "ls",
+        "brief_description": "list directory",
+        "description": ""
+    },
+    "command":{
+        "name": "lu",
+        "brief_description": "play lucky unicorn game",
+        "description": ""
+    },
+    "command":{
+        "name": "profile",
+        "brief_description": "open my profile website",
+        "description": ""
+    },
+    "command":{
+        "name": "quit",
+        "brief_description": "quit the entire program",
+        "description": ""
+    },
+    "command":{
+        "name": "rps",
+        "brief_description": "play rock paper scissors game",
+        "description": ""
+    },
+    "command":{
+        "name": "restart",
+        "brief_description": "restart the application",
+        "description": ""
+    },
+    "command":{
+        "name": "settings",
+        "brief_description": "print settings in JSON format",
+        "description": ""
+    },
+    "command":{
+        "name": "settings -reset",
+        "brief_description": "reset back to factory settings",
+        "description": ""
+    },
+    "command":{
+        "name": "spaz",
+        "brief_description": "SPAZ YOUR SCREEN for 7 seconds (caution)",
+        "description": ""
+    },
+    "command":{
+        "name": "stats",
+        "brief_description": "view your stats",
+        "description": ""
+    },
+    "command":{
+        "name": "system",
+        "brief_description": "get your system information",
+        "description": ""
+    }
+}
