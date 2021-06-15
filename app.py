@@ -266,20 +266,23 @@ def invalid_command_ext(command_string, user_input):
 def base_command_help(user_input, command_string):
     with open('main/master_command_list.json', 'r') as command_list:
         mcl = json.dumps(json.load(command_list), indent=4)
-    print(Fore.YELLOW+mcl)
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
     # base command
     if user_input == command_string:
+        for key, value in mcl["master_command_list"]:
+            result = key['master_command_list']
+            print(result)
+        '''
         command_color = Fore.CYAN
         des_color = Fore.BLUE
-        print(mcl)
         command_name = mcl['command']
         command_description_brief = mcl['command']['brief_description']
         for command_name in mcl:
             num = 30-len(command_name)
             tabs = ' '*num
             print(command_color+'   '+command_name+tabs+des_color+command_description_brief)
+        '''
     # sub commands for command
     elif expected_dash == '-':
         # identify sub command
