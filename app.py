@@ -35,7 +35,7 @@ with open('config.json', 'r') as jsonConfig:
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 add_log('importing default modules')
-
+import sys
 try:
     add_log('successfully imported modules')
     import random
@@ -45,7 +45,8 @@ try:
     import subprocess
     from subprocess import *
     import ctypes
-    import sys
+    import pip
+    from pip import *
 except:
     add_log('error importing default modules')
 
@@ -63,8 +64,7 @@ try:
 except:
     add_log('error importing colorama')
     print('You do not have the "colorama" module, we are installing it for you now...')
-    import pip
-    pip.main(['install', 'colorama'])
+    os.system('pip install colorama')
     import colorama
     from colorama import Fore, Back, Style
     add_log('installed and imported colorama successfully')
@@ -81,9 +81,8 @@ try:
     add_log('successfully imported pandas and tabulate')
 except:
     add_log('error importing pandas or tabulate')
-    import pip
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
-    pip.main(['install', 'tabulate'])
+    os.system('pip install tabulate')
     # importing the modules
     from tabulate import tabulate
     import pandas as pd
@@ -98,11 +97,11 @@ try:
     add_log('successfully imported pynput')
 except:
     add_log('error importing pynput')
-    import pip
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
-    pip.main(['install', 'pynput'])
+    os.system('pip install pynput')
     #from pynput.keyboard import Key, Controller
     from pynput.mouse import Button, Controller
+    mouse = Controller()
     add_log('installed and imported pynput successfully')
 
 
@@ -118,7 +117,7 @@ except:
     add_log('error importing keyboard')
     import pip
     print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
-    pip.main(['install', 'keyboard'])
+    os.system('pip install keyboard')
     import keyboard
     keyboard.press('win+up')
     keyboard.release('win+up')
