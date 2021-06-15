@@ -106,6 +106,10 @@ There are mutliple commands that you can use, some of which are just for the sak
       <td>Latest version of pip</td>
       <td>Click on update pip in the root directory</td>
     </tr>
+    <tr>
+      <td>A stable internet connect</td>
+      <td>Especially the first time. You can disable the internet requirement in the main/config.json or with the command `intreq -disable` command</td>
+    </tr>
   </tbody>
 </table>
 
