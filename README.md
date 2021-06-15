@@ -28,7 +28,12 @@
       <td width="350px">
       </br>
         <ul>
-          <li><a href="https://github.com/shannon-nz/python-games#-python-games-">🥇🎮 Python Games 🎲🔫</a></li>
+          <li>
+            <a href="https://github.com/shannon-nz/python-games#-python-games-">🥇🎮 Python Games 🎲🔫</a>
+            <ul>
+              <li><a href="https://github.com/shannon-nz/python-games/blob/main/README.md#what-is-python-games">What is Python Games?</a></li>
+            </ul>
+          </li>
           <li><a href="https://github.com/shannon-nz/python-games#how-the-app-works">How the app works</a></li>
           <li><a href="https://github.com/shannon-nz/python-games#requirements">Requirements</a></li>
           <li><a href="https://github.com/shannon-nz/python-games#installation">Installation</a></li>
