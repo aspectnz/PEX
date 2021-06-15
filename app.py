@@ -297,9 +297,6 @@ print(Fore.GREEN+'Welcome to the main menu. Use a command or type "help" if you 
 
 
 
-
-
-
 def activate_admin():
     print('admin activated')
 
@@ -362,6 +359,7 @@ def command_line():
             print(print_color+'   spaz                 '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (caution)')
             print(print_color+'   stats                '+Fore.BLUE+'view your stats')
             print(print_color+'   system               '+Fore.BLUE+'get your system information')
+
 
         elif user_input == 'help -des':
             print('help -des coming soon')
