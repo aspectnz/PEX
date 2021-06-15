@@ -297,7 +297,7 @@ def command_line():
         elif user_input == 'log -enable':
             mod_config('mod','logOption','enabled')
 
-        if user_input == 'ls':
+        elif user_input == 'ls':
             os.system('dir')
 
         elif user_input == 'lu':
