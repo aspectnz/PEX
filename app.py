@@ -1,3 +1,11 @@
+print(
+'''
+
+█░░ █▀█ ▄▀█ █▀▄ █ █▄░█ █▀▀ ░ ░ ░
+█▄▄ █▄█ █▀█ █▄▀ █ █░▀█ █▄█ ▄ ▄ ▄
+
+PLEASE WAIT A SECOND
+''')
 import json
 import socket
 h_name = socket.gethostname()
@@ -226,21 +234,24 @@ def spaz_screen():
 def download(url, filename):
     print(Fore.BLUE+'[*] Downloading '+filename+' from '+url)
     import requests
-    with open(filename, 'wb') as f:
+    filepath = 'downloads/'+filename
+    with open(filepath, 'wb') as f:
         response = requests.get(url, stream=True)
         total = response.headers.get('content-length')
         if total is None:
             f.write(response.content)
         else:
+            print(Fore.BLUE+'preparing download...')
             downloaded = 0
             total = int(total)
             for data in response.iter_content(chunk_size=max(int(total/1000), 1024*1024)):
                 downloaded += len(data)
                 f.write(data)
-                done = int(50*downloaded/total)
-                sys.stdout.write('\r[{}{}]'.format('█' * done, '.' * (50-done)))
+                done = int(100*downloaded/total)
+                sys.stdout.write('\r[{}{}]'.format('/' * done, '.' * (50-done)))
                 sys.stdout.flush()
     sys.stdout.write('\n')
+    print(Fore.BLUE+'Download complete, please check the downloads folder')
 
 def stats():
     return ''
@@ -251,26 +262,48 @@ check_internet_on_start()
 screen_clear()
 mouse.position = (0, 0)
 
+print(Fore.GREEN+
+    '''
+
+██████╗░██╗░░░██╗████████╗██╗░░██╗░█████╗░███╗░░██╗░░░░░░░██████╗░░█████╗░███╗░░░███╗███████╗░██████╗
+██╔══██╗╚██╗░██╔╝╚══██╔══╝██║░░██║██╔══██╗████╗░██║░░░░░░██╔════╝░██╔══██╗████╗░████║██╔════╝██╔════╝
+██████╔╝░╚████╔╝░░░░██║░░░███████║██║░░██║██╔██╗██║█████╗██║░░██╗░███████║██╔████╔██║█████╗░░╚█████╗░
+██╔═══╝░░░╚██╔╝░░░░░██║░░░██╔══██║██║░░██║██║╚████║╚════╝██║░░╚██╗██╔══██║██║╚██╔╝██║██╔══╝░░░╚═══██╗
+██║░░░░░░░░██║░░░░░░██║░░░██║░░██║╚█████╔╝██║░╚███║░░░░░░╚██████╔╝██║░░██║██║░╚═╝░██║███████╗██████╔╝
+╚═╝░░░░░░░░╚═╝░░░░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░╚═╝░░╚══╝░░░░░░░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚═════╝░
+    ''')
+
 print(Fore.BLUE+'Your mouse has been moved to the top left.')
 
 check_platform_on_start()
 
 
 print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(mod_config('view','balance','')))
+if first_time == True:
+    print(Fore.WHITE+'''
+Welcome to python-games!
+As this may be your first time using this application, this is just a reminder to make sure that you have 
+read the documentation so you know how to use this app properly. Otherwise, you may run into some 
+unexpected problems :D
 
+''')
+    from keyboard import press
+    keyboard.write('help')
 
 
 print(Fore.GREEN+'Welcome to the main menu. Use a command or type "help" if you don\'t know any commands')
+
+
+
+
+
+
 
 
 def activate_admin():
     print('admin activated')
 
 keyboard.add_hotkey("shift+alt+p", lambda: activate_admin)
-
-if first_time == True:
-    from keyboard import press
-    keyboard.write('help')
 
 
 # Function that contains all code for commands, some link to other functions
@@ -283,7 +316,13 @@ def command_line():
             print(Fore.RED+'\npy-games@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
         user_input = input().lower()
       
-        if user_input == 'clear':
+        if user_input == 'advanced':
+            print()
+            print_color = Fore.CYAN
+            print(print_color+'   admin (command)      '+Fore.BLUE+'perform commands as admin, use before any command')
+            print(print_color+'   clear                '+Fore.BLUE+'clear the terminal')
+
+        elif user_input == 'clear':
             screen_clear()
 
         elif user_input == 'doc':
@@ -292,33 +331,37 @@ def command_line():
             webbrowser.open('https://github.com/shannon-nz/python-games#-python-games-in-development-')
 
         elif user_input == 'download':
-            download('https://speed.hetzner.de/100MB.bin', '100MB.bin')
+            download('https://github.com/shannon-nz/python-games/blob/main/main/games/luckyunicorn/Python%20Program%20Documentation.pptx?raw=true', 'luckyunicorn_documentation.pptx')
 
         elif user_input == 'help':
+            command_array = ['shannon', 'is', 'cool']
+            for item in command_array:
+                print(item)
             print()
             print_color = Fore.CYAN
-            print(print_color+'   clear                '+Fore.BLUE+'clear the terminal (action)')
-            print(print_color+'   doc                  '+Fore.BLUE+'open python games documentation (website)')
-            print(print_color+'   help                 '+Fore.BLUE+'display commands and function (help)')
-            print(print_color+'   help -cat            '+Fore.BLUE+'display commands and function, formatted into categories (help)')
-            print(print_color+'   help -des            '+Fore.BLUE+'display command details and an longer description (help)')
-            print(print_color+'   help -des -cat       '+Fore.BLUE+'display command details and an longer description, formatted into categories (help)')
-            print(print_color+'   hl                   '+Fore.BLUE+'higher/lower (game)')
-            print(print_color+'   log                  '+Fore.BLUE+'view all past logs (info)')
-            print(print_color+'   log -clean           '+Fore.BLUE+'view all past logs (info)')
-            print(print_color+'   log -disable         '+Fore.BLUE+'disable logs (action)')
-            print(print_color+'   log -enable          '+Fore.BLUE+'enable logs (info)')
-            print(print_color+'   ls                   '+Fore.BLUE+'list directory (action)')
-            print(print_color+'   lu                   '+Fore.BLUE+'lucky unicorn (game)')
-            print(print_color+'   profile              '+Fore.BLUE+'open my profile website (website)')
-            print(print_color+'   quit                 '+Fore.BLUE+'quit the entire program (action)')
-            print(print_color+'   rps                  '+Fore.BLUE+'rock paper scissors (game)')
-            print(print_color+'   restart              '+Fore.BLUE+'restart the application (action)')
-            print(print_color+'   settings             '+Fore.BLUE+'print settings in JSON format (info)')
-            print(print_color+'   settings -reset      '+Fore.BLUE+'reset back to factory settings (action)')
-            print(print_color+'   spaz                 '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (fun)')
-            print(print_color+'   stats                '+Fore.BLUE+'View your stats')
-            print(print_color+'   system               '+Fore.BLUE+'get your system information (info)')
+            print(print_color+'   advanced             '+Fore.BLUE+'display advanced commands')
+            print(print_color+'   clear                '+Fore.BLUE+'clear the terminal')
+            print(print_color+'   doc                  '+Fore.BLUE+'open python games documentation on GitHub')
+            print(print_color+'   help                 '+Fore.BLUE+'display commands and functions')
+            print(print_color+'   help -cat            '+Fore.BLUE+'display commands and functions, formatted into categories')
+            print(print_color+'   help -des            '+Fore.BLUE+'display command details and an longer description')
+            print(print_color+'   help -des -cat       '+Fore.BLUE+'display command details and an longer description, formatted into categories')
+            print(print_color+'   hl                   '+Fore.BLUE+'play higher/lower game')
+            print(print_color+'   log                  '+Fore.BLUE+'view all past logs')
+            print(print_color+'   log -clean           '+Fore.BLUE+'view all past logs')
+            print(print_color+'   log -disable         '+Fore.BLUE+'disable logs')
+            print(print_color+'   log -enable          '+Fore.BLUE+'enable logs')
+            print(print_color+'   ls                   '+Fore.BLUE+'list directory')
+            print(print_color+'   lu                   '+Fore.BLUE+'play lucky unicorn game')
+            print(print_color+'   profile              '+Fore.BLUE+'open my profile website')
+            print(print_color+'   quit                 '+Fore.BLUE+'quit the entire program')
+            print(print_color+'   rps                  '+Fore.BLUE+'play rock paper scissors game')
+            print(print_color+'   restart              '+Fore.BLUE+'restart the application')
+            print(print_color+'   settings             '+Fore.BLUE+'print settings in JSON format')
+            print(print_color+'   settings -reset      '+Fore.BLUE+'reset back to factory settings')
+            print(print_color+'   spaz                 '+Fore.BLUE+'SPAZ YOUR SCREEN for 7 seconds (caution)')
+            print(print_color+'   stats                '+Fore.BLUE+'view your stats')
+            print(print_color+'   system               '+Fore.BLUE+'get your system information')
 
         elif user_input == 'help -des':
             print('help -des coming soon')
@@ -363,6 +406,7 @@ def command_line():
             print(Fore.RED+'Failed to quit the application, please try again')
 
         elif user_input == 'restart':
+            add_log('restarting application...')
             os.system('python app.py')
             exit()
 
@@ -377,6 +421,8 @@ def command_line():
             print(Fore.YELLOW+config)
 
         elif user_input == 'settings -reset':
+            print('This will reset the entire application and it\'s configurations\nAre you sure you want to reset? (y/n)', end='')
+            verification_prompt = input('')
             with open('main/config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
                 pass_prompt = input('Enter password: ')
@@ -387,11 +433,15 @@ def command_line():
                     file_path = os.path.join(current_directory, 'main\\info', 'default_config.json')
                     with open(file_path, 'r') as jsonConfig:
                         default_config = json.load(jsonConfig)
-
                     with open('main/config.json', 'r') as jsonConfig:
                         config = json.load(jsonConfig)
                     with open('main/config.json', 'w') as f:
                         json.dumps(json.dump(default_config, f), indent=4)
+                    add_log('settings have been reset')
+                    add_log('restarting the application...')
+                    screen_clear()
+                    os.system('python app.py')
+                    exit()
 
         elif user_input == 'spaz':
             spaz_screen()
@@ -425,6 +475,9 @@ def command_line():
 
         elif user_input == 'hello':
             print('Oh, hello! What would you like me to do for you today?')
+
+        elif user_input == 'admin':
+            print('Admin mode now enabled')
 
         else:
             print('Sorry, "{}" '.format(user_input)+Fore.RED+'is an invalid command')

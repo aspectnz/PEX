@@ -40,8 +40,7 @@ def yes_no(question):
             print('Please answer yes / no')
 
 def instructions():
-    print('\n')
-    statement_generator('How to Play', '=', '')
+    statement_generator('How to Play', 'cube', '', 'blue')
     print('''
 Choose a starting amount (minimum $1, maximum $10).
 Then press <enter> to play. You will get either a horse, a zebra, a donkey, or a unicorn.
@@ -78,11 +77,21 @@ def num_check(question, low, high):
         except ValueError:
             print(error)
 
-def statement_generator(statement, decoration, value3):
+def statement_generator(statement, decoration, value3, color):
     if decoration == 'cube':
         decoration = '■'
-        fore_color = Fore.BLUE
-        back_color = Back.BLUE
+        if color == 'blue':
+            fore_color = Fore.BLUE
+            back_color = Back.BLUE
+        if color == 'green':
+            fore_color = Fore.GREEN
+            back_color = Back.GREEN
+        if color == 'red':
+            fore_color = Fore.RED
+            back_color = Back.RED
+        if color == 'cyan':
+            fore_color = Fore.CYAN
+            back_color = Back.CYAN
 
         sides = decoration * 4
         statement = "{} {} {}".format(fore_color+Style.DIM+sides, Fore.WHITE+Style.BRIGHT+statement, fore_color+Style.DIM+sides)
@@ -112,16 +121,23 @@ def statement_generator(statement, decoration, value3):
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 
-print('\n')
-statement_generator('Welcome to the Lucky Unicorn Game', 'cube', '')
-
+print(Fore.GREEN+
+    '''
+██╗░░░░░██╗░░░██╗░█████╗░██╗░░██╗██╗░░░██╗░░░░░░██╗░░░██╗███╗░░██╗██╗░█████╗░░█████╗░██████╗░███╗░░██╗
+██║░░░░░██║░░░██║██╔══██╗██║░██╔╝╚██╗░██╔╝░░░░░░██║░░░██║████╗░██║██║██╔══██╗██╔══██╗██╔══██╗████╗░██║
+██║░░░░░██║░░░██║██║░░╚═╝█████═╝░░╚████╔╝░█████╗██║░░░██║██╔██╗██║██║██║░░╚═╝██║░░██║██████╔╝██╔██╗██║
+██║░░░░░██║░░░██║██║░░██╗██╔═██╗░░░╚██╔╝░░╚════╝██║░░░██║██║╚████║██║██║░░██╗██║░░██║██╔══██╗██║╚████║
+███████╗╚██████╔╝╚█████╔╝██║░╚██╗░░░██║░░░░░░░░░╚██████╔╝██║░╚███║██║╚█████╔╝╚█████╔╝██║░░██║██║░╚███║
+╚══════╝░╚═════╝░░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░░░░░░░░╚═════╝░╚═╝░░╚══╝╚═╝░╚════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚══╝
+    ''')
+print(Fore.GREEN+'Welcome to Lucky Unicorn!\n')
 played_before = yes_no('Have you played the game before? (yes/no): ')
 print('\n')
 
 if played_before == 'no':
     instructions()
 
-statement_generator('Let\'s get Started', '-', '')
+statement_generator('Let\'s get Started', 'cube', '', 'green')
 print()
 
 how_much = num_check('How much would you like to play with? (1 - 10): ', 0, 10)
@@ -190,7 +206,7 @@ while play_again != 'quit':
             balance -= 0.5
 
         round_result = Fore.GREEN+'You got a {}. Your in game balance is '.format(chosen)+Fore.RED+'${}'.format(balance)
-        statement_generator(round_result, chosen_type, 'roundresult')
+        statement_generator(round_result, chosen_type, 'roundresult', '')
 
         if balance < 1:
             play_again = 'quit'

@@ -1,22 +1,18 @@
-def import_colorama(): 
-    # Import colorama module
-    # If the module is not installed, then automatically install it. Otherwise, continue the program
-    try:
-        import colorama
-        colorama.init()
-        colorama.init(convert=True)
-        colorama.init(autoreset=True)
-        from colorama import Fore, Back, Style
-    except:
-        print('You do not have the "colorama" module, we are installing it for you now...')
-        import pip
-        pip.main(['install', 'colorama'])
-        import colorama
-        colorama.init()
-        colorama.init(convert=True)
-        colorama.init(autoreset=True)
-        from colorama import Fore, Back, Style
-import_colorama()
+from pathlib import Path
+downloads_path = str(Path.home() / "Downloads")
+print(downloads_path)
 
-print(Fore.RED+'ayayayayayayayaya')
-input('hello')
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+if is_admin():
+    import shutil
+    src = r'C:\wamp64\test.txt'
+    dst = r'C:\test'
+    shutil.copyfile(src, dst)
+else:
+    # Re-run the program with admin rights
+    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
