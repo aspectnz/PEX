@@ -15,7 +15,7 @@ def add_log(text):
     print(text)
     with open('main/config.json', 'r') as jsonConfig:
         config = json.load(jsonConfig)
-        if config['logOption'] == 'enabled':
+        if config['options']['log'] == 'enabled':
             now = datetime.now()
             dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
             with open('main/data.log', 'a') as file_object:
@@ -26,10 +26,10 @@ first_time = False
 config_username = 'root'
 with open('main/config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
-    if config['username'] == 'root':
+    if config['user']['username'] == 'root':
         first_time = True
         print('Welcome, first make a username. Something short and easy to remember! ')
-        while config['username'] == 'root':
+        while config['user']['username'] == 'root':
             username_prompt = input('Enter username: ')
             
             if username_prompt == 'root':
@@ -37,7 +37,7 @@ with open('main/config.json', 'r') as jsonConfig:
             elif username_prompt == '' or username_prompt == ' ':
                 print('please enter a valid username, not blank space')
             else:
-                config['username'] = username_prompt
+                config['user']['username'] = username_prompt
                 with open('main/config.json', 'w') as f:
                     json.dump(config, f, indent=4, sort_keys=True)
 
@@ -288,12 +288,39 @@ def sub_command_help(command):
 
 
 # highler lower game command function
+def base_command_admin(user_input, command_string):
+    # calculate where the dash should be (if there is)
+    expected_dash = user_input[len(command_string)+1:len(command_string)+2]
+    # base command
+    if user_input == command_string:
+        print('admin command requires a sub command')
+    # sub commands for command
+    elif expected_dash == '-':
+        # identify sub command
+        sub_command = user_input[len(command_string)+2:len(user_input)]
+        if sub_command == 'help':
+            sub_command_help(command_string)
+        elif sub_command == 'delmods':
+            pip.main(['uninstall', 'colorama'])
+            pip.main(['uninstall', 'pynput'])
+            pip.main(['uninstall', 'tabulate'])
+            pip.main(['uninstall', 'pandas'])
+            pip.main(['uninstall', 'keyboard'])
+            pip.main(['uninstall', 'requests'])
+        else:
+            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+    # otherwise inform user that the command was identified, but had had a type
+    else:
+        invalid_command_ext(command_string, user_input)
+
+
+# highler lower game command function
 def base_command_download(user_input, command_string):
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
     # base command
     if user_input == command_string:
-        print('Download command requires a sub command')
+        print('download command requires a sub command')
     # sub commands for command
     elif expected_dash == '-':
         # identify sub command
@@ -389,9 +416,17 @@ def base_command_log(user_input, command_string):
             myText.close()
             print('log cleaned!')
         elif sub_command == 'disable':
-            mod_config('mod','logOption','disabled')
+            with open('main/config.json', 'r') as jsonConfig:
+                config = json.load(jsonConfig)
+            config['user']['log'] = 'disabled'
+            with open('main/config.json', 'w') as f:
+                json.dump(config, f, indent = 4, sort_keys=True)
         elif sub_command == 'enable':
-            mod_config('mod','logOption','enabled')
+            with open('main/config.json', 'r') as jsonConfig:
+                config = json.load(jsonConfig)
+            config['user']['log'] = 'enabled'
+            with open('main/config.json', 'w') as f:
+                json.dump(config, f, indent = 4, sort_keys=True)
         elif sub_command == 'help':
             print('log definition')
         else:
@@ -425,8 +460,10 @@ print(Fore.BLUE+'Your mouse has been moved to the top left.')
 
 check_platform_on_start()
 
-
-print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(mod_config('view','balance','')))
+with open('main/config.json', 'r') as command_list:
+    data = json.load(command_list)
+in_balance = data['user']['balance']
+print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(in_balance))
 if first_time == True:
     print(Fore.WHITE+'''
 Welcome to python-games!
@@ -457,15 +494,13 @@ def command_line():
     while user_input != 'quit':
         with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
-            config_username = config['username']
+            config_username = config['user']['username']
             print(Fore.RED+'\npy-games@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
         user_input = input().lower()
       
-        if user_input == 'advanced':
-            print()
-            print_color = Fore.CYAN
-            print(print_color+'   admin (command)      '+Fore.BLUE+'perform commands as admin, use before any command')
-            print(print_color+'   clear                '+Fore.BLUE+'clear the terminal')
+        # check if this is the valid command
+        if user_input[0:len('admin')] == 'admin':
+            base_command_admin(user_input, 'admin')
 
         elif user_input == 'clear':
             screen_clear()
@@ -528,7 +563,7 @@ def command_line():
             with open('main/config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
                 pass_prompt = input('Enter password: ')
-                if pass_prompt != config['pass']:
+                if pass_prompt != config['user']['pass']:
                     print(Fore.RED+'Incorrect password')
                 else:
                     current_directory = os.path.dirname(__file__)
@@ -550,10 +585,13 @@ def command_line():
 
         elif user_input == 'stats':
             # creating a DataFrame
+            with open('main/config.json', 'r') as command_list:
+                data = json.load(command_list)
+            balance = data['user']['balance']
             dict = {'Stats':['Connected to Internet', 'Balance'],
                     'Result':[
                         check_internet_connection(),
-                        '${}'.format(mod_config('view','balance',''))
+                        '${}'.format(balance)
                     ]}
             df = pd.DataFrame(dict)
             # displaying the DataFrame
@@ -563,15 +601,6 @@ def command_line():
         elif user_input == 'system':
             print(Fore.BLUE+'Opening python file for "system information"...')
             os.system('python main/info/system.py')
-
-        # This option is hidden because it deletes all modules, which would require the user to install them again
-        elif user_input == 'remove -modules':
-            import pip
-            pip.main(['uninstall', 'colorama'])
-            pip.main(['uninstall', 'pynput'])
-            pip.main(['uninstall', 'tabulate'])
-            pip.main(['uninstall', 'keyboard'])
-            pip.main(['uninstall', 'requests'])
 
         elif user_input == 'hello':
             print('Oh, hello! What would you like me to do for you today?')

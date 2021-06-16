@@ -1,9 +1,9 @@
 {
-    "advanced": {
-        "brief_description": "display advanced commands",
+    "admin": {
+        "brief_description": "perform admin tasks (caution)",
         "description": "",
         "sub_commands": {
-            "-help": "show sub-commands for this command and descriptions of each"
+            "-delmods": "delete all modules (caution)"
         }
     },
     "clear": {

@@ -1,10 +1,16 @@
 {
-    "balance": 100,
-    "logOption": "enabled",
-    "pass": "pass",
-    "passOption": "enabled",
-    "played": "0",
-    "username": "shannon",
+    "user": {
+        "username": "shannon",
+        "pass": "pass",
+        "balance": 99999999999999999999999999999999999999999999999999
+    },
+    "stats": {
+        "played": "0"
+    },
+    "options": {
+        "log": "enabled",
+        "pass": "enabled"
+    },
     "requirements": {
         "internetRequired": false
     }
