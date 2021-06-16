@@ -307,17 +307,15 @@ def base_command_help(user_input, command_string):
     # base command
     if user_input == command_string:
         command_color = Fore.CYAN
-        des_color = Fore.BLUE
+        des_color = Fore.WHITE
         print()
         for (command, command_detail) in data.items():
             num = 30-len(command)
             tabs = ' '*num
             print(command_color+'   '+command+tabs+des_color+command_detail['brief_description'])
-        '''
-        num = 30-len(command_name)
-            tabs = ' '*num
-            print(command_color+'   '+command_name+tabs+des_color+command_description_brief)
-        '''
+            sub_commands = command_detail['sub_commands']
+            for (subcmd, nsb) in sub_commands.items():
+                print(Fore.WHITE+Style.DIM+' '*33+subcmd)
     # sub commands for command
     elif expected_dash == '-':
         # identify sub command

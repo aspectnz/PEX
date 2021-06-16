@@ -2,116 +2,144 @@
     "advanced": {
         "brief_description": "display advanced commands",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "clear": {
         "brief_description": "clear the terminal",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "doc": {
         "brief_description": "open python games documentation on GitHub",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }    
     },
     "help": {
         "brief_description": "display commands and functions",
         "description": "",
-        "sub_commands": ""
-    },
-    "help -cat": {
-        "brief_description": "display commands and functions, formatted into categories",
-        "description": "",
-        "sub_commands": ""
-    },
-    "help -des": {
-        "brief_description": "display command details and an longer description",
-        "description": "",
-        "sub_commands": ""
-    },
-    "help -des -cat": {
-        "brief_description": "display command details and an longer description, formatted into categories",
-        "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": "yes",
+            "-cat": "",
+            "-des": "",
+            "-des-cat": ""
+        }
     },
     "hl": {
         "brief_description": "play higher/lower game",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "log": {
         "brief_description": "view all past logs",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "log -clean": {
         "brief_description": "view all past logs",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "log -disable":{
         "brief_description": "disable logs",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "log -enable": {
         "brief_description": "enable logs",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "ls": {
         "brief_description": "list directory",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "lu": {
         "brief_description": "play lucky unicorn game",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "profile": {
         "brief_description": "open my profile website",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "quit": {
         "brief_description": "quit the entire program",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "rps": {
         "brief_description": "play rock paper scissors game",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "restart": {
         "brief_description": "restart the application",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "settings": {
         "brief_description": "print settings in JSON format",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "settings -reset": {
         "brief_description": "reset back to factory settings",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "spaz": {
         "brief_description": "SPAZ YOUR SCREEN for 7 seconds (caution)",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "stats": {
         "brief_description": "view your stats",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     },
     "system": {
         "brief_description": "get your system information",
         "description": "",
-        "sub_commands": ""
+        "sub_commands": {
+            "-help": ""
+        }
     }
 }
