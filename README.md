@@ -131,7 +131,7 @@ To install the game, you will need to either:
 <br>
 
 # Getting Started
-### Password: `pyga`
+### Password: `pass`
 - **Option 1 (recommended)** - The Easy Option - Simply open the folder that contains the python files and double click app.py. Further instructions will be shown in the app.
 
 <div align="center">
