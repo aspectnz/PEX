@@ -146,7 +146,11 @@ def check_internet_connection():
         return False
 
 def check_internet_on_start():
-    if mod_config('view', 'internetRequired', '') == True:
+    with open('main/config.json', 'r') as jsonConfig:
+        config = json.load(jsonConfig)
+    internet_config = config['requirements']['internetRequired']
+
+    if internet_config == True:
         if(check_internet_connection() == True):
             add_log('connected to the internet')
         else:
