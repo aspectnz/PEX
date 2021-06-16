@@ -299,6 +299,7 @@ def base_command_download(user_input, command_string):
 
 # Help command function
 def base_command_help(user_input, command_string):
+    print(Fore.GREEN+'Use the "'+Fore.RED+'-help'+Fore.GREEN+'" sub-command for any command to show more options')
     with open('main/master_command_list.json', 'r') as command_list:
         data = json.load(command_list)
 
@@ -306,18 +307,19 @@ def base_command_help(user_input, command_string):
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
     # base command
     if user_input == command_string:
-        command_color = Fore.YELLOW+Style.BRIGHT
-        des_color = Style.RESET_ALL+Fore.BLUE
+        command_color = Fore.WHITE
+        des_color = Fore.WHITE
         print()
         for (command, command_detail) in data.items():
             num = 30-len(command)
             tabs = ' '*num
             print(command_color+'   '+command+tabs+des_color+command_detail['brief_description'])
             sub_commands = command_detail['sub_commands']
-            print(' '*33+Style.DIM+'sub-commands: ', end='')
-            for (subcmd, nsb) in sub_commands.items():
-                print(Fore.CYAN+subcmd+', ', end='')
-            print()
+            if sub_commands:
+                for (subcmd, nsb) in sub_commands.items():
+                    subcmd_tab = 30-len(subcmd)
+                    print(' '*3+Fore.BLUE+subcmd+' '*subcmd_tab+Fore.CYAN+nsb)
+           # print()
     # sub commands for command
     elif expected_dash == '-':
         # identify sub command

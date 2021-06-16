@@ -3,21 +3,21 @@
         "brief_description": "display advanced commands",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "clear": {
         "brief_description": "clear the terminal",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "doc": {
         "brief_description": "open python games documentation on GitHub",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }    
     },
     "help": {
@@ -34,112 +34,86 @@
         "brief_description": "play higher/lower game",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "log": {
         "brief_description": "view all past logs",
         "description": "",
         "sub_commands": {
-            "-help": ""
-        }
-    },
-    "log -clean": {
-        "brief_description": "view all past logs",
-        "description": "",
-        "sub_commands": {
-            "-help": ""
-        }
-    },
-    "log -disable":{
-        "brief_description": "disable logs",
-        "description": "",
-        "sub_commands": {
-            "-help": ""
-        }
-    },
-    "log -enable": {
-        "brief_description": "enable logs",
-        "description": "",
-        "sub_commands": {
-            "-help": ""
+            "-clean": "clean all recorded logs",
+            "-disable": "disable logs",
+            "-enable": "enable logs"
         }
     },
     "ls": {
         "brief_description": "list directory",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "lu": {
         "brief_description": "play lucky unicorn game",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "profile": {
         "brief_description": "open my profile website",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "quit": {
         "brief_description": "quit the entire program",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "rps": {
         "brief_description": "play rock paper scissors game",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "restart": {
         "brief_description": "restart the application",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "settings": {
         "brief_description": "print settings in JSON format",
         "description": "",
         "sub_commands": {
-            "-help": ""
-        }
-    },
-    "settings -reset": {
-        "brief_description": "reset back to factory settings",
-        "description": "",
-        "sub_commands": {
-            "-help": ""
+            "-reset": "reset everything back to factory settings"
         }
     },
     "spaz": {
         "brief_description": "SPAZ YOUR SCREEN for 7 seconds (caution)",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "stats": {
         "brief_description": "view your stats",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "system": {
         "brief_description": "get your system information",
         "description": "",
         "sub_commands": {
-            "-help": ""
+            "-help": "show sub-commands for this command and descriptions of each"
         }
     }
 }
