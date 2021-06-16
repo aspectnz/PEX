@@ -306,16 +306,18 @@ def base_command_help(user_input, command_string):
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
     # base command
     if user_input == command_string:
-        command_color = Fore.CYAN
-        des_color = Fore.WHITE
+        command_color = Fore.YELLOW+Style.BRIGHT
+        des_color = Style.RESET_ALL+Fore.BLUE
         print()
         for (command, command_detail) in data.items():
             num = 30-len(command)
             tabs = ' '*num
             print(command_color+'   '+command+tabs+des_color+command_detail['brief_description'])
             sub_commands = command_detail['sub_commands']
+            print(' '*33+Style.DIM+'sub-commands: ', end='')
             for (subcmd, nsb) in sub_commands.items():
-                print(Fore.WHITE+Style.DIM+' '*33+subcmd)
+                print(Fore.CYAN+subcmd+', ', end='')
+            print()
     # sub commands for command
     elif expected_dash == '-':
         # identify sub command
