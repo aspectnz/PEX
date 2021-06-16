@@ -1,117 +1,117 @@
 {
-    "command":{
-        "name": "advanced",
+    "advanced": {
         "brief_description": "display advanced commands",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "clear",
+    "clear": {
         "brief_description": "clear the terminal",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "doc",
+    "doc": {
         "brief_description": "open python games documentation on GitHub",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "help",
+    "help": {
         "brief_description": "display commands and functions",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "help -cat",
+    "help -cat": {
         "brief_description": "display commands and functions, formatted into categories",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "help -des",
+    "help -des": {
         "brief_description": "display command details and an longer description",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "help -des -cat",
+    "help -des -cat": {
         "brief_description": "display command details and an longer description, formatted into categories",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "hl",
+    "hl": {
         "brief_description": "play higher/lower game",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "log",
+    "log": {
         "brief_description": "view all past logs",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "log -clean",
+    "log -clean": {
         "brief_description": "view all past logs",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "log -disable",
+    "log -disable":{
         "brief_description": "disable logs",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "log -enable",
+    "log -enable": {
         "brief_description": "enable logs",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "ls",
+    "ls": {
         "brief_description": "list directory",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "lu",
+    "lu": {
         "brief_description": "play lucky unicorn game",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "profile",
+    "profile": {
         "brief_description": "open my profile website",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "quit",
+    "quit": {
         "brief_description": "quit the entire program",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "rps",
+    "rps": {
         "brief_description": "play rock paper scissors game",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "restart",
+    "restart": {
         "brief_description": "restart the application",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "settings",
+    "settings": {
         "brief_description": "print settings in JSON format",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "settings -reset",
+    "settings -reset": {
         "brief_description": "reset back to factory settings",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "spaz",
+    "spaz": {
         "brief_description": "SPAZ YOUR SCREEN for 7 seconds (caution)",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "stats",
+    "stats": {
         "brief_description": "view your stats",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     },
-    "command":{
-        "name": "system",
+    "system": {
         "brief_description": "get your system information",
-        "description": ""
+        "description": "",
+        "sub_commands": ""
     }
 }

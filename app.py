@@ -239,7 +239,11 @@ def spaz_screen():
 
 def download(url, filename):
     print(Fore.BLUE+'[*] Downloading '+filename+' from '+url)
-    import requests
+    try:
+        import requests
+    except:
+        pip.main(['install', 'requests'])
+        import requests
     filepath = 'downloads/'+filename
     with open(filepath, 'wb') as f:
         response = requests.get(url, stream=True)
@@ -266,24 +270,51 @@ def invalid_command_ext(command_string, user_input):
     print(Fore.RED+'The "{}" command was identified, but contained invalid text "{}"'.format(command_string, invalid_text))
 
 
+
+
+
+
+
+# highler lower game command function
+def base_command_download(user_input, command_string):
+    # calculate where the dash should be (if there is)
+    expected_dash = user_input[len(command_string)+1:len(command_string)+2]
+    # base command
+    if user_input == command_string:
+        print('Download command requires a sub command')
+    # sub commands for command
+    elif expected_dash == '-':
+        # identify sub command
+        sub_command = user_input[len(command_string)+2:len(user_input)]
+        if sub_command == 'help':
+            print('coming soon .... \ngoing back to main menu...')
+        elif sub_command == 'lu':
+            download('https://github.com/shannon-nz/python-games/blob/main/main/games/luckyunicorn/Python%20Program%20Documentation.pptx?raw=true', 'luckyunicorn_documentation.pptx')
+        else:
+            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+    # otherwise inform user that the command was identified, but had had a type
+    else:
+        invalid_command_ext(command_string, user_input)
+
+
 # Help command function
 def base_command_help(user_input, command_string):
     with open('main/master_command_list.json', 'r') as command_list:
-        mcl = json.dumps(json.load(command_list), indent=4)
+        data = json.load(command_list)
 
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
     # base command
     if user_input == command_string:
-        for key, value in mcl:
-            print(value[key])
-        '''
         command_color = Fore.CYAN
         des_color = Fore.BLUE
-        command_name = mcl['command']
-        command_description_brief = mcl['command']['brief_description']
-        for command_name in mcl:
-            num = 30-len(command_name)
+        print()
+        for (command, command_detail) in data.items():
+            num = 30-len(command)
+            tabs = ' '*num
+            print(command_color+'   '+command+tabs+des_color+command_detail['brief_description'])
+        '''
+        num = 30-len(command_name)
             tabs = ' '*num
             print(command_color+'   '+command_name+tabs+des_color+command_description_brief)
         '''
@@ -427,8 +458,9 @@ def command_line():
             import webbrowser
             webbrowser.open('https://github.com/shannon-nz/python-games#-python-games-in-development-')
 
-        elif user_input == 'download':
-            download('https://github.com/shannon-nz/python-games/blob/main/main/games/luckyunicorn/Python%20Program%20Documentation.pptx?raw=true', 'luckyunicorn_documentation.pptx')
+        # check if this is the valid command
+        elif user_input[0:len('download')] == 'download':
+            base_command_download(user_input, 'download')
 
         # check if this is the valid command
         elif user_input[0:len('help')] == 'help':
