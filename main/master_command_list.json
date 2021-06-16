@@ -1,5 +1,5 @@
-"master_command_list": {
-    "command": {
+{
+    "command":{
         "name": "advanced",
         "brief_description": "display advanced commands",
         "description": ""

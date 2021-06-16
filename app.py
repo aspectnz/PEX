@@ -62,6 +62,9 @@ sys.path.insert(0, './main/custom_modules')
 import idle_check as idle_check
 idle_check.run()
 
+
+
+
 # Import colorama module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 add_log('importing custom modules')
@@ -90,7 +93,8 @@ try:
 except:
     add_log('error importing pandas or tabulate')
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
-    os.system('pip install tabulate')
+    os.system('python -m pip install tabulate')
+    os.system('python -m pip install pandas')
     # importing the modules
     from tabulate import tabulate
     import pandas as pd
@@ -106,7 +110,7 @@ try:
 except:
     add_log('error importing pynput')
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
-    os.system('pip install pynput')
+    os.system('python -m pip install pynput')
     #from pynput.keyboard import Key, Controller
     from pynput.mouse import Button, Controller
     mouse = Controller()
@@ -120,12 +124,11 @@ try:
     keyboard.press('win+up')
     keyboard.release('win+up')
     add_log('successfully imported keyboard')
-
 except:
     add_log('error importing keyboard')
     import pip
     print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
-    os.system('pip install keyboard')
+    os.system('python -m pip install keyboard')
     import keyboard
     keyboard.press('win+up')
     keyboard.release('win+up')
@@ -266,13 +269,13 @@ def invalid_command_ext(command_string, user_input):
 def base_command_help(user_input, command_string):
     with open('main/master_command_list.json', 'r') as command_list:
         mcl = json.dumps(json.load(command_list), indent=4)
+
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
     # base command
     if user_input == command_string:
-        for key, value in mcl["master_command_list"]:
-            result = key['master_command_list']
-            print(result)
+        for key, value in mcl:
+            print(value[key])
         '''
         command_color = Fore.CYAN
         des_color = Fore.BLUE
