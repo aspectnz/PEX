@@ -58,12 +58,10 @@ try:
 except:
     add_log('error importing default modules')
 
-sys.path.insert(0, './main/custom_modules')
-import idle_check as idle_check
-idle_check.run()
-
-
-
+def idle_check():
+    sys.path.insert(0, './main/custom_modules')
+    import idle_check as idle_check
+    idle_check.run()
 
 # Import colorama module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
@@ -72,16 +70,19 @@ try:
     import colorama
     from colorama import Fore, Back, Style
     add_log('successfully imported colorama')
+    colorama.init()
+    colorama.init(convert=True)
+    colorama.init(autoreset=True)
 except:
     add_log('error importing colorama')
     print('You do not have the "colorama" module, we are installing it for you now...')
-    os.system('pip install colorama')
+    pip.main(['install', 'colorama'])
     import colorama
     from colorama import Fore, Back, Style
     add_log('installed and imported colorama successfully')
-colorama.init()
-colorama.init(convert=True)
-colorama.init(autoreset=True)
+    colorama.init()
+    colorama.init(convert=True)
+    colorama.init(autoreset=True)
 
 # Import pandas and tabulate module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
@@ -93,8 +94,8 @@ try:
 except:
     add_log('error importing pandas or tabulate')
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
-    os.system('python -m pip install tabulate')
-    os.system('python -m pip install pandas')
+    pip.main(['install', 'tabulate'])
+    pip.main(['install', 'pandas'])
     # importing the modules
     from tabulate import tabulate
     import pandas as pd
@@ -110,7 +111,7 @@ try:
 except:
     add_log('error importing pynput')
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
-    os.system('python -m pip install pynput')
+    pip.main(['install', 'pynput'])
     #from pynput.keyboard import Key, Controller
     from pynput.mouse import Button, Controller
     mouse = Controller()
@@ -128,7 +129,7 @@ except:
     add_log('error importing keyboard')
     import pip
     print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
-    os.system('python -m pip install keyboard')
+    pip.main(['install', 'keyboard'])
     import keyboard
     keyboard.press('win+up')
     keyboard.release('win+up')
@@ -356,6 +357,7 @@ def stats():
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+idle_check()
 check_internet_on_start()
 screen_clear()
 mouse.position = (0, 0)
@@ -525,14 +527,10 @@ def command_line():
         elif user_input == 'hello':
             print('Oh, hello! What would you like me to do for you today?')
 
-        elif user_input == 'admin':
-            print('Admin mode now enabled')
-
         elif user_input == 'custom_command':
             with open('main/config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
                 config_username = config['username']
-
         else:
             print('Sorry, "{}" '.format(user_input)+Fore.RED+'is an invalid command')
             add_log('{} is an invalid command'.format(user_input))
