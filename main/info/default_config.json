@@ -2,14 +2,14 @@
     "user": {
         "username": "root",
         "pass": "pass",
-        "balance": 100,
+        "balance": 100
     },
     "stats": {
-        "played": "0",
+        "played": "0"
     },
     "options": {
-        "logOption": "enabled",
-        "passOption": "enabled",
+        "log": "enabled",
+        "pass": "enabled"
     },
     "requirements": {
         "internetRequired": true

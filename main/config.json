@@ -1,17 +1,17 @@
 {
-    "user": {
-        "username": "shannon",
-        "pass": "pass",
-        "balance": 99999999999999999999999999999999999999999999999999
-    },
-    "stats": {
-        "played": "0"
-    },
     "options": {
         "log": "enabled",
         "pass": "enabled"
     },
     "requirements": {
-        "internetRequired": false
+        "internetRequired": true
+    },
+    "stats": {
+        "played": "0"
+    },
+    "user": {
+        "balance": 100,
+        "pass": "pass",
+        "username": "root"
     }
 }
