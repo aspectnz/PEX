@@ -269,8 +269,16 @@ def invalid_command_ext(command_string, user_input):
     invalid_text = user_input[len(command_string):len(user_input)]
     print(Fore.RED+'The "{}" command was identified, but contained invalid text "{}"'.format(command_string, invalid_text))
 
-
-
+def sub_command_help(command):
+    with open('main/master_command_list.json', 'r') as command_list:
+        data = json.load(command_list)
+    if 'sub_commands' in data[command]:
+        print(Fore.GREEN+'The "{}" command has the following sub-commands\n'.format(Fore.WHITE+command+Fore.GREEN))
+        for (subcmd, subcmd_des) in data[command]['sub_commands'].items():
+            subcmd_tab = 30-len(subcmd)
+            print(' '*3+Fore.BLUE+subcmd+' '*subcmd_tab+Fore.CYAN+subcmd_des)
+    else:
+        print(Fore.RED+'The "{}" command has no sub commands\n'.format(Fore.WHITE+command+Fore.RED))
 
 
 
@@ -287,7 +295,7 @@ def base_command_download(user_input, command_string):
         # identify sub command
         sub_command = user_input[len(command_string)+2:len(user_input)]
         if sub_command == 'help':
-            print('coming soon .... \ngoing back to main menu...')
+            sub_command_help(command_string)
         elif sub_command == 'lu':
             download('https://github.com/shannon-nz/python-games/blob/main/main/games/luckyunicorn/Python%20Program%20Documentation.pptx?raw=true', 'luckyunicorn_documentation.pptx')
         else:
@@ -299,7 +307,6 @@ def base_command_download(user_input, command_string):
 
 # Help command function
 def base_command_help(user_input, command_string):
-    print(Fore.GREEN+'Use the "'+Fore.RED+'-help'+Fore.GREEN+'" sub-command for any command to show more options')
     with open('main/master_command_list.json', 'r') as command_list:
         data = json.load(command_list)
 
@@ -307,6 +314,7 @@ def base_command_help(user_input, command_string):
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
     # base command
     if user_input == command_string:
+        print(Fore.GREEN+'Use the "'+Fore.WHITE+'-help'+Fore.GREEN+'" sub-command for any command to show more options')
         command_color = Fore.WHITE
         des_color = Fore.WHITE
         print()
@@ -314,17 +322,18 @@ def base_command_help(user_input, command_string):
             num = 30-len(command)
             tabs = ' '*num
             print(command_color+'   '+command+tabs+des_color+command_detail['brief_description'])
-            sub_commands = command_detail['sub_commands']
-            if sub_commands:
-                for (subcmd, nsb) in sub_commands.items():
+            #sub_commands = command_detail['sub_commands']
+            if 'sub_commands' in data[command]:
+                for (subcmd, subcmd_des) in command_detail['sub_commands'].items():
                     subcmd_tab = 30-len(subcmd)
-                    print(' '*3+Fore.BLUE+subcmd+' '*subcmd_tab+Fore.CYAN+nsb)
-           # print()
+                    print(' '*3+Fore.BLUE+subcmd+' '*subcmd_tab+Fore.CYAN+subcmd_des)
     # sub commands for command
     elif expected_dash == '-':
         # identify sub command
         sub_command = user_input[len(command_string)+2:len(user_input)]
-        if sub_command == 'des':
+        if sub_command == 'help':
+            sub_command_help(command_string)
+        elif sub_command == 'des':
             print('sub command was correctly des')
         else:
             print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
@@ -345,7 +354,7 @@ def base_command_hl(user_input, command_string):
         # identify sub command
         sub_command = user_input[len(command_string)+2:len(user_input)]
         if sub_command == 'help':
-            print('coming soon .... \ngoing back to main menu...')
+            sub_command_help(command_string)
         else:
             print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
     # otherwise inform user that the command was identified, but had had a type
@@ -367,7 +376,9 @@ def base_command_log(user_input, command_string):
     elif expected_dash == '-':
         # identify sub command
         sub_command = user_input[len(command_string)+2:len(user_input)]
-        if sub_command == 'clean':
+        if sub_command == 'help':
+            sub_command_help(command_string)
+        elif sub_command == 'clean':
             print('cleaning log...')
             myText = open(r'main/data.log','w')
             myText.write('<<< start of log >>>')

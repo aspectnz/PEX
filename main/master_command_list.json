@@ -20,6 +20,13 @@
             "-help": "show sub-commands for this command and descriptions of each"
         }    
     },
+    "download": {
+        "brief_description": "download documentations and other things",
+        "description": "",
+        "sub_commands": {
+            "-lu": "download the lucky unicorn documentation"
+        }    
+    },
     "help": {
         "brief_description": "display commands and functions",
         "description": "",
@@ -111,9 +118,6 @@
     },
     "system": {
         "brief_description": "get your system information",
-        "description": "",
-        "sub_commands": {
-            "-help": "show sub-commands for this command and descriptions of each"
-        }
+        "description": ""
     }
 }
