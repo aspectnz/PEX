@@ -487,11 +487,11 @@ if first_time == True:
 Welcome to python-games!
 As this may be your first time using this application, this is just a reminder to make sure that you have 
 read the documentation so you know how to use this app properly. Otherwise, you may run into some 
-unexpected problems :D
+unexpected problems. Enjoy!                                                                            :D
 
 ''')
     from keyboard import press
-    keyboard.write('help')
+    keyboard.write('doc')
 
 
 print(Fore.GREEN+'Welcome to the main menu. Use a command or type "help" if you don\'t know any commands')
@@ -503,7 +503,7 @@ print(Fore.GREEN+'Welcome to the main menu. Use a command or type "help" if you 
 def activate_admin():
     print('admin activated')
 
-keyboard.add_hotkey("shift+alt+p", lambda: activate_admin)
+keyboard.add_hotkey("alt+p", lambda: activate_admin)
 
 
 # Function that contains all code for commands, some link to other functions
@@ -554,12 +554,13 @@ def command_line():
             os.system('python main/games/luckyunicorn/00_LU_Base_v_01.py')
 
         elif user_input == 'profile':
-            print(Fore.BLUE+'Opening profile website')
+            print(Fore.BLUE+'Opening shannon.rf.gd in default browser')
+            import webbrowser
+            webbrowser.open('https://www.shannon.rf.gd/')
 
         elif user_input == 'quit':
-            print(Fore.RED+'quiting the application...')
+            print(Fore.RED+'quiting application...')
             exit()
-            print(Fore.RED+'Failed to quit the application, please try again')
 
         elif user_input == 'restart':
             add_log('restarting application...')
