@@ -244,7 +244,7 @@ def spaz_screen():
         print(Fore.MAGENTA+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
         print(Fore.CYAN+'WARNING, IT IS ABOUT TO GET MAD !!!')
     spaz_msg = 'SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ '
-    for item in range(1, 21):
+    for item in range(1, 51):
         keyboard.press('f11')
         keyboard.release('f11')
         keyboard.press('windows')
@@ -258,6 +258,7 @@ def spaz_screen():
         print(Fore.BLUE+spaz_msg)
         print(Fore.WHITE+spaz_msg)
         print(Fore.GREEN+spaz_msg)
+        sleep(0.05)
     print('\n\nAnd that is why you should be careful what you click on!')
 
 def download(url, filename):
@@ -454,6 +455,78 @@ def base_command_log(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
+# highler lower game command function
+def base_command_settings(user_input, command_string):
+    # calculate where the dash should be (if there is)
+    expected_dash = user_input[len(command_string)+1:len(command_string)+2]
+    # base command
+    if user_input == command_string:
+        with open('main/config.json', 'r') as jsonConfig:
+            config = json.dumps(json.load(jsonConfig), indent=4, sort_keys=True)
+        print(Fore.YELLOW+config)
+    # sub commands for command
+    elif expected_dash == '-':
+        # identify sub command
+        sub_command = user_input[len(command_string)+2:len(user_input)]
+        if sub_command == 'help':
+            sub_command_help(command_string)
+        elif sub_command == 'reset':
+            print('This will reset the entire application and it\'s configurations\nAre you sure you want to reset? (y/n)', end='')
+            verification_prompt = input('')
+            if verification_prompt == 'yes' or verification_prompt == 'y':
+                with open('main/config.json', 'r') as jsonConfig:
+                    config = json.load(jsonConfig)
+                    pass_prompt = input('Enter password: ')
+                    if pass_prompt != config['user']['pass']:
+                        print(Fore.RED+'Incorrect password')
+                    else:
+                        current_directory = os.path.dirname(__file__)
+                        file_path = os.path.join(current_directory, 'main\\info', 'default_config.json')
+                        with open(file_path, 'r') as jsonConfig:
+                            default_config = json.load(jsonConfig)
+                        with open('main/config.json', 'r') as jsonConfig:
+                            config = json.load(jsonConfig)
+                        with open('main/config.json', 'w') as f:
+                            json.dump(default_config, f, indent=4, sort_keys=True)
+                        add_log('settings have been reset')
+                        add_log('restarting the application...')
+                        screen_clear()
+                        os.system('python app.py')
+                        exit()
+            else:
+                print(Fore.RED+'You did not enter yes, exiting reset')
+
+        else:
+            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+    # otherwise inform user that the command was identified, but had had a type
+    else:
+        invalid_command_ext(command_string, user_input)
+
+# highler lower game command function
+def base_command_shortcuts(user_input, command_string):
+    # calculate where the dash should be (if there is)
+    expected_dash = user_input[len(command_string)+1:len(command_string)+2]
+    # base command
+    if user_input == command_string:
+        print()
+        with open('main/master_shortcut_list.json', 'r') as shortcut_list:
+            data = json.load(shortcut_list)
+        # base command
+        for shortcut, replaced in data.items():
+            tabn = 30-len(shortcut)
+            print(' '*3+Fore.BLUE+shortcut+' '*tabn+Fore.CYAN+replaced)
+    # sub commands for command
+    elif expected_dash == '-':
+        # identify sub command
+        sub_command = user_input[len(command_string)+2:len(user_input)]
+        if sub_command == 'help':
+            sub_command_help(command_string)
+        else:
+            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+    # otherwise inform user that the command was identified, but had had a type
+    else:
+        invalid_command_ext(command_string, user_input)
+
 def stats():
     return ''
 
@@ -510,20 +583,22 @@ keyboard.add_hotkey("alt+p", lambda: activate_admin)
 def command_line():
     idle_check()
     user_input = ''
-    print(Fore.GREEN+'As this application is still in development, not everything will work as expected. This message will be removed from the program when production ready. So make sure to keep up here:')
-    print('https://github.com/shannon-nz/python-games/')
     while user_input != 'quit':
+        print(Back.BLUE+Style.DIM+'\nAs this application is still in development, not everything will work as expected.\nThis message will be removed from the program when production ready. So make sure to keep up here:')
+        print(Back.BLUE+Style.DIM+'https://github.com/shannon-nz/python-games/')
+
         with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
             config_username = config['user']['username']
             print(Fore.RED+'\npy-games@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
+        
         user_input = input().lower()
       
         # check if this is the valid command
         if user_input[0:len('admin')] == 'admin':
             base_command_admin(user_input, 'admin')
 
-        elif user_input == 'clear':
+        elif user_input == 'cls':
             screen_clear()
 
         elif user_input == 'doc':
@@ -564,7 +639,7 @@ def command_line():
             print(Fore.RED+'quiting application...')
             exit()
 
-        elif user_input == 'restart':
+        elif user_input == 'restart' or user_input == '/r':
             add_log('restarting application...')
             os.system('python app.py')
             exit()
@@ -574,33 +649,16 @@ def command_line():
             sleep(1)
             os.system('python main/games/rock-paper-scissors/app.py')
 
-        elif user_input == 'settings':
-            with open('main/config.json', 'r') as jsonConfig:
-                config = json.dumps(json.load(jsonConfig), indent=4, sort_keys=True)
-            print(Fore.YELLOW+config)
+        # check if this is the valid command
+        elif user_input[0:len('settings')] == 'settings':
+            base_command_settings(user_input, 'settings')
+        # shortcut
+        elif user_input[0:len('/s')] == '/s':
+            base_command_settings(user_input, '/s')
 
-        elif user_input == 'settings -reset':
-            print('This will reset the entire application and it\'s configurations\nAre you sure you want to reset? (y/n)', end='')
-            verification_prompt = input('')
-            with open('main/config.json', 'r') as jsonConfig:
-                config = json.load(jsonConfig)
-                pass_prompt = input('Enter password: ')
-                if pass_prompt != config['user']['pass']:
-                    print(Fore.RED+'Incorrect password')
-                else:
-                    current_directory = os.path.dirname(__file__)
-                    file_path = os.path.join(current_directory, 'main\\info', 'default_config.json')
-                    with open(file_path, 'r') as jsonConfig:
-                        default_config = json.load(jsonConfig)
-                    with open('main/config.json', 'r') as jsonConfig:
-                        config = json.load(jsonConfig)
-                    with open('main/config.json', 'w') as f:
-                        json.dump(default_config, f, indent=4, sort_keys=True)
-                    add_log('settings have been reset')
-                    add_log('restarting the application...')
-                    screen_clear()
-                    os.system('python app.py')
-                    exit()
+        # check if this is the valid command
+        elif user_input[0:len('shortcuts')] == 'shortcuts':
+            base_command_shortcuts(user_input, 'shortcuts')
 
         elif user_input == 'spaz':
             spaz_screen()

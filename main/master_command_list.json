@@ -6,7 +6,7 @@
             "-delmods": "delete all modules (caution)"
         }
     },
-    "clear": {
+    "cls": {
         "brief_description": "clear the terminal",
         "description": "",
         "sub_commands": {
@@ -101,6 +101,10 @@
         "sub_commands": {
             "-reset": "reset everything back to factory settings"
         }
+    },
+    "shortcuts": {
+        "brief_description": "print settings in JSON format",
+        "description": ""
     },
     "spaz": {
         "brief_description": "SPAZ YOUR SCREEN for 7 seconds (caution)",
