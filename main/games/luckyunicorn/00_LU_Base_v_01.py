@@ -144,7 +144,7 @@ how_much = num_check('How much would you like to play with? (1 - 10): ', 0, 10)
 with open('main/config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
 
-config['balance'] -= how_much
+config['user']['balance'] -= how_much
 
 with open('main/config.json', 'w') as f:
     json.dump(config, f)
@@ -237,15 +237,13 @@ else:
 
 print(change_msg_color+'\nYou have '+change_msg+': ${} after {} rounds'.format(made_or_lost, rounds_played))
 
+
 with open('main/config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
-
-new_balance = config['balance'] + balance
-
-config['balance'] = new_balance
-
+new_balance = config['user']['balance'] + balance
+config['user']['balance'] = new_balance
 with open('main/config.json', 'w') as f:
-    json.dump(config, f)
+    json.dump(config, f, indent = 4, sort_keys=True)
 
 
 print('Opening the main menu... \n')
