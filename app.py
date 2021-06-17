@@ -49,12 +49,9 @@ try:
     import random
     import os
     from time import sleep
-    import numpy
     import subprocess
     from subprocess import *
     import ctypes
-    import pip
-    from pip import *
 except:
     add_log('error importing default modules')
 
@@ -62,6 +59,28 @@ def idle_check():
     sys.path.insert(0, './main/custom_modules')
     import idle_check as idle_check
     idle_check.run()
+idle_check()
+
+import pip
+
+
+
+
+import ctypes
+import enum
+import sys
+
+# Import numpy module
+# If the module is not installed, then automatically install it. Otherwise, continue the program
+try:
+    import numpy
+    add_log('successfully imported colorama')
+except:
+    add_log('error importing numpy')
+    print('You do not have the "numpy" module, we are installing it for you now...')
+    pip.main(['install', 'numpy'])
+    import numpy
+    add_log('installed and imported colorama successfully')
 
 # Import colorama module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
@@ -440,7 +459,6 @@ def stats():
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
-idle_check()
 check_internet_on_start()
 screen_clear()
 mouse.position = (0, 0)
@@ -490,6 +508,7 @@ keyboard.add_hotkey("shift+alt+p", lambda: activate_admin)
 
 # Function that contains all code for commands, some link to other functions
 def command_line():
+    idle_check()
     user_input = ''
     while user_input != 'quit':
         with open('main/config.json', 'r') as jsonConfig:
