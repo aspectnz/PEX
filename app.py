@@ -510,6 +510,8 @@ keyboard.add_hotkey("alt+p", lambda: activate_admin)
 def command_line():
     idle_check()
     user_input = ''
+    print(Fore.GREEN+'As this application is still in development, not everything will work as expected. This message will be removed from the program when production ready. So make sure to keep up here:')
+    print('https://github.com/shannon-nz/python-games/')
     while user_input != 'quit':
         with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
