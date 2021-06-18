@@ -3,7 +3,7 @@
 </br></br>
 
 
-<img src="./main/images/banner.jpg" align="center">
+<img src="./main/images/pex.jpg" align="center">
 
 <p>
   <h2>What is Python Games?</h2>
