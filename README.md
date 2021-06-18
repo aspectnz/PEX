@@ -3,9 +3,9 @@
 </br></br>
 
 
-<img src="./main/images/banner.webp" min-width="400px" max-width="400px" width="400px" align="right">
+<img src="./main/images/banner.jpg" align="center">
 
-<p align="left">
+<p>
   <h2>What is Python Games?</h2>
   This repository contains a set of python games that come with a main menu. I initially made these for a school assesment, but I have decided to add to the
   repository and develop more custom and advanced games. 
@@ -25,7 +25,8 @@
       <th>Table of contents</th>
     </tr>
     <tr>
-      <td width="350px">
+    <!-- width 350px -->
+      <td>
       </br>
         <ul>
           <li>
