@@ -1,12 +1,9 @@
-<h1 align="center">🥇🎮 Python Games (In development) 🎲🔫</h1>
-
-</br></br>
-
+<h1 align="center">PEX (In development)</h1>
 
 <img src="./main/images/pex.jpg" align="center">
 
 <p>
-  <h2>What is Python Games?</h2>
+  <h2>What is PEX?</h2>
   This repository contains a set of python games that come with a main menu. I initially made these for a school assesment, but I have decided to add to the
   repository and develop more custom and advanced games. 
   
