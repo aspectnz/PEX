@@ -1,29 +1,25 @@
-<h1 align="center">PEX (In development)</h1>
+<h1 align="center">PEX Documentation (in development)</h1>
 
 <img src="./main/images/pex.jpg" align="center">
 
 <p>
   <h2>What is PEX?</h2>
-  This repository contains a set of python games that come with a main menu. I initially made these for a school assesment, but I have decided to add to the
-  repository and develop more custom and advanced games. 
-  
-  Once there is enough games, I will catergorize them in the main menu to make it easier to choose what game to
-  play. 
-  
-  At the moment, all of the games are text-based only, but grapical games will be added later on this year. Below, you will find out how to set the application
-  up and how to use it. Enjoy!
+    The name PEX is not owned by me and its short for Python Experimental. As you would guess, this is just an experimental app based off exploring what is possible with python. This app started off as school project were I develop some games for an assessment, but I decided to make it into something more. With the assurance that I will be including comments of course. At the moment, everything is text-based and does not have a GUI, this may change in the future, but not anytime soon.
+  <br><br>
+  As I am sure I am only scratching the surface of the capabilities of python, I am uncovering lots of interesting things. With this, a lot of new modules are involved, so make sure you are okay with installing them. Below you will find the full documentation of the application and how to use it. If you find that there are any issues with the documentation or program, then feel free to edit it, bring up an issue or contact me. Enjoy!
+
 </p>
 
 </br>
 
-<table>
+<table align="center">
   <tbody>
     <tr>
       <th>Table of contents</th>
     </tr>
     <tr>
     <!-- width 350px -->
-      <td>
+      <td width="350px">
       </br>
         <ul>
           <li>
@@ -66,6 +62,8 @@
 </br>
 
 **For Python Beginners** : This code would be great for python beginners, who are interested in game development, to start somewhere. I have commented all of the code so everyone will be able to understand what each part of the program does and how it all works. If you would like to make any improvements, feel free to contibute to this repo. If there is something you don't understand, my contact details can be found on my <a href="https://github.com/shannon-nz/">GitHub profile</a> or my <a href="http://shan.rf.gd">Profile Website</a>
+
+**For everyone else**: I have attempted to make the setup of the program as simple as possible, but you can refer to the troubleshooting section of you need help or feel free to contact me at <a href="slekupvimplyrataqq@protonmail.com"></a>.
 
 </br>
 
