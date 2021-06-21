@@ -56,16 +56,19 @@ except:
     add_log('error importing default modules')
 
 def idle_check():
-    sys.path.insert(0, './main/custom_modules')
-    import idle_check as idle_check
-    idle_check.run()
+    with open('main/config.json', 'r') as jsonConfig:
+        config = json.load(jsonConfig)
+    terminal_required = config['requirements']['terminal']
+
+    if terminal_required == True:
+        sys.path.insert(0, './main/custom_modules')
+        import idle_check as idle_check
+        idle_check.run()
+    else:
+        add_log('Terminal requirement is disabled')
 idle_check()
 
 import pip
-
-
-
-
 import ctypes
 import enum
 import sys
@@ -88,20 +91,20 @@ add_log('importing custom modules')
 try:
     import colorama
     from colorama import Fore, Back, Style
-    add_log('successfully imported colorama')
     colorama.init()
     colorama.init(convert=True)
     colorama.init(autoreset=True)
+    add_log('successfully imported colorama')
 except:
     add_log('error importing colorama')
     print('You do not have the "colorama" module, we are installing it for you now...')
     pip.main(['install', 'colorama'])
     import colorama
     from colorama import Fore, Back, Style
-    add_log('installed and imported colorama successfully')
     colorama.init()
     colorama.init(convert=True)
     colorama.init(autoreset=True)
+    add_log('installed and imported colorama successfully')
 
 # Import pandas and tabulate module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
@@ -146,7 +149,6 @@ try:
     add_log('successfully imported keyboard')
 except:
     add_log('error importing keyboard')
-    import pip
     print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
     pip.main(['install', 'keyboard'])
     import keyboard
