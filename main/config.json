@@ -4,8 +4,10 @@
         "pass": "enabled"
     },
     "requirements": {
+        "__comment__": "changing these may cause the program to break",
         "internet": true,
         "terminal": true,
+        "windows": true
     },
     "stats": {
         "played": "0"

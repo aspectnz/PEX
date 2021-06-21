@@ -32,6 +32,8 @@
         "description": "",
         "sub_commands": {
             "-help": "yes",
+            "-all": "Print full list of commands and sub-commands",
+            "-sub": "Print only sub-commands",
             "-cat": "",
             "-des": "",
             "-des-cat": ""

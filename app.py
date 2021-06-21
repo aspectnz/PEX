@@ -41,6 +41,15 @@ with open('main/config.json', 'r') as jsonConfig:
                 with open('main/config.json', 'w') as f:
                     json.dump(config, f, indent=4, sort_keys=True)
 
+def add_dislog(text):
+    with open('main/config.json', 'r') as jsonConfig:
+        config = json.load(jsonConfig)
+        if config['options']['log'] == 'enabled':
+            now = datetime.now()
+            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+            with open('main/data.log', 'a') as file_object:
+                file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
+
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 add_log('importing default modules')
 import sys
@@ -56,23 +65,25 @@ except:
     add_log('error importing default modules')
 
 def idle_check():
+    add_dislog('Validating enviroment')
     with open('main/config.json', 'r') as jsonConfig:
         config = json.load(jsonConfig)
     terminal_required = config['requirements']['terminal']
 
     if terminal_required == True:
+        add_dislog('The current enviroment is Terminal')
         sys.path.insert(0, './main/custom_modules')
         import idle_check as idle_check
         idle_check.run()
     else:
-        add_log('Terminal requirement is disabled')
+        add_dislog('Terminal requirement is disabled')
 idle_check()
 
+add_log('Importing second set of default modules')
 import pip
-import ctypes
 import enum
-import sys
 
+add_log('Importing custom modules')
 # Import numpy module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
@@ -185,6 +196,7 @@ def check_internet_on_start():
             exit()
 
 def get_platform():
+    # Making a dictionary for the list of OSs
     platforms = {
         'linux1' : 'Linux',
         'linux2' : 'Linux',
@@ -198,6 +210,7 @@ def get_platform():
 
 def check_platform_on_start():
     if get_platform() != 'Windows':
+        add_dislog('Windows is not the default OS, exiting program(10s)...')
         print('''
 You are not using windows
 Please make sure that you are using windows 10
@@ -205,10 +218,12 @@ Exiting program in 10 seconds...
             ''')
         sleep(10)
         exit()
+    else:
+        add_dislog('Windows is the default OS')
 
 # The screen clear function
 def screen_clear():
-    print('clearing screen...')
+    add_log('clearing screen...')
     # for mac and linux(here, os.name is 'posix')
     if os.name == 'posix':
         _ = os.system('clear')
@@ -365,27 +380,41 @@ def base_command_help(user_input, command_string):
 
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
+    # Default colors for etxt sets
+    command_color = Fore.WHITE
+    des_color = Fore.WHITE
     # base command
     if user_input == command_string:
         print(Fore.GREEN+'Use the "'+Fore.WHITE+'-help'+Fore.GREEN+'" sub-command for any command to show more options')
-        command_color = Fore.WHITE
-        des_color = Fore.WHITE
+        print(Fore.GREEN+'Or use "'+Fore.WHITE+'help -all'+Fore.GREEN+'" to show the full list of commands and sub-commands')
         print()
         for (command, command_detail) in data.items():
             num = 30-len(command)
             tabs = ' '*num
             print(command_color+'   '+command+tabs+des_color+command_detail['brief_description'])
-            #sub_commands = command_detail['sub_commands']
-            if 'sub_commands' in data[command]:
-                for (subcmd, subcmd_des) in command_detail['sub_commands'].items():
-                    subcmd_tab = 30-len(subcmd)
-                    print(' '*3+Fore.BLUE+subcmd+' '*subcmd_tab+Fore.CYAN+subcmd_des)
     # sub commands for command
     elif expected_dash == '-':
         # identify sub command
         sub_command = user_input[len(command_string)+2:len(user_input)]
         if sub_command == 'help':
             sub_command_help(command_string)
+        elif sub_command == 'all':
+            for (command, command_detail) in data.items():
+                num = 30-len(command)
+                tabs = ' '*num
+                print(command_color+'   '+command+tabs+des_color+command_detail['brief_description'])
+                # Retrieve and print sub-commands
+                if 'sub_commands' in data[command]:
+                    for (subcmd, subcmd_des) in command_detail['sub_commands'].items():
+                        subcmd_tab = 30-len(subcmd)
+                        print(' '*3+Fore.BLUE+subcmd+' '*subcmd_tab+Fore.CYAN+subcmd_des)
+        elif sub_command == 'sub':
+            for (command, command_detail) in data.items():
+                # Retrieve and print sub-commands
+                if 'sub_commands' in data[command]:
+                    for (subcmd, subcmd_des) in command_detail['sub_commands'].items():
+                        subcmd_tab = 30-len(subcmd)
+                        print(' '*3+Fore.BLUE+subcmd+' '*subcmd_tab+Fore.CYAN+subcmd_des)
         elif sub_command == 'des':
             print('sub command was correctly des')
         else:
