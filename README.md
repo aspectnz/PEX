@@ -180,48 +180,32 @@ Running the program in IDLE is now disabled. This is because IDLE lacks the flex
 </br>
 
 # Commands
+
+Use the `-help` sub-command to list out all the sub-commands for any command, for example `download -help`. You can also list out the full list of commands and sub-commands with the `help -all` command.
+
 ### Commands
+
 ```
-clear
-lu
-rps
-hl
-stats
-system
-profile
-doc
-spaz
-settings
-log
-log -clean
-log -disable
-log -enable
-restart
-quit
-help
-help -des
+   admin                         perform admin tasks (caution)
+   cls                           clear the terminal
+   doc                           open python games documentation on GitHub
+   download                      download documentations and other things
+   help                          display commands and functions
+   hl                            play higher/lower game
+   log                           view all past logs
+   ls                            list directory
+   lu                            play lucky unicorn game
+   profile                       open my profile website
+   quit                          quit the entire program
+   rps                           play rock paper scissors game
+   restart                       restart the application
+   settings                      print settings in JSON format
+   shortcuts                     print settings in JSON format
+   spaz                          SPAZ YOUR SCREEN for 7 seconds (caution)
+   stats                         view your stats
+   system                        get your system information
 ```
 
-### Command Details 
-
-- `clear`           = clear the terminal (action) </br>
-- `lu`              = [lucky unicorn (game)](#lucky-unicorn) </br>
-- `rps`             = rock paper scissors (game) </br>
-- `hl`              = higher/lower (game) </br>
-- `stats`           = View your stats </br>
-- `system`          = get your system information (info) </br>
-- `profile`         = open my profile website (website) </br>
-- `doc`             = open python games documentation (website) </br>
-- `spaz`            = SPAZ YOUR SCREEN for 7 seconds (fun) </br>
-- `settings`        = print settings in JSON format (info) </br>
-- `log`             = view all past logs (info) </br>
-- `log -clean`      = view all past logs (info) </br>
-- `log -disable`    = disable logs (action) </br>
-- `log -enable`     = enable logs (info) </br>
-- `restart`         = restart the application (action) </br>
-- `quit`            = quit the entire program (action) </br>
-- `help`            = display command details (help) </br>
-- `help -des`       = display command details and an longer description (help) </br>
 
 <i>When all of the commands have been added, this message will be removed</i>
 </br>
