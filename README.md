@@ -38,6 +38,9 @@
             </ul>
           </li>
           <li>
+            <a href="#trouble-shooting">Trouble Shooting</a>
+          </li>
+          <li>
             <a href="#commands">Commands</a>
             <ul>
               <li><a href="#commands-1">Commands</a></li>
