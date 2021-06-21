@@ -23,9 +23,9 @@
       </br>
         <ul>
           <li>
-            <a href="#-python-games-">🥇🎮 Python Games 🎲🔫</a>
+            <a href="#pex-documentation-in-development">PEX</a>
             <ul>
-              <li><a href="#what-is-python-games">What is Python Games?</a></li>
+              <li><a href="#what-is-pex">What is PEX?</a></li>
             </ul>
           </li>
           <li><a href="#how-the-app-works">How the app works</a></li>
@@ -156,6 +156,26 @@ C:\Users\User> python app.py
 </div>
 
 Running the program in IDLE is now disabled. This is because IDLE lacks the flexability of a terminal, henceforth I have decided to strictly limit the application to the terminal. 
+
+</br>
+
+# Trouble Shooting
+<table>
+  <tbody>
+    <tr>
+      <th>Issue</th>
+      <th>Potential Fix</th>
+    </tr>
+    <tr>
+      <td>Program closes on first run</td>
+      <td>Run the program once again (currently an importing issue)</td>
+    </tr>
+    <tr>
+      <td>Anything else</td>
+      <td>Contact me at <a href="slekupvimplyrataqq@protonmail.com">slekupvimplyrataqq@protonmail.com</a> with the `main/data.log` file.</td>
+    </tr>
+  </tbody>
+</table>
 
 </br>
 
