@@ -348,7 +348,7 @@ def base_command_download(user_input, command_string):
         if sub_command == 'help':
             sub_command_help(command_string)
         elif sub_command == 'lu':
-            download('https://github.com/shannon-nz/python-games/blob/main/main/games/luckyunicorn/Python%20Program%20Documentation.pptx?raw=true', 'luckyunicorn_documentation.pptx')
+            download('https://github.com/shannon-nz/pex/blob/main/main/games/luckyunicorn/Python%20Program%20Documentation.pptx?raw=true', 'luckyunicorn_documentation.pptx')
         else:
             print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
     # otherwise inform user that the command was identified, but had had a type
@@ -557,7 +557,7 @@ in_balance = data['user']['balance']
 print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(in_balance))
 if first_time == True:
     print(Fore.WHITE+'''
-Welcome to python-games!
+Welcome to PEX!
 As this may be your first time using this application, this is just a reminder to make sure that you have 
 read the documentation so you know how to use this app properly. Otherwise, you may run into some 
 unexpected problems. Enjoy!                                                                            :D
@@ -585,7 +585,7 @@ def command_line():
     user_input = ''
     while user_input != 'quit':
         print(Back.BLUE+Style.DIM+'\nAs this application is still in development, not everything will work as expected.\nThis message will be removed from the program when production ready. So make sure to keep up here:')
-        print(Back.BLUE+Style.DIM+'https://github.com/shannon-nz/python-games/')
+        print(Back.BLUE+Style.DIM+'https://github.com/shannon-nz/PEX/')
 
         with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
@@ -602,9 +602,9 @@ def command_line():
             screen_clear()
 
         elif user_input == 'doc':
-            print(Fore.BLUE+'Opening python games documentation')
+            print(Fore.BLUE+'Opening PEX documentation')
             import webbrowser
-            webbrowser.open('https://github.com/shannon-nz/python-games#-python-games-in-development-')
+            webbrowser.open('https://github.com/shannon-nz/PEX#-python-games-in-development-')
 
         # check if this is the valid command
         elif user_input[0:len('download')] == 'download':
