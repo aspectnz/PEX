@@ -79,6 +79,14 @@ def idle_check():
         add_dislog('Terminal requirement is disabled')
 idle_check()
 
+add_log('Validating python version')
+if sys.version_info[0] < 3:
+    add_logdis('python version is less than 3')
+    print('Your python version is not up to date, please make sure that you are running python3 or later.')
+    add_log('Exiting program in 10s...')
+    sleep(10)
+    exit()
+
 add_log('Importing second set of default modules')
 import pip
 import enum
