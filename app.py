@@ -167,7 +167,7 @@ def check_internet_connection():
 def check_internet_on_start():
     with open('main/config.json', 'r') as jsonConfig:
         config = json.load(jsonConfig)
-    internet_config = config['requirements']['internetRequired']
+    internet_config = config['requirements']['internet']
 
     if internet_config == True:
         if(check_internet_connection() == True):

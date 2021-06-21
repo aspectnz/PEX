@@ -4,7 +4,8 @@
         "pass": "enabled"
     },
     "requirements": {
-        "internetRequired": true
+        "internet": true,
+        "terminal": true,
     },
     "stats": {
         "played": "0"
