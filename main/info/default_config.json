@@ -1,17 +1,20 @@
 {
-    "user": {
-        "username": "root",
-        "pass": "pass",
-        "balance": 100
-    },
-    "stats": {
-        "played": "0"
-    },
     "options": {
         "log": "enabled",
         "pass": "enabled"
     },
     "requirements": {
-        "internetRequired": true
+        "__comment__": "changing these may cause the program to break",
+        "internet": true,
+        "terminal": true,
+        "windows": true
+    },
+    "stats": {
+        "played": "0"
+    },
+    "user": {
+        "balance": 100,
+        "pass": "pass",
+        "username": "root"
     }
 }
