@@ -123,6 +123,7 @@ To install the game, you will need to either:
 ### Admin Password: `pass`  The admin password is required to run some of the admin commands or to reset everything back to the default with the `settings -reset` command.
 - **Method 1 (recommended)** - This is the most easiest option - In the root folder, simply double click app.py to run the application. Note: At the moment, there is a bug that requires you to run the application twice on the first install. So the first time, the program will close, please doubel click app.py once more and it should work as expected. 
 </br>
+
 - **Method 2 - Terminal (advanced)** - I would likely consider this to be the better option. In the case that you run into a problem on the way, instead of the app closing immediatly, you will be able to see the errors. If you are able to fix the error yourself, feel free to push the code or inform me of the error.
 Windows only:
 ```
@@ -130,15 +131,8 @@ C:\Users\User> cd folder\pexdirectory\pex
 C:\Users\User> python app.py
 ```
 </br>
+
 - **Method 3 - This method is discontinued but still possible - Open the file in IDLE and press F5 or go `Run > Run Module`. Note: This will reopen the file in the default application for python, by default this should be the terminal. If it is not the terminal for you, please make the terminal the default application or try method 1 or 2.
-
-<div align="center">
-  <img src="./main/images/getting-started-3.JPG">
-  <br>
-  <i>running the file in IDLE</i>
-</div>
-
-Running the program in IDLE is now disabled. This is because IDLE lacks the flexability of a terminal, henceforth I have decided to strictly limit the application to the terminal. 
 
 </br>
 
