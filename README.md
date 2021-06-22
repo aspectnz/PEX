@@ -104,7 +104,7 @@ There are mutliple commands that you can use, some of which are just for the sak
 
 <br>
 
-# Installation
+# Making sure everything is installed
 Make sure that you have the latest version of <a href="https://www.python.org/downloads/">python</a> installed and that you're using Windows 10. If you do not currently have the latest version of python installed, you can find the installer in the root directory named `python-3.9.5-amd64.exe`. Double click the installer file to install python. When installing, make sure you check `add to path` and `disable path limit`.
 <br>
 To install the game, you will need to either:
@@ -119,28 +119,18 @@ To install the game, you will need to either:
 
 <br>
 
-# Getting Started
-### Password: `pass`
-- **Option 1 (recommended)** - The Easy Option - Simply open the folder that contains the python files and double click app.py. Further instructions will be shown in the app.
-
-<div align="center">
-  <img src="./main/images/getting-started.JPG">
-  <br>
-  <i>Which file to click</i>
-</div>
-
+# Running PEX
+### Admin Password: `pass`  The admin password is required to run some of the admin commands or to reset everything back to the default with the `settings -reset` command.
+- **Method 1 (recommended)** - This is the most easiest option - In the root folder, simply double click app.py to run the application. Note: At the moment, there is a bug that requires you to run the application twice on the first install. So the first time, the program will close, please doubel click app.py once more and it should work as expected. 
 </br>
-
-- Option 2 - Terminal - Use the terminal, to run the application.
-Windows:
+- **Method 2 - Terminal (advanced)** - I would likely consider this to be the better option. In the case that you run into a problem on the way, instead of the app closing immediatly, you will be able to see the errors. If you are able to fix the error yourself, feel free to push the code or inform me of the error.
+Windows only:
 ```
-C:\Users\User> cd folder
+C:\Users\User> cd folder\pexdirectory\pex
 C:\Users\User> python app.py
 ```
-
 </br>
-
-- **Option 3 - will not work - (DISCONTINUED) ** - IDE - Open your IDE, Ctrl + o, open the app.py and press F5.
+- **Method 3 - This method is discontinued but still possible - Open the file in IDLE and press F5 or go `Run > Run Module`. Note: This will reopen the file in the default application for python, by default this should be the terminal. If it is not the terminal for you, please make the terminal the default application or try method 1 or 2.
 
 <div align="center">
   <img src="./main/images/getting-started-3.JPG">
