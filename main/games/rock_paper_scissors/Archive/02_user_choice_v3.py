@@ -1,15 +1,6 @@
-import random
+# Version 3 - checks that response is in a given list
 
 # Functions go here
-
-# Main routine goes here
-
-# List of valid responses
-yes_no_list = ['yes', 'no']
-rps_list = ['rock', 'paper', 'scissors', 'quit']
-
-# Ask user if they have played before.
-# If 'yes', show the instructions
 def choice_checker(question, valid_list, error):
     valid = False
     while not valid:
@@ -36,10 +27,11 @@ def choice_checker(question, valid_list, error):
             print(error)
 
 
-
-
+# Main routine goes here
 
 # Loop for testing purposes
+rps_list = ['rock', 'paper', 'scissors', 'quit']
+
 user_choice = ''
 while user_choice != 'quit':
     # Ask user for choice and check it's valid
