@@ -727,6 +727,11 @@ def command_line():
             with open('main/config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
                 config_username = config['username']
+        elif user_input[len(user_input)-2:len(user_input)] == '()':
+            user_input = user_input[0:len(user_input)-2]
+            print(Fore.RED+'The '+Fore.WHITE+user_input+Fore.RED+' function cannot be run via the command line at the moment')
+        #elif user_input.find('a') != -1:
+            #print('I found a')
         else:
             print('Sorry, "{}" '.format(user_input)+Fore.RED+'is an invalid command')
             add_log('{} is an invalid command'.format(user_input))
