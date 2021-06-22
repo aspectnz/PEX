@@ -63,7 +63,7 @@
 # A brief overview into how PEX works
 You will find that in `main/config.json`, there are the settings for running the application. The settings include options which the user can change via commands, requirements which can only be changed by accessing the files, stats which are values changed by the program, and finally the user data which is dynamic and is flexible. The requirments are put in place so that the application will work properly in most circumstances, if you try to modify these, the application might not work as expected. 
 
-The app will automatically install any modules required that are not already installed. These modules are required for the app to function fully. The app will also automatically become full screen, this is done with the keyboard module.
+You may notice that PEX will automatically do some things, such as... The app will automatically install any modules required that are not already installed. These modules are required for the app to function fully. The app will also automatically become full screen, this is done with the keyboard module. Your mouse will be moved to the top left since you do not want it in the way of important text. The `doc` command will be automatically typed for people who are using the application for the first time.
 
 Games, both from the assesment as well as custom games that will be added can be found in `main/games`. Games which are from the assesment contain a folder named `Archive` these contain several files, each representing different functions involved in the game. 
 
