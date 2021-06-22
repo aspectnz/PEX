@@ -23,11 +23,11 @@
   <li><a href="#table-of-contents">Table of Contents</a></li>
   <li><a href="#a-brief-overview-into-how-pex-works">A brief overview into how PEX works</a></li>
   <li><a href="#requirements">Requirements</a></li>
-  <li><a href="#installation">Installation</a></li>
+  <li><a href="#making-sure-everything-is-installed">Making sure everything is installed</a></li>
   <li>
-    <a href="#getting-started">Getting Started</a>
+    <a href="#running-pex">Running PEX</a>
     <ul>
-      <li><a href="#password-pass">PEX Admin Password</a></li>
+      <li><a href="#admin-password-pass">Admin Password</a></li>
     </ul>
   </li>
   <li>
@@ -37,18 +37,14 @@
     <a href="#commands">Commands</a>
     <ul>
       <li><a href="#commands-1">Commands</a></li>
-      <li><a href="#command-details">Command Details</a></li>
     </ul>
   </li>
-  <li>
-    <a href="#game-details">Game Details</a>
-    <ul>
-      <li><a href="#lucky-unicorn">Lucky Unicorn</a></li>
-    </ul>
-  </li>
-  <li><a href="#to-do--whats-coming">To Do / What's Coming</a></li>
-  <li><a href="#advanced">Advanced</a></li>
-  <li><a href="#contributing">Contributing</a></li>
+  <li><a href="#additional-notes">Additional Notes</a></li>
+  <ul>
+    <li><a href="#whats-coming">What's coming</a></li>
+    <li><a href="#downloads">Downloads</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+  </ul>
 </ul>
  
 
