@@ -61,15 +61,11 @@
 </br>
 
 # A brief overview into how PEX works
-In the `config.json` file, you are given a default balance of $100, this is all the money that you are allowed to spend in the game. When you are below $0, you are in debt and will not be able to play anymore. To reset the balance, use the `reset` command. You can also just add unlimited money by changing the `config.json` file and setting the balance to whatever you want (as long as it is a number)
+You will find that in `main/config.json`, there are the settings for running the application. The settings include options which the user can change via commands, requirements which can only be changed by accessing the files, stats which are values changed by the program, and finally the user data which is dynamic and is flexible. The requirments are put in place so that the application will work properly in most circumstances, if you try to modify these, the application might not work as expected. 
 
-The app will automatically install any module required that are not already installed. These modules are required for the app to function fully. The app will also automatically become full screen, this is done with the keyboard module and using the code:
-```
-keyboard.press('win+up')
-keyboard.release('win+up')
- ```
+The app will automatically install any modules required that are not already installed. These modules are required for the app to function fully. The app will also automatically become full screen, this is done with the keyboard module.
 
-There are mutliple commands that you can use, some of which are just for the sake of seeing what you can do with python. Some of the code may not make sense if you have not used some of the modules that I am using. If this is the case, you could start in the `/python-games/main/games` folder to find the folders for each game. In the archive folder for each, you will find each of functions as an individual program. This may make it easier to understand.
+Games, both from the assesment as well as custom games that will be added can be found in `main/games`. Games which are from the assesment contain a folder named `Archive` these contain several files, each representing different functions involved in the game. 
 
 </br>
 
