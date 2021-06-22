@@ -89,15 +89,15 @@ The code is completly opensource and available to anyone who, as long as the int
     </tr>
     <tr>
       <td>Latest version of python</td>
-      <td>Click the installer in the root folder called </td>
+      <td>Double lick the installer in the <code>main</code> folder called <code>python-3.9.5-amd64</code></td>
     </tr>
     <tr>
       <td>Latest version of pip</td>
-      <td>Click on update pip in the root directory</td>
+      <td>Assured that all other requirements are met, navigate to the <code>main</code> folder and double click on the <code>update_pip.py</code> file.</td>
     </tr>
     <tr>
       <td>A stable internet connect</td>
-      <td>Especially the first time. You can disable the internet requirement in the main/config.json or with the command `intreq -disable` command</td>
+      <td>this is especially important the first time. You can disable the internet requirement in the main/config.json or with the command <code>intreq -disable</code> command, but only do this after the modules have been installed and other requirments have been met. </td>
     </tr>
   </tbody>
 </table>
@@ -105,34 +105,35 @@ The code is completly opensource and available to anyone who, as long as the int
 <br>
 
 # Making sure everything is installed
-Make sure that you have the latest version of <a href="https://www.python.org/downloads/">python</a> installed and that you're using Windows 10. If you do not currently have the latest version of python installed, you can find the installer in the root directory named `python-3.9.5-amd64.exe`. Double click the installer file to install python. When installing, make sure you check `add to path` and `disable path limit`.
+Make sure that you have the latest version of <a href="https://www.python.org/downloads/">python</a> installed and that you're using Windows 10. If you do not currently have the latest version of python installed, you can find the installer in the `/main` directory named `python-3.9.5-amd64.exe`. Double click the installer file to install python. When installing, make sure you check `add to path` and `disable path limit`.
 <br>
-To install the game, you will need to either:
-- Clone the repository to a local folder
-- Download the zip file and extract it
 
-<div align="center">
-  <img src="./main/images/installation.JPG">
-  </br>
-  <i>Where the option are</i>
-</div>
+There are three main options here:
+- Clone the repository with GitHub Desktop (recommended). Make sure to update as often as possible. 
+- Clone the repository with Git Bash (if you know how). Make sure to update as often as possible. 
+- Download the zip file and extract it. This takes more time than the above two options. But you can redownload the zip file from here, which will contain the latest updates at the time of your download. 
 
 <br>
 
 # Running PEX
-### Admin Password: `pass`  The admin password is required to run some of the admin commands or to reset everything back to the default with the `settings -reset` command.
+### Admin Password: `pass`
+The admin password is required to run some of the admin commands or to reset everything back to the default with the `settings -reset` command.
+
 - **Method 1 (recommended)** - This is the most easiest option - In the root folder, simply double click app.py to run the application. Note: At the moment, there is a bug that requires you to run the application twice on the first install. So the first time, the program will close, please doubel click app.py once more and it should work as expected. 
+
 </br>
 
 - **Method 2 - Terminal (advanced)** - I would likely consider this to be the better option. In the case that you run into a problem on the way, instead of the app closing immediatly, you will be able to see the errors. If you are able to fix the error yourself, feel free to push the code or inform me of the error.
 Windows only:
+
 ```
 C:\Users\User> cd folder\pexdirectory\pex
 C:\Users\User> python app.py
 ```
+
 </br>
 
-- **Method 3 - This method is discontinued but still possible - Open the file in IDLE and press F5 or go `Run > Run Module`. Note: This will reopen the file in the default application for python, by default this should be the terminal. If it is not the terminal for you, please make the terminal the default application or try method 1 or 2.
+- **Method 3 - This method is discontinued but still possible** - Open the file in IDLE and press F5 or go `Run > Run Module`. Note: This will reopen the file in the default application for python, by default this should be the terminal. If it is not the terminal for you, please make the terminal the default application or try method 1 or 2.
 
 </br>
 
@@ -190,34 +191,12 @@ You can also clone/pull the repository to recieve the latest commands with the `
 
 </br>
 
-# Game Details
-### Lucky Unicorn
-Lucky Unicorn is essentially a luck-based game. Here are the steps to playing the game: <br>
-1. Type `lu` in the main menu.
-2. If you have played the game before type `yes` or `y`, otherwise type `no` or `n`.
-3. Choose the pretend amount of money you want to spend, you can choose from 0 to 100.
-4. Simply press <enter> each round or type `quit` to quit the game.
-5. When the game finished, you will be directed back to the main menu.
- 
-</br>
-
-# To Do / What's Coming
-- Count the amount of times each program has been run as well as the total
-- Rock Paper Scissors game
-- Higher/Lower game
-- Create modules for large sets of functions
-- Finish the Documentaion (last)
-
-To find other tasks that are being or need to be completed, have a look at the <a href="https://github.com/shannon-nz/python-games/issues">issues page for this reposiotory</a>. 
-
-</br>
-
-# Advanced
-If you would like to change the application settings, feel free to edit the config.json file on your own copy. I will be adding more settings there, so don't forget to pull from the repo frequently! 
-
-</br>
-
-# Contributing
+# Additional Notes
+### What's coming
+In the issues section of this repository, you will see the latest issues with the program. This are the current issues that are being worked on, at the same time as developing new features. If you bump into any problems or would like to see a new feature, this would be a great place to add your comments. 
+### Downloads
+Although this is the main documentation, there will be more documentations to come in the future. If you would like to know what documentations you can download, use the `download -help` command to see the list of sub-commands which will also list some of the documentations that are available for download. 
+### Contributing
 If you would like to contribute to this project, simply clone the repository, make some changes, and create a pull request. I will review the request and accept it if appropriate. If you would like to contribute to this project or my other projects more than once, feel free to contact me: [slekupvimplyrataqq@protonmail.com](slekupvimplyrataqq@protonmail.com).
 Some skills that would be specifically useful to this project are:
 - Fundamental knowledge of python
