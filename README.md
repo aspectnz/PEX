@@ -21,7 +21,7 @@
     </ul>
   </li>
   <li><a href="#table-of-contents">Table of Contents</a></li>
-  <li><a href="#how-the-app-works">A brief overview into how PEX works</a></li>
+  <li><a href="#a-brief-overview-into-how-pex-works">A brief overview into how PEX works</a></li>
   <li><a href="#requirements">Requirements</a></li>
   <li><a href="#installation">Installation</a></li>
   <li>
