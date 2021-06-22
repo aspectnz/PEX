@@ -67,6 +67,10 @@ The app will automatically install any modules required that are not already ins
 
 Games, both from the assesment as well as custom games that will be added can be found in `main/games`. Games which are from the assesment contain a folder named `Archive` these contain several files, each representing different functions involved in the game. 
 
+For your enjoyment, there is a large list of commands which are available. While in development, not all of these will work as expected. Each command will contain at least one sub command, `-help`, and these will better define the intentions of the user and act accordingly.
+
+The code is completly opensource and available to anyone who, as long as the intructions listed out in the MIT license are followed.
+
 </br>
 
 # Requirements
