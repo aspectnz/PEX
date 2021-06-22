@@ -12,55 +12,44 @@
 
 </br>
 
-<table align="center">
-  <tbody>
-    <tr>
-      <th>Table of contents</th>
-    </tr>
-    <tr>
-    <!-- width 350px -->
-      <td width="350px">
-      </br>
-        <ul>
-          <li>
-            <a href="#pex-documentation-in-development">PEX</a>
-            <ul>
-              <li><a href="#what-is-pex">What is PEX?</a></li>
-            </ul>
-          </li>
-          <li><a href="#how-the-app-works">How the app works</a></li>
-          <li><a href="#requirements">Requirements</a></li>
-          <li><a href="#installation">Installation</a></li>
-          <li>
-            <a href="#getting-started">Getting Started</a>
-            <ul>
-              <li><a href="#password-pyga">Password</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#trouble-shooting">Trouble Shooting</a>
-          </li>
-          <li>
-            <a href="#commands">Commands</a>
-            <ul>
-              <li><a href="#commands-1">Commands</a></li>
-              <li><a href="#command-details">Command Details</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#game-details">Game Details</a>
-            <ul>
-              <li><a href="#lucky-unicorn">Lucky Unicorn</a></li>
-            </ul>
-          </li>
-          <li><a href="#to-do--whats-coming">To Do / What's Coming</a></li>
-          <li><a href="#advanced">Advanced</a></li>
-          <li><a href="#contributing">Contributing</a></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<h1>Table of Contents</h1>
+<ul>
+  <li>
+    <a href="#pex-documentation-in-development">PEX Documentation (in development)</a>
+    <ul>
+      <li><a href="#what-is-pex">What is PEX?</a></li>
+    </ul>
+  </li>
+  <li><a href="#how-the-app-works">How the app works</a></li>
+  <li><a href="#requirements">Requirements</a></li>
+  <li><a href="#installation">Installation</a></li>
+  <li>
+    <a href="#getting-started">Getting Started</a>
+    <ul>
+      <li><a href="#password-pass">PEX Admin Password</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#trouble-shooting">Trouble Shooting</a>
+  </li>
+  <li>
+    <a href="#commands">Commands</a>
+    <ul>
+      <li><a href="#commands-1">Commands</a></li>
+      <li><a href="#command-details">Command Details</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#game-details">Game Details</a>
+    <ul>
+      <li><a href="#lucky-unicorn">Lucky Unicorn</a></li>
+    </ul>
+  </li>
+  <li><a href="#to-do--whats-coming">To Do / What's Coming</a></li>
+  <li><a href="#advanced">Advanced</a></li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+ 
 
 </br>
 
