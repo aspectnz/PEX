@@ -54,15 +54,12 @@ def add_dislog(text):
 add_log('importing default modules')
 import sys
 try:
-    add_log('successfully imported modules')
-    import random
-    import os
+    import random, os, subprocess, ctypes, shutil, pip, enum
     from time import sleep
-    import subprocess
-    from subprocess import *
-    import ctypes
+    add_log('successfully imported modules')
 except:
     add_log('error importing default modules')
+    add_log('default modules: random, os, subprocess, and ctypes.')
 
 def idle_check():
     add_dislog('Validating enviroment')
@@ -86,10 +83,6 @@ if sys.version_info[0] < 3:
     add_log('Exiting program in 10s...')
     sleep(10)
     exit()
-
-add_log('Importing second set of default modules')
-import pip
-import enum
 
 add_log('Importing custom modules')
 # Import numpy module
@@ -721,6 +714,7 @@ def command_line():
             os.system('python main/info/system.py')
 
         elif user_input == 'update':
+            add_log('Updating PEX ')
             os.system('git pull')
 
         elif user_input == 'update -reset':
@@ -737,6 +731,10 @@ def command_line():
 
             add_log('Update complete')
             print('You can find the latest version in the downloads folder named PEX')
+
+        elif user_input == 'update -clean':
+            add_log('removing reset update')
+            os.system('rmdir /s downloads\PEX')
 
         elif user_input == 'custom_command':
             with open('main/config.json', 'r') as jsonConfig:
