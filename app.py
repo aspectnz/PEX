@@ -721,6 +721,9 @@ def command_line():
             os.system('python main/info/system.py')
 
         elif user_input == 'update':
+            os.system('git pull')
+
+        elif user_input == 'update -reset':
             add_log('removing PEX folder if possible')
             os.system('rmdir /s downloads/PEX')
             add_log('Updating PEX')
