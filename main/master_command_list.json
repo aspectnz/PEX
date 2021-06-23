@@ -46,6 +46,13 @@
             "-help": "show sub-commands for this command and descriptions of each"
         }
     },
+    "imstupid": {
+        "brief_description": "This command will crash your PC",
+        "description": "This command will crash your PC",
+        "sub_commands": {
+            "-help": "This command will crash your PC"
+        }
+    },
     "log": {
         "brief_description": "view all past logs",
         "description": "",
@@ -53,13 +60,6 @@
             "-clean": "clean all recorded logs",
             "-disable": "disable logs",
             "-enable": "enable logs"
-        }
-    },
-    "ls": {
-        "brief_description": "list directory",
-        "description": "",
-        "sub_commands": {
-            "-help": "show sub-commands for this command and descriptions of each"
         }
     },
     "lu": {
