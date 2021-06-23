@@ -720,8 +720,20 @@ def command_line():
             print(Fore.BLUE+'Opening python file for "system information"...')
             os.system('python main/info/system.py')
 
-        elif user_input == 'hello':
-            print('Oh, hello! What would you like me to do for you today?')
+        elif user_input == 'update':
+            add_log('removing PEX folder if possible')
+            os.system('rmdir /s downloads/PEX')
+            add_log('Updating PEX')
+            try:
+                from git import Repo
+            except:
+                pip.main(['install','gitpython'])
+                from git import Repo
+
+            Repo.clone_from('https://github.com/shannon-nz/pex','downloads/PEX')
+
+            add_log('Update complete')
+            print('You can find the latest version in the downloads folder named PEX')
 
         elif user_input == 'custom_command':
             with open('main/config.json', 'r') as jsonConfig:
