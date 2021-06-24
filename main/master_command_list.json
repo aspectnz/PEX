@@ -47,10 +47,10 @@
         }
     },
     "imstupid": {
-        "brief_description": "This command will crash your PC",
-        "description": "This command will crash your PC",
+        "brief_description": "This command should only be used by people who know what they are doing",
+        "description": "",
         "sub_commands": {
-            "-help": "This command will crash your PC"
+            "-help": "This command should only be used by people who know what they are doing"
         }
     },
     "log": {
