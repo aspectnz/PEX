@@ -85,15 +85,23 @@ The code is completly opensource and available to anyone who, as long as the int
     </tr>
     <tr>
       <td>Latest version of python</td>
-      <td>Double lick the installer in the <code>main</code> folder called <code>python-3.9.5-amd64</code></td>
+      <td><a href="www.python.org/downloads/">Click here</a> and download the latest version of python available.</td>
     </tr>
     <tr>
       <td>Latest version of pip</td>
-      <td>Assured that all other requirements are met, navigate to the <code>main</code> folder and double click on the <code>update_pip.py</code> file.</td>
+      <td>With python already installed, <code>python -m pip install --upgrade pip</code> will update pip.</td>
     </tr>
     <tr>
       <td>A stable internet connect</td>
-      <td>this is especially important the first time. You can disable the internet requirement in the main/config.json or with the command <code>intreq -disable</code> command, but only do this after the modules have been installed and other requirments have been met. </td>
+      <td>this is especially important the first time. You can disable the internet requirement in the main/config.json or with the command <code>intreq -disable</code> command, but only do this after the modules have been installed and other requirments have been met. The downside to disabling this requirements will mean that some commands and features will not work as intented. </td>
+    </tr>
+    <tr>
+      <td>Git (for updating)</td>
+      <td>If you would like to update PEX, then the <code>update</code> command will require git to work as it is essentially running <code>git pull</code></td>
+    </tr>
+    <tr>
+      <td>Decent understanding of Python</td>
+      <td>As the program is developed for the purpose of being an experiment, it would be suffice to say that bugs will pop up over time. Thus a decent knowledge of python will benefit the user if they can briefly fix the issue.</td>
     </tr>
   </tbody>
 </table>
