@@ -54,7 +54,7 @@ def add_dislog(text):
 add_log('importing default modules')
 import sys
 try:
-    import random, os, subprocess, ctypes, pip, enum
+    import random, os, subprocess, ctypes, pip, enum, winsound
     from time import sleep
     add_log('successfully imported modules')
 except:
@@ -564,6 +564,8 @@ def stats():
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+winsound.Beep(3500, 250)
+winsound.Beep(3500, 250)
 check_internet_on_start()
 screen_clear()
 mouse.position = (0, 0)
@@ -640,6 +642,15 @@ def command_line():
         # check if this is the valid command
         elif user_input[0:len('download')] == 'download':
             base_command_download(user_input, 'download')
+
+        elif user_input == 'moveit':
+            add_log('importing playsound module')
+            try:
+                from playsound import playsound
+            except:
+                pip.main(['install','playsound'])
+            add_log('Playing "I like to move it')
+            playsound('main/music/iliketomoveit.mp3')
 
         # check if this is the valid command
         elif user_input[0:len('help')] == 'help':
