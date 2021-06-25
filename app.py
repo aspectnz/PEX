@@ -589,7 +589,7 @@ def stats():
 
 from pynput.keyboard import Key, Listener
 
-fres = [3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000]
+fres = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000]
 
 def on_release(key):
     if key == Key.enter:
@@ -597,6 +597,9 @@ def on_release(key):
         winsound.Beep(3000, 500)
         winsound.Beep(4000, 500)
         winsound.Beep(5000, 500)
+        winsound.Beep(5000, 500)
+        winsound.Beep(4000, 500)
+        winsound.Beep(3000, 500)
     else:
         f = random.choice(fres)
         winsound.Beep(f, 100)
