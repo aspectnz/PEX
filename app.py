@@ -28,6 +28,7 @@ with open('main/config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
     if config['user']['username'] == 'root':
         first_time = True
+        add_log('user has not established login details')
         print('Welcome, first make a username. Something short and easy to remember! ')
         while config['user']['username'] == 'root':
             username_prompt = input('Enter username: ')
@@ -502,6 +503,27 @@ def base_command_settings(user_input, command_string):
         sub_command = user_input[len(command_string)+2:len(user_input)]
         if sub_command == 'help':
             sub_command_help(command_string)
+        elif sub_command == 'pass':
+            with open('main/config.json', 'r') as jsonConfig:
+                config = json.load(jsonConfig)
+                pass_prompt = input('Enter password: ')
+                if pass_prompt != config['user']['pass']:
+                    print(Fore.RED+'Incorrect password')
+                else:
+                    # Function to change the password here >>>>>>>>>>>>>>>>>>>>>>>>>>>
+                    current_directory = os.path.dirname(__file__)
+                    file_path = os.path.join(current_directory, 'main\\info', 'default_config.json')
+                    with open(file_path, 'r') as jsonConfig:
+                        default_config = json.load(jsonConfig)
+                    with open('main/config.json', 'r') as jsonConfig:
+                        config = json.load(jsonConfig)
+                    with open('main/config.json', 'w') as f:
+                        json.dump(default_config, f, indent=4, sort_keys=True)
+                    add_log('settings have been reset')
+                    add_log('restarting the application...')
+                    screen_clear()
+                    os.system('python app.py')
+                    exit()
         elif sub_command == 'reset':
             print('This will reset the entire application and it\'s configurations\nAre you sure you want to reset? (y/n)', end='')
             verification_prompt = input('')
@@ -564,6 +586,23 @@ def stats():
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+
+from pynput.keyboard import Key, Listener
+
+fres = [3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000]
+
+def on_release(key):
+    if key == Key.enter:
+        print('pressed enter')
+        winsound.Beep(3000, 500)
+        winsound.Beep(4000, 500)
+        winsound.Beep(5000, 500)
+    else:
+        f = random.choice(fres)
+        winsound.Beep(f, 100)
+
+
+
 winsound.Beep(3500, 250)
 winsound.Beep(3500, 250)
 check_internet_on_start()
@@ -625,6 +664,13 @@ def command_line():
             config_username = config['user']['username']
             print(Fore.RED+'\npy-games@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
         
+        
+        '''
+        with Listener(
+            on_release=on_release) as listener:
+                listener.join()
+        '''
+
         user_input = input().lower()
       
         # check if this is the valid command
@@ -745,7 +791,10 @@ def command_line():
 
         elif user_input == 'update':
             add_log('Updating PEX ')
-            os.system('git pull')
+            try:
+                os.system('git pull')
+            except:
+                print('You must have git installed on your computer first.')
 
         elif user_input == 'update -reset':
             add_log('removing PEX folder if possible')
