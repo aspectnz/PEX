@@ -82,6 +82,7 @@ except:
 
 try:
     import subprocess
+    from subprocess import *
     default.add_log('successfully imported subprocess')
 except:
     default.add_log('failed to import subprocess')
@@ -163,7 +164,7 @@ except:
 try:
     # importing the modules
     from tabulate import tabulate
-    import pandas as pd
+    #import pandas as pd
     default.add_log('successfully imported pandas and tabulate')
 except:
     default.add_log('error importing pandas or tabulate')
@@ -287,8 +288,9 @@ Exiting program in 10 seconds...
         add_dislog('Windows is the default OS')
 
 def startup_sound():
-    print(Fore.BLUE+'playing startup sound...')
-    playsound('main/music/startup.mp3')
+    print(Fore.GREEN+'WELCOME TO PEX')
+    #subprocess.call('python main/music/startup.pyw', creationflags=subprocess.CREATE_NEW_CONSOLE)
+    os.system('python main/music/startup.pyw')
 
 # The screen clear function
 def screen_clear():
@@ -638,12 +640,11 @@ def on_release(key):
         f = random.choice(fres)
         winsound.Beep(f, 100)
 
-startup_sound()
-
 check_internet_on_start()
 screen_clear()
 mouse.position = (0, 0)
-
+startup_sound()
+screen_clear()
 
 print(Fore.GREEN+
     '''
