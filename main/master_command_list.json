@@ -118,5 +118,13 @@
     "system": {
         "brief_description": "get your system information",
         "description": ""
+    },
+    "update": {
+        "brief_description": "Update PEX (only works if git is installed)",
+        "description": "",
+        "sub_commands": {
+            "-reset": "clones the PEX repo into the downloads folder",
+            "-clean": "deletes updates if -reset sub-command was usd"
+        }
     }
 }

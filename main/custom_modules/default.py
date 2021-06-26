@@ -13,3 +13,5 @@ def add_log(text):
             dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
             with open('main/data.log', 'a') as file_object:
                 file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
+
+
