@@ -281,12 +281,23 @@ def spaz_screen():
     print('\n\nAnd that is why you should be careful what you click on!')
 
 def download(url, filename):
+    # os.path.exists("/home/el/myfile.txt"
+    # if the downloads folder does not exist, create one
+    if os.path.isdir('downloads') == False:
+        add_log('downloads folder is missing')
+        os.system('mkdir downloads')
+        add_log('created downloads folder')
     print(Fore.BLUE+'[*] Downloading '+filename+' from '+url)
+    add_log('importing requests')
     try:
         import requests
+        add_log('successfully imported requests')
     except:
+        add_log('error importing requests')
+        print(Fore.RED+'You do not have the "requests" module, we are installing it for you now...')
         pip.main(['install', 'requests'])
         import requests
+        add_log('successfully installed requests')
     filepath = 'downloads/'+filename
     with open(filepath, 'wb') as f:
         response = requests.get(url, stream=True)
@@ -612,6 +623,7 @@ check_internet_on_start()
 screen_clear()
 mouse.position = (0, 0)
 
+
 print(Fore.GREEN+
     '''
 ██████╗░███████╗██╗░░██╗
@@ -692,7 +704,7 @@ def command_line():
         elif user_input[0:len('download')] == 'download':
             base_command_download(user_input, 'download')
 
-        elif user_input == 'moveit':
+        elif user_input == 'move-it':
             add_log('importing playsound module')
             try:
                 from playsound import playsound

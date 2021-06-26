@@ -1,0 +1,3 @@
+If a command is short, as in it can be coded within 20 lines or so, then it is leavable in the main file.
+Otherwise, if it starts to become a few hundred lines long or more, then a file if not a directory could
+be dedicated to the specfic command.

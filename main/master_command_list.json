@@ -46,13 +46,6 @@
             "-help": "show sub-commands for this command and descriptions of each"
         }
     },
-    "imstupid": {
-        "brief_description": "This command should only be used by people who know what they are doing",
-        "description": "",
-        "sub_commands": {
-            "-help": "This command should only be used by people who know what they are doing"
-        }
-    },
     "log": {
         "brief_description": "view all past logs",
         "description": "",
