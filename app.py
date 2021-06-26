@@ -8,19 +8,17 @@ PLEASE WAIT A SECOND
 ''')
 import json
 import socket
+import sys
 h_name = socket.gethostname()
 IP_addres = socket.gethostbyname(h_name)
 from datetime import datetime
-def add_log(text):
-    print(text)
-    with open('main/config.json', 'r') as jsonConfig:
-        config = json.load(jsonConfig)
-        if config['options']['log'] == 'enabled':
-            now = datetime.now()
-            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-            with open('main/data.log', 'a') as file_object:
-                file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
-add_log('running main app')
+
+
+
+sys.path.insert(0, './main/custom_modules')
+import default as default
+
+default.add_log('running main app')
 
 first_time = False
 config_username = 'root'
@@ -28,7 +26,7 @@ with open('main/config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
     if config['user']['username'] == 'root':
         first_time = True
-        add_log('user has not established login details')
+        default.add_log('user has not established login details')
         print('Welcome, first make a username. Something short and easy to remember! ')
         while config['user']['username'] == 'root':
             username_prompt = input('Enter username: ')
@@ -52,15 +50,15 @@ def add_dislog(text):
                 file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
-add_log('importing default modules')
-import sys
+default.add_log('importing default modules')
+
 try:
     import random, os, subprocess, ctypes, pip, enum, winsound
     from time import sleep
-    add_log('successfully imported modules')
+    default.add_log('successfully imported modules')
 except:
-    add_log('error importing default modules')
-    add_log('default modules: random, os, subprocess, and ctypes.')
+    default.add_log('error importing default modules')
+    default.add_log('default modules: random, os, subprocess, and ctypes.')
 
 def idle_check():
     add_dislog('Validating enviroment')
@@ -77,39 +75,39 @@ def idle_check():
         add_dislog('Terminal requirement is disabled')
 idle_check()
 
-add_log('Validating python version')
+default.add_log('Validating python version')
 if sys.version_info[0] < 3:
-    add_logdis('python version is less than 3')
+    default.add_logdis('python version is less than 3')
     print('Your python version is not up to date, please make sure that you are running python3 or later.')
-    add_log('Exiting program in 10s...')
+    default.add_log('Exiting program in 10s...')
     sleep(10)
     exit()
 
-add_log('Importing custom modules')
+default.add_log('Importing custom modules')
 # Import numpy module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
     import numpy
-    add_log('successfully imported colorama')
+    default.add_log('successfully imported numpy')
 except:
-    add_log('error importing numpy')
+    default.add_log('error importing numpy')
     print('You do not have the "numpy" module, we are installing it for you now...')
     pip.main(['install', 'numpy'])
     import numpy
-    add_log('installed and imported colorama successfully')
+    default.add_log('installed and imported numpy successfully')
 
 # Import colorama module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
-add_log('importing custom modules')
+default.add_log('importing custom modules')
 try:
     import colorama
     from colorama import Fore, Back, Style
     colorama.init()
     colorama.init(convert=True)
     colorama.init(autoreset=True)
-    add_log('successfully imported colorama')
+    default.add_log('successfully imported colorama')
 except:
-    add_log('error importing colorama')
+    default.add_log('error importing colorama')
     print('You do not have the "colorama" module, we are installing it for you now...')
     pip.main(['install', 'colorama'])
     import colorama
@@ -117,7 +115,7 @@ except:
     colorama.init()
     colorama.init(convert=True)
     colorama.init(autoreset=True)
-    add_log('installed and imported colorama successfully')
+    default.add_log('installed and imported colorama successfully')
 
 # Import pandas and tabulate module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
@@ -125,16 +123,16 @@ try:
     # importing the modules
     from tabulate import tabulate
     import pandas as pd
-    add_log('successfully imported pandas and tabulate')
+    default.add_log('successfully imported pandas and tabulate')
 except:
-    add_log('error importing pandas or tabulate')
+    default.add_log('error importing pandas or tabulate')
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
     pip.main(['install', 'tabulate'])
     pip.main(['install', 'pandas'])
     # importing the modules
     from tabulate import tabulate
     import pandas as pd
-    add_log('installed and imported pandas and tabulate successfully')
+    default.add_log('installed and imported pandas and tabulate successfully')
 
 
 # Import pynput module
@@ -142,15 +140,15 @@ except:
 try:
     from pynput.mouse import Button, Controller
     mouse = Controller()
-    add_log('successfully imported pynput')
+    default.add_log('successfully imported pynput')
 except:
-    add_log('error importing pynput')
+    default.add_log('error importing pynput')
     print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
     pip.main(['install', 'pynput'])
     #from pynput.keyboard import Key, Controller
     from pynput.mouse import Button, Controller
     mouse = Controller()
-    add_log('installed and imported pynput successfully')
+    default.add_log('installed and imported pynput successfully')
 
 
 # Import keyboard module
@@ -159,15 +157,15 @@ try:
     import keyboard
     keyboard.press('win+up')
     keyboard.release('win+up')
-    add_log('successfully imported keyboard')
+    default.add_log('successfully imported keyboard')
 except:
-    add_log('error importing keyboard')
+    default.add_log('error importing keyboard')
     print(Fore.RED+'You do not have the "keyboard" module, we are installing it for you now...')
     pip.main(['install', 'keyboard'])
     import keyboard
     keyboard.press('win+up')
     keyboard.release('win+up')
-    add_log('installed and imported keyboard successfully')
+    default.add_log('installed and imported keyboard successfully')
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
@@ -186,9 +184,9 @@ def check_internet_on_start():
 
     if internet_config == True:
         if(check_internet_connection() == True):
-            add_log('connected to the internet')
+            default.add_log('connected to the internet')
         else:
-            add_log('not connected to the internet')
+            default.add_log('not connected to the internet')
             print('''
     Not connected to the internet
     Please make sure that you are connected to the internet or that ports 53 and 443 are enabled
@@ -225,7 +223,7 @@ Exiting program in 10 seconds...
 
 # The screen clear function
 def screen_clear():
-    add_log('clearing screen...')
+    default.add_log('clearing screen...')
     # for mac and linux(here, os.name is 'posix')
     if os.name == 'posix':
         _ = os.system('clear')
@@ -236,7 +234,7 @@ def screen_clear():
 def change_terminal_background(value):
     # Change the default background and fore color for the terminal
     os.system('color '+value)
-    add_log('changed theme to "{}"'.format(value))
+    default.add_log('changed theme to "{}"'.format(value))
 
 def mod_config(option, value, newval):
     if option == 'view':
@@ -284,20 +282,20 @@ def download(url, filename):
     # os.path.exists("/home/el/myfile.txt"
     # if the downloads folder does not exist, create one
     if os.path.isdir('downloads') == False:
-        add_log('downloads folder is missing')
+        default.add_log('downloads folder is missing')
         os.system('mkdir downloads')
-        add_log('created downloads folder')
+        default.add_log('created downloads folder')
     print(Fore.BLUE+'[*] Downloading '+filename+' from '+url)
-    add_log('importing requests')
+    default.add_log('importing requests')
     try:
         import requests
-        add_log('successfully imported requests')
+        default.add_log('successfully imported requests')
     except:
-        add_log('error importing requests')
+        default.add_log('error importing requests')
         print(Fore.RED+'You do not have the "requests" module, we are installing it for you now...')
         pip.main(['install', 'requests'])
         import requests
-        add_log('successfully installed requests')
+        default.add_log('successfully installed requests')
     filepath = 'downloads/'+filename
     with open(filepath, 'wb') as f:
         response = requests.get(url, stream=True)
@@ -385,56 +383,6 @@ def base_command_download(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
-# Help command function
-def base_command_help(user_input, command_string):
-    with open('main/master_command_list.json', 'r') as command_list:
-        data = json.load(command_list)
-
-    # calculate where the dash should be (if there is)
-    expected_dash = user_input[len(command_string)+1:len(command_string)+2]
-    # Default colors for etxt sets
-    command_color = Fore.WHITE
-    des_color = Fore.WHITE
-    # base command
-    if user_input == command_string:
-        print(Fore.GREEN+'Use the "'+Fore.WHITE+'-help'+Fore.GREEN+'" sub-command for any command to show more options')
-        print(Fore.GREEN+'Or use "'+Fore.WHITE+'help -all'+Fore.GREEN+'" to show the full list of commands and sub-commands')
-        print()
-        for (command, command_detail) in data.items():
-            num = 30-len(command)
-            tabs = ' '*num
-            print(command_color+'   '+command+tabs+des_color+command_detail['brief_description'])
-    # sub commands for command
-    elif expected_dash == '-':
-        # identify sub command
-        sub_command = user_input[len(command_string)+2:len(user_input)]
-        if sub_command == 'help':
-            sub_command_help(command_string)
-        elif sub_command == 'all':
-            for (command, command_detail) in data.items():
-                num = 30-len(command)
-                tabs = ' '*num
-                print(command_color+'   '+command+tabs+des_color+command_detail['brief_description'])
-                # Retrieve and print sub-commands
-                if 'sub_commands' in data[command]:
-                    for (subcmd, subcmd_des) in command_detail['sub_commands'].items():
-                        subcmd_tab = 30-len(subcmd)
-                        print(' '*3+Fore.BLUE+subcmd+' '*subcmd_tab+Fore.CYAN+subcmd_des)
-        elif sub_command == 'sub':
-            for (command, command_detail) in data.items():
-                # Retrieve and print sub-commands
-                if 'sub_commands' in data[command]:
-                    for (subcmd, subcmd_des) in command_detail['sub_commands'].items():
-                        subcmd_tab = 30-len(subcmd)
-                        print(' '*3+Fore.BLUE+subcmd+' '*subcmd_tab+Fore.CYAN+subcmd_des)
-        elif sub_command == 'des':
-            print('sub command was correctly des')
-        else:
-            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
-    # otherwise inform user that the command was identified, but had had a type
-    else:
-        invalid_command_ext(command_string, user_input)
-
 
 # highler lower game command function
 def base_command_hl(user_input, command_string):
@@ -511,8 +459,16 @@ def base_command_settings(user_input, command_string):
     elif expected_dash == '-':
         # identify sub command
         sub_command = user_input[len(command_string)+2:len(user_input)]
-        if sub_command == 'help':
+        if sub_command == 'disreq -internet':
+            with open('main/config.json', 'r') as jsonConfig:
+                config = json.load(jsonConfig)
+            config['requirements']['internet'] = False
+            with open('main/config.json', 'w') as f:
+                        json.dump(default_config, f, indent=4, sort_keys=True)
+
+        elif sub_command == 'help':
             sub_command_help(command_string)
+
         elif sub_command == 'pass':
             with open('main/config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
@@ -529,8 +485,8 @@ def base_command_settings(user_input, command_string):
                         config = json.load(jsonConfig)
                     with open('main/config.json', 'w') as f:
                         json.dump(default_config, f, indent=4, sort_keys=True)
-                    add_log('settings have been reset')
-                    add_log('restarting the application...')
+                    default.add_log('settings have been reset')
+                    default.add_log('restarting the application...')
                     screen_clear()
                     os.system('python app.py')
                     exit()
@@ -552,8 +508,8 @@ def base_command_settings(user_input, command_string):
                             config = json.load(jsonConfig)
                         with open('main/config.json', 'w') as f:
                             json.dump(default_config, f, indent=4, sort_keys=True)
-                        add_log('settings have been reset')
-                        add_log('restarting the application...')
+                        default.add_log('settings have been reset')
+                        default.add_log('restarting the application...')
                         screen_clear()
                         os.system('python app.py')
                         exit()
@@ -704,20 +660,19 @@ def command_line():
             base_command_download(user_input, 'download')
 
         elif user_input == 'move-it':
-            add_log('importing playsound module')
+            default.add_log('importing playsound module')
             try:
                 from playsound import playsound
             except:
                 pip.main(['install','playsound'])
-            add_log('Playing "I like to move it')
+            default.add_log('Playing "I like to move it')
             playsound('main/music/iliketomoveit.mp3')
 
         # check if this is the valid command
         elif user_input[0:len('help')] == 'help':
-            #base_command_help(user_input, 'help')
             sys.path.insert(0, './main/command')
             import c_help as c_help
-            #c_help.run()
+            c_help.base_command_help(user_input, 'help')
 
         # check if this is the valid command
         elif user_input[0:len('hl')] == 'hl':
@@ -742,7 +697,7 @@ def command_line():
             exit()
 
         elif user_input == 'restart' or user_input == '/r':
-            add_log('restarting application...')
+            default.add_log('restarting application...')
             os.system('python app.py')
             exit()
 
@@ -785,16 +740,16 @@ def command_line():
             os.system('python main/info/system.py')
 
         elif user_input == 'update':
-            add_log('Updating PEX ')
+            default.add_log('Updating PEX ')
             try:
                 os.system('git pull')
             except:
                 print('You must have git installed on your computer first.')
 
         elif user_input == 'update -reset':
-            add_log('removing PEX folder if possible')
+            default.add_log('removing PEX folder if possible')
             os.system('rmdir /s downloads/PEX')
-            add_log('Updating PEX')
+            default.add_log('Updating PEX')
             try:
                 from git import Repo
             except:
@@ -803,11 +758,11 @@ def command_line():
 
             Repo.clone_from('https://github.com/shannon-nz/pex','downloads/PEX')
 
-            add_log('Update complete')
+            default.add_log('Update complete')
             print('You can find the latest version in the downloads folder named PEX')
 
         elif user_input == 'update -clean':
-            add_log('removing reset update')
+            default.add_log('removing reset update')
             os.system('rmdir /s downloads\\PEX')
 
         elif user_input == 'custom_command':
@@ -821,5 +776,5 @@ def command_line():
             #print('I found a')
         else:
             print('Sorry, "{}" '.format(user_input)+Fore.RED+'is an invalid command')
-            add_log('{} is an invalid command'.format(user_input))
+            default.add_log('{} is an invalid command'.format(user_input))
 command_line()
