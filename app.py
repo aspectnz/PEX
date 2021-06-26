@@ -209,6 +209,16 @@ except:
     default.add_log('installed and imported keyboard successfully')
 
 
+# import the playsound module
+try:
+    from playsound import playsound
+    default.add_log('successfully imported playsound')
+except:
+    default.add_log('failed to import playsound')
+    print(Fore.RED+'we are installing it for you now')
+    pip.main(['install','playsound'])
+    default.add_log('successfully imported playsound')
+
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 def idle_check():
     add_dislog('Validating enviroment')
@@ -275,6 +285,10 @@ Exiting program in 10 seconds...
         exit()
     else:
         add_dislog('Windows is the default OS')
+
+def startup_sound():
+    print(Fore.BLUE+'playing startup sound...')
+    playsound('main/music/startup.mp3')
 
 # The screen clear function
 def screen_clear():
@@ -624,11 +638,7 @@ def on_release(key):
         f = random.choice(fres)
         winsound.Beep(f, 100)
 
-
-
-winsound.Beep(3000, 200)
-winsound.Beep(3500, 200)
-winsound.Beep(3500, 800)
+startup_sound()
 
 check_internet_on_start()
 screen_clear()
@@ -668,9 +678,6 @@ unexpected problems. Enjoy!                                                     
 print(Fore.GREEN+'Welcome to the main menu. Use a command or type "help" if you don\'t know any commands')
 
 
-
-
-
 def activate_admin():
     print('admin activated')
 
@@ -688,7 +695,7 @@ def command_line():
         with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
             config_username = config['user']['username']
-            print(Fore.RED+'\npy-games@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
+            print(Fore.RED+'\npex@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
         
         
         '''
@@ -716,14 +723,6 @@ def command_line():
             base_command_download(user_input, 'download')
 
         elif user_input == 'move-it':
-            try:
-                from playsound import playsound
-                default.add_log('successfully imported playsound')
-            except:
-                default.add_log('failed to import playsound')
-                print(Fore.RED+'we are importing it for you now')
-                pip.main(['install','playsound'])
-                default.add_log('successfully imported playsound')
             default.add_log('Playing "I like to move it')
             playsound('main/music/iliketomoveit.mp3')
 
