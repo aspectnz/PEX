@@ -6,19 +6,34 @@ print(
 
 PLEASE WAIT A SECOND
 ''')
-import json
-import socket
+
+imported_modules = False
+
 import sys
-h_name = socket.gethostname()
-IP_addres = socket.gethostbyname(h_name)
-from datetime import datetime
-
-
-
 sys.path.insert(0, './main/custom_modules')
 import default as default
 
-default.add_log('running main app')
+
+try:
+    import json
+    default.add_log('successfully imported json')
+except:
+    default.add_log('failed to import json')
+
+try:
+    import socket
+    default.add_log('successfully imported socket')
+except:
+    default.add_log('failed to import socket')
+
+h_name = socket.gethostname()
+IP_addres = socket.gethostbyname(h_name)
+
+try:
+    from datetime import datetime
+    default.add_log('successfully imported datetime')
+except:
+    default.add_log('failed to import datetime')
 
 first_time = False
 config_username = 'root'
@@ -36,6 +51,7 @@ with open('main/config.json', 'r') as jsonConfig:
             elif username_prompt == '' or username_prompt == ' ':
                 print('please enter a valid username, not blank space')
             else:
+                default.add_log('user set new username to '+username_prompt)
                 config['user']['username'] = username_prompt
                 with open('main/config.json', 'w') as f:
                     json.dump(config, f, indent=4, sort_keys=True)
@@ -53,27 +69,52 @@ def add_dislog(text):
 default.add_log('importing default modules')
 
 try:
-    import random, os, subprocess, ctypes, pip, enum, winsound
-    from time import sleep
-    default.add_log('successfully imported modules')
+    import random
+    default.add_log('successfully imported random')
 except:
-    default.add_log('error importing default modules')
-    default.add_log('default modules: random, os, subprocess, and ctypes.')
+    default.add_log('failed to import random')
 
-def idle_check():
-    add_dislog('Validating enviroment')
-    with open('main/config.json', 'r') as jsonConfig:
-        config = json.load(jsonConfig)
-    terminal_required = config['requirements']['terminal']
+try:
+    import os
+    default.add_log('successfully imported os')
+except:
+    default.add_log('failed to import os')
 
-    if terminal_required == True:
-        add_dislog('The current enviroment is Terminal')
-        sys.path.insert(0, './main/custom_modules')
-        import idle_check as idle_check
-        idle_check.run()
-    else:
-        add_dislog('Terminal requirement is disabled')
-idle_check()
+try:
+    import subprocess
+    default.add_log('successfully imported subprocess')
+except:
+    default.add_log('failed to import subprocess')
+
+try:
+    import ctypes
+    default.add_log('successfully imported ctypes')
+except:
+    default.add_log('failed to import ctypes')
+
+try:
+    import pip
+    default.add_log('successfully imported pip')
+except:
+    default.add_log('failed to import pip')
+
+try:
+    import enum
+    default.add_log('successfully imported enum')
+except:
+    default.add_log('failed to import enum')
+
+try:
+    import winsound
+    default.add_log('successfully imported winsound')
+except:
+    default.add_log('failed to import winsound')
+
+try:
+    from time import sleep
+    default.add_log('successfully imported sleep')
+except:
+    default.add_log('failed to import sleep')
 
 default.add_log('Validating python version')
 if sys.version_info[0] < 3:
@@ -126,7 +167,7 @@ try:
     default.add_log('successfully imported pandas and tabulate')
 except:
     default.add_log('error importing pandas or tabulate')
-    print(Fore.RED+'You do not have the "pynput" module, we are installing it for you now...')
+    print(Fore.RED+'You do not have the "tabulate" module, we are installing it for you now...')
     pip.main(['install', 'tabulate'])
     pip.main(['install', 'pandas'])
     # importing the modules
@@ -169,6 +210,20 @@ except:
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+def idle_check():
+    add_dislog('Validating enviroment')
+    with open('main/config.json', 'r') as jsonConfig:
+        config = json.load(jsonConfig)
+    terminal_required = config['requirements']['terminal']
+
+    if terminal_required == True:
+        add_dislog('The current enviroment is Terminal')
+        sys.path.insert(0, './main/custom_modules')
+        import idle_check as idle_check
+        idle_check.run()
+    else:
+        add_dislog('Terminal requirement is disabled')
+
 def check_internet_connection():
     try:
         # connect to the host -- tells us if the host is actually reachable
@@ -552,8 +607,7 @@ def stats():
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
-
-from pynput.keyboard import Key, Listener
+idle_check()
 
 fres = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000]
 
@@ -572,8 +626,10 @@ def on_release(key):
 
 
 
-winsound.Beep(3500, 250)
-winsound.Beep(3500, 250)
+winsound.Beep(3000, 200)
+winsound.Beep(3500, 200)
+winsound.Beep(3500, 800)
+
 check_internet_on_start()
 screen_clear()
 mouse.position = (0, 0)
@@ -660,11 +716,14 @@ def command_line():
             base_command_download(user_input, 'download')
 
         elif user_input == 'move-it':
-            default.add_log('importing playsound module')
             try:
                 from playsound import playsound
+                default.add_log('successfully imported playsound')
             except:
+                default.add_log('failed to import playsound')
+                print(Fore.RED+'we are importing it for you now')
                 pip.main(['install','playsound'])
+                default.add_log('successfully imported playsound')
             default.add_log('Playing "I like to move it')
             playsound('main/music/iliketomoveit.mp3')
 
