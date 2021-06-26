@@ -385,7 +385,6 @@ def base_command_download(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
-
 # Help command function
 def base_command_help(user_input, command_string):
     with open('main/master_command_list.json', 'r') as command_list:
@@ -722,6 +721,7 @@ def command_line():
             base_command_hl(user_input, 'hl')
 
         # This command is a prank that crashes the users computer
+        '''
         elif user_input == 'imstupid':
             print('This is a smart person command, only use if you know what you are doing')
             sleep(2)
@@ -740,6 +740,7 @@ def command_line():
             else:
                 # Re-run the program with admin rights
                 ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+        '''
 
             
 
