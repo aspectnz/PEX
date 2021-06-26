@@ -288,7 +288,17 @@ Exiting program in 10 seconds...
         add_dislog('Windows is the default OS')
 
 def startup_sound():
-    print(Fore.GREEN+'WELCOME TO PEX')
+    print(Fore.BLUE+'WELCOME TO ')
+    print(Fore.GREEN+
+    '''
+██████╗░███████╗██╗░░██╗
+██╔══██╗██╔════╝╚██╗██╔╝
+██████╔╝█████╗░░░╚███╔╝░
+██╔═══╝░██╔══╝░░░██╔██╗░
+██║░░░░░███████╗██╔╝╚██╗
+╚═╝░░░░░╚══════╝╚═╝░░╚═╝
+    ''')
+    print(Fore.BLUE+'Making sure that everything is ready...')
     #subprocess.call('python main/music/startup.pyw', creationflags=subprocess.CREATE_NEW_CONSOLE)
     os.system('python main/music/startup.pyw')
 
@@ -690,8 +700,8 @@ def command_line():
     idle_check()
     user_input = ''
     while user_input != 'quit':
-        print(Back.BLUE+Style.DIM+'\nAs this application is still in development, not everything will work as expected.\nThis message will be removed from the program when production ready. So make sure to keep up here:')
-        print(Back.BLUE+Style.DIM+'https://github.com/shannon-nz/PEX/')
+        print(Back.BLUE+Style.DIM+'\nAs this application is still in development, not everything will work as expected.\nThis message will be removed from the program when production ready. So make sure to keep up to date on GitHub:')
+        print(Fore.BLUE+'https://github.com/shannon-nz/PEX/')
 
         with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
@@ -834,6 +844,6 @@ def command_line():
         #elif user_input.find('a') != -1:
             #print('I found a')
         else:
-            print('Sorry, "{}" '.format(user_input)+Fore.RED+'is an invalid command')
-            default.add_log('{} is an invalid command'.format(user_input))
+            print(Fore.RED+'Sorry, "'+user_input+Fore.RED+'" is an invalid command')
+            default.add_log(Fore.WHITE+'"'+user_input+'"'+Fore.RED+' is an invalid command')
 command_line()
