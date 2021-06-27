@@ -487,6 +487,28 @@ def base_command_download(user_input, command_string):
         invalid_command_ext(command_string, user_input)
 
 
+# music command function
+def base_command_music(user_input, command_string):
+    # calculate where the dash should be (if there is)
+    expected_dash = user_input[len(command_string)+1:len(command_string)+2]
+    # base command
+    if user_input == command_string:
+        print('This command requires a sub-command (i.e, "music -moveit")')
+    # sub commands for command
+    elif expected_dash == '-':
+        # identify sub command
+        sub_command = user_input[len(command_string)+2:len(user_input)]
+        if sub_command == 'help':
+            sub_command_help(command_string)
+        elif sub_command == 'moveit':
+            default.add_log('Playing "I like to move it')
+            playsound('main/music/iliketomoveit.mp3')
+        else:
+            sub_command_error(sub_command)
+    # otherwise inform user that the command was identified, but had had a type
+    else:
+        invalid_command_ext(command_string, user_input)
+
 # highler lower game command function
 def base_command_hl(user_input, command_string):
     # calculate where the dash should be (if there is)
@@ -708,14 +730,15 @@ def command_line():
         elif user_input[0:len('download')] == 'download':
             base_command_download(user_input, 'download')
 
+        elif user_input == 'echo -help':
+            print('The echo command will print out any text that follows after "echo "')
         elif user_input[0:5] == 'echo ':
             user_input = user_input[5:len(user_input)]
             print(user_input)
 
-        elif ''
-        elif user_input == 'move-it':
-            default.add_log('Playing "I like to move it')
-            playsound('main/music/iliketomoveit.mp3')
+        # check if this is the valid command
+        elif user_input[0:len('music')] == 'music':
+            base_command_music(user_input, 'music')
 
         # check if this is the valid command
         elif user_input[0:len('help')] == 'help':
