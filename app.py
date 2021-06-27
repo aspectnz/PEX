@@ -367,15 +367,7 @@ def mod_config(option, value, newval):
 
 def spaz_screen():
     print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
-    for item in range(1, 50):
-        print(Fore.RED+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-        print(Fore.BLUE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-        print(Fore.YELLOW+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-        print(Fore.WHITE+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-        print(Fore.GREEN+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-        print(Fore.MAGENTA+'WARNING, IT IS ABOUT TO GET MAD !!!  DO NOT CLICK ANYTHING ')
-        print(Fore.CYAN+'WARNING, IT IS ABOUT TO GET MAD !!!')
-    spaz_msg = 'SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ SPAZ '
+    color_list = [Fore.RED, Fore.BLUE, Fore.YELLOW, Fore.WHITE, Fore.GREEN, Fore.MAGENTA, Fore.CYAN]        
     for item in range(1, 51):
         keyboard.press('f11')
         keyboard.release('f11')
@@ -386,11 +378,10 @@ def spaz_screen():
         rand1 = random.randrange(0, 2000)
         rand2 = random.randrange(0, 2000)
         mouse.position = (rand1, rand2)
-        print(Fore.RED+spaz_msg)
-        print(Fore.BLUE+spaz_msg)
-        print(Fore.WHITE+spaz_msg)
-        print(Fore.GREEN+spaz_msg)
         sleep(0.05)
+    #color = random.choice(color_list)
+    #rand3 = random.randrange(10000000000000000, 100000000000000000000)
+    #print(color+'{}'.format(pow(rand3, 100)))
     print('\n\nAnd that is why you should be careful what you click on!')
 
 def download(url, filename):
