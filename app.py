@@ -704,13 +704,13 @@ def command_line():
         if user_input[0:len('admin')] == 'admin':
             base_command_admin(user_input, 'admin')
 
-        # clear screen command
+        # clear screen command - clears the terminal
         elif user_input == 'cls':
             screen_clear()
         elif user_input == 'cls -help':
             print('The cls command will clear the terminal')
 
-        # cmd command
+        # cmd command - run any cmd command that follows after "cmd "
         elif user_input == 'cmd -help':
             print('The cmd command will allow you to run normal cmd commands within PEX (i.e, "cmd dir")')
         elif user_input[0:4] == 'cmd ':
@@ -718,7 +718,7 @@ def command_line():
             default.add_log('running {} command in cmd'.format(user_input))
             os.system(user_input)
 
-        # documentation command
+        # documentation command - opens the PEX documentation in the default web browser
         elif user_input == 'doc':
             print(Fore.BLUE+'Opening PEX documentation')
             import webbrowser
@@ -726,10 +726,11 @@ def command_line():
         elif user_input == 'doc -help':
             print('The doc command will open the documentation in your default browser')
 
-        # check if this is the valid command
+        # downloads anything from the internet that is specified in the program
         elif user_input[0:len('download')] == 'download':
             base_command_download(user_input, 'download')
 
+        # echo command - prints the text that follows after "echo " onto the screen
         elif user_input == 'echo -help':
             print('The echo command will print out any text that follows after "echo "')
         elif user_input[0:5] == 'echo ':
