@@ -833,11 +833,15 @@ def command_line():
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 # this section contains the ordered set of functions being called
+# clean the cache - delete __pycache__ if it is there
 clean_cache()
+# check if the python version is valid for this program
 check_py_version()
+# check if the user is using idle or terminal
 idle_check()
+# check if the user is connected to the internet. If the config file reads required, then exit the program.
 check_internet_on_start()
-
+# simultaneously
 if __name__ == '__main__':
     Thread(target = screen_clear).start()
     Thread(target = startup_sound).start()
