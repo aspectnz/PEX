@@ -794,8 +794,10 @@ def command_line():
         elif user_input == 'update':
             default.add_log('Updating PEX ')
             try:
+                # use the git pull command
                 os.system('git pull')
             except:
+                # inform user if git is not installed
                 print('You must have git installed on your computer first.')
 
         # instead of using the git application, install in the downloads folder using the gitpython module
@@ -822,16 +824,23 @@ def command_line():
 
         # run a custom command
         elif user_input == 'custom_command':
+            # open the config.json file
             with open('main/config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
+                # get the username
                 config_username = config['username']
 
+        # if the last 2 characters of the command are ():
         elif user_input[len(user_input)-2:len(user_input)] == '()':
+            # remove () from the end of the command
             user_input = user_input[0:len(user_input)-2]
+            # command is not yet available
             print(Fore.RED+'The '+Fore.WHITE+user_input+Fore.RED+' function cannot be run via the command line at the moment')
 
         #elif user_input.find('a') != -1:
             #print('I found a')
+
+        # if the user entered an invalid command, inform them and play the error sound
         else:
             default.add_log(Fore.WHITE+'"'+user_input+'"'+Fore.RED+' is an invalid command')
             last_error = True
