@@ -168,14 +168,18 @@ Use the `-help` sub-command to list out all the sub-commands for any command, fo
 ### Commands
 
 ```
+Use the "-help" sub-command for any command to show more options
+Or use "help -all" to show the full list of commands and sub-commands
+
    admin                         perform admin tasks (caution)
    cls                           clear the terminal
+   cmd                           run a cmd command (i.e, 'cmd dir')
    doc                           open python games documentation on GitHub
    download                      download documentations and other things
+   echo                          print text on screen (i.e, 'echo hello world')
    help                          display commands and functions
    hl                            play higher/lower game
    log                           view all past logs
-   ls                            list directory
    lu                            play lucky unicorn game
    profile                       open my profile website
    quit                          quit the entire program
@@ -186,6 +190,8 @@ Use the `-help` sub-command to list out all the sub-commands for any command, fo
    spaz                          SPAZ YOUR SCREEN for 7 seconds (caution)
    stats                         view your stats
    system                        get your system information
+   update                        Update PEX (only works if git is installed)
+  
 ```
 
 
