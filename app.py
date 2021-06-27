@@ -736,21 +736,21 @@ def command_line():
             user_input = user_input[5:len(user_input)]
             print(user_input)
 
-        # music command
+        # music command - plays music defined in the sub-command
         elif user_input[0:len('music')] == 'music':
             base_command_music(user_input, 'music')
 
-        # help command
+        # help command - displays different sets of commands dependant on the sub-command (if any)
         elif user_input[0:len('help')] == 'help':
             sys.path.insert(0, './main/command')
             import c_help as c_help
             c_help.base_command_help(user_input, 'help')
 
-        # higher lower command
+        # hl command - plays the higher/lower game
         elif user_input[0:len('hl')] == 'hl':
             base_command_hl(user_input, 'hl')
 
-        # log command
+        # log command - displays all the logs or configures it with sub-commands
         elif user_input[0:len('log')] == 'log':
             base_command_log(user_input, 'log')
 
@@ -759,45 +759,45 @@ def command_line():
             sleep(1)
             os.system('python main/games/luckyunicorn/00_LU_Base_v_01.py')
 
-        # profile command
+        # profile command - opens profile website in default browser
         elif user_input == 'profile':
             print(Fore.BLUE+'Opening shannon.rf.gd in default browser')
             import webbrowser
             webbrowser.open('https://www.shannon.rf.gd/')
 
-        # quit command
+        # quit command - quits the application
         elif user_input == 'quit':
             print(Fore.RED+'quiting application...')
             exit()
 
-        # restart command
+        # restart command - restarts the application
         elif user_input == 'restart' or user_input == '/r':
             default.add_log('restarting application...')
             os.system('python app.py')
             exit()
 
-        # rock paper scissors command
+        # rps command - plays the rock paper scissors game
         elif user_input == 'rps':
             print(Fore.BLUE+'Opening Rock Paper Scissors Game...')
             sleep(1)
             os.system('python main/games/rock-paper-scissors/app.py')
 
-        # settings command
+        # settings command - displays settings plus other features with sub-commands
         elif user_input[0:len('settings')] == 'settings':
             base_command_settings(user_input, 'settings')
-        # shortcut
+        # shortcut for settings command
         elif user_input[0:len('/s')] == '/s':
             base_command_settings(user_input, '/s')
 
-        # shortcuts command
+        # shortcuts command - displays the available shortcuts
         elif user_input[0:len('shortcuts')] == 'shortcuts':
             base_command_shortcuts(user_input, 'shortcuts')
 
-        # spaz command
+        # spaz command - spazes the users screen
         elif user_input == 'spaz':
             spaz_screen()
 
-        # stats command
+        # stats command - displays current statistics
         elif user_input == 'stats':
             # creating a DataFrame
             with open('main/config.json', 'r') as command_list:
@@ -812,7 +812,7 @@ def command_line():
             # displaying the DataFrame
             print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
 
-        # display all system information
+        # system command - displays system information
         elif user_input == 'system':
             print(Fore.BLUE+'Opening python file for "system information"...')
             os.system('python main/info/system.py')
