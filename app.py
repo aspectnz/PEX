@@ -1,3 +1,5 @@
+PYTHONDONTWRITEBYTECODE=1
+
 print(
 '''
 
@@ -65,6 +67,10 @@ def add_dislog(text):
             with open('main/data.log', 'a') as file_object:
                 file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
 
+def clean_cache():
+    os.system('python -Bc "import pathlib; [p.unlink() for p in pathlib.Path(\'.\').rglob(\'*.py[co]\')]"')
+    os.system('python -Bc "import pathlib; [p.rmdir() for p in pathlib.Path(\'.\').rglob(\'__pycache__\')]"')
+
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 default.add_log('importing default modules')
 
@@ -117,13 +123,11 @@ try:
 except:
     default.add_log('failed to import sleep')
 
-default.add_log('Validating python version')
-if sys.version_info[0] < 3:
-    default.add_logdis('python version is less than 3')
-    print('Your python version is not up to date, please make sure that you are running python3 or later.')
-    default.add_log('Exiting program in 10s...')
-    sleep(10)
-    exit()
+try:
+    from threading import Thread
+    default.add_log('successfully imported thread')
+except:
+    default.add_log('failed to import thread')
 
 default.add_log('Importing custom modules')
 # Import numpy module
@@ -221,6 +225,46 @@ except:
     default.add_log('successfully imported playsound')
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+def greeting():
+    print(Fore.GREEN+
+        '''
+    ██████╗░███████╗██╗░░██╗
+    ██╔══██╗██╔════╝╚██╗██╔╝
+    ██████╔╝█████╗░░░╚███╔╝░
+    ██╔═══╝░██╔══╝░░░██╔██╗░
+    ██║░░░░░███████╗██╔╝╚██╗
+    ╚═╝░░░░░╚══════╝╚═╝░░╚═╝
+        ''')
+    # move users mouse to top right
+    mouse.position = (1000*10, 50)
+    print(Fore.BLUE+'Your mouse has been moved to the top right.')
+    with open('main/config.json', 'r') as command_list:
+        data = json.load(command_list)
+    in_balance = data['user']['balance']
+    print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(in_balance))
+    if first_time == True:
+        print(Fore.WHITE+'''
+    Welcome to PEX!
+    As this may be your first time using this application, this is just a reminder to make sure that you have 
+    read the documentation so you know how to use this app properly. Otherwise, you may run into some 
+    unexpected problems. Enjoy!
+
+    ''')
+        from keyboard import press
+        keyboard.write('doc')
+    print(Fore.GREEN+'Welcome to the main menu. Use a command or type "help" if you don\'t know any commands')
+    print(Back.BLUE+Style.DIM+'\nAs this application is still in development, not everything will work as expected.\nThis message will be removed from the program when production ready. So make sure to keep up to date on GitHub:')
+    print(Fore.BLUE+'https://github.com/shannon-nz/PEX/')
+
+def check_py_version():
+    default.add_log('Validating python version')
+    if sys.version_info[0] < 3:
+        default.add_logdis('python version is less than 3')
+        print('Your python version is not up to date, please make sure that you are running python3 or later.')
+        default.add_log('Exiting program in 10s...')
+        sleep(10)
+        exit()
+
 def idle_check():
     add_dislog('Validating enviroment')
     with open('main/config.json', 'r') as jsonConfig:
@@ -262,7 +306,7 @@ def check_internet_on_start():
             exit()
 
 def get_platform():
-    # Making a dictionary for the list of OSs
+    # making a dictionary for the list of OSs
     platforms = {
         'linux1' : 'Linux',
         'linux2' : 'Linux',
@@ -288,21 +332,11 @@ Exiting program in 10 seconds...
         add_dislog('Windows is the default OS')
 
 def startup_sound():
-    print(Fore.BLUE+'WELCOME TO ')
-    print(Fore.GREEN+
-    '''
-██████╗░███████╗██╗░░██╗
-██╔══██╗██╔════╝╚██╗██╔╝
-██████╔╝█████╗░░░╚███╔╝░
-██╔═══╝░██╔══╝░░░██╔██╗░
-██║░░░░░███████╗██╔╝╚██╗
-╚═╝░░░░░╚══════╝╚═╝░░╚═╝
-    ''')
+    print(Fore.BLUE+'WELCOME TO PEX')
     print(Fore.BLUE+'Making sure that everything is ready...')
-    #subprocess.call('python main/music/startup.pyw', creationflags=subprocess.CREATE_NEW_CONSOLE)
-    os.system('python main/music/startup.pyw')
+    playsound('main/music/startup.mp3')
 
-# The screen clear function
+# function to clear the screen with cmd command
 def screen_clear():
     default.add_log('clearing screen...')
     # for mac and linux(here, os.name is 'posix')
@@ -313,7 +347,7 @@ def screen_clear():
         _ = os.system('cls')
 
 def change_terminal_background(value):
-    # Change the default background and fore color for the terminal
+    # change the default background and fore color for the terminal
     os.system('color '+value)
     default.add_log('changed theme to "{}"'.format(value))
 
@@ -397,7 +431,7 @@ def download(url, filename):
     print(Fore.BLUE+'Download complete, please check the downloads folder')
 
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-# When the command is valid but contains additional invalid text
+# when the command is valid but contains additional invalid text
 def invalid_command_ext(command_string, user_input):
     invalid_text = user_input[len(command_string):len(user_input)]
     print(Fore.RED+'The "{}" command was identified, but contained invalid text "{}"'.format(command_string, invalid_text))
@@ -413,8 +447,8 @@ def sub_command_help(command):
     else:
         print(Fore.RED+'The "{}" command has no sub commands\n'.format(Fore.WHITE+command+Fore.RED))
 
-
-
+def sub_command_error(sub_command):
+    print(Fore.RED+'The "{}" sub command is invalid'.format(Fore.WHITE+'-'+sub_command+Fore.RED))
 
 # highler lower game command function
 def base_command_admin(user_input, command_string):
@@ -437,7 +471,7 @@ def base_command_admin(user_input, command_string):
             pip.main(['uninstall', 'keyboard'])
             pip.main(['uninstall', 'requests'])
         else:
-            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+            sub_command_error(sub_command)
     # otherwise inform user that the command was identified, but had had a type
     else:
         invalid_command_ext(command_string, user_input)
@@ -459,7 +493,7 @@ def base_command_download(user_input, command_string):
         elif sub_command == 'lu':
             download('https://github.com/shannon-nz/pex/blob/main/main/games/luckyunicorn/Python%20Program%20Documentation.pptx?raw=true', 'luckyunicorn_documentation.pptx')
         else:
-            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+            sub_command_error(sub_command)
     # otherwise inform user that the command was identified, but had had a type
     else:
         invalid_command_ext(command_string, user_input)
@@ -479,7 +513,7 @@ def base_command_hl(user_input, command_string):
         if sub_command == 'help':
             sub_command_help(command_string)
         else:
-            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+            sub_command_error(sub_command)
     # otherwise inform user that the command was identified, but had had a type
     else:
         invalid_command_ext(command_string, user_input)
@@ -510,19 +544,19 @@ def base_command_log(user_input, command_string):
         elif sub_command == 'disable':
             with open('main/config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
-            config['user']['log'] = 'disabled'
+            config['options']['log'] = 'disabled'
             with open('main/config.json', 'w') as f:
                 json.dump(config, f, indent = 4, sort_keys=True)
         elif sub_command == 'enable':
             with open('main/config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
-            config['user']['log'] = 'enabled'
+            config['options']['log'] = 'enabled'
             with open('main/config.json', 'w') as f:
                 json.dump(config, f, indent = 4, sort_keys=True)
         elif sub_command == 'help':
             print('log definition')
         else:
-            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+            sub_command_error(sub_command)
     # otherwise inform user that the command was identified, but had had a type
     else:
         invalid_command_ext(command_string, user_input)
@@ -557,7 +591,7 @@ def base_command_settings(user_input, command_string):
                 if pass_prompt != config['user']['pass']:
                     print(Fore.RED+'Incorrect password')
                 else:
-                    # Function to change the password here >>>>>>>>>>>>>>>>>>>>>>>>>>>
+                    # function to change the password here >>>>>>>>>>>>>>>>>>>>>>>>>>>
                     current_directory = os.path.dirname(__file__)
                     file_path = os.path.join(current_directory, 'main\\info', 'default_config.json')
                     with open(file_path, 'r') as jsonConfig:
@@ -598,7 +632,7 @@ def base_command_settings(user_input, command_string):
                 print(Fore.RED+'You did not enter yes, exiting reset')
 
         else:
-            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+            sub_command_error(sub_command)
     # otherwise inform user that the command was identified, but had had a type
     else:
         invalid_command_ext(command_string, user_input)
@@ -623,7 +657,7 @@ def base_command_shortcuts(user_input, command_string):
         if sub_command == 'help':
             sub_command_help(command_string)
         else:
-            print(Fore.RED+'The "-{}" sub command is invalid'.format(sub_command))
+            sub_command_error(sub_command)
     # otherwise inform user that the command was identified, but had had a type
     else:
         invalid_command_ext(command_string, user_input)
@@ -632,88 +666,25 @@ def stats():
     return ''
 
 
-# <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
-idle_check()
-
-fres = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000]
-
-def on_release(key):
-    if key == Key.enter:
-        print('pressed enter')
-        winsound.Beep(3000, 500)
-        winsound.Beep(4000, 500)
-        winsound.Beep(5000, 500)
-        winsound.Beep(5000, 500)
-        winsound.Beep(4000, 500)
-        winsound.Beep(3000, 500)
-    else:
-        f = random.choice(fres)
-        winsound.Beep(f, 100)
-
-check_internet_on_start()
-screen_clear()
-mouse.position = (0, 0)
-startup_sound()
-screen_clear()
-
-print(Fore.GREEN+
-    '''
-██████╗░███████╗██╗░░██╗
-██╔══██╗██╔════╝╚██╗██╔╝
-██████╔╝█████╗░░░╚███╔╝░
-██╔═══╝░██╔══╝░░░██╔██╗░
-██║░░░░░███████╗██╔╝╚██╗
-╚═╝░░░░░╚══════╝╚═╝░░╚═╝
-    ''')
-
-print(Fore.BLUE+'Your mouse has been moved to the top left.')
-
-check_platform_on_start()
-
-with open('main/config.json', 'r') as command_list:
-    data = json.load(command_list)
-in_balance = data['user']['balance']
-print(Fore.CYAN+'Your current balance is: '+Fore.RED+'${}'.format(in_balance))
-if first_time == True:
-    print(Fore.WHITE+'''
-Welcome to PEX!
-As this may be your first time using this application, this is just a reminder to make sure that you have 
-read the documentation so you know how to use this app properly. Otherwise, you may run into some 
-unexpected problems. Enjoy!                                                                            :D
-
-''')
-    from keyboard import press
-    keyboard.write('doc')
-
-
-print(Fore.GREEN+'Welcome to the main menu. Use a command or type "help" if you don\'t know any commands')
-
-
-def activate_admin():
-    print('admin activated')
-
-keyboard.add_hotkey("alt+p", lambda: activate_admin)
-
-
-# Function that contains all code for commands, some link to other functions
+# function that contains all code for commands, some link to other functions - this must always be the last command
 def command_line():
     idle_check()
     user_input = ''
+    last_error = False
+    first_prompt = True
     while user_input != 'quit':
-        print(Back.BLUE+Style.DIM+'\nAs this application is still in development, not everything will work as expected.\nThis message will be removed from the program when production ready. So make sure to keep up to date on GitHub:')
-        print(Fore.BLUE+'https://github.com/shannon-nz/PEX/')
-
         with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
             config_username = config['user']['username']
             print(Fore.RED+'\npex@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
-        
-        
-        '''
-        with Listener(
-            on_release=on_release) as listener:
-                listener.join()
-        '''
+
+        if first_prompt != True:
+            if last_error == True:
+                playsound('main/music/error.wav')
+                last_error = False
+            else:
+                playsound('main/music/enter.wav')
+        first_prompt = False
 
         user_input = input().lower()
       
@@ -724,6 +695,11 @@ def command_line():
         elif user_input == 'cls':
             screen_clear()
 
+        elif user_input[0:4] == 'cmd ':
+            user_input = user_input[4:len(user_input)]
+            default.add_log('running {} command in cmd'.format(user_input))
+            os.system(user_input)
+
         elif user_input == 'doc':
             print(Fore.BLUE+'Opening PEX documentation')
             import webbrowser
@@ -732,6 +708,10 @@ def command_line():
         # check if this is the valid command
         elif user_input[0:len('download')] == 'download':
             base_command_download(user_input, 'download')
+
+        elif user_input[0:5] == 'echo ':
+            user_input = user_input[5:len(user_input)]
+            print(user_input)
 
         elif user_input == 'move-it':
             default.add_log('Playing "I like to move it')
@@ -803,7 +783,7 @@ def command_line():
             # displaying the DataFrame
             print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
 
-        # Display all system information
+        # display all system information
         elif user_input == 'system':
             print(Fore.BLUE+'Opening python file for "system information"...')
             os.system('python main/info/system.py')
@@ -834,16 +814,53 @@ def command_line():
             default.add_log('removing reset update')
             os.system('rmdir /s downloads\\PEX')
 
+        # run a custom command
         elif user_input == 'custom_command':
             with open('main/config.json', 'r') as jsonConfig:
                 config = json.load(jsonConfig)
                 config_username = config['username']
+
         elif user_input[len(user_input)-2:len(user_input)] == '()':
             user_input = user_input[0:len(user_input)-2]
             print(Fore.RED+'The '+Fore.WHITE+user_input+Fore.RED+' function cannot be run via the command line at the moment')
+
         #elif user_input.find('a') != -1:
             #print('I found a')
         else:
-            print(Fore.RED+'Sorry, "'+user_input+Fore.RED+'" is an invalid command')
             default.add_log(Fore.WHITE+'"'+user_input+'"'+Fore.RED+' is an invalid command')
+            last_error = True
+
+
+# <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+clean_cache()
+check_py_version()
+idle_check()
+check_internet_on_start()
+
+if __name__ == '__main__':
+    Thread(target = screen_clear).start()
+    Thread(target = startup_sound).start()
+
+
+screen_clear()
+check_platform_on_start()
+greeting()
+
+def activate_admin():
+    print('admin activated')
+
+keyboard.add_hotkey("shift+alt+p", lambda: activate_admin())
+
+
 command_line()
+'''
+def listtok():
+    with Listener(
+            on_release=on_release) as listener:
+                listener.join()
+
+if __name__ == '__main__':
+    Thread(target = command_line).start()
+    Thread(target = listtok).start()
+'''
+clean_cache()

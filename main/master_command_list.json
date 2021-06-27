@@ -13,6 +13,10 @@
             "-help": "show sub-commands for this command and descriptions of each"
         }
     },
+    "cmd": {
+        "brief_description": "run a cmd command (i.e, 'cmd dir')",
+        "description": ""
+    },
     "doc": {
         "brief_description": "open python games documentation on GitHub",
         "description": "",
@@ -25,7 +29,11 @@
         "description": "",
         "sub_commands": {
             "-lu": "download the lucky unicorn documentation"
-        }    
+        }
+    },
+    "echo": {
+        "brief_description": "print text on screen (i.e, 'echo hello world')",
+        "description": ""
     },
     "help": {
         "brief_description": "display commands and functions",

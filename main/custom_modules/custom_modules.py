@@ -1,3 +1,4 @@
+
 def imports():
     # Import colorama module
     # If the module is not installed, then automatically install it. Otherwise, continue the program

@@ -1,13 +1,16 @@
 {
     "options": {
         "log": "enabled",
-        "pass": "enabled"
+        "pass": "enabled",
+        "sound": "disabled"
     },
     "requirements": {
         "__comment__": "changing these may cause the program to break",
         "internet": true,
         "terminal": true,
-        "windows": true
+        "windows": true,
+        "lastest_py": true,
+        "latest_pip": true
     },
     "stats": {
         "games_played": "0"

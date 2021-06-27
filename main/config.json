@@ -1,11 +1,14 @@
 {
     "options": {
         "log": "enabled",
-        "pass": "enabled"
+        "pass": "enabled",
+        "sound": "disabled"
     },
     "requirements": {
         "__comment__": "changing these may cause the program to break",
-        "internet": true,
+        "internet": false,
+        "lastest_py": true,
+        "latest_pip": true,
         "terminal": true,
         "windows": true
     },
