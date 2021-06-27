@@ -736,21 +736,21 @@ def command_line():
             user_input = user_input[5:len(user_input)]
             print(user_input)
 
-        # check if this is the valid command
+        # music command
         elif user_input[0:len('music')] == 'music':
             base_command_music(user_input, 'music')
 
-        # check if this is the valid command
+        # help command
         elif user_input[0:len('help')] == 'help':
             sys.path.insert(0, './main/command')
             import c_help as c_help
             c_help.base_command_help(user_input, 'help')
 
-        # check if this is the valid command
+        # higher lower command
         elif user_input[0:len('hl')] == 'hl':
             base_command_hl(user_input, 'hl')
 
-        # check if this is the valid command
+        # log command
         elif user_input[0:len('log')] == 'log':
             base_command_log(user_input, 'log')
 
@@ -759,39 +759,45 @@ def command_line():
             sleep(1)
             os.system('python main/games/luckyunicorn/00_LU_Base_v_01.py')
 
+        # profile command
         elif user_input == 'profile':
             print(Fore.BLUE+'Opening shannon.rf.gd in default browser')
             import webbrowser
             webbrowser.open('https://www.shannon.rf.gd/')
 
+        # quit command
         elif user_input == 'quit':
             print(Fore.RED+'quiting application...')
             exit()
 
+        # restart command
         elif user_input == 'restart' or user_input == '/r':
             default.add_log('restarting application...')
             os.system('python app.py')
             exit()
 
+        # rock paper scissors command
         elif user_input == 'rps':
             print(Fore.BLUE+'Opening Rock Paper Scissors Game...')
             sleep(1)
             os.system('python main/games/rock-paper-scissors/app.py')
 
-        # check if this is the valid command
+        # settings command
         elif user_input[0:len('settings')] == 'settings':
             base_command_settings(user_input, 'settings')
         # shortcut
         elif user_input[0:len('/s')] == '/s':
             base_command_settings(user_input, '/s')
 
-        # check if this is the valid command
+        # shortcuts command
         elif user_input[0:len('shortcuts')] == 'shortcuts':
             base_command_shortcuts(user_input, 'shortcuts')
 
+        # spaz command
         elif user_input == 'spaz':
             spaz_screen()
 
+        # stats command
         elif user_input == 'stats':
             # creating a DataFrame
             with open('main/config.json', 'r') as command_list:
