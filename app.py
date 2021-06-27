@@ -146,12 +146,14 @@ except:
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 default.add_log('importing custom modules')
 try:
+    default.add_log('importing colorama')
     import colorama
     from colorama import Fore, Back, Style
     colorama.init()
     colorama.init(convert=True)
     colorama.init(autoreset=True)
     default.add_log('successfully imported colorama')
+    colorama_imported = True
 except:
     default.add_log('error importing colorama')
     print('You do not have the "colorama" module, we are installing it for you now...')
@@ -162,13 +164,14 @@ except:
     colorama.init(convert=True)
     colorama.init(autoreset=True)
     default.add_log('installed and imported colorama successfully')
+    colorama_imported = True
 
 # Import pandas and tabulate module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
-    # importing the modules
+    default.add_log('importing pandas and tabulate')
     from tabulate import tabulate
-    #import pandas as pd
+    import pandas as pd
     default.add_log('successfully imported pandas and tabulate')
 except:
     default.add_log('error importing pandas or tabulate')
@@ -184,6 +187,7 @@ except:
 # Import pynput module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
+    default.add_log('importing pynput')
     from pynput.mouse import Button, Controller
     mouse = Controller()
     default.add_log('successfully imported pynput')
@@ -200,6 +204,7 @@ except:
 # Import keyboard module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
+    default.add_log('importing keyboard')
     import keyboard
     keyboard.press('win+up')
     keyboard.release('win+up')
@@ -216,6 +221,7 @@ except:
 
 # import the playsound module
 try:
+    default.add_log('importing playsound')
     from playsound import playsound
     default.add_log('successfully imported playsound')
 except:
@@ -225,6 +231,9 @@ except:
     default.add_log('successfully imported playsound')
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+default.add_log('declaring functions')
+
+default.add_log('greeting function')
 def greeting():
     print(Fore.GREEN+
         '''
@@ -256,6 +265,7 @@ def greeting():
     print(Back.BLUE+Style.DIM+'\nAs this application is still in development, not everything will work as expected.\nThis message will be removed from the program when production ready. So make sure to keep up to date on GitHub:')
     print(Fore.BLUE+'https://github.com/shannon-nz/PEX/')
 
+default.add_log('check python version function')
 def check_py_version():
     default.add_log('Validating python version')
     if sys.version_info[0] < 3:
@@ -265,6 +275,7 @@ def check_py_version():
         sleep(10)
         exit()
 
+default.add_log('idle check function')
 def idle_check():
     add_dislog('Validating enviroment')
     with open('main/config.json', 'r') as jsonConfig:
@@ -279,6 +290,7 @@ def idle_check():
     else:
         add_dislog('Terminal requirement is disabled')
 
+default.add_log('check internet connection function')
 def check_internet_connection():
     try:
         # connect to the host -- tells us if the host is actually reachable
@@ -287,6 +299,7 @@ def check_internet_connection():
     except OSError:
         return False
 
+default.add_log('check internet connection on start function')
 def check_internet_on_start():
     with open('main/config.json', 'r') as jsonConfig:
         config = json.load(jsonConfig)
@@ -305,6 +318,7 @@ def check_internet_on_start():
             sleep(10)
             exit()
 
+default.add_log('get users platform function')
 def get_platform():
     # making a dictionary for the list of OSs
     platforms = {
@@ -318,6 +332,7 @@ def get_platform():
     
     return platforms[sys.platform]
 
+default.add_log('check the users platform on start function')
 def check_platform_on_start():
     if get_platform() != 'Windows':
         add_dislog('Windows is not the default OS, exiting program(10s)...')
@@ -331,12 +346,15 @@ Exiting program in 10 seconds...
     else:
         add_dislog('Windows is the default OS')
 
+default.add_log('startup sound function')
 def startup_sound():
     print(Fore.BLUE+'WELCOME TO PEX')
     print(Fore.BLUE+'Making sure that everything is ready...')
     playsound('main/music/startup.mp3')
 
+
 # function to clear the screen with cmd command
+default.add_log('clear screen function')
 def screen_clear():
     default.add_log('clearing screen...')
     # for mac and linux(here, os.name is 'posix')
@@ -346,11 +364,13 @@ def screen_clear():
         # for windows platfrom
         _ = os.system('cls')
 
+default.add_log('change terminal background function')
 def change_terminal_background(value):
     # change the default background and fore color for the terminal
     os.system('color '+value)
     default.add_log('changed theme to "{}"'.format(value))
 
+default.add_log('modify config.json values function')
 def mod_config(option, value, newval):
     if option == 'view':
         with open('main/config.json', 'r') as jsonConfig:
@@ -365,6 +385,7 @@ def mod_config(option, value, newval):
         with open('main/config.json', 'w') as f:
             json.dump(config, f, indent = 4, sort_keys=True)
 
+default.add_log('spaz screen function')
 def spaz_screen():
     print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
     color_list = [Fore.RED, Fore.BLUE, Fore.YELLOW, Fore.WHITE, Fore.GREEN, Fore.MAGENTA, Fore.CYAN]        
@@ -381,6 +402,7 @@ def spaz_screen():
         sleep(0.05)
     print('\n\nAnd that is why you should be careful what you click on!')
 
+default.add_log('download function')
 def download(url, filename):
     # os.path.exists("/home/el/myfile.txt"
     # if the downloads folder does not exist, create one
@@ -420,10 +442,12 @@ def download(url, filename):
 
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # when the command is valid but contains additional invalid text
+default.add_log('invalud command function')
 def invalid_command_ext(command_string, user_input):
     invalid_text = user_input[len(command_string):len(user_input)]
     print(Fore.RED+'The "{}" command was identified, but contained invalid text "{}"'.format(command_string, invalid_text))
 
+default.add_log('sub-command help function')
 def sub_command_help(command):
     with open('main/master_command_list.json', 'r') as command_list:
         data = json.load(command_list)
@@ -435,10 +459,12 @@ def sub_command_help(command):
     else:
         print(Fore.RED+'The "{}" command has no sub commands\n'.format(Fore.WHITE+command+Fore.RED))
 
+default.add_log('sub-command error function')
 def sub_command_error(sub_command):
     print(Fore.RED+'The "{}" sub command is invalid'.format(Fore.WHITE+'-'+sub_command+Fore.RED))
 
-# highler lower game command function
+# admin command function
+default.add_log('admin command function')
 def base_command_admin(user_input, command_string):
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
@@ -465,7 +491,8 @@ def base_command_admin(user_input, command_string):
         invalid_command_ext(command_string, user_input)
 
 
-# highler lower game command function
+# download command function
+default.add_log('download command function')
 def base_command_download(user_input, command_string):
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
@@ -488,6 +515,7 @@ def base_command_download(user_input, command_string):
 
 
 # music command function
+default.add_log('music command function')
 def base_command_music(user_input, command_string):
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
@@ -510,6 +538,7 @@ def base_command_music(user_input, command_string):
         invalid_command_ext(command_string, user_input)
 
 # highler lower game command function
+default.add_log('higher/lower game function')
 def base_command_hl(user_input, command_string):
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
@@ -529,6 +558,7 @@ def base_command_hl(user_input, command_string):
         invalid_command_ext(command_string, user_input)
 
 # log command function
+default.add_log('log command function')
 def base_command_log(user_input, command_string):
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
@@ -571,7 +601,8 @@ def base_command_log(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
-# highler lower game command function
+# settings command function
+default.add_log('settings command function')
 def base_command_settings(user_input, command_string):
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
@@ -647,7 +678,8 @@ def base_command_settings(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
-# highler lower game command function
+# shortcuts command function
+default.add_log('shortcuts command function')
 def base_command_shortcuts(user_input, command_string):
     # calculate where the dash should be (if there is)
     expected_dash = user_input[len(command_string)+1:len(command_string)+2]
@@ -672,6 +704,7 @@ def base_command_shortcuts(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
+default.add_log('stats command function')
 def stats():
     # creating a DataFrame
     with open('main/config.json', 'r') as command_list:
@@ -686,10 +719,12 @@ def stats():
     # displaying the DataFrame
     print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
 
+default.add_log('activate command function')
 def activate_admin():
     print('admin activated')
 
 # function that contains all code for commands, some link to other functions - this must always be the last command
+default.add_log('command line function')
 def command_line():
     # check the user is using terminal
     idle_check()
@@ -883,6 +918,7 @@ def command_line():
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 # this section contains the ordered set of functions being called
+default.add_log('running script...')
 # clean the cache - delete __pycache__ if it is there
 clean_cache()
 # check if the python version is valid for this program
