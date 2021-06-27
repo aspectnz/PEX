@@ -379,9 +379,6 @@ def spaz_screen():
         rand2 = random.randrange(0, 2000)
         mouse.position = (rand1, rand2)
         sleep(0.05)
-    #color = random.choice(color_list)
-    #rand3 = random.randrange(10000000000000000, 100000000000000000000)
-    #print(color+'{}'.format(pow(rand3, 100)))
     print('\n\nAnd that is why you should be careful what you click on!')
 
 def download(url, filename):
