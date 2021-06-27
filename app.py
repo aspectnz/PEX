@@ -665,6 +665,8 @@ def base_command_shortcuts(user_input, command_string):
 def stats():
     return ''
 
+def activate_admin():
+    print('admin activated')
 
 # function that contains all code for commands, some link to other functions - this must always be the last command
 def command_line():
@@ -841,30 +843,22 @@ check_py_version()
 idle_check()
 # check if the user is connected to the internet. If the config file reads required, then exit the program.
 check_internet_on_start()
-# simultaneously
+# check if the user is using Windows or not, exit the program if not
+check_platform_on_start()
+# simultaneously run the clear screen function and play the start up sound
 if __name__ == '__main__':
     Thread(target = screen_clear).start()
     Thread(target = startup_sound).start()
-
+# clear the screen again
 screen_clear()
-check_platform_on_start()
+# greet the user with printed text - extra text if it is their first time
 greeting()
 
-def activate_admin():
-    print('admin activated')
-
+# << shortcuts >>
+# admin shortcut
 keyboard.add_hotkey("shift+alt+p", lambda: activate_admin())
 
-
+# run the command line function - contains the main set of code which links to other functions
 command_line()
-'''
-def listtok():
-    with Listener(
-            on_release=on_release) as listener:
-                listener.join()
-
-if __name__ == '__main__':
-    Thread(target = command_line).start()
-    Thread(target = listtok).start()
-'''
+# once the program has finished, then clear the cache - won't work if the quit command or something that uses the quit command is used
 clean_cache()
