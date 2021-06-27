@@ -673,7 +673,18 @@ def base_command_shortcuts(user_input, command_string):
         invalid_command_ext(command_string, user_input)
 
 def stats():
-    return ''
+    # creating a DataFrame
+    with open('main/config.json', 'r') as command_list:
+        data = json.load(command_list)
+    balance = data['user']['balance']
+    dict = {'Stats':['Connected to Internet', 'Balance'],
+            'Result':[
+                check_internet_connection(),
+                '${}'.format(balance)
+            ]}
+    df = pd.DataFrame(dict)
+    # displaying the DataFrame
+    print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
 
 def activate_admin():
     print('admin activated')
@@ -807,18 +818,7 @@ def command_line():
 
         # stats command - displays current statistics
         elif user_input == 'stats':
-            # creating a DataFrame
-            with open('main/config.json', 'r') as command_list:
-                data = json.load(command_list)
-            balance = data['user']['balance']
-            dict = {'Stats':['Connected to Internet', 'Balance'],
-                    'Result':[
-                        check_internet_connection(),
-                        '${}'.format(balance)
-                    ]}
-            df = pd.DataFrame(dict)
-            # displaying the DataFrame
-            print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
+            stats()
 
         # system command - displays system information
         elif user_input == 'system':
