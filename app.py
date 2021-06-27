@@ -790,6 +790,7 @@ def command_line():
             print(Fore.BLUE+'Opening python file for "system information"...')
             os.system('python main/info/system.py')
 
+        # update pex with the 'git pull' command - only works if git is installed
         elif user_input == 'update':
             default.add_log('Updating PEX ')
             try:
@@ -797,18 +798,21 @@ def command_line():
             except:
                 print('You must have git installed on your computer first.')
 
+        # instead of using the git application, install in the downloads folder using the gitpython module
         elif user_input == 'update -reset':
             default.add_log('removing PEX folder if possible')
             os.system('rmdir /s downloads/PEX')
             default.add_log('Updating PEX')
             try:
+                # import git python
                 from git import Repo
             except:
+                # install and import gitpython
                 pip.main(['install','gitpython'])
                 from git import Repo
-
+            # clone pex
             Repo.clone_from('https://github.com/shannon-nz/pex','downloads/PEX')
-
+            # output when cloning is complete
             default.add_log('Update complete')
             print('You can find the latest version in the downloads folder named PEX')
 
