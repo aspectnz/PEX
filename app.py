@@ -133,6 +133,7 @@ default.add_log('Importing custom modules')
 # Import numpy module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
+    default.add_log('importing numpy')
     import numpy
     default.add_log('successfully imported numpy')
 except:
@@ -144,7 +145,7 @@ except:
 
 # Import colorama module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
-default.add_log('importing custom modules')
+default.add_log('importing colorama')
 try:
     default.add_log('importing colorama')
     import colorama
@@ -169,17 +170,21 @@ except:
 # Import pandas and tabulate module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
-    default.add_log('importing pandas and tabulate')
+    default.add_log('importing tabulate')
     from tabulate import tabulate
+    default.add_log('successfully imported tabulate')
+    default.add_log('importing pandas')
     import pandas as pd
-    default.add_log('successfully imported pandas and tabulate')
+    default.add_log('successfully imported pandas')
 except:
     default.add_log('error importing pandas or tabulate')
     print(Fore.RED+'You do not have the "tabulate" module, we are installing it for you now...')
     pip.main(['install', 'tabulate'])
     pip.main(['install', 'pandas'])
     # importing the modules
+    default.add_log('importing tabulate')
     from tabulate import tabulate
+    default.add_log('importing pandas')
     import pandas as pd
     default.add_log('installed and imported pandas and tabulate successfully')
 
@@ -725,7 +730,20 @@ def activate_admin():
 
 # function that contains all code for commands, some link to other functions - this must always be the last command
 default.add_log('command line function')
+
+# change the recursive limit
+sys.setrecursionlimit(501)
+print('the recursive limit is {}'.format(501))
+
+command_line_count = 0
+
 def command_line():
+    global command_line_count
+    command_line_count += 1
+    if command_line_count > 500:
+        print(Fore.RED+'command line has been run over 500 times, re-running')
+        command_line_count = 0
+        command_line()
     # check the user is using terminal
     idle_check()
     # default values before prompt
@@ -752,9 +770,13 @@ def command_line():
 
         # get the users input
         user_input = input().lower()
+
+        if user_input == '' or user_input == ' ':
+            print(Fore.BLUE+'nothing does nothing :)')
+            command_line()
       
         # admin command - gives the user admin access
-        if user_input[0:len('admin')] == 'admin':
+        elif user_input[0:len('admin')] == 'admin':
             base_command_admin(user_input, 'admin')
 
         # clear screen command - clears the terminal
@@ -787,8 +809,16 @@ def command_line():
         elif user_input == 'echo -help':
             print('The echo command will print out any text that follows after "echo "')
         elif user_input[0:5] == 'echo ':
-            user_input = user_input[5:len(user_input)]
-            print(user_input)
+            if user_input.find('*') != -1:
+                restriction_num = 6
+                num = int(user_input[user_input.find('*')+1:len(user_input)])
+                if len(user_input[user_input.find('*')+1:len(user_input)]) < restriction_num:
+                    print(user_input*num)
+                else:
+                    print('number must be below 100,000')
+            else:
+                user_input = user_input[5:len(user_input)]
+                print(user_input)
 
         # music command - plays music defined in the sub-command
         elif user_input[0:len('music')] == 'music':
@@ -912,7 +942,7 @@ def command_line():
 
         # if the user entered an invalid command, inform them and play the error sound
         else:
-            default.add_log(Fore.WHITE+'"'+user_input+'"'+Fore.RED+' is an invalid command')
+            default.add_log(Fore.WHITE+'"'+user_input+'"'+Fore.RED+' is an invalid command'+Fore.WHITE)
             last_error = True
 
 
