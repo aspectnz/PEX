@@ -832,6 +832,7 @@ def command_line():
 
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< SCRIPT >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+# this section contains the ordered set of functions being called
 clean_cache()
 check_py_version()
 idle_check()
@@ -840,7 +841,6 @@ check_internet_on_start()
 if __name__ == '__main__':
     Thread(target = screen_clear).start()
     Thread(target = startup_sound).start()
-
 
 screen_clear()
 check_platform_on_start()
