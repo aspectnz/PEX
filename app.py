@@ -680,16 +680,22 @@ def activate_admin():
 
 # function that contains all code for commands, some link to other functions - this must always be the last command
 def command_line():
+    # check the user is using terminal
     idle_check()
+    # default values before prompt
     user_input = ''
     last_error = False
     first_prompt = True
     while user_input != 'quit':
+        # open the config.json file and print the username before the input like pex@username:~$
         with open('main/config.json', 'r') as jsonConfig:
             config = json.load(jsonConfig)
             config_username = config['user']['username']
+            # print before input
             print(Fore.RED+'\npex@'+config_username+Fore.WHITE+':'+Fore.BLUE+'~'+Fore.WHITE+'$ ', end='')
 
+        # check if this is the first prompt
+        # if so, then don't play the sound, otherwise play the enter sound or error sound, dependant on the last input
         if first_prompt != True:
             if last_error == True:
                 playsound('main/music/error.wav')
@@ -698,9 +704,10 @@ def command_line():
                 playsound('main/music/enter.wav')
         first_prompt = False
 
+        # get the users input
         user_input = input().lower()
       
-        # check if this is the valid command
+        # admin command - gives the user admin access
         if user_input[0:len('admin')] == 'admin':
             base_command_admin(user_input, 'admin')
 
