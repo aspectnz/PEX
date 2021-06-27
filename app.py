@@ -368,7 +368,7 @@ def mod_config(option, value, newval):
 def spaz_screen():
     print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
     color_list = [Fore.RED, Fore.BLUE, Fore.YELLOW, Fore.WHITE, Fore.GREEN, Fore.MAGENTA, Fore.CYAN]        
-    for item in range(1, 51):
+    for item in range(1, 151):
         keyboard.press('f11')
         keyboard.release('f11')
         keyboard.press('windows')
@@ -682,18 +682,27 @@ def command_line():
         if user_input[0:len('admin')] == 'admin':
             base_command_admin(user_input, 'admin')
 
+        # clear screen command
         elif user_input == 'cls':
             screen_clear()
+        elif user_input == 'cls -help':
+            print('The cls command will clear the terminal')
 
+        # cmd command
+        elif user_input == 'cmd -help':
+            print('The cmd command will allow you to run normal cmd commands within PEX (i.e, "cmd dir")')
         elif user_input[0:4] == 'cmd ':
             user_input = user_input[4:len(user_input)]
             default.add_log('running {} command in cmd'.format(user_input))
             os.system(user_input)
 
+        # documentation command
         elif user_input == 'doc':
             print(Fore.BLUE+'Opening PEX documentation')
             import webbrowser
             webbrowser.open('https://github.com/shannon-nz/PEX#-python-games-in-development-')
+        elif user_input == 'doc -help':
+            print('The doc command will open the documentation in your default browser')
 
         # check if this is the valid command
         elif user_input[0:len('download')] == 'download':
@@ -703,6 +712,7 @@ def command_line():
             user_input = user_input[5:len(user_input)]
             print(user_input)
 
+        elif ''
         elif user_input == 'move-it':
             default.add_log('Playing "I like to move it')
             playsound('main/music/iliketomoveit.mp3')

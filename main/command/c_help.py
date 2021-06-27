@@ -8,14 +8,12 @@ def add_log(text):
 import json
 # Import colorama module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
-add_log('importing custom modules')
 try:
     import colorama
     from colorama import Fore, Back, Style
     colorama.init()
     colorama.init(convert=True)
     colorama.init(autoreset=True)
-    add_log('successfully imported colorama')
 except:
     add_log('error importing colorama')
     print('You do not have the "colorama" module, we are installing it for you now...')
