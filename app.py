@@ -448,9 +448,6 @@ def download(url, filename):
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # when the command is valid but contains additional invalid text
 default.add_log('invalud command function')
-def invalid_command_ext(command_string, user_input):
-    invalid_text = user_input[len(command_string):len(user_input)]
-    print(Fore.RED+'The "{}" command was identified, but contained invalid text "{}"'.format(command_string, invalid_text))
 
 default.add_log('sub-command help function')
 def sub_command_help(command):
