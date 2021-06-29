@@ -390,22 +390,8 @@ def mod_config(option, value, newval):
         with open('main/config.json', 'w') as f:
             json.dump(config, f, indent = 4, sort_keys=True)
 
-default.add_log('spaz screen function')
-def spaz_screen():
-    print(Fore.RED+'SPAZING YOUR SCREEN for 7 seconds !  DO NOT CLICK ANYTHING')
-    color_list = [Fore.RED, Fore.BLUE, Fore.YELLOW, Fore.WHITE, Fore.GREEN, Fore.MAGENTA, Fore.CYAN]        
-    for item in range(1, 151):
-        keyboard.press('f11')
-        keyboard.release('f11')
-        keyboard.press('windows')
-        keyboard.release('windows')
-        keyboard.press('alt+tab')
-        keyboard.release('alt+tab')
-        rand1 = random.randrange(0, 2000)
-        rand2 = random.randrange(0, 2000)
-        mouse.position = (rand1, rand2)
-        sleep(0.05)
-    print('\n\nAnd that is why you should be careful what you click on!')
+
+    
 
 default.add_log('download function')
 def download(url, filename):
@@ -876,7 +862,9 @@ def command_line():
 
         # spaz command - spazes the users screen
         elif user_input == 'spaz':
-            spaz_screen()
+            sys.path.insert(0, './main/command')
+            import c_spaz as c_spaz
+            c_spaz.base_command_spaz()
 
         # stats command - displays current statistics
         elif user_input == 'stats':
