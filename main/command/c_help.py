@@ -29,8 +29,6 @@ def invalid_command_ext(command_string, user_input):
     invalid_text = user_input[len(command_string):len(user_input)]
     print(Fore.RED+'The "{}" command was identified, but contained invalid text "{}"'.format(command_string, invalid_text))
 
-
-
 # Help command function
 def base_command_help(user_input, command_string):
     with open('main/master_command_list.json', 'r') as command_list:
