@@ -1,5 +1,6 @@
-PYTHONDONTWRITEBYTECODE=1
-
+# Welcome to the Code Behind PEX
+# If this is your first time, make sure that you have read the documentation at
+# https://github.com/shannon-nz/pex/
 print(
 '''
 
