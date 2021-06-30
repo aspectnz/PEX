@@ -916,8 +916,9 @@ def command_line():
             print('Your current version: '+local_version)
             online_version = requests.get('https://raw.githubusercontent.com/shannon-nz/PEX/main/main/version.json').json()
             print('Latest version: '+online_version['version'])
+            print(Fore.BLUE+'Last update was uploaded {}'.format(online_version['release-date']))
             if local_version < online_version['version']:
-                print(Fore.GREEN+'An update is available!')
+                print(Fore.GREEN+'An update is available! Version: {}'.format(online_version['version']))
             else:
                 print(Fore.GREEN+'You are using the latest version.')
 
