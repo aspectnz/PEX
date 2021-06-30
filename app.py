@@ -236,6 +236,16 @@ except:
     pip.main(['install','playsound'])
     default.add_log('successfully imported playsound')
 
+try:
+    import requests
+    default.add_log('successfully imported requests')
+except:
+    default.add_log('error importing requests')
+    print(Fore.RED+'You do not have the "requests" module, we are installing it for you now...')
+    pip.main(['install', 'requests'])
+    import requests
+    default.add_log('successfully installed requests')
+
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 default.add_log('declaring functions')
 
@@ -404,15 +414,6 @@ def download(url, filename):
         default.add_log('created downloads folder')
     print(Fore.BLUE+'[*] Downloading '+filename+' from '+url)
     default.add_log('importing requests')
-    try:
-        import requests
-        default.add_log('successfully imported requests')
-    except:
-        default.add_log('error importing requests')
-        print(Fore.RED+'You do not have the "requests" module, we are installing it for you now...')
-        pip.main(['install', 'requests'])
-        import requests
-        default.add_log('successfully installed requests')
     filepath = 'downloads/'+filename
     with open(filepath, 'wb') as f:
         response = requests.get(url, stream=True)
@@ -907,6 +908,18 @@ def command_line():
         elif user_input == 'update -clean':
             default.add_log('removing reset update')
             os.system('rmdir /s downloads\\PEX')
+
+        elif user_input == 'version':
+            with open('main/version.json', 'r') as command_list:
+                data = json.load(command_list)
+            local_version = data['version']
+            print('Your current version: '+local_version)
+            online_version = requests.get('https://raw.githubusercontent.com/shannon-nz/PEX/main/main/version.json').json()
+            print('Latest version: '+online_version['version'])
+            if local_version < online_version['version']:
+                print(Fore.GREEN+'An update is available!')
+            else:
+                print(Fore.GREEN+'You are using the latest version.')
 
         # run a custom command
         elif user_input == 'custom_command':
