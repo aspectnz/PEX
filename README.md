@@ -194,6 +194,10 @@ Or use "help -all" to show the full list of commands and sub-commands
   
 ```
 
+You can also echo strings multiple times by using `*`. An example of this would be:
+```
+echo this sentence will be repeated 500 times *500
+```
 
 <i>When all of the commands have been added, this message will be removed</i>
 </br>
