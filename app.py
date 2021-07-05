@@ -864,6 +864,12 @@ def command_line():
 
         # spaz command - spazes the users screen
         elif user_input == 'spaz':
+            print(Fore.RED+'Users screen will spaz in 3 seconds...')
+            sleep(1)
+            print('2')
+            sleep(1)
+            print('1')
+            sleep(1)
             sys.path.insert(0, './main/command')
             import c_spaz as c_spaz
             c_spaz.base_command_spaz()
