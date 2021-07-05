@@ -517,3 +517,423 @@
 27/06/2021 08:28:45 - shannons-pc(172.26.0.1): failed to import playsound
 27/06/2021 08:28:54 - shannons-pc(172.26.0.1): successfully imported playsound
 27/06/2021 08:28:54 - shannons-pc(172.26.0.1): playing "i like to move it
+04/07/2021 13:25:30 - shannons-pc(192.168.56.1): successfully imported json
+04/07/2021 13:25:30 - shannons-pc(192.168.56.1): successfully imported socket
+04/07/2021 13:25:30 - shannons-pc(192.168.56.1): successfully imported datetime
+04/07/2021 13:25:30 - shannons-pc(192.168.56.1): user has not established login details
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): user set new username to shannon
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): importing default modules
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): successfully imported random
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): successfully imported os
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): successfully imported subprocess
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): successfully imported ctypes
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): successfully imported pip
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): successfully imported enum
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): successfully imported winsound
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): successfully imported sleep
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): successfully imported thread
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): importing custom modules
+04/07/2021 13:25:41 - shannons-pc(192.168.56.1): importing numpy
+04/07/2021 13:25:42 - shannons-pc(192.168.56.1): successfully imported numpy
+04/07/2021 13:25:42 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 13:25:42 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 13:25:42 - shannons-pc(192.168.56.1): successfully imported colorama
+04/07/2021 13:25:42 - shannons-pc(192.168.56.1): importing tabulate
+04/07/2021 13:25:42 - shannons-pc(192.168.56.1): successfully imported tabulate
+04/07/2021 13:25:42 - shannons-pc(192.168.56.1): importing pandas
+04/07/2021 13:25:45 - shannons-pc(192.168.56.1): successfully imported pandas
+04/07/2021 13:25:45 - shannons-pc(192.168.56.1): importing pynput
+04/07/2021 13:25:45 - shannons-pc(192.168.56.1): successfully imported pynput
+04/07/2021 13:25:45 - shannons-pc(192.168.56.1): importing keyboard
+04/07/2021 13:25:46 - shannons-pc(192.168.56.1): successfully imported keyboard
+04/07/2021 13:25:46 - shannons-pc(192.168.56.1): importing playsound
+04/07/2021 13:25:46 - shannons-pc(192.168.56.1): successfully imported playsound
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): successfully imported requests
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): declaring functions
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): greeting function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): check python version function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): idle check function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): check internet connection function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): check internet connection on start function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): get users platform function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): check the users platform on start function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): startup sound function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): clear screen function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): change terminal background function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): modify config.json values function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): download function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): invalud command function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): sub-command help function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): sub-command error function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): admin command function
+04/07/2021 13:25:47 - shannons-pc(192.168.56.1): download command function
+04/07/2021 13:25:48 - shannons-pc(192.168.56.1): music command function
+04/07/2021 13:25:48 - shannons-pc(192.168.56.1): higher/lower game function
+04/07/2021 13:25:48 - shannons-pc(192.168.56.1): log command function
+04/07/2021 13:25:48 - shannons-pc(192.168.56.1): settings command function
+04/07/2021 13:25:48 - shannons-pc(192.168.56.1): shortcuts command function
+04/07/2021 13:25:48 - shannons-pc(192.168.56.1): stats command function
+04/07/2021 13:25:48 - shannons-pc(192.168.56.1): activate command function
+04/07/2021 13:25:48 - shannons-pc(192.168.56.1): command line function
+04/07/2021 13:25:48 - shannons-pc(192.168.56.1): running script...
+04/07/2021 13:25:50 - shannons-pc(192.168.56.1): validating python version
+04/07/2021 13:25:50 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 13:25:50 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 13:25:50 - shannons-pc(192.168.56.1): windows is the default os
+04/07/2021 13:25:50 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 13:25:50 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 13:25:50 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 13:25:50 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 15:59:37 - shannons-pc(192.168.56.1): [37m"hello"[31m is an invalid command[37m
+04/07/2021 15:59:39 - shannons-pc(192.168.56.1): [37m"hello"[31m is an invalid command[37m
+04/07/2021 15:59:40 - shannons-pc(192.168.56.1): [37m"dfg"[31m is an invalid command[37m
+04/07/2021 15:59:40 - shannons-pc(192.168.56.1): [37m"df"[31m is an invalid command[37m
+04/07/2021 15:59:40 - shannons-pc(192.168.56.1): [37m"dfg"[31m is an invalid command[37m
+04/07/2021 15:59:41 - shannons-pc(192.168.56.1): [37m"dfg"[31m is an invalid command[37m
+04/07/2021 15:59:41 - shannons-pc(192.168.56.1): [37m"dfg"[31m is an invalid command[37m
+04/07/2021 15:59:59 - shannons-pc(192.168.56.1): [37m"hahaha"[31m is an invalid command[37m
+04/07/2021 16:00:00 - shannons-pc(192.168.56.1): [37m"hahaha"[31m is an invalid command[37m
+04/07/2021 16:00:01 - shannons-pc(192.168.56.1): [37m"haha"[31m is an invalid command[37m
+04/07/2021 16:00:02 - shannons-pc(192.168.56.1): [37m"hadsf"[31m is an invalid command[37m
+04/07/2021 16:00:02 - shannons-pc(192.168.56.1): [37m"sd"[31m is an invalid command[37m
+04/07/2021 16:00:02 - shannons-pc(192.168.56.1): [37m"ds"[31m is an invalid command[37m
+04/07/2021 16:00:03 - shannons-pc(192.168.56.1): [37m"fds"[31m is an invalid command[37m
+04/07/2021 16:00:03 - shannons-pc(192.168.56.1): [37m"fds"[31m is an invalid command[37m
+04/07/2021 16:00:03 - shannons-pc(192.168.56.1): [37m"f"[31m is an invalid command[37m
+04/07/2021 16:00:09 - shannons-pc(192.168.56.1): [37m"dssdfsdfljsdfljsdklfjklsdfjklsdjfklsdjfklsjfkldsfjklsdjfklsdfjklsdfjklsdfjklsdjfdklsfjdskjg"[31m is an invalid command[37m
+04/07/2021 16:00:13 - shannons-pc(192.168.56.1): [37m"hello world "[31m is an invalid command[37m
+04/07/2021 16:00:52 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:00:55 - shannons-pc(192.168.56.1): [37m" /r"[31m is an invalid command[37m
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): restarting application...
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported json
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported socket
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported datetime
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): importing default modules
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported random
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported os
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported subprocess
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported ctypes
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported pip
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported enum
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported winsound
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported sleep
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): successfully imported thread
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): importing custom modules
+04/07/2021 16:00:57 - shannons-pc(192.168.56.1): importing numpy
+04/07/2021 16:00:58 - shannons-pc(192.168.56.1): successfully imported numpy
+04/07/2021 16:00:58 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 16:00:58 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 16:00:59 - shannons-pc(192.168.56.1): successfully imported colorama
+04/07/2021 16:00:59 - shannons-pc(192.168.56.1): importing tabulate
+04/07/2021 16:00:59 - shannons-pc(192.168.56.1): successfully imported tabulate
+04/07/2021 16:00:59 - shannons-pc(192.168.56.1): importing pandas
+04/07/2021 16:01:01 - shannons-pc(192.168.56.1): successfully imported pandas
+04/07/2021 16:01:01 - shannons-pc(192.168.56.1): importing pynput
+04/07/2021 16:01:01 - shannons-pc(192.168.56.1): successfully imported pynput
+04/07/2021 16:01:01 - shannons-pc(192.168.56.1): importing keyboard
+04/07/2021 16:01:02 - shannons-pc(192.168.56.1): successfully imported keyboard
+04/07/2021 16:01:02 - shannons-pc(192.168.56.1): importing playsound
+04/07/2021 16:01:02 - shannons-pc(192.168.56.1): successfully imported playsound
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): successfully imported requests
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): declaring functions
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): greeting function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): check python version function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): idle check function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): check internet connection function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): check internet connection on start function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): get users platform function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): check the users platform on start function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): startup sound function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): clear screen function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): change terminal background function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): modify config.json values function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): download function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): invalud command function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): sub-command help function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): sub-command error function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): admin command function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): download command function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): music command function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): higher/lower game function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): log command function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): settings command function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): shortcuts command function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): stats command function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): activate command function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): command line function
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): running script...
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): validating python version
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): windows is the default os
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:01:03 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:01:04 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 16:01:04 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): restarting application...
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported json
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported socket
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported datetime
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): importing default modules
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported random
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported os
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported subprocess
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported ctypes
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported pip
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported enum
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported winsound
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported sleep
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): successfully imported thread
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): importing custom modules
+04/07/2021 16:43:34 - shannons-pc(192.168.56.1): importing numpy
+04/07/2021 16:43:35 - shannons-pc(192.168.56.1): successfully imported numpy
+04/07/2021 16:43:35 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 16:43:35 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 16:43:35 - shannons-pc(192.168.56.1): successfully imported colorama
+04/07/2021 16:43:35 - shannons-pc(192.168.56.1): importing tabulate
+04/07/2021 16:43:35 - shannons-pc(192.168.56.1): successfully imported tabulate
+04/07/2021 16:43:35 - shannons-pc(192.168.56.1): importing pandas
+04/07/2021 16:43:36 - shannons-pc(192.168.56.1): successfully imported pandas
+04/07/2021 16:43:36 - shannons-pc(192.168.56.1): importing pynput
+04/07/2021 16:43:36 - shannons-pc(192.168.56.1): successfully imported pynput
+04/07/2021 16:43:36 - shannons-pc(192.168.56.1): importing keyboard
+04/07/2021 16:43:36 - shannons-pc(192.168.56.1): successfully imported keyboard
+04/07/2021 16:43:36 - shannons-pc(192.168.56.1): importing playsound
+04/07/2021 16:43:36 - shannons-pc(192.168.56.1): successfully imported playsound
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): successfully imported requests
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): declaring functions
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): greeting function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): check python version function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): idle check function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): check internet connection function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): check internet connection on start function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): get users platform function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): check the users platform on start function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): startup sound function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): clear screen function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): change terminal background function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): modify config.json values function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): download function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): invalud command function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): sub-command help function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): sub-command error function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): admin command function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): download command function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): music command function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): higher/lower game function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): log command function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): settings command function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): shortcuts command function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): stats command function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): activate command function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): command line function
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): running script...
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): validating python version
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): windows is the default os
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:43:37 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:43:38 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 16:43:38 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 16:43:55 - shannons-pc(192.168.56.1): [37m"rpsw"[31m is an invalid command[37m
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): restarting application...
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported json
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported socket
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported datetime
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): importing default modules
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported random
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported os
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported subprocess
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported ctypes
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported pip
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported enum
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported winsound
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported sleep
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): successfully imported thread
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): importing custom modules
+04/07/2021 16:44:16 - shannons-pc(192.168.56.1): importing numpy
+04/07/2021 16:44:17 - shannons-pc(192.168.56.1): successfully imported numpy
+04/07/2021 16:44:17 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 16:44:17 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 16:44:17 - shannons-pc(192.168.56.1): successfully imported colorama
+04/07/2021 16:44:17 - shannons-pc(192.168.56.1): importing tabulate
+04/07/2021 16:44:17 - shannons-pc(192.168.56.1): successfully imported tabulate
+04/07/2021 16:44:17 - shannons-pc(192.168.56.1): importing pandas
+04/07/2021 16:44:18 - shannons-pc(192.168.56.1): successfully imported pandas
+04/07/2021 16:44:18 - shannons-pc(192.168.56.1): importing pynput
+04/07/2021 16:44:18 - shannons-pc(192.168.56.1): successfully imported pynput
+04/07/2021 16:44:18 - shannons-pc(192.168.56.1): importing keyboard
+04/07/2021 16:44:18 - shannons-pc(192.168.56.1): successfully imported keyboard
+04/07/2021 16:44:18 - shannons-pc(192.168.56.1): importing playsound
+04/07/2021 16:44:18 - shannons-pc(192.168.56.1): successfully imported playsound
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): successfully imported requests
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): declaring functions
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): greeting function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): check python version function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): idle check function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): check internet connection function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): check internet connection on start function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): get users platform function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): check the users platform on start function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): startup sound function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): clear screen function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): change terminal background function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): modify config.json values function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): download function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): invalud command function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): sub-command help function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): sub-command error function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): admin command function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): download command function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): music command function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): higher/lower game function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): log command function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): settings command function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): shortcuts command function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): stats command function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): activate command function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): command line function
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): running script...
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): validating python version
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 16:44:19 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 16:44:20 - shannons-pc(192.168.56.1): windows is the default os
+04/07/2021 16:44:20 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:44:20 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:44:20 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 16:44:20 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 16:46:25 - shannons-pc(192.168.56.1): [37m"moveit"[31m is an invalid command[37m
+04/07/2021 16:46:28 - shannons-pc(192.168.56.1): [37m"move-it"[31m is an invalid command[37m
+04/07/2021 16:46:31 - shannons-pc(192.168.56.1): playing "i like to move it
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported json
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported socket
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported datetime
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): importing default modules
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported random
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported os
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported subprocess
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported ctypes
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported pip
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported enum
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported winsound
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported sleep
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported thread
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): importing custom modules
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): importing numpy
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): successfully imported numpy
+04/07/2021 16:47:27 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 16:47:28 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 16:47:28 - shannons-pc(192.168.56.1): successfully imported colorama
+04/07/2021 16:47:28 - shannons-pc(192.168.56.1): importing tabulate
+04/07/2021 16:47:28 - shannons-pc(192.168.56.1): successfully imported tabulate
+04/07/2021 16:47:28 - shannons-pc(192.168.56.1): importing pandas
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): successfully imported pandas
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): importing pynput
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): successfully imported pynput
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): importing keyboard
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): successfully imported keyboard
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): importing playsound
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): successfully imported playsound
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): successfully imported requests
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): declaring functions
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): greeting function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): check python version function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): idle check function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): check internet connection function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): check internet connection on start function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): get users platform function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): check the users platform on start function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): startup sound function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): clear screen function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): change terminal background function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): modify config.json values function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): download function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): invalud command function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): sub-command help function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): sub-command error function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): admin command function
+04/07/2021 16:47:29 - shannons-pc(192.168.56.1): download command function
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): music command function
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): higher/lower game function
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): log command function
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): settings command function
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): shortcuts command function
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): stats command function
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): activate command function
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): command line function
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): running script...
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): validating python version
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): windows is the default os
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:47:30 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:47:31 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 16:47:31 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 16:47:33 - shannons-pc(192.168.56.1): playing "i like to move it"
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported json
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported socket
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported datetime
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): importing default modules
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported random
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported os
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported subprocess
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported ctypes
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported pip
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported enum
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported winsound
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported sleep
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported thread
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): importing custom modules
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): importing numpy
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported numpy
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): importing colorama
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported colorama
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): importing tabulate
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): successfully imported tabulate
+04/07/2021 16:47:56 - shannons-pc(192.168.56.1): importing pandas
+04/07/2021 16:47:57 - shannons-pc(192.168.56.1): successfully imported pandas
+04/07/2021 16:47:57 - shannons-pc(192.168.56.1): importing pynput
+04/07/2021 16:47:57 - shannons-pc(192.168.56.1): successfully imported pynput
+04/07/2021 16:47:57 - shannons-pc(192.168.56.1): importing keyboard
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): successfully imported keyboard
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): importing playsound
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): successfully imported playsound
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): successfully imported requests
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): declaring functions
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): greeting function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): check python version function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): idle check function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): check internet connection function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): check internet connection on start function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): get users platform function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): check the users platform on start function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): startup sound function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): clear screen function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): change terminal background function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): modify config.json values function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): download function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): invalud command function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): sub-command help function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): sub-command error function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): admin command function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): download command function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): music command function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): higher/lower game function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): log command function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): settings command function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): shortcuts command function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): stats command function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): activate command function
+04/07/2021 16:47:58 - shannons-pc(192.168.56.1): command line function
+04/07/2021 16:47:59 - shannons-pc(192.168.56.1): running script...
+04/07/2021 16:47:59 - shannons-pc(192.168.56.1): validating python version
+04/07/2021 16:47:59 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 16:47:59 - shannons-pc(192.168.56.1): the current enviroment is terminal
+04/07/2021 16:47:59 - shannons-pc(192.168.56.1): windows is the default os
+04/07/2021 16:47:59 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:47:59 - shannons-pc(192.168.56.1): clearing screen...
+04/07/2021 16:48:00 - shannons-pc(192.168.56.1): validating enviroment
+04/07/2021 16:48:00 - shannons-pc(192.168.56.1): the current enviroment is terminal

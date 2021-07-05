@@ -519,7 +519,8 @@ def base_command_music(user_input, command_string):
         if sub_command == 'help':
             sub_command_help(command_string)
         elif sub_command == 'moveit':
-            default.add_log('Playing "I like to move it')
+            print(Fore.GREEN+'Good Choice!')
+            default.add_log('Playing "I like to move it"')
             playsound('main/music/iliketomoveit.mp3')
         else:
             sub_command_error(sub_command)
@@ -849,7 +850,7 @@ def command_line():
         elif user_input == 'rps':
             print(Fore.BLUE+'Opening Rock Paper Scissors Game...')
             sleep(1)
-            os.system('python main/games/rock-paper-scissors/app.py')
+            os.system('python main/games/rock_paper_scissors/rps.py')
 
         # settings command - displays settings plus other features with sub-commands
         elif user_input[0:len('settings')] == 'settings':
