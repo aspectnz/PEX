@@ -60,6 +60,9 @@ def choice_checker(question, valid_list, error):
 yes_no_list = ['yes', 'no']
 rps_list = ['rock', 'paper', 'scissors', 'quit']
 
+comp_choice = random.choice(rps.list[:-1])
+print(comp_choice)
+
 # Ask user if they have played before.
 # If 'yes', show the instructions
 
@@ -98,3 +101,10 @@ while end_game == 'no':
 #if yes, show the game history
 
 # Show game statistics
+
+
+
+
+# get computer choice
+# compare choices
+# End game if exit code is typed
