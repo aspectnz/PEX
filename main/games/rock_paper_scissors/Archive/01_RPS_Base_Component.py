@@ -49,11 +49,6 @@ def choice_checker(question, valid_list, error):
             print(error)
 
 
-
-
-
-
-
 # Main routine goes here
 
 # List of valid responses
@@ -68,7 +63,11 @@ print(comp_choice)
 
 
 # ask user for # of rounds, then loop...
+ 
 rounds_played = 0
+rounds_lost = 0
+rounds_drawn = 0
+
 choose_instruction = 'Choose rock/paper/scissors (r/p/s)'
 # Ask user for # of rounds, <enter? for infinite mode
 rounds = check_rounds()
