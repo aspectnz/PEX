@@ -1,3 +1,5 @@
+# Main routine more effecient than v2
+
 def check_rounds():
     while True:
         response = input('How many rounds: ')
