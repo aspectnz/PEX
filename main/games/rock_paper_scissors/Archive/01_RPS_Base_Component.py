@@ -5,7 +5,7 @@ def check_rounds():
     while True:
         response = input('How many rounds: ')
 
-        round_error = 'Please type either <enter> or an integer that is more than 0'
+        round_error = 'Please type either <enter> or an integer that is more than 0\n'
 
         # If infinite mode not chosen, check response is an integer that is more than 0
         if response != '':
@@ -48,6 +48,12 @@ def choice_checker(question, valid_list, error):
         else:
             print(error)
 
+
+
+
+
+
+
 # Main routine goes here
 
 # List of valid responses
@@ -60,31 +66,35 @@ rps_list = ['rock', 'paper', 'scissors', 'quit']
 
 # ask user for # of rounds, then loop...
 rounds_played = 0
-choose_instruction = 'Please choose rock (r), paper (p) or scissors (s)'
-
+choose_instruction = 'Choose rock/paper/scissors (r/p/s)'
 # Ask user for # of rounds, <enter? for infinite mode
 rounds = check_rounds()
-
 end_game = 'no'
 while end_game == 'no':
-
     # Rounds Heading
     print()
-    rounds_played += 1
     if rounds == '':
-        heading = 'Continuous Mode: Round '+rounds_played
-
+        heading = 'Continuous Mode: Round '+rounds_played+1
     else:
-        heading = 'Round {} of {}'.format(rounds_played, rounds)
-
+        heading = f'Round {rounds_played+1} of {rounds}'
     print(heading)
-    choose = input('{} or "quit" to end: '.format(choose_instruction))
-    
+
+    # Ask user for choice and check it's valid
+    choose_error = 'Please choose from rock/paper/scissors or type "quit" to quit'
+    choose = choice_checker(choose_instruction, rps_list, choose_error)
+
     # End game if exit code is typed
     if choose == 'quit':
-            break
+        break
+    # ***** rest of loop / game *****
+    print('You chose '+choose)
+    rounds_played += 1
+    # end game if requested # of rounds has been played
+    if rounds_played == rounds:
+        break
 
 # Ask user if they want to see their game history
+
 #if yes, show the game history
 
 # Show game statistics

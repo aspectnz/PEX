@@ -21,34 +21,28 @@ def check_rounds():
         return response
 
 # Main routine goes here...
-
 rounds_played = 0
 choose_instruction = 'Please choose rock (r), paper (p) or scissors (s)'
-
 # Ask user for # of rounds, <enter? for infinite mode
 rounds = check_rounds()
-
 end_game = 'no'
 while end_game == 'no':
-
     # Rounds Heading
     print()
     if rounds == '':
         heading = 'Continuous Mode: Round '+rounds_played+1
-
     else:
         heading = f'Round {rounds_played+1} of {rounds}'
-
     print(heading)
-    choose = input(choose_instructions+' or "quit" to end: ')
-    
+    choose = input(choose_instruction+' or "quit" to end: ')
     # End game if exit code is typed
     if choose == 'quit':
-            break
-
+        break
     # ***** rest of loop / game *****
     print('You chose '+choose)
-
     rounds_played += 1
+    # end game if requested # of rounds has been played
+    if rounds_played == rounds:
+        break
 
 print('Thank you for playing')
