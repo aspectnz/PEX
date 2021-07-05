@@ -35,10 +35,10 @@ while end_game == 'no':
         heading = 'Continuous Mode: Round '+rounds_played+1
 
     else:
-        heading = 'Round {} of {}'.format(rounds_played + 1, rounds)
+        heading = f'Round {rounds_played+1} of {rounds}'
 
     print(heading)
-    choose = input('{} or "quit" to end: '.format(choose_instructions))
+    choose = input(choose_instructions+' or "quit" to end: ')
     
     # End game if exit code is typed
     if choose == 'quit':
