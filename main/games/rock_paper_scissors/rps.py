@@ -1,11 +1,57 @@
 import random
+import os
+import sys
+
+# Import colorama module
+# If the module is not installed, then automatically install it. Otherwise, continue the program
+try:
+    import colorama
+    from colorama import Fore, Back, Style
+    colorama.init()
+    colorama.init(convert=True)
+    colorama.init(autoreset=True)
+    colorama_imported = True
+except:
+    pip.main(['install', 'colorama'])
+    import colorama
+    from colorama import Fore, Back, Style
+    colorama.init()
+    colorama.init(convert=True)
+    colorama.init(autoreset=True)
+    colorama_imported = True
 
 # Functions go here
+
+def choice_checker(question, valid_list, error):
+    valid = False
+    while not valid:
+        # Ask use for choice (and put choice in lowercase)
+        print(question, end="")
+        response = input().lower()
+
+        # iterate through list and if response is an item in the list (or the first letter of an item), the full item name is returned
+
+        for item in valid_list:
+            if response == item[0] or response == item:
+                return response
+
+        # output error if item is not list
+        if response == 'r' or response == 'rock':
+            return response
+        elif response == 'p' or response == 'paper':
+            return response
+        elif response == 's' or response == 'scissors':
+            return response
+        elif response == 'quit':
+            return response
+        else:
+            print(error)
+
 def check_rounds():
     while True:
-        response = input('How many rounds: ')
+        response = input('How many rounds would you like to play or <enter> for infinite mode: ')
 
-        round_error = 'Please type either <enter> or an integer that is more than 0'
+        round_error = 'Please type either <enter> or an integer that is more than 0\n'
 
         # If infinite mode not chosen, check response is an integer that is more than 0
         if response != '':
@@ -23,30 +69,7 @@ def check_rounds():
 
         return response
 
-def choice_checker(question, valid_list, error):
-    valid = False
-    while not valid:
-        # Ask use for choice (and put choice in lowercase)
-        response = input(question).lower()
 
-        # iterate through list and if response is an item in the list (or the first letter of an item), the full item name is returned
-
-        for item in valid_list:
-            if response == item[0] or response == item:
-                return response
-
-        # output error if item is not list
-        if response == 'r' or response == 'rock':
-            return response
-        elif response == 'p' or response == 'paper':
-            return response
-        elif response == 's' or response == 'scissors':
-            return response
-
-        elif response == 'quit':
-            return response
-        else:
-            print(error)
 
 # Main routine goes here
 
@@ -59,32 +82,100 @@ rps_list = ['rock', 'paper', 'scissors', 'quit']
 
 
 # ask user for # of rounds, then loop...
+ 
 rounds_played = 0
-choose_instruction = 'Please choose rock (r), paper (p) or scissors (s)'
+rounds_lost = 0
+rounds_drawn = 0
 
-# Ask user for # of rounds, <enter? for infinite mode
+choose_instruction = Fore.CYAN+'Choose rock/paper/scissors (r/p/s): '
+
+# Ask user for # of rounds, <enter> for infinite mode
+
+choose = ''
 rounds = check_rounds()
-
-end_game = 'no'
-while end_game == 'no':
-
+while choose != 'quit':
     # Rounds Heading
     print()
-    rounds_played += 1
     if rounds == '':
-        heading = 'Continuous Mode: Round '+rounds_played
-
+        heading = Fore.BLUE+f'Continuous Mode: Round {rounds_played+1}'
     else:
-        heading = 'Round {} of {}'.format(rounds_played, rounds)
-
+        heading = Fore.BLUE+f'Round {rounds_played+1} of {rounds}'
     print(heading)
-    choose = input('{} or "quit" to end: '.format(choose_instruction))
-    
+
+    # Ask user for choice and check it's valid
+    choose_error = 'Please choose from rock/paper/scissors or type "quit" to quit\n'
+    choose = choice_checker(choose_instruction, rps_list, choose_error)
+
     # End game if exit code is typed
     if choose == 'quit':
-            break
+        break
+
+
+    # ***** rest of loop / game *****
+
+    comp_choice = random.choice(rps_list[:-1])
+
+    if choose == 'r':
+        choose = 'rock'
+    elif choose == 'p':
+        choose = 'paper'
+    elif choose == 's':
+        choose = 'scissors'
+
+    # Compare choices
+    if comp_choice == choose:
+        result = Fore.WHITE+'tie'
+        rounds_drawn += 1
+    elif choose == 'rock' and comp_choice == 'scissors':
+        result = Fore.GREEN+'won'
+    elif choose == 'paper' and comp_choice == 'rock':
+        result = Fore.GREEN+'won'
+    elif choose == 'scissors' and comp_choice == 'paper':
+        result = Fore.GREEN+'won'
+    else:
+        result = Fore.RED+'lost'
+        rounds_lost += 1
+
+    if result == 'tie':
+        feedback = 'It\'s a tie'
+    else:
+        feedback = f'{choose} vs {comp_choice} - you. {result}'
+
+    print(Fore.WHITE+f'You chose {choose}, the computer chose {comp_choice} \nResult: {result}')
+
+    rounds_played += 1
+    # end game if requested # of rounds has been played
+    if rounds_played == rounds:
+        break
+
+
 
 # Ask user if they want to see their game history
+
 #if yes, show the game history
 
-# Show game statistics
+summary_prompt = input('Would you like to see your end results? (y/n): ')
+if summary_prompt == 'y' or summary_prompt == 'yes':
+    rounds_won = rounds_played - rounds_lost - rounds_drawn
+    percent_win = rounds_won / rounds_played * 100
+    percent_lose = rounds_lost / rounds_played * 100
+    percent_tie = rounds_drawn / rounds_played * 100
+
+    # Find which number is most dominant
+    if percent_win > percent_lose and percent_win > percent_tie:
+        dominant = Fore.GREEN+'win'
+    elif percent_lose > percent_win and percent_lose > percent_tie:
+        dominant = Fore.RED+'lose'
+    else:
+        dominant = 'tie'
+
+    print(f'''
+    Rounds Played: {rounds_played}
+    {Fore.GREEN}Won: {percent_win:.0f}%
+    {Fore.RED}Lost: {percent_lose:.0f}%
+    {Fore.WHITE}Tied: {percent_tie:.0f}%
+    According to the stats, you mostly {dominant}.
+    ''')
+
+print('Opening the main menu...')
+exit()
