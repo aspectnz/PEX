@@ -349,6 +349,7 @@ def check_internet_on_start():
             sleep(10)
             exit()
 
+# Check if the user is using Windows or another OS
 default.add_log('get users platform function')
 def get_platform():
     # making a dictionary for the list of OSs
@@ -363,6 +364,7 @@ def get_platform():
     
     return platforms[sys.platform]
 
+# If the user is not using Windows, then close the application
 default.add_log('check the users platform on start function')
 def check_platform_on_start():
     if get_platform() != 'Windows':
