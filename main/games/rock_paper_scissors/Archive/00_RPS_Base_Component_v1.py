@@ -1,5 +1,23 @@
 import random
 
+# Import colorama module
+# If the module is not installed, then automatically install it. Otherwise, continue the program
+try:
+    import colorama
+    from colorama import Fore, Back, Style
+    colorama.init()
+    colorama.init(convert=True)
+    colorama.init(autoreset=True)
+    colorama_imported = True
+except:
+    pip.main(['install', 'colorama'])
+    import colorama
+    from colorama import Fore, Back, Style
+    colorama.init()
+    colorama.init(convert=True)
+    colorama.init(autoreset=True)
+    colorama_imported = True
+
 # Functions go here
 
 def choice_checker(question, valid_list, error):
@@ -67,7 +85,7 @@ rounds_played = 0
 rounds_lost = 0
 rounds_drawn = 0
 
-choose_instruction = 'Choose rock/paper/scissors (r/p/s)'
+choose_instruction = 'Choose rock/paper/scissors (r/p/s): '
 # Ask user for # of rounds, <enter? for infinite mode
 rounds = check_rounds()
 end_game = 'no'
@@ -75,13 +93,13 @@ while end_game == 'no':
     # Rounds Heading
     print()
     if rounds == '':
-        heading = 'Continuous Mode: Round '+rounds_played+1
+        heading = Fore.BLUE+'Continuous Mode: Round '+rounds_played+1
     else:
-        heading = f'Round {rounds_played+1} of {rounds}'
+        heading = Fore.BLUE+f'Round {rounds_played+1} of {rounds}'
     print(heading)
 
     # Ask user for choice and check it's valid
-    choose_error = 'Please choose from rock/paper/scissors or type "quit" to quit'
+    choose_error = 'Please choose from rock/paper/scissors or type "quit" to quit\n'
     choose = choice_checker(choose_instruction, rps_list, choose_error)
 
     # End game if exit code is typed
@@ -92,28 +110,27 @@ while end_game == 'no':
     # ***** rest of loop / game *****
 
     comp_choice = random.choice(rps_list[:-1])
-    print(comp_choice)
 
     # Compare choices
-    if comp_choice == user_choice:
-        result = 'tie'
+    if comp_choice == choose:
+        result = Fore.WHITE+'tie'
         rounds_drawn += 1
-    elif user_choice == 'rock' and comp_choice == 'scissors':
-        result = 'won'
-    elif user_choice == 'paper' and comp_choice == 'rock':
-        result = 'won'
-    elif user_choice == 'scissors' and comp_choice == 'paper':
-        result = 'won'
+    elif choose == 'rock' and comp_choice == 'scissors':
+        result = Fore.GREEN+'won'
+    elif choose == 'paper' and comp_choice == 'rock':
+        result = Fore.GREEN+'won'
+    elif choose == 'scissors' and comp_choice == 'paper':
+        result = Fore.GREEN+'won'
     else:
-        result = 'lost'
+        result = Fore.RED+'lost'
         rounds_lost += 1
 
     if result == 'tie':
         feedback = 'It\'s a tie'
     else:
-        feedback = f'{user_choice} vs {comp_choice} - you. {result}'
+        feedback = f'{choose} vs {comp_choice} - you. {result}'
 
-    print(f'You chose {user_choice}, the computer chose {comp_choice} \nResult: {result}')
+    print(f'You chose {choose}, the computer chose {comp_choice} \nResult: {result}')
 
     rounds_played += 1
     # end game if requested # of rounds has been played
