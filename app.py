@@ -290,6 +290,7 @@ def greeting():
     print(Fore.BLUE+'https://github.com/shannon-nz/PEX/')
 
 # Check if the user is using python 3, which is required for this application to work
+# If user is using python 2, exit the program, otherwise continue
 default.add_log('check python version function')
 def check_py_version():
     default.add_log('Validating python version')
@@ -300,6 +301,8 @@ def check_py_version():
         sleep(10)
         exit()
 
+# Check if the user is using the terminal or idle
+# if they are using idle, then open the application in the default application for running python (terminal)
 default.add_log('idle check function')
 def idle_check():
     add_dislog('Validating enviroment')
@@ -315,6 +318,7 @@ def idle_check():
     else:
         add_dislog('Terminal requirement is disabled')
 
+# Check if the user is connected to the internet
 default.add_log('check internet connection function')
 def check_internet_connection():
     try:
@@ -324,6 +328,8 @@ def check_internet_connection():
     except OSError:
         return False
 
+# Check if the user is connected to the internet when the application starts
+# It will only run if the internet requirement is set to True in the config.json file
 default.add_log('check internet connection on start function')
 def check_internet_on_start():
     with open('main/config.json', 'r') as jsonConfig:
