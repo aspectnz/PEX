@@ -379,6 +379,7 @@ Exiting program in 10 seconds...
     else:
         add_dislog('Windows is the default OS')
 
+# Play the startup sound when the application starts
 default.add_log('startup sound function')
 def startup_sound():
     print(Fore.BLUE+'WELCOME TO PEX')
@@ -403,6 +404,8 @@ def change_terminal_background(value):
     os.system('color '+value)
     default.add_log('changed theme to "{}"'.format(value))
 
+# Function for changing the values in the config.json file
+# Such as when using the 'log -disable' command 
 default.add_log('modify config.json values function')
 def mod_config(option, value, newval):
     if option == 'view':
@@ -418,9 +421,8 @@ def mod_config(option, value, newval):
         with open('main/config.json', 'w') as f:
             json.dump(config, f, indent = 4, sort_keys=True)
 
-
-    
-
+# Function for downling files from the internet
+# Such as when using the 'download -lu' command to download the lucky unicorn documentation
 default.add_log('download function')
 def download(url, filename):
     # os.path.exists("/home/el/myfile.txt"
@@ -454,6 +456,9 @@ def download(url, filename):
 # when the command is valid but contains additional invalid text
 default.add_log('invalud command function')
 
+# This function runs when the user uses the '-help' sub command
+# By default, it will list out all the of sub-commands for that command which can be found in the master_command_list file
+# If there are no sub commands for the command, then tell the user that
 default.add_log('sub-command help function')
 def sub_command_help(command):
     with open('main/master_command_list.json', 'r') as command_list:
@@ -466,6 +471,7 @@ def sub_command_help(command):
     else:
         print(Fore.RED+'The "{}" command has no sub commands\n'.format(Fore.WHITE+command+Fore.RED))
 
+# Quick way to inform the user that they used an invalid sub command
 default.add_log('sub-command error function')
 def sub_command_error(sub_command):
     print(Fore.RED+'The "{}" sub command is invalid'.format(Fore.WHITE+'-'+sub_command+Fore.RED))
