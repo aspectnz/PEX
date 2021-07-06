@@ -22,6 +22,33 @@ except:
 
 # Functions go here
 
+def check_rounds():
+    while True:
+        response = input('How many rounds would you like to play or <enter> for infinite mode: ')
+
+        round_error = 'Please type either <enter> or an integer that is more than 0\n'
+
+        if response[0:4] == 'auto':
+            number_of_rounds = response[5:len(response)]
+            response = number_of_rounds
+            print(Fore.BLUE+f'You will be playing {number_of_rounds} rounds ')
+            print('Auto function will be here')
+        # If infinite mode not chosen, check response is an integer that is more than 0
+        elif response != '':
+            try:
+                response = int(response)
+
+                # If response is too low, go back to start of loop
+                if response < 1:
+                    print(round_error)
+                    continue
+            # If response is not an integer, go back to start of loop
+            except ValueError:
+                print(round_error)
+                continue
+
+        return response
+
 def choice_checker(question, valid_list, error):
     valid = False
     while not valid:
@@ -46,28 +73,6 @@ def choice_checker(question, valid_list, error):
             return response
         else:
             print(error)
-
-def check_rounds():
-    while True:
-        response = input('How many rounds would you like to play or <enter> for infinite mode: ')
-
-        round_error = 'Please type either <enter> or an integer that is more than 0\n'
-
-        # If infinite mode not chosen, check response is an integer that is more than 0
-        if response != '':
-            try:
-                response = int(response)
-
-                # If response is too low, go back to start of loop
-                if response < 1:
-                    print(round_error)
-                    continue
-            # If response is not an integer, go back to start of loop
-            except ValueError:
-                print(round_error)
-                continue
-
-        return response
 
 
 
