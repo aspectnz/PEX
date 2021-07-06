@@ -463,11 +463,13 @@ default.add_log('sub-command help function')
 def sub_command_help(command):
     with open('main/master_command_list.json', 'r') as command_list:
         data = json.load(command_list)
+    # if there are sub commands for the requested command, list them out
     if 'sub_commands' in data[command]:
         print(Fore.GREEN+'The "{}" command has the following sub-commands\n'.format(Fore.WHITE+command+Fore.GREEN))
         for (subcmd, subcmd_des) in data[command]['sub_commands'].items():
             subcmd_tab = 30-len(subcmd)
             print(' '*3+Fore.BLUE+subcmd+' '*subcmd_tab+Fore.CYAN+subcmd_des)
+    # If there are no sub commands for the requested command
     else:
         print(Fore.RED+'The "{}" command has no sub commands\n'.format(Fore.WHITE+command+Fore.RED))
 
@@ -476,7 +478,7 @@ default.add_log('sub-command error function')
 def sub_command_error(sub_command):
     print(Fore.RED+'The "{}" sub command is invalid'.format(Fore.WHITE+'-'+sub_command+Fore.RED))
 
-# admin command function
+# admin command function - will give the user admin priveldges for any command
 default.add_log('admin command function')
 def base_command_admin(user_input, command_string):
     # calculate where the dash should be (if there is)
