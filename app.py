@@ -12,11 +12,12 @@ PLEASE WAIT A SECOND
 
 imported_modules = False
 
+# importing custom functions which can be used with default.myFunction()
 import sys
 sys.path.insert(0, './main/custom_modules')
 import default as default
 
-
+# import initial modules
 try:
     import json
     default.add_log('successfully imported json')
@@ -38,19 +39,22 @@ try:
 except:
     default.add_log('failed to import datetime')
 
+# check if it is the users first time using the program,
+# if the username in config.json is 'root' then, it must be their first time or they have reset the settings
+# If the username is default, prompt the user to create a username
 first_time = False
 config_username = 'root'
 with open('main/config.json', 'r') as jsonConfig:
     config = json.load(jsonConfig)
-    if config['user']['username'] == 'root':
+    if config['user']['username'] == config_username:
         first_time = True
         default.add_log('user has not established login details')
         print('Welcome, first make a username. Something short and easy to remember! ')
-        while config['user']['username'] == 'root':
+        while config['user']['username'] == config_username:
             username_prompt = input('Enter username: ')
             
-            if username_prompt == 'root':
-                print('root is a reserved username, please try something else')
+            if username_prompt == config_username:
+                print(f'{config_username} is a reserved username, please try something else')
             elif username_prompt == '' or username_prompt == ' ':
                 print('please enter a valid username, not blank space')
             else:
@@ -59,6 +63,7 @@ with open('main/config.json', 'r') as jsonConfig:
                 with open('main/config.json', 'w') as f:
                     json.dump(config, f, indent=4, sort_keys=True)
 
+# Discrete add log function - This will add logs to the data.log file without printing the log text on the screen
 def add_dislog(text):
     with open('main/config.json', 'r') as jsonConfig:
         config = json.load(jsonConfig)
@@ -68,11 +73,13 @@ def add_dislog(text):
             with open('main/data.log', 'a') as file_object:
                 file_object.write('\n'+dt_string+' - '+h_name+'('+IP_addres+')'+': '+text.lower())
 
+# Deletes the python folders for cache that are made by default if an error occurs
 def clean_cache():
     os.system('python -Bc "import pathlib; [p.unlink() for p in pathlib.Path(\'.\').rglob(\'*.py[co]\')]"')
     os.system('python -Bc "import pathlib; [p.rmdir() for p in pathlib.Path(\'.\').rglob(\'__pycache__\')]"')
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< IMPORTS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
+# Importing the default modules that are included with python
 default.add_log('importing default modules')
 
 try:
@@ -131,6 +138,8 @@ except:
     default.add_log('failed to import thread')
 
 default.add_log('Importing custom modules')
+# Importing modules that are not installed by default with python
+
 # Import numpy module
 # If the module is not installed, then automatically install it. Otherwise, continue the program
 try:
@@ -248,7 +257,6 @@ except:
 
 # <<<<<<<<<<<<<<<<<<<< <<<<<<<<<< FUNCTIONS >>>>>>>>>> >>>>>>>>>>>>>>>>>>>>>
 default.add_log('declaring functions')
-
 default.add_log('greeting function')
 def greeting():
     print(Fore.GREEN+
@@ -281,6 +289,7 @@ def greeting():
     print(Back.BLUE+Style.DIM+'\nAs this application is still in development, not everything will work as expected.\nThis message will be removed from the program when production ready. So make sure to keep up to date on GitHub:')
     print(Fore.BLUE+'https://github.com/shannon-nz/PEX/')
 
+# Check if the user is using python 3, which is required for this application to work
 default.add_log('check python version function')
 def check_py_version():
     default.add_log('Validating python version')
