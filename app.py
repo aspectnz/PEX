@@ -592,6 +592,7 @@ def base_command_log(user_input, command_string):
         if sub_command == 'help':
             sub_command_help(command_string)
         elif sub_command == 'clean':
+            # delete all of the text in the data.log file
             print('cleaning log...')
             myText = open(r'main/data.log','w')
             myText.write('<<< start of log >>>')
@@ -617,7 +618,7 @@ def base_command_log(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
-# settings command function
+# settings command function - allows the user to read and change settings
 default.add_log('settings command function')
 def base_command_settings(user_input, command_string):
     # calculate where the dash should be (if there is)
@@ -694,7 +695,8 @@ def base_command_settings(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
-# shortcuts command function
+# shortcuts command function - allows the users to use / shortcuts instead of typing out entire words
+# This function does not enable that, but merely lists out the shortcuts
 default.add_log('shortcuts command function')
 def base_command_shortcuts(user_input, command_string):
     # calculate where the dash should be (if there is)
@@ -720,6 +722,7 @@ def base_command_shortcuts(user_input, command_string):
     else:
         invalid_command_ext(command_string, user_input)
 
+# Shows the user relevant information about the current enviroment
 default.add_log('stats command function')
 def stats():
     # creating a DataFrame
@@ -748,6 +751,7 @@ print('the recursive limit is {}'.format(501))
 
 command_line_count = 0
 
+# Contains all of the commands and leads to functions for each command (which may have their own file if large enough)
 def command_line():
     global command_line_count
     command_line_count += 1
