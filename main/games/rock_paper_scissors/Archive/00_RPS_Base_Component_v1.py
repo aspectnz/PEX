@@ -1,27 +1,6 @@
 import random
 
 # Functions go here
-def check_rounds():
-    while True:
-        response = input('How many rounds: ')
-
-        round_error = 'Please type either <enter> or an integer that is more than 0\n'
-
-        # If infinite mode not chosen, check response is an integer that is more than 0
-        if response != '':
-            try:
-                response = int(response)
-
-                # If response is too low, go back to start of loop
-                if response < 1:
-                    print(round_error)
-                    continue
-            # If response is not an integer, go back to start of loop
-            except ValueError:
-                print(round_error)
-                continue
-
-        return response
 
 def choice_checker(question, valid_list, error):
     valid = False
@@ -48,15 +27,35 @@ def choice_checker(question, valid_list, error):
         else:
             print(error)
 
+def check_rounds():
+    while True:
+        response = input('How many rounds: ')
+
+        round_error = 'Please type either <enter> or an integer that is more than 0\n'
+
+        # If infinite mode not chosen, check response is an integer that is more than 0
+        if response != '':
+            try:
+                response = int(response)
+
+                # If response is too low, go back to start of loop
+                if response < 1:
+                    print(round_error)
+                    continue
+            # If response is not an integer, go back to start of loop
+            except ValueError:
+                print(round_error)
+                continue
+
+        return response
+
+
 
 # Main routine goes here
 
 # List of valid responses
 yes_no_list = ['yes', 'no']
 rps_list = ['rock', 'paper', 'scissors', 'quit']
-
-comp_choice = random.choice(rps.list[:-1])
-print(comp_choice)
 
 # Ask user if they have played before.
 # If 'yes', show the instructions
@@ -88,12 +87,40 @@ while end_game == 'no':
     # End game if exit code is typed
     if choose == 'quit':
         break
+
+
     # ***** rest of loop / game *****
-    print('You chose '+choose)
+
+    comp_choice = random.choice(rps_list[:-1])
+    print(comp_choice)
+
+    # Compare choices
+    if comp_choice == user_choice:
+        result = 'tie'
+        rounds_drawn += 1
+    elif user_choice == 'rock' and comp_choice == 'scissors':
+        result = 'won'
+    elif user_choice == 'paper' and comp_choice == 'rock':
+        result = 'won'
+    elif user_choice == 'scissors' and comp_choice == 'paper':
+        result = 'won'
+    else:
+        result = 'lost'
+        rounds_lost += 1
+
+    if result == 'tie':
+        feedback = 'It\'s a tie'
+    else:
+        feedback = f'{user_choice} vs {comp_choice} - you. {result}'
+
+    print(f'You chose {user_choice}, the computer chose {comp_choice} \nResult: {result}')
+
     rounds_played += 1
     # end game if requested # of rounds has been played
     if rounds_played == rounds:
         break
+
+
 
 # Ask user if they want to see their game history
 
