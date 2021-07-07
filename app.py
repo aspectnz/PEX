@@ -514,7 +514,7 @@ def base_command_download(user_input, command_string):
     # base command
     if user_input == command_string:
         print('download command requires a sub command')
-    # sub commands for command
+    # sub commands for command`
     elif expected_dash == '-':
         # identify sub command
         sub_command = user_input[len(command_string)+2:len(user_input)]
@@ -1002,7 +1002,8 @@ greeting()
 # admin shortcut
 keyboard.add_hotkey("shift+alt+p", lambda: activate_admin())
 
-# run the command line function - contains the main set of code which links to other functions
+# run the command line function - contains the main set of code which links to other functions (which may have their own file if big enough)
+# This command contains 
 command_line()
 # once the program has finished, then clear the cache - won't work if the quit command or something that uses the quit command is used
 clean_cache()
