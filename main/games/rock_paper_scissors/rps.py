@@ -40,7 +40,6 @@ def check_rounds():
             rounds_played = 0
             rounds_lost = 0
             rounds_drawn = 0
-
             for item in range (0, number_of_rounds):
                 choose = random.choice(rps_list[:-1])
                 comp_choice = random.choice(rps_list[:-1])
